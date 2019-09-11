@@ -32,7 +32,7 @@ services:
     ]
     environment:
       MYSQL_ROOT_PASSWORD: b1sm1ll4h
-      MYSQL_DATABASE: tabungan_sekolah
+      MYSQL_DATABASE: pelayanan_desa
   phpmyadmin:
     container_name: pelayanan-desa-phpmyadmin
     build:
