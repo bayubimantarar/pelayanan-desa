@@ -19,7 +19,7 @@
               <a href="#master-data"><i class="fa fa-bar-chart-o fa-fw"></i> Master Data<span class="fa arrow"></span></a>
               <ul class="nav nav-second-level">
                   <li>
-                    <a href="/master-data/penduduk">
+                    <a href="/master/penduduk">
                       <i class="fa fa-file-o"></i>
                       Data Penduduk
                     </a>
