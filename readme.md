@@ -3,7 +3,7 @@
 <!-- ![GitHub](https://img.shields.io/github/license/bayubimantarar/suratapp.svg?style=flat-square) -->
 
 # Pelayanan Desa
-Pelayanan berksa administrasi desa adalah sebuah aplikasi yang bertujuan untuk :
+Pelayanan berkas administrasi desa adalah sebuah aplikasi yang bertujuan untuk :
 1. Memudahkan pembuatan berkas administrasi untuk masyarakat sekitar
 
 ## Installation
