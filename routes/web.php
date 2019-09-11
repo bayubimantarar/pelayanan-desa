@@ -36,6 +36,14 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
     });
     Route::group(['prefix' => 'master'], function(){
         Route::group(['prefix' => 'penduduk'], function(){
+            Route::group(['prefix' => 'api'], function(){
+                Route::get('/data-nik', [
+                    'uses' => 'Master\PendudukController@APIdataNIK',
+                ]);
+                Route::get('/data/{nik}', [
+                    'uses' => 'Master\PendudukController@APIdata',
+                ]);
+            });
             Route::get('/', [
                 'uses' => 'Master\PendudukController@index',
                 'as' => 'master.penduduk.index'
@@ -63,6 +71,18 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::delete('/hapus/{id}', [
                 'uses' => 'Master\PendudukController@destroy',
                 'as' => 'master.penduduk.destroy'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-umum'], function(){
+        Route::group(['prefix' => 'skck'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Umum\SKCKController@index',
+                'as' => 'kaur.umum.skck.index'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Umum\SKCKController@create',
+                'as' => 'kaur.umum.skck.create'
             ]);
         });
     });

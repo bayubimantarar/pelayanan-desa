@@ -58,6 +58,9 @@
     type="text/javascript"
     src="/assets/vendor/metisMenu/metisMenu.min.js"
   ></script>
+  <script
+    type="text/javascript"
+    src="/assets/dist/js/sb-admin-2.js"></script>
   @yield('js')
 </body>
 </html>

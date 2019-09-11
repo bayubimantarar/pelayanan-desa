@@ -10,6 +10,22 @@ use App\Http\Requests\Master\PendudukRequest;
 
 class PendudukController extends Controller
 {
+    public function APIdataNIK()
+    {
+        $penduduk = Penduduk::pluck('nik');
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
+    public function APIdata($nik)
+    {
+        $penduduk = Penduduk::where('nik', '=', $nik)->first();
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
     /**
      * Display a listing of the resource.
      *
