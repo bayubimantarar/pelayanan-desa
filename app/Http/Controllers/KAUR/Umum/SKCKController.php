@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\KAUR\Umum;
 
+use PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -81,5 +82,18 @@ class SKCKController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function surat()
+    {
+        $surat = PDF::loadView('kaur.umum.skck.surat');
+
+        return $surat->setPaper('a4', 'portrait')->stream();
+        // return view('kaur.umum.skck.surat');
     }
 }

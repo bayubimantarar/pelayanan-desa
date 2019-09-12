@@ -84,6 +84,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Umum\SKCKController@create',
                 'as' => 'kaur.umum.skck.create'
             ]);
+            Route::get('/surat', [
+                'uses' => 'KAUR\Umum\SKCKController@surat',
+                'as' => 'kaur.umum.skck.surat'
+            ]);
         });
     });
 });
