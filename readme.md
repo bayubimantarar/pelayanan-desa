@@ -1,6 +1,6 @@
 <!-- [![Build Status](https://img.shields.io/travis/bayubimantarar/suratapp.svg?style=flat-square)](https://travis-ci.org/bayubimantarar/suratapp) -->
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/bayubimantarar/suratapp/pulls)
-<!-- ![GitHub](https://img.shields.io/github/license/bayubimantarar/suratapp.svg?style=flat-square) -->
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/bayubimantarar/pelayanan-desa/pulls)
+![GitHub](https://img.shields.io/github/license/bayubimantarar/pelayanan-desa.svg?style=flat-square)
 
 # Pelayanan Desa
 Pelayanan berkas administrasi desa adalah sebuah aplikasi yang bertujuan untuk :
