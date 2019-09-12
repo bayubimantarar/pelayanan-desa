@@ -80,11 +80,15 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Umum\SKCKController@index',
                 'as' => 'kaur.umum.skck.index'
             ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Umum\SKCKController@data',
+                'as' => 'kaur.umum.skck.data'
+            ]);
             Route::get('/form-tambah', [
                 'uses' => 'KAUR\Umum\SKCKController@create',
                 'as' => 'kaur.umum.skck.create'
             ]);
-            Route::get('/surat', [
+            Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Umum\SKCKController@surat',
                 'as' => 'kaur.umum.skck.surat'
             ]);

@@ -25,6 +25,10 @@
           Form Tambah Data Penduduk
         </div>
         <div class="panel-body">
+          <h4>
+            Identitas Penduduk
+          </h4>
+          <hr />
           <div class="row">
               <div class="col-lg-12">
                 <form action="/master/penduduk/simpan" method="post">

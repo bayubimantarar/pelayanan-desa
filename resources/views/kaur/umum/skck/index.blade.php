@@ -39,7 +39,7 @@
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="penduduk-table"
+              id="skck-table"
             >
               <thead>
                 <tr>
@@ -71,39 +71,39 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var penduduk_table = $('#penduduk-table').DataTable({
+    var skck_table = $('#skck-table').DataTable({
       ajax: {
-        url: '/master/penduduk/data',
-        type: 'GET'
+        url: '/kaur-umum/skck/data',
+        type: 'get'
       },
       datatype: 'json',
       columns: [
-        {data: 'nik'},
-        {data: 'nama'},
-        {data: 'alamat'},
+        {data: 'penduduk.nik'},
+        {data: 'penduduk.nama'},
+        {data: 'penduduk.alamat'},
         {data: 'action'}
       ],
       responsive: true
     });
 
-    function destroy(id)
-    {
-      var confirmation = confirm("Yakin akan menghapus data ini?");
+    // function destroy(id)
+    // {
+    //   var confirmation = confirm("Yakin akan menghapus data ini?");
 
-      if (confirmation) {
-        $.ajax({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url: '/master/penduduk/hapus/'+id,
-            type: 'delete',
-            dataType: 'json',
-            success: function(result){
-              alert('Data berhasil dihapus!');
-              penduduk_table.ajax.reload();
-            }
-        });
-      }
-    }
+    //   if (confirmation) {
+    //     $.ajax({
+    //         headers: {
+    //           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         url: '/master/penduduk/hapus/'+id,
+    //         type: 'delete',
+    //         dataType: 'json',
+    //         success: function(result){
+    //           alert('Data berhasil dihapus!');
+    //           skck_table.ajax.reload();
+    //         }
+    //     });
+    //   }
+    // }
   </script>
 @endsection

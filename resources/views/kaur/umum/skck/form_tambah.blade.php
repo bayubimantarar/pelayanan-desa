@@ -52,6 +52,7 @@
                         class="form-control"
                         id="nik"
                         value="{{ old('nik') }}"
+                        autocomplete="off"
                       />
                       @if($errors->has('nik'))
                         <p class="text-danger">
@@ -61,9 +62,9 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
                       <label
                         class="control-label"
                         for="nama"
@@ -83,7 +84,48 @@
                         </p>
                       @endif
                     </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="tempat-lahir"
+                      >
+                        Tempat Lahir
+                      </label>
+                      <input
+                        type="text"
+                        name="jenis_kelamin"
+                        class="form-control"
+                        id="tempat-lahir"
+                        readonly
+                      />
+                      @if($errors->has('jenis_kelamin'))
+                        <p class="text-danger">
+                          {{ $errors->first('jenis_kelamin') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="tanggal-lahir"
+                      >
+                        Tanggal Lahir
+                      </label>
+                      <input
+                        type="text"
+                        name="jenis_kelamin"
+                        class="form-control"
+                        id="tanggal-lahir"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
                       <label
                         class="control-label"
                         for="jenis-kelamin"
@@ -102,6 +144,110 @@
                           {{ $errors->first('jenis_kelamin') }}
                         </p>
                       @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="nama"
+                      >
+                        Status Perkawinan
+                      </label>
+                      <input
+                        type="text"
+                        name="nama"
+                        class="form-control"
+                        id="status-perkawinan"
+                        readonly
+                      />
+                      @if($errors->has('nama'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="tempat-lahir"
+                      >
+                        Agama
+                      </label>
+                      <input
+                        type="text"
+                        name="jenis_kelamin"
+                        class="form-control"
+                        id="agama"
+                        readonly
+                      />
+                      @if($errors->has('jenis_kelamin'))
+                        <p class="text-danger">
+                          {{ $errors->first('jenis_kelamin') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="tanggal-lahir"
+                      >
+                        Pendidikan
+                      </label>
+                      <input
+                        type="text"
+                        name="jenis_kelamin"
+                        class="form-control"
+                        id="pendidikan"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        class="control-label"
+                        for="jenis-kelamin"
+                      >
+                        Pekerjaan
+                      </label>
+                      <input
+                        type="text"
+                        name="jenis_kelamin"
+                        class="form-control"
+                        id="pekerjaan"
+                        readonly
+                      />
+                      @if($errors->has('jenis_kelamin'))
+                        <p class="text-danger">
+                          {{ $errors->first('jenis_kelamin') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label
+                        class="control-label"
+                        for="alamat"
+                      >
+                        Alamat
+                      </label>
+                      <textarea
+                        name="alamat"
+                        class="form-control"
+                        id="alamat"
+                        rows="5"
+                        readonly
+                      ></textarea>
                     </div>
                   </div>
                 </div>
@@ -202,7 +348,7 @@
                         Keterangan Keperluan
                       </label>
                       <textarea
-                        name="redaksi"
+                        name="keperluan"
                         class="form-control"
                         id=""
                         rows="5"
@@ -276,8 +422,16 @@
           type: 'get',
           dataType: 'json',
           success: function(data){
+            console.log(data);
             $('#nama').val(data.nama);
+            $('#tempat-lahir').val(data.tempat_lahir);
+            $('#tanggal-lahir').val(data.tanggal_lahir);
             $('#jenis-kelamin').val(data.jenis_kelamin);
+            $('#status-perkawinan').val(data.status_perkawinan);
+            $('#agama').val(data.agama);
+            $('#pendidikan').val(data.pendidikan);
+            $('#pekerjaan').val(data.pekerjaan);
+            $('#alamat').val(data.alamat);
           }
         });
       }

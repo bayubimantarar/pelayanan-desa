@@ -64,7 +64,7 @@
         Pengantar keterangan catatan kepolisian
     </h4>
     <p style="margin: 0; padding: 0;">
-      Nomor: 200/.../Ds./I/2019
+      Nomor: 200/.../Ds. Cilame/I/2019
     </p>
   </div>
   <div class="redaksi-awal">
@@ -72,8 +72,8 @@
       Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas untuk :
     </p>
     <ol style="">
-      <li>Surat pengantar dari ketua RT 004 tertanggal 29 Agustus 2019</li>
-      <li>Surat pengantar dari ketua RW 003 tertanggal 29 Agustus 2019</li>
+      <li>Surat pengantar dari ketua RT {{ $skck->rt }} tertanggal 29 Agustus 2019</li>
+      <li>Surat pengantar dari ketua RW {{ $skck->rw }} tertanggal 29 Agustus 2019</li>
     </ol>
   </div>
   <div class="muatan-data">
@@ -84,54 +84,54 @@
       <tr>
         <td>Nama</td>
         <td>:</td>
-        <td><b>Bayu Bimantara</b></td>
+        <td><b>{{ $skck->penduduk->nama }}</b></td>
       </tr>
       <tr>
         <td>Tempat / Tgl Lahir</td>
         <td>:</td>
-        <td>Bandung, 25-07-1997</td>
+        <td>{{ $skck->penduduk->tempat_lahir }}, {{ $skck->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>Laki-laki</td>
+        <td>{{ $skck->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>Belum Kawin</td>
+        <td>{{ $skck->penduduk->status_perkawinan }}</td>
       </tr>
       <tr>
         <td>Agama</td>
         <td>:</td>
-        <td>Islam</td>
+        <td>{{ $skck->penduduk->agama }}</td>
       </tr>
       <tr>
         <td>Pendidikan</td>
         <td>:</td>
-        <td>SMA</td>
+        <td>{{ $skck->penduduk->pendidikan }}</td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>Pelajar/ Mahasiswa</td>
+        <td>{{ $skck->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
         <td>NIK KTP</td>
         <td>:</td>
-        <td>321781921291092</td>
+        <td>{{ $skck->penduduk->nik }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>Bukit Permata RT004/RW003 Desa Cilame Kec. Ngamprah Kab. Bandung Barat</td>
+        <td>{{ $skck->penduduk->alamat }}</td>
       </tr>
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian. <br />
-      Surat keterangan ini dibuat untuk keperluan : <b><i>Melamar pekerjaan</i></b>
+      {{ $skck->redaksi }}<br />
+      Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $skck->keperluan }}</i></b>
     </p>
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.

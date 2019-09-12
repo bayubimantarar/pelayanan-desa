@@ -162,13 +162,11 @@ class PendudukController extends Controller
         $jenisKelamin = jenisKelamin::all();
         $penduduk = Penduduk::findOrFail($id);
         $statusPerkawinan = StatusPerkawinan::all();
-        $tanggalLahir = $penduduk->tanggal_lahir->format('d-m-Y');
 
         return view('master.penduduk.form_ubah', compact(
             'agama',
             'penduduk',
             'pendidikan',
-            'tanggalLahir',
             'jenisKelamin',
             'statusPerkawinan'
         ));

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use App\Models\SKCK;
 use Illuminate\Database\Eloquent\Model;
 
 class Penduduk extends Model
@@ -22,4 +24,9 @@ class Penduduk extends Model
     protected $dates = [
         'tanggal_lahir'
     ];
+
+    public function getTanggalLahirAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 }

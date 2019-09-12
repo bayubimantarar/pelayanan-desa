@@ -123,7 +123,7 @@
                             type="text"
                             name="tanggal_lahir"
                             class="form-control"
-                            value="{{ $tanggalLahir }}"
+                            value="{{ $penduduk->tanggal_lahir }}"
                           />
                           <span class="input-group-addon">
                             <span class="fa fa-calendar"></span>

@@ -15,11 +15,13 @@ class CreateKaurUmumSkckTable extends Migration
     {
         Schema::create('kaur_umum_skck', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nik');
-            $table->string('rt', 10);
-            $table->string('rw', 10);
-            $table->date('tanggal_surat_pengantar');
+            $table->string('nik', 75);
+            $table->string('rt', 75);
+            $table->string('rw', 75);
+            $table->date('tertanggal_rt');
+            $table->date('tertanggal_rw');
             $table->text('keperluan');
+            $table->text('redaksi');
             $table->timestamps();
         });
     }

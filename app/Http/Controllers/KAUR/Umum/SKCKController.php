@@ -3,12 +3,50 @@
 namespace App\Http\Controllers\KAUR\Umum;
 
 use PDF;
+use DataTables;
+use Carbon\Carbon;
+use App\Models\SKCK;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KAUR\Umum\SKCKRequest;
 
 class SKCKController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function data()
+    {
+        $skck = SKCK::with('penduduk')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $dataTablesSKCK = DataTables($skck)
+            ->addColumn('action', function($skck){
+                return '
+                    <center>
+                        <a
+                            href="/master/penduduk/form-ubah/'.$skck->id.'"
+                            class="btn btn-circle btn-sm btn-warning"
+                        >
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a
+                            href="/kaur-umum/skck/surat/'.$skck->id.'"
+                            class="btn btn-circle btn-sm btn-success"
+                        >
+                            <i class="fa fa-file-pdf-o"></i>
+                        </a>
+                    </center>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+
+        return $dataTablesSKCK;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +75,30 @@ class SKCKController extends Controller
      */
     public function store(SKCKRequest $skckRequest)
     {
+        $nik = $skckRequest->nik;
+        $rt = $skckRequest->rt;
+        $rw = $skckRequest->rw;
+        $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
+        $tertanggalRW = Carbon::parse($skckRequest->tertanggal_rw);
+        $keperluan = $skckRequest->keperluan;
+        $redaksi = $skckRequest->redaksi;
 
+        $SKCKData = [
+            'nik' => $nik,
+            'rt' => $rt,
+            'rw' => $rw,
+            'tertanggal_rt' => $tertanggalRT,
+            'tertanggal_rw' => $tertanggalRW,
+            'keperluan' => $keperluan,
+            'redaksi' => $redaksi
+        ];
+
+        $createSKCK = SKCK::create($SKCKData);
+
+        return redirect('/kaur-umum/skck')
+            ->with([
+                'notification' => 'Data penduduk berhasil ditambah.'
+            ]);
     }
 
     /**
@@ -90,11 +151,16 @@ class SKCKController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function surat()
+    public function surat($id)
     {
-        $surat = PDF::loadView('kaur.umum.skck.surat');
+        $skck = SKCK::with('penduduk')
+            ->where('id', '=', $id)
+            ->first();
+
+        $surat = PDF::loadView('kaur.umum.skck.surat', [
+            'skck' => $skck
+        ]);
 
         return $surat->setPaper('a4', 'portrait')->stream();
-        // return view('kaur.umum.skck.surat');
     }
 }
