@@ -27,7 +27,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/master/penduduk/simpan" method="post">
+              <form action="/kaur-umum/skck/simpan" method="post">
                 <h4>
                   Identitas Penduduk
                 </h4>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <label
                         class="control-label"
                         for="nama"
@@ -83,7 +83,7 @@
                         </p>
                       @endif
                     </div>
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <label
                         class="control-label"
                         for="jenis-kelamin"
@@ -244,49 +244,49 @@
 @endsection
 
 @section('js')
-<script
-  type="text/javascript"
-  src="/assets/js/bootstrap-typehead.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="/assets/js/moment.min.js"
-></script>
-<script
-  type="text/javascript"
-  src="/assets/js/bootstrap-datetimepicker.min.js"
-></script>
-<script>
-  $('#nik').typeahead({
-    source: function(query, process) {
-      $.ajax({
-          url: '/master/penduduk/api/data-nik',
+  <script
+    type="text/javascript"
+    src="/assets/js/bootstrap-typehead.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/bootstrap-datetimepicker.min.js"
+  ></script>
+  <script>
+    $('#nik').typeahead({
+      source: function(query, process) {
+        $.ajax({
+            url: '/master/penduduk/api/data-nik',
+            type: 'get',
+            dataType: 'json',
+            success: function(json){
+              return process(json)
+            }
+        });
+      },
+      autoSelect: true,
+      afterSelect: function(result){
+        var nik = $('#nik').val();
+        $.ajax({
+          url: '/master/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
-          success: function(json){
-            return process(json)
+          success: function(data){
+            $('#nama').val(data.nama);
+            $('#jenis-kelamin').val(data.jenis_kelamin);
           }
-      });
-    },
-    autoSelect: true,
-    afterSelect: function(result){
-      var nik = $('#nik').val();
-      $.ajax({
-        url: '/master/penduduk/api/data/'+nik,
-        type: 'get',
-        dataType: 'json',
-        success: function(data){
-          $('#nama').val(data.nama);
-          $('#jenis-kelamin').val(data.jenis_kelamin);
-        }
-      });
-    }
-  });
-  $('#tertanggal-rt').datetimepicker({
-    format: 'DD-MM-YYYY'
-  });
-  $('#tertanggal-rw').datetimepicker({
-    format: 'DD-MM-YYYY'
-  });
-</script>
+        });
+      }
+    });
+    $('#tertanggal-rt').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#tertanggal-rw').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+  </script>
 @endsection

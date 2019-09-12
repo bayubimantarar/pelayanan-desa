@@ -5,6 +5,7 @@ namespace App\Http\Controllers\KAUR\Umum;
 use PDF;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\KAUR\Umum\SKCKRequest;
 
 class SKCKController extends Controller
 {
@@ -34,9 +35,9 @@ class SKCKController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SKCKRequest $skckRequest)
     {
-        //
+
     }
 
     /**

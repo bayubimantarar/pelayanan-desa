@@ -26,6 +26,8 @@ class PendudukRequest extends FormRequest
         return [
             'nik' => 'required|unique:penduduk,nik,'.$this->id,
             'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
             'pekerjaan' => 'required',
             'alamat' => 'required'
         ];
@@ -42,6 +44,8 @@ class PendudukRequest extends FormRequest
             'nik.required' => 'NIK perlu diisi.',
             'nik.unique' => 'NIK sudah ada.',
             'nama.required' => 'Nama perlu diisi.',
+            'tempat_lahir.required' => 'Tempat Lahir perlu diisi.',
+            'tanggal_lahir.required' => 'Tanggal Lahir perlu diisi.',
             'pekerjaan.required' => 'Pekerjaan perlu diisi.',
             'alamat.required' => 'Alamat perlu diisi.'
         ];

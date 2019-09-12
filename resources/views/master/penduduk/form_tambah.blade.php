@@ -5,7 +5,11 @@
 @endsection
 
 @section('css')
-<!-- no custom css in this page -->
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/assets/css/bootstrap-datetimepicker.min.css"
+  />
 @endsection
 
 @section('content')
@@ -31,7 +35,7 @@
                   />
                   <div class="form-group {{ $errors->has('nik') ? 'has-error has-feedback' : '' }}">
                     <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                      <div class="col-lg-6 col-md-6 col-xs-12">
                         <label
                           class="control-label"
                           for="nik"
@@ -53,9 +57,9 @@
                       </div>
                     </div>
                   </div>
-                  <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
                         <label
                           class="control-label"
                           for="nama"
@@ -76,10 +80,59 @@
                         @endif
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          class="control-label"
+                          for="tempat-lahir"
+                        >
+                          Tempat Lahir
+                        </label>
+                        <input
+                          type="text"
+                          name="tempat_lahir"
+                          class="form-control"
+                          id="tempat-lahir"
+                          value="{{ old('tempat_lahir') }}"
+                        />
+                        @if($errors->has('tempat_lahir'))
+                          <p class="text-danger">
+                            {{ $errors->first('tempat_lahir') }}
+                          </p>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          class="control-label"
+                          for="tanggal-lahir"
+                        >
+                          Tanggal Lahir
+                        </label>
+                        <div
+                          class="input-group date"
+                          id="tanggal-lahir"
+                        >
+                          <input
+                            type="text"
+                            name="tanggal_lahir"
+                            class="form-control"
+                            value="{{ old('tanggal_lahir') }}"
+                          />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                        @if($errors->has('tanggal_lahir'))
+                          <p class="text-danger">
+                            {{ $errors->first('tanggal_lahir') }}
+                          </p>
+                        @endif
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
                         <label
                           class="control-label"
                           for="jenis-kelamin"
@@ -91,55 +144,45 @@
                           class="form-control"
                           id="jenis-kelamin"
                         >
-                          <option
-                            value="Laki-laki"
-                            {{ old('jenis_kelamin') === 'Laki-laki' ? 'selected' : ''}}
-                          >
-                            Laki-laki
-                          </option>
-                          <option
-                            value="Perempuan"
-                            {{ old('jenis_kelamin') === 'Perempuan' ? 'selected' : ''}}
-                          >
-                            Perempuan
-                          </option>
+                          @foreach($jenisKelamin as $item)
+                            <option
+                              value="{{ $item->keterangan }}"
+                              {{ old('jenis_kelamin') === $item->keterangan ? 'selected' : ''}}
+                            >
+                              {{ $item->keterangan }}
+                            </option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
                         <label
-                          class="control-label"
-                          for="status-perkawinan"
-                        >
-                          Status Perkawinan
-                        </label>
-                        <select
-                          name="status_perkawinan"
-                          class="form-control"
-                          id="status-perkawinan"
-                        >
+                        class="control-label"
+                        for="status-perkawinan"
+                      >
+                        Status Perkawinan
+                      </label>
+                      <select
+                        name="status_perkawinan"
+                        class="form-control"
+                        id="status-perkawinan"
+                      >
+                        @foreach($statusPerkawinan as $item)
                           <option
-                            value="Kawin"
-                            {{ old('status_perkawinan') === 'Kawin' ? 'selected' : ''}}
+                            value="{{ $item->keterangan }}"
+                            {{ old('status_perkawinan') === $item->keterangan ? 'selected' : ''}}
                           >
-                            Kawin
+                            {{ $item->keterangan }}
                           </option>
-                          <option
-                            value="Belum Kawin"
-                            {{ old('status_perkawinan') === 'Belum Kawin' ? 'selected' : ''}}
-                          >
-                            Belum Kawin
-                          </option>
-                        </select>
+                        @endforeach
+                      </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
                         <label
                           class="control-label"
                           for="agama"
@@ -151,49 +194,19 @@
                           class="form-control"
                           id="agama"
                         >
-                          <option
-                            value="Islam"
-                            {{ old('agama') === 'Islam' ? 'selected' : ''}}
-                          >
-                            Islam
-                          </option>
-                          <option
-                            value="Kristen"
-                            {{ old('agama') === 'Kristen' ? 'selected' : ''}}
-                          >
-                            Kristen
-                          </option>
-                          <option
-                            value="Katolik"
-                            {{ old('agama') === 'Katolik' ? 'selected' : ''}}
-                          >
-                            Katolik
-                          </option>
-                          <option
-                            value="Hindu"
-                            {{ old('agama') === 'Hindu' ? 'selected' : ''}}
-                          >
-                            Hindu
-                          </option>
-                          <option
-                            value="Buddha"
-                            {{ old('agama') === 'Buddha' ? 'selected' : ''}}
-                          >
-                            Buddha
-                          </option>
-                          <option
-                            value="Kong Hu Cu"
-                            {{ old('agama') === 'Kong Hu Cu' ? 'selected' : ''}}
-                          >
-                            Kong Hu Cu
-                          </option>
+                          @foreach($agama as $item)
+                            <option
+                              value="{{ $item->keterangan }}"
+                              {{ old('agama') === $item->keterangan ? 'selected' : ''}}
+                            >
+                              {{ $item->keterangan }}
+                            </option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
                         <label
                           class="control-label"
                           for="pendidikan"
@@ -205,55 +218,19 @@
                           class="form-control"
                           id="pendidikan"
                         >
-                          <option
-                            value="SD"
-                            {{ old('pendidikan') === 'SD' ? 'selected' : ''}}
-                          >
-                            SD
-                          </option>
-                          <option
-                            value="SMP"
-                            {{ old('pendidikan') === 'SMP' ? 'selected' : ''}}
-                          >
-                            SMP
-                          </option>
-                          <option
-                            value="SMA"
-                            {{ old('pendidikan') === 'SMA' ? 'selected' : ''}}
-                          >
-                            SMA
-                          </option>
-                          <option
-                            value="D3"
-                            {{ old('pendidikan') === 'D3' ? 'selected' : ''}}
-                          >
-                            D3
-                          </option>
-                          <option
-                            value="S1"
-                            {{ old('pendidikan') === 'S1' ? 'selected' : ''}}
-                          >
-                            S1
-                          </option>
-                          <option
-                            value="S2"
-                            {{ old('pendidikan') === 'S2' ? 'selected' : ''}}
-                          >
-                            S2
-                          </option>
-                          <option
-                            value="S3"
-                            {{ old('pendidikan') === 'S3' ? 'selected' : ''}}
-                          >
-                            S3
-                          </option>
+                          @foreach($pendidikan as $item)
+                            <option
+                              value="{{ $item->keterangan }}"
+                              {{ old('pendidikan') === $item->keterangan ? 'selected' : ''}}
+                            >
+                              {{ $item->keterangan }}
+                            </option>
+                          @endforeach
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <div class="form-group {{ $errors->has('pekerjaan') ? 'has-error has-feedback' : '' }}">
-                    <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group {{ $errors->has('pekerjaan') ? 'has-error has-feedback' : '' }}">
                         <label
                           class="control-label"
                           for="pekerjaan"
@@ -277,7 +254,7 @@
                   </div>
                   <div class="form-group {{ $errors->has('alamat') ? 'has-error has-feedback' : '' }}">
                     <div class="row">
-                      <div class="col-lg-5 col-md-5 col-xs-12">
+                      <div class="col-lg-12 col-md-12 col-xs-12">
                         <label
                           class="control-label"
                           for="alamat"
@@ -314,5 +291,22 @@
 @endsection
 
 @section('js')
-<!-- no custom js in this page -->
+  <script
+    type="text/javascript"
+    src="/assets/js/moment.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/moment.with-locales.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/bootstrap-datetimepicker.min.js"
+  ></script>
+  <script>
+    $('#tanggal-lahir').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years'
+    });
+  </script>
 @endsection

@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Master;
 
 use DataTables;
+use Carbon\Carbon;
+use App\Models\Agama;
 use App\Models\Penduduk;
+use App\Models\Pendidikan;
+use App\Models\JenisKelamin;
 use Illuminate\Http\Request;
+use App\Models\StatusPerkawinan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Master\PendudukRequest;
 
@@ -80,7 +85,17 @@ class PendudukController extends Controller
      */
     public function create()
     {
-        return view('master.penduduk.form_tambah');
+        $agama = Agama::all();
+        $pendidikan = Pendidikan::all();
+        $jenisKelamin = jenisKelamin::all();
+        $statusPerkawinan = StatusPerkawinan::all();
+
+        return view('master.penduduk.form_tambah', compact(
+            'agama',
+            'pendidikan',
+            'jenisKelamin',
+            'statusPerkawinan'
+        ));
     }
 
     /**
@@ -93,6 +108,8 @@ class PendudukController extends Controller
     {
         $nik = $pendudukRequest->nik;
         $nama = $pendudukRequest->nama;
+        $tempatLahir = $pendudukRequest->tempat_lahir;
+        $tanggalLahir = Carbon::parse($pendudukRequest->tanggal_lahir);
         $jenisKelamin = $pendudukRequest->jenis_kelamin;
         $statusPerkawinan = $pendudukRequest->status_perkawinan;
         $agama = $pendudukRequest->agama;
@@ -103,6 +120,8 @@ class PendudukController extends Controller
         $pendudukData = [
             'nik' => $nik,
             'nama' => $nama,
+            'tempat_lahir' => $tempatLahir,
+            'tanggal_lahir' => $tanggalLahir,
             'jenis_kelamin' => $jenisKelamin,
             'status_perkawinan' => $statusPerkawinan,
             'agama' => $agama,
@@ -138,10 +157,20 @@ class PendudukController extends Controller
      */
     public function edit($id)
     {
+        $agama = Agama::all();
+        $pendidikan = Pendidikan::all();
+        $jenisKelamin = jenisKelamin::all();
         $penduduk = Penduduk::findOrFail($id);
+        $statusPerkawinan = StatusPerkawinan::all();
+        $tanggalLahir = $penduduk->tanggal_lahir->format('d-m-Y');
 
         return view('master.penduduk.form_ubah', compact(
-            'penduduk'
+            'agama',
+            'penduduk',
+            'pendidikan',
+            'tanggalLahir',
+            'jenisKelamin',
+            'statusPerkawinan'
         ));
     }
 
@@ -156,6 +185,8 @@ class PendudukController extends Controller
     {
         $nik = $pendudukRequest->nik;
         $nama = $pendudukRequest->nama;
+        $tempatLahir = $pendudukRequest->tempat_lahir;
+        $tanggalLahir = Carbon::parse($pendudukRequest->tanggal_lahir);
         $jenisKelamin = $pendudukRequest->jenis_kelamin;
         $statusPerkawinan = $pendudukRequest->status_perkawinan;
         $agama = $pendudukRequest->agama;
@@ -166,6 +197,8 @@ class PendudukController extends Controller
         $pendudukData = [
             'nik' => $nik,
             'nama' => $nama,
+            'tempat_lahir' => $tempatLahir,
+            'tanggal_lahir' => $tanggalLahir,
             'jenis_kelamin' => $jenisKelamin,
             'status_perkawinan' => $statusPerkawinan,
             'agama' => $agama,

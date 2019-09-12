@@ -17,6 +17,8 @@ class CreatePendudukTable extends Migration
             $table->bigIncrements('id');
             $table->string('nik', 75)->unique();
             $table->string('nama', 150);
+            $table->string('tempat_lahir', 150);
+            $table->date('tanggal_lahir');
             $table->string('jenis_kelamin', 75);
             $table->string('status_perkawinan', 75);
             $table->string('agama', 75);

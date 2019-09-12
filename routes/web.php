@@ -88,6 +88,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Umum\SKCKController@surat',
                 'as' => 'kaur.umum.skck.surat'
             ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Umum\SKCKController@store',
+                'as' => 'kaur.umum.skck.store'
+            ]);
         });
     });
 });

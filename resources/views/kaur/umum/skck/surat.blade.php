@@ -5,10 +5,13 @@
     content="text/html; charset=utf-8"
   />
   <style>
-    /*body{
-      margin-left: 95px;
-      margin-right: 95px;
-    }*/
+    @font-face {
+      font-family: 'Times New Roman';
+      src: url({{ storage_path('fonts/times-new-roman.ttf') }}) format("truetype");
+    }
+    body{
+      font-family: 'Times New Roman';
+    }
     .header {
       text-align: center;
       position: relative;
@@ -20,15 +23,15 @@
     .title {
       text-align: center;
     }
-    h3.underline {
+    .underline {
       text-decoration: underline;
       text-transform: uppercase;
     }
     .redaksi-awal {
-      /*text-indent: 5%;*/
+      /*text-indent: 2.5%;*/
     }
     .text-redaksi-awal{
-      text-indent: 5%;
+      text-indent: 2.5%;
     }
     .muatan-data {
 
@@ -42,44 +45,45 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
       height="75"
+      style=""
     />
-    <h3>
+    <h3 style="margin: 0; padding: 0;">
       Pemerintahan Kabupaten Bandung Barat <br />
       Kecamatan Ngamprah <br />
-      Desa Cilame <br />
+      Desa Cilame
     </h3>
-    <h5>
+    <small style="margin: 0; padding: 0;">
       Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552
-    </h5>
+    </small>
   </div>
-  <hr size="4" />
+  <hr size="3" />
   <div class="title">
-    <h3 class="underline">
+    <h4 class="underline" style="margin: 0; padding: 0;">
         Pengantar keterangan catatan kepolisian
-    </h3>
-    <h5>
+    </h4>
+    <p style="margin: 0; padding: 0;">
       Nomor: 200/.../Ds./I/2019
-    </h5>
+    </p>
   </div>
   <div class="redaksi-awal">
-    <p class="text-redaksi-awal" style="font-size: 18px">
+    <p class="text-redaksi-awal" style="">
       Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas untuk :
     </p>
-    <ol style="font-size: 18px">
+    <ol style="">
       <li>Surat pengantar dari ketua RT 004 tertanggal 29 Agustus 2019</li>
       <li>Surat pengantar dari ketua RW 003 tertanggal 29 Agustus 2019</li>
     </ol>
   </div>
   <div class="muatan-data">
-    <p style="font-size: 18px">
+    <p style="text-indent: 2.5%;">
       Dengan ini menerangkan bahwa :
     </p>
-    <table>
+    <table style="padding-left: 5%;">
       <tr>
         <td>Nama</td>
-        <td width="7">:</td>
+        <td>:</td>
         <td><b>Bayu Bimantara</b></td>
       </tr>
       <tr>
@@ -125,14 +129,12 @@
     </table>
   </div>
   <div class="keterangan">
-    <p style="font-size: 18px">
+    <p style="text-indent: 2.5%;">
       Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian. <br />
       Surat keterangan ini dibuat untuk keperluan : <b><i>Melamar pekerjaan</i></b>
     </p>
-  </div>
-  <div class="redaksi-akhir">
-    <p style="font-size: 18px; text-indent: 5%;">
-      Demikian surat keterangan ini dibuat untu dipergunakan sebagaimana mestinya, dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
+    <p style="text-indent: 2.5%;">
+      Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
     </p>
   </div>
   <div class="tanda-tangan">
