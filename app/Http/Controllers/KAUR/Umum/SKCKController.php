@@ -36,6 +36,7 @@ class SKCKController extends Controller
                         <a
                             href="/kaur-umum/skck/surat/'.$skck->id.'"
                             class="btn btn-circle btn-sm btn-success"
+                            target="_blank"
                         >
                             <i class="fa fa-file-pdf-o"></i>
                         </a>

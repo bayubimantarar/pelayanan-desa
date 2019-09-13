@@ -329,12 +329,18 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Redaksi <a href="#"><i class="fa fa-pencil"></i> Ubah</a>
+                        Keterangan Redaksi
+                        <button
+                          id="ubah-keterangan-redaksi"
+                          class="btn btn-sm btn-warning"
+                        >
+                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
+                        </button>
                       </label>
                       <textarea
                         name="redaksi"
                         class="form-control"
-                        id=""
+                        id="redaksi"
                         rows="5"
                         readonly
                       >Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian.</textarea>
@@ -350,7 +356,7 @@
                       <textarea
                         name="keperluan"
                         class="form-control"
-                        id=""
+                        id="keperluan"
                         rows="5"
                       ></textarea>
                     </div>
@@ -441,6 +447,12 @@
     });
     $('#tertanggal-rw').datetimepicker({
       format: 'DD-MM-YYYY'
+    });
+    $('#ubah-keterangan-redaksi').click(function(e){
+      e.preventDefault();
+      $('#redaksi').prop('readonly', false);
+      $('#redaksi').focus();
+      $('#ubah-keterangan-redaksi').attr('disabled', true);
     });
   </script>
 @endsection

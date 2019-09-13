@@ -207,9 +207,17 @@
               <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
           </a>
           <ul class="dropdown-menu dropdown-user">
-              <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ Auth::guard('pengguna')->User()->nama }}</a>
+              <li>
+                <a href="#">
+                  <i class="fa fa-user fa-fw"></i>
+                  {{ Auth::guard('pengguna')->User()->nama }}
+                </a>
               </li>
-              <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+              <li>
+                <a href="#">
+                  <i class="fa fa-gear fa-fw"></i>
+                  Pengaturan
+                </a>
               </li>
               <li class="divider"></li>
               <li>

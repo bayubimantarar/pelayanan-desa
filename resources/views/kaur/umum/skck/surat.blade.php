@@ -11,14 +11,16 @@
     }
     body{
       font-family: 'Times New Roman';
+      margin-left: 45px;
+      margin-right: 45px;
     }
     .header {
       text-align: center;
       position: relative;
-      text-transform: uppercase;
     }
     .header img {
       position: absolute;
+      margin-top: 7px;
     }
     .title {
       text-align: center;
@@ -49,27 +51,32 @@
       height="75"
       style=""
     />
-    <h3 style="margin: 0; padding: 0;">
+    <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
       Pemerintahan Kabupaten Bandung Barat <br />
       Kecamatan Ngamprah <br />
       Desa Cilame
     </h3>
     <small style="margin: 0; padding: 0;">
-      Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552
+      <b>
+        Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552
+      </b>
     </small>
   </div>
-  <hr size="3" />
+  <hr size="4" style="margin: 0; padding: 0;"/>
+  <hr style="margin: 1.5; padding: 0;"/>
   <div class="title">
-    <h4 class="underline" style="margin: 0; padding: 0;">
+    <h4 class="underline" style="margin: 0; padding: 10;">
         Pengantar keterangan catatan kepolisian
     </h4>
     <p style="margin: 0; padding: 0;">
-      Nomor: 200/.../Ds. Cilame/I/2019
+      <b>
+        Nomor: 200/.../Ds. Cilame/I/2019
+      </b>
     </p>
   </div>
   <div class="redaksi-awal">
     <p class="text-redaksi-awal" style="">
-      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas untuk :
+      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas
     </p>
     <ol style="">
       <li>Surat pengantar dari ketua RT {{ $skck->rt }} tertanggal 29 Agustus 2019</li>
@@ -77,7 +84,7 @@
     </ol>
   </div>
   <div class="muatan-data">
-    <p style="text-indent: 2.5%;">
+    <p style="text-indent: 2.5%; margin: 0; padding: 0;">
       Dengan ini menerangkan bahwa :
     </p>
     <table style="padding-left: 5%;">
@@ -87,7 +94,7 @@
         <td><b>{{ $skck->penduduk->nama }}</b></td>
       </tr>
       <tr>
-        <td>Tempat / Tgl Lahir</td>
+        <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
         <td>{{ $skck->penduduk->tempat_lahir }}, {{ $skck->penduduk->tanggal_lahir }}</td>
       </tr>
