@@ -35,6 +35,36 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
         return view('dasbor');
     });
     Route::group(['prefix' => 'master'], function(){
+        Route::group(['prefix' => 'agama'], function(){
+            Route::get('/', [
+                'uses' => 'Master\AgamaController@index',
+                'as' => 'master.agama.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'Master\AgamaController@data',
+                'as' => 'master.agama.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'Master\AgamaController@create',
+                'as' => 'master.agama.create'
+            ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'Master\AgamaController@edit',
+                'as' => 'master.agama.edit'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'Master\AgamaController@store',
+                'as' => 'master.agama.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Master\AgamaController@update',
+                'as' => 'master.agama.update'
+            ]);
+            Route::delete('/hapus/{id}', [
+                'uses' => 'Master\AgamaController@destroy',
+                'as' => 'master.agama.destroy'
+            ]);
+        });
         Route::group(['prefix' => 'penduduk'], function(){
             Route::group(['prefix' => 'api'], function(){
                 Route::get('/data-nik', [

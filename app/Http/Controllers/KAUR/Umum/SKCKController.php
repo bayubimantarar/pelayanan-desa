@@ -5,8 +5,8 @@ namespace App\Http\Controllers\KAUR\Umum;
 use PDF;
 use DataTables;
 use Carbon\Carbon;
-use App\Models\SKCK;
 use Illuminate\Http\Request;
+use App\Models\KAUR\Umum\SKCK;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KAUR\Umum\SKCKRequest;
 

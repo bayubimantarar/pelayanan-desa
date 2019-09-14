@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Master;
 
 use Carbon\Carbon;
-use App\Models\SKCK;
 use Illuminate\Database\Eloquent\Model;
 
 class Penduduk extends Model
 {
-    protected $table = 'penduduk';
+    protected $table = 'master_penduduk';
     protected $fillable = [
         'nik',
         'nama',

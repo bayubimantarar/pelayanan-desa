@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAgamaTable extends Migration
+class CreateMasterPenggunaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class CreateAgamaTable extends Migration
      */
     public function up()
     {
-        Schema::create('agama', function (Blueprint $table) {
+        Schema::create('master_pengguna', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('keterangan', 150)->unique();
+            $table->string('nama', 150);
+            $table->string('email', 150)->unique();
+            $table->string('password', 150);
+            $table->string('nomor_telepon', 150);
+            $table->text('alamat');
+            $table->string('jenis_pengguna', 150);
             $table->timestamps();
         });
     }
@@ -27,6 +32,6 @@ class CreateAgamaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agama');
+        Schema::dropIfExists('master_pengguna');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStatusPerkawinanTable extends Migration
+class CreateMasterJenisKelaminTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function up()
     {
-        Schema::create('status_perkawinan', function (Blueprint $table) {
+        Schema::create('master_jenis_kelamin', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('keterangan', 150)->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateStatusPerkawinanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('status_perkawinan');
+        Schema::dropIfExists('master_jenis_kelamin');
     }
 }

@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Master;
 
 use DataTables;
 use Carbon\Carbon;
-use App\Models\Agama;
-use App\Models\Penduduk;
-use App\Models\Pendidikan;
-use App\Models\JenisKelamin;
 use Illuminate\Http\Request;
-use App\Models\StatusPerkawinan;
+use App\Models\Master\Agama;
+use App\Models\Master\Penduduk;
+use App\Models\Master\Pendidikan;
+use App\Models\Master\JenisKelamin;
 use App\Http\Controllers\Controller;
+use App\Models\Master\StatusPerkawinan;
 use App\Http\Requests\Master\PendudukRequest;
 
 class PendudukController extends Controller

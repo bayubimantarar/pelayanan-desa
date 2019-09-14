@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\KAUR\Umum;
 
-use Carbon\Carbon;
-use App\Models\Penduduk;
+use App\Models\KAUR\Umum\Skck;
 use Illuminate\Database\Eloquent\Model;
 
 class SKCK extends Model
@@ -25,24 +24,21 @@ class SKCK extends Model
 
     public function penduduk()
     {
-        return $this->belongsTo('App\Models\Penduduk', 'nik', 'nik');
+        return $this->belongsTo('App\Models\Master\Penduduk', 'nik', 'nik');
     }
 
     // public function getTertanggalRT($value)
     // {
     //     return Carbon::parse($this->tertanggal_rt)->format('d-m-Y');
     // }
-
     // public function getTertanggalRW($value)
     // {
     //     return Carbon::parse($this->tertanggal_rw)->format('d-m-Y');
     // }
-
     // public function setTertanggalRT($value)
     // {
     //     $this->attributes['tertanggal_rt'] = Carbon::parse($value)->format('Y-m-d');
     // }
-
     // public function setTertanggalRW($value)
     // {
     //     $this->attributes['tertanggal_rw'] = Carbon::parse($value)->format('Y-m-d');

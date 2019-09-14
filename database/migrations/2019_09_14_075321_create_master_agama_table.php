@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePendidikanTable extends Migration
+class CreateMasterAgamaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePendidikanTable extends Migration
      */
     public function up()
     {
-        Schema::create('pendidikan', function (Blueprint $table) {
+        Schema::create('master_agama', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('keterangan', 150)->unique();
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreatePendidikanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendidikan');
+        Schema::dropIfExists('master_agama');
     }
 }

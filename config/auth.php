@@ -78,7 +78,7 @@ return [
 
         'pengguna' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Pengguna::class,
+            'model' => App\Models\Master\Pengguna::class,
         ],
 
         // 'users' => [

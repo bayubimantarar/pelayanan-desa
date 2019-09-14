@@ -18,15 +18,15 @@
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Desa<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/master/penduduk">
+            <a href="/master/profil">
               <i class="fa fa-building-o"></i>
               Profil Desa
             </a>
           </li>
           <li>
-            <a href="/master/penduduk">
+            <a href="/master/pegawai">
               <i class="fa fa-users"></i>
-              Pejabat Desa
+              Pegawai Desa
             </a>
           </li>
         </ul>
@@ -36,25 +36,25 @@
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Master<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li>
-              <a href="/master/penduduk">
+              <a href="/master/agama">
                 <i class="fa fa-file-o"></i>
                 Agama
               </a>
             </li>
             <li>
-              <a href="/master/penduduk">
-                <i class="fa fa-file-o"></i>
-                Jenis Kelamin
-              </a>
-            </li>
-            <li>
-              <a href="/master/penduduk">
+              <a href="/master/pendidikan">
                 <i class="fa fa-file-o"></i>
                 Pendidikan
               </a>
             </li>
             <li>
-              <a href="/master/penduduk">
+              <a href="/master/jenis-kelamin">
+                <i class="fa fa-file-o"></i>
+                Jenis Kelamin
+              </a>
+            </li>
+            <li>
+              <a href="/master/status-perkawinan">
                 <i class="fa fa-file-o"></i>
                 Status Perkawinan
               </a>
@@ -83,6 +83,12 @@
             <a href="/kaur-umum/skck">
               <i class="fa fa-file-text-o"></i>
               SKCK
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-umum/keterangan-ghoib">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Ghoib
             </a>
           </li>
         </ul>

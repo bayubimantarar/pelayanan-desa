@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePenggunaTable extends Migration
+class CreateKaurUmumKeteranganGhoib extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreatePenggunaTable extends Migration
      */
     public function up()
     {
-        Schema::create('pengguna', function (Blueprint $table) {
+        Schema::create('kaur_umum_keterangan_ghoib', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama', 150);
-            $table->string('email', 150)->unique();
-            $table->string('password', 150);
-            $table->string('nomor_telepon', 150);
-            $table->text('alamat');
-            $table->string('jenis_pengguna', 150);
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreatePenggunaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pengguna');
+        Schema::dropIfExists('kaur_umum_keterangan_ghoib');
     }
 }

@@ -24,7 +24,7 @@ class PendudukRequest extends FormRequest
     public function rules()
     {
         return [
-            'nik' => 'required|unique:penduduk,nik,'.$this->id,
+            'nik' => 'required|unique:master_penduduk,nik,'.$this->id,
             'nama' => 'required',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',

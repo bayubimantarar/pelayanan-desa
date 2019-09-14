@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePejabatTable extends Migration
+class CreateMasterPendudukTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreatePejabatTable extends Migration
      */
     public function up()
     {
-        Schema::create('pejabat', function (Blueprint $table) {
+        Schema::create('master_penduduk', function (Blueprint $table) {
             $table->bigIncrements('id');
-            // $table->string('nip')->unique();
+            $table->string('nik', 75)->unique();
             $table->string('nama', 150);
             $table->string('tempat_lahir', 150);
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin', 150);
-            $table->string('jabatan', 150);
-            $table->string('foto', 150);
+            $table->string('status_perkawinan', 150);
+            $table->string('agama', 150);
+            $table->string('pendidikan', 150);
+            $table->string('pekerjaan', 150);
+            $table->string('alamat', 150);
             $table->timestamps();
         });
     }
@@ -33,6 +36,6 @@ class CreatePejabatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pejabat');
+        Schema::dropIfExists('master_penduduk');
     }
 }

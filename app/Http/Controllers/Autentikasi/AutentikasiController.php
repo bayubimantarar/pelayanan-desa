@@ -31,14 +31,14 @@ class AutentikasiController extends Controller
             return redirect()
                 ->intended();
         }
-
         return redirect('/autentikasi/form-login')
             ->withErrors([
                 'notification' => 'Email atau kata sandi salah.'
             ]);
+
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         $logout = Auth::guard('pengguna')->logout();
 
