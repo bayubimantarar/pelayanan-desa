@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Master;
+namespace App\Http\Controllers\Profil;
 
-use App\Models\Master\Agama;
+use Illuminate\Http\Request;
+use App\Models\Profil\Perangkat;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Master\AgamaRequest;
+use App\Http\Requests\Profil\PerangkatRequest;
 
-class AgamaController extends Controller
+class PerangkatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +16,15 @@ class AgamaController extends Controller
      */
     public function data()
     {
-        $agama = Agama::orderBy('created_at', 'desc')
+        $perangkat = Perangkat::orderBy('created_at', 'desc')
             ->get();
 
-        $dataTablesAgama = DataTables($agama)
-            ->addColumn('action', function($agama){
+        $datatablesPerangkat = DataTables($perangkat)
+            ->addColumn('action', function($perangkat){
                 return '
                     <center>
                         <a
-                            href="/master/agama/form-ubah/'.$agama->id.'"
+                            href="/profil/perangkat/form-ubah/'.$perangkat->id.'"
                             class="btn btn-circle btn-sm btn-warning"
                         >
                             <i class="fa fa-pencil"></i>
@@ -32,7 +33,7 @@ class AgamaController extends Controller
                             href="#hapus"
                             id="delete-button"
                             class="btn btn-circle btn-sm btn-danger"
-                            onclick="destroy('.$agama->id.')"
+                            onclick="destroy('.$perangkat->id.')"
                         >
                             <i class="fa fa-times"></i>
                         </a>
@@ -42,7 +43,7 @@ class AgamaController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $dataTablesAgama;
+        return $datatablesPerangkat;
     }
 
     /**
@@ -52,7 +53,7 @@ class AgamaController extends Controller
      */
     public function index()
     {
-        return view('master.agama.index');
+        return view('profil.perangkat.index');
     }
 
     /**
@@ -62,7 +63,7 @@ class AgamaController extends Controller
      */
     public function create()
     {
-        return view('master.agama.form_tambah');
+        return view('profil.perangkat.form_tambah');
     }
 
     /**
@@ -71,19 +72,21 @@ class AgamaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AgamaRequest $agamaRequest)
+    public function store(PerangkatRequest $perangkatRequest)
     {
-        $keterangan = $agamaRequest->keterangan;
+        $nama = $perangkatRequest->nama;
+        $jabatan = $perangkatRequest->jabatan;
 
         $data = [
-            'keterangan' => $keterangan
+            'nama' => $nama,
+            'jabatan' => $jabatan
         ];
 
-        $createAgama = Agama::create($data);
+        $createPerangkat = Perangkat::create($data);
 
-        return redirect('/master/agama')
+        return redirect('/profil/perangkat')
             ->with([
-                'notification' => 'Data agama berhasil ditambah.'
+                'notification' => 'Data perangkat berhasil ditambah.'
             ]);
     }
 
@@ -106,10 +109,10 @@ class AgamaController extends Controller
      */
     public function edit($id)
     {
-        $agama = Agama::findOrFail($id);
+        $perangkat = Perangkat::findOrFail($id);
 
-        return view('master.agama.form_ubah', compact(
-            'agama'
+        return view('profil.perangkat.form_ubah', compact(
+            'perangkat'
         ));
     }
 
@@ -120,20 +123,22 @@ class AgamaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AgamaRequest $agamaRequest, $id)
+    public function update(PerangkatRequest $perangkatRequest, $id)
     {
-        $keterangan = $agamaRequest->keterangan;
+        $nama = $perangkatRequest->nama;
+        $jabatan = $perangkatRequest->jabatan;
 
         $data = [
-            'keterangan' => $keterangan
+            'nama' => $nama,
+            'jabatan' => $jabatan
         ];
 
-        $createAgama = Agama::where('id', '=', $id)
+        $updatePerangkat = Perangkat::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/master/agama')
+        return redirect('/profil/perangkat')
             ->with([
-                'notification' => 'Data agama berhasil diubah.'
+                'notification' => 'Data perangkat berhasil ditambah.'
             ]);
     }
 
@@ -145,7 +150,7 @@ class AgamaController extends Controller
      */
     public function destroy($id)
     {
-        $deleteAgama = Agama::destroy($id);
+        $deletePerangkat = Perangkat::destroy($id);
 
         return response()
             ->json(200);

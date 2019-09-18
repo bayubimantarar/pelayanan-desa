@@ -18,15 +18,15 @@
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Desa<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/master/profil">
+            <a href="/profil/pemerintahan">
               <i class="fa fa-building-o"></i>
               Profil Desa
             </a>
           </li>
           <li>
-            <a href="/master/pegawai">
+            <a href="/profil/perangkat">
               <i class="fa fa-users"></i>
-              Pegawai Desa
+              Perangkat Desa
             </a>
           </li>
         </ul>
@@ -75,6 +75,20 @@
       </li>
       <li>
         <a href="#">
+          <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Ekbang
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/kaur-ekbang/keterangan-usaha">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Usaha
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Umum
           <span class="fa arrow"></span>
         </a>
@@ -82,13 +96,145 @@
           <li>
             <a href="/kaur-umum/skck">
               <i class="fa fa-file-text-o"></i>
-              SKCK
+              Ket. SKCK
             </a>
           </li>
           <li>
             <a href="/kaur-umum/keterangan-ghoib">
               <i class="fa fa-file-text-o"></i>
               Ket. Ghoib
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Tantrib & Umum
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/kaur-tantrib-dan-umum/keterangan-kehilangan">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Kehilangan
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-tantrib-dan-umum/keterangan-bersih-diri">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Bersih Diri
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-tantrib-dan-umum/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Izin rame-rame
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Pemerintahan
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-kehilangan">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Domisili
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
+              <i class="fa fa-file-text-o"></i>
+              Ket. KK Sementara
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. KTP Sementara
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Surat Pindah
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Beda Identitas
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Kesra
+          <span class="fa arrow"></span>
+        </a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-kehilangan">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Kelahiran
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Kematian
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Janda/Duda
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Penghasilan
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Tidak Bekerja
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Belum Menikah
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. SKTM
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Tanggungan Keluarga
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Belum Memiliki Rumah
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Ahli Waris
             </a>
           </li>
         </ul>

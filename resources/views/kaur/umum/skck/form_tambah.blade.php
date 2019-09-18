@@ -10,6 +10,12 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
+  <style>
+    #scrollable-dropdown-menu .tt-dropdown-menu {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -45,7 +51,15 @@
                         for="nik"
                       >
                         NIK
+                      <a
+                        href="/master/penduduk/form-tambah"
+                      >
+                        <i class="fa fa-plus"></i>
+                        Tambah Data Penduduk
+                      </a>
                       </label>
+                      <div class="scrollable-dropdown-menu">
+
                       <input
                         type="text"
                         name="nik"
@@ -54,6 +68,7 @@
                         value="{{ old('nik') }}"
                         autocomplete="off"
                       />
+                      </div>
                       @if($errors->has('nik'))
                         <p class="text-danger">
                           {{ $errors->first('nik') }}
@@ -421,6 +436,11 @@
         });
       },
       autoSelect: true,
+      templates: {
+        suggestion: function(result){
+          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
+        }
+      },
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({

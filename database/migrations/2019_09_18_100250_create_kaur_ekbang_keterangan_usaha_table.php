@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasterProfilTable extends Migration
+class CreateKaurEkbangKeteranganUsahaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMasterProfilTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_profil', function (Blueprint $table) {
+        Schema::create('kaur_ekbang_keterangan_usaha', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateMasterProfilTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_profil');
+        Schema::dropIfExists('kaur_ekbang_keterangan_usaha');
     }
 }

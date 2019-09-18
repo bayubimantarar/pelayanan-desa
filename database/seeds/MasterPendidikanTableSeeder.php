@@ -18,39 +18,43 @@ class MasterPendidikanTableSeeder extends Seeder
         $insert = DB::table('master_pendidikan')
             ->insert([
                 [
-                    'keterangan' => 'SD',
+                    'keterangan' => 'Tidak/Belum Sekolah',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'SMP',
+                    'keterangan' => 'Belum Tamat SD/Sederajat',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'SMA',
+                    'keterangan' => 'Tamat SD/Sederajat',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'D1',
+                    'keterangan' => 'SLTP/Sederajat',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'D2',
+                    'keterangan' => 'SLTA/Sederajat',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'D3',
+                    'keterangan' => 'Diploma I/II',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'S1',
+                    'keterangan' => 'Akademi/Diploma III/S.Muda',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'S2',
+                    'keterangan' => 'Diploma IV/Strata I',
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'S3',
+                    'keterangan' => 'Strata II',
+                    'created_at' => $date
+                ],
+                [
+                    'keterangan' => 'Strata III',
                     'created_at' => $date
                 ]
             ]);

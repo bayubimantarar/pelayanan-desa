@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Master;
 
-use Illuminate\Http\Request;
+use App\Models\Master\Pendidikan;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Master\PendidikanRequest;
 
 class PendidikanController extends Controller
 {
@@ -12,9 +13,46 @@ class PendidikanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function data()
+    {
+        $pendidikan = Pendidikan::orderBy('created_at', 'desc')
+            ->get();
+
+        $dataTablesPendidikan = DataTables($pendidikan)
+            ->addColumn('action', function($pendidikan){
+                return '
+                    <center>
+                        <a
+                            href="/master/pendidikan/form-ubah/'.$pendidikan->id.'"
+                            class="btn btn-circle btn-sm btn-warning"
+                        >
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a
+                            href="#hapus"
+                            id="delete-button"
+                            class="btn btn-circle btn-sm btn-danger"
+                            onclick="destroy('.$pendidikan->id.')"
+                        >
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </center>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+
+        return $dataTablesPendidikan;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //
+        return view('master.pendidikan.index');
     }
 
     /**
@@ -24,7 +62,7 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-        //
+        return view('master.pendidikan.form_tambah');
     }
 
     /**
@@ -33,9 +71,20 @@ class PendidikanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PendidikanRequest $pendidikanRequest)
     {
-        //
+        $keterangan = $pendidikanRequest->keterangan;
+
+        $data = [
+            'keterangan' => $keterangan
+        ];
+
+        $createPendidikan = Pendidikan::create($data);
+
+        return redirect('/master/pendidikan')
+            ->with([
+                'notification' => 'Data pendidikan berhasil ditambah.'
+            ]);
     }
 
     /**
@@ -57,7 +106,11 @@ class PendidikanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pendidikan = Pendidikan::findOrFail($id);
+
+        return view('master.pendidikan.form_ubah', compact(
+            'pendidikan'
+        ));
     }
 
     /**
@@ -67,9 +120,21 @@ class PendidikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PendidikanRequest $pendidikanRequest, $id)
     {
-        //
+        $keterangan = $pendidikanRequest->keterangan;
+
+        $data = [
+            'keterangan' => $keterangan
+        ];
+
+        $createPendidikan = Pendidikan::where('id', '=', $id)
+            ->update($data);
+
+        return redirect('/master/pendidikan')
+            ->with([
+                'notification' => 'Data pendidikan berhasil diubah.'
+            ]);
     }
 
     /**
@@ -80,6 +145,9 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deletePendidikan = Pendidikan::destroy($id);
+
+        return response()
+            ->json(200);
     }
 }

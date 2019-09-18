@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasterPegawaiTable extends Migration
+class CreateProfilPerangkatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateMasterPegawaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_pegawai', function (Blueprint $table) {
+        Schema::create('profil_perangkat', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nama', 150);
+            $table->string('jabatan', 150);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateMasterPegawaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_pegawai');
+        Schema::dropIfExists('profil_perangkat');
     }
 }

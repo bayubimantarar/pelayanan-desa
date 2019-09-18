@@ -38,7 +38,7 @@ class MasterAgamaTableSeeder extends Seeder
                     'created_at' => $date
                 ],
                 [
-                    'keterangan' => 'Kong Hu Cu',
+                    'keterangan' => 'Konghucu',
                     'created_at' => $date
                 ]
             ]);

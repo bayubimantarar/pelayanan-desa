@@ -7,6 +7,7 @@ use DataTables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\KAUR\Umum\SKCK;
+use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KAUR\Umum\SKCKRequest;
 
@@ -158,10 +159,17 @@ class SKCKController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $profil = Pemerintahan::get()->first();
+        $total = SKCK::count();
+        $date = Carbon::now()->formatLocalized('%d %B %Y');
+
         $surat = PDF::loadView('kaur.umum.skck.surat', [
-            'skck' => $skck
+            'skck' => $skck,
+            'date' => $date,
+            'profil' => $profil,
+            'total' => $total
         ]);
 
-        return $surat->setPaper('a4', 'portrait')->stream();
+        return $surat->setPaper('A4', 'portrait')->stream();
     }
 }

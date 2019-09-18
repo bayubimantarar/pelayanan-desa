@@ -54,11 +54,12 @@
     <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
       Pemerintahan Kabupaten Bandung Barat <br />
       Kecamatan Ngamprah <br />
-      Desa Cilame
+      Desa {{ $profil->nama }}
     </h3>
     <small style="margin: 0; padding: 0;">
       <b>
         Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552
+        {{-- {{ $profil->alamat }} --}}
       </b>
     </small>
   </div>
@@ -70,7 +71,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 200/.../Ds. Cilame/I/2019
+        Nomor: 200/{{ $total }}/Ds/IX/2019
       </b>
     </p>
   </div>
@@ -147,7 +148,7 @@
   <div class="tanda-tangan">
     <table align="right">
       <tr>
-        <td><center>Cilame, 29 Agustus 2019</center></td>
+        <td><center>Cilame, {{ $date }}</center></td>
       </tr>
       <tr>
         <td><center><b>Kepala Desa Cilame</b></center></td>

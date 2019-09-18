@@ -23,7 +23,7 @@ class CreateMasterPendudukTable extends Migration
             $table->string('status_perkawinan', 150);
             $table->string('agama', 150);
             $table->string('pendidikan', 150);
-            $table->string('pekerjaan', 150);
+            $table->string('pekerjaan', 150)->nullable();
             $table->string('alamat', 150);
             $table->timestamps();
         });

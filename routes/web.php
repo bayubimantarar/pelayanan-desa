@@ -34,6 +34,48 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
     Route::get('/', function(){
         return view('dasbor');
     });
+    Route::group(['prefix' => 'profil'], function(){
+        Route::group(['prefix' => 'pemerintahan'], function(){
+            Route::get('/', [
+                'uses' => 'Profil\PemerintahanController@index',
+                'as' => 'profil.pemerintahan.index'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Profil\PemerintahanController@update',
+                'as' => 'profil.pemerintahan.update'
+            ]);
+        });
+        Route::group(['prefix' => 'perangkat'], function(){
+            Route::get('/', [
+                'uses' => 'Profil\PerangkatController@index',
+                'as' => 'profil.perangkat.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'Profil\PerangkatController@data',
+                'as' => 'profil.perangkat.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'Profil\PerangkatController@create',
+                'as' => 'profil.perangkat.create'
+            ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'Profil\PerangkatController@edit',
+                'as' => 'profil.perangkat.edit'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'Profil\PerangkatController@store',
+                'as' => 'profil.perangkat.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Profil\PerangkatController@update',
+                'as' => 'profil.perangkat.update'
+            ]);
+            Route::delete('/hapus/{id}', [
+                'uses' => 'Profil\PerangkatController@destroy',
+                'as' => 'profil.perangkat.destroy'
+            ]);
+        });
+    });
     Route::group(['prefix' => 'master'], function(){
         Route::group(['prefix' => 'agama'], function(){
             Route::get('/', [
@@ -63,6 +105,96 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::delete('/hapus/{id}', [
                 'uses' => 'Master\AgamaController@destroy',
                 'as' => 'master.agama.destroy'
+            ]);
+        });
+        Route::group(['prefix' => 'pendidikan'], function(){
+            Route::get('/', [
+                'uses' => 'Master\PendidikanController@index',
+                'as' => 'master.pendidikan.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'Master\PendidikanController@data',
+                'as' => 'master.pendidikan.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'Master\PendidikanController@create',
+                'as' => 'master.pendidikan.create'
+            ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'Master\PendidikanController@edit',
+                'as' => 'master.pendidikan.edit'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'Master\PendidikanController@store',
+                'as' => 'master.pendidikan.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Master\PendidikanController@update',
+                'as' => 'master.pendidikan.update'
+            ]);
+            Route::delete('/hapus/{id}', [
+                'uses' => 'Master\PendidikanController@destroy',
+                'as' => 'master.pendidikan.destroy'
+            ]);
+        });
+        Route::group(['prefix' => 'jenis-kelamin'], function(){
+            Route::get('/', [
+                'uses' => 'Master\JenisKelaminController@index',
+                'as' => 'master.jenis_kelamin.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'Master\JenisKelaminController@data',
+                'as' => 'master.jenis_kelamin.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'Master\JenisKelaminController@create',
+                'as' => 'master.jenis_kelamin.create'
+            ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'Master\JenisKelaminController@edit',
+                'as' => 'master.jenis_kelamin.edit'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'Master\JenisKelaminController@store',
+                'as' => 'master.jenis_kelamin.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Master\JenisKelaminController@update',
+                'as' => 'master.jenis_kelamin.update'
+            ]);
+            Route::delete('/hapus/{id}', [
+                'uses' => 'Master\JenisKelaminController@destroy',
+                'as' => 'master.jenis_kelamin.destroy'
+            ]);
+        });
+        Route::group(['prefix' => 'status-perkawinan'], function(){
+            Route::get('/', [
+                'uses' => 'Master\StatusPerkawinanController@index',
+                'as' => 'master.status_perkawinan.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'Master\StatusPerkawinanController@data',
+                'as' => 'master.status_perkawinan.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'Master\StatusPerkawinanController@create',
+                'as' => 'master.status_perkawinan.create'
+            ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'Master\StatusPerkawinanController@edit',
+                'as' => 'master.status_perkawinan.edit'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'Master\StatusPerkawinanController@store',
+                'as' => 'master.status_perkawinan.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'Master\StatusPerkawinanController@update',
+                'as' => 'master.status_perkawinan.update'
+            ]);
+            Route::delete('/hapus/{id}', [
+                'uses' => 'Master\StatusPerkawinanController@destroy',
+                'as' => 'master.status_perkawinan.destroy'
             ]);
         });
         Route::group(['prefix' => 'penduduk'], function(){
