@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Usaha</title>
+  <title>Surat Keterangan Ghoib</title>
 </head>
 <body>
   <div class="header">
@@ -65,11 +65,11 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-      surat keterangan usaha
+      surat keterangan ghoib
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 583/{{ $total }}/Ds/IX/2019
+        Nomor: 474/{{ $total }}/Ds/IX/2019
       </b>
     </p>
   </div>
@@ -82,74 +82,77 @@
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganUsaha->penduduk->nama }}</b>
+          <b>{{ $keteranganGhoib->penduduk->nama }}</b>
         </td>
       </tr>
       <tr>
         <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->tempat_lahir }}, {{ $keteranganUsaha->penduduk->tanggal_lahir }}</td>
+        <td>{{ $keteranganGhoib->penduduk->tempat_lahir }}, {{ $keteranganGhoib->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->jenis_kelamin }}</td>
+        <td>{{ $keteranganGhoib->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->status_perkawinan }}</td>
+        <td>{{ $keteranganGhoib->penduduk->status_perkawinan }}</td>
       </tr>
       <tr>
         <td>Agama</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->agama }}</td>
+        <td>{{ $keteranganGhoib->penduduk->agama }}</td>
       </tr>
       <tr>
         <td>Pendidikan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pendidikan }}</td>
+        <td>{{ $keteranganGhoib->penduduk->pendidikan }}</td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pekerjaan }}</td>
+        <td>{{ $keteranganGhoib->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
         <td>NIK KTP</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->nik }}</td>
+        <td>{{ $keteranganGhoib->penduduk->nik }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->alamat }}</td>
+        <td>{{ $keteranganGhoib->penduduk->alamat }}</td>
       </tr>
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $keteranganUsaha->redaksi }}<br />
+      {{ $keteranganGhoib->redaksi }}<br />
     </p>
   </div>
   <table style="padding-left: 5%;">
     <tr>
-      <td width="115">Jenis Usaha</td>
+      <td width="115">Nama Lengkap</td>
       <td>:</td>
-      <td>{{ $keteranganUsaha->jenis_usaha }}</td>
+      <td>{{ $keteranganGhoib->nama }}</td>
     </tr>
     <tr>
-      <td>Lokasi</td>
+      <td>Tempat, Tanggal Lahir</td>
       <td>:</td>
-      <td>{{ $keteranganUsaha->lokasi }}</td>
+      <td>{{ $keteranganGhoib->tempat_lahir }}, {{ $keteranganGhoib->tanggal_lahir }}</td>
     </tr>
     <tr>
-      <td>Keperluan</td>
+      <td>Alamat</td>
       <td>:</td>
-      <td>{{ $keteranganUsaha->keperluan }}</td>
+      <td>{{ $keteranganGhoib->alamat }}</td>
     </tr>
   </table>
   <div class="keterangan">
+    <p style="text-indent: 2.5%;">
+      {{ $keteranganGhoib->alasan }}
+    </p>
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
     </p>
@@ -163,7 +166,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganUsaha->profil_perangkat->jabatan }}
+              {{ $keteranganGhoib->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -244,12 +247,12 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganUsaha->profil_perangkat_id != 0)
+              @if($keteranganGhoib->profil_perangkat_id != 0)
                 <u>
-                  {{ $keteranganUsaha->profil_perangkat->nama }}
+                  {{ $keteranganGhoib->profil_perangkat->nama }}
                 </u>
               @else
-                -
+                <hr />
               @endif
             </b>
           </center>

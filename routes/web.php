@@ -270,23 +270,69 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
         Route::group(['prefix' => 'skck'], function(){
             Route::get('/', [
                 'uses' => 'KAUR\Umum\SKCKController@index',
-                'as' => 'kaur.umum.skck.index'
+                'as' => 'kaur_umum.skck.index'
             ]);
             Route::get('/data', [
                 'uses' => 'KAUR\Umum\SKCKController@data',
-                'as' => 'kaur.umum.skck.data'
+                'as' => 'kaur_umum.skck.data'
             ]);
             Route::get('/form-tambah', [
                 'uses' => 'KAUR\Umum\SKCKController@create',
-                'as' => 'kaur.umum.skck.create'
+                'as' => 'kaur_umum.skck.create'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Umum\SKCKController@surat',
-                'as' => 'kaur.umum.skck.surat'
+                'as' => 'kaur_umum.skck.surat'
             ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Umum\SKCKController@store',
-                'as' => 'kaur.umum.skck.store'
+                'as' => 'kaur_umum.skck.store'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-ghoib'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@index',
+                'as' => 'kaur_umum.keterangan_ghoib.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@data',
+                'as' => 'kaur_umum.keterangan_ghoib.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@create',
+                'as' => 'kaur_umum.keterangan_ghoib.create'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@surat',
+                'as' => 'kaur_umum.keterangan_ghoib.surat'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@store',
+                'as' => 'kaur_umum.keterangan_ghoib.store'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-tantrib-dan-umum'], function(){
+        Route::group(['prefix' => 'keterangan-bersih-diri'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@index',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@data',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@create',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@store',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@surat',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.surat'
             ]);
         });
     });

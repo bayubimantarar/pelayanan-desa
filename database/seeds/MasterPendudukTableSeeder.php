@@ -16,7 +16,7 @@ class MasterPendudukTableSeeder extends Seeder
         // $date = Carbon::now();
 
         $truncate = DB::table('master_penduduk')->truncate();
-        $created = Factory(Penduduk::class, 100)->create();
+        $created = Factory(Penduduk::class, 10)->create();
         // $insert = DB::table('master_penduduk')
         //     ->insert([
         //         [

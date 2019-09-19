@@ -15,6 +15,14 @@ class CreateKaurUmumKeteranganGhoib extends Migration
     {
         Schema::create('kaur_umum_keterangan_ghoib', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('master_penduduk_id');
+            $table->bigInteger('profil_perangkat_id');
+            $table->string('nama', 150);
+            $table->string('tempat_lahir', 150);
+            $table->date('tanggal_lahir');
+            $table->text('alamat');
+            $table->text('redaksi');
+            $table->text('alasan');
             $table->timestamps();
         });
     }

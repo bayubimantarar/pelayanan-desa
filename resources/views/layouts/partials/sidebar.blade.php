@@ -65,12 +65,18 @@
       <li>
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Kependudukan<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
-            <li>
-              <a href="/master/penduduk">
-                <i class="fa fa-file-o"></i>
-                Data Penduduk
-              </a>
-            </li>
+          <li>
+            <a href="/master/penduduk">
+              <i class="fa fa-file-o"></i>
+              Data Penduduk
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-file-o"></i>
+              Data Penduduk - NON KTP
+            </a>
+          </li>
         </ul>
       </li>
       <li>
@@ -114,15 +120,15 @@
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-tantrib-dan-umum/keterangan-kehilangan">
-              <i class="fa fa-file-text-o"></i>
-              Ket. Kehilangan
-            </a>
-          </li>
-          <li>
             <a href="/kaur-tantrib-dan-umum/keterangan-bersih-diri">
               <i class="fa fa-file-text-o"></i>
               Ket. Bersih Diri
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-tantrib-dan-umum/keterangan-kehilangan">
+              <i class="fa fa-file-text-o"></i>
+              Ket. Kehilangan
             </a>
           </li>
           <li>
@@ -146,18 +152,6 @@
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
-              <i class="fa fa-file-text-o"></i>
-              Ket. KK Sementara
-            </a>
-          </li>
-          <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
-              <i class="fa fa-file-text-o"></i>
-              Ket. KTP Sementara
-            </a>
-          </li>
-          <li>
             <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
               <i class="fa fa-file-text-o"></i>
               Ket. Surat Pindah
@@ -167,6 +161,18 @@
             <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
               <i class="fa fa-file-text-o"></i>
               Ket. Beda Identitas
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
+              <i class="fa fa-file-text-o"></i>
+              Ket. KK Sementara
+            </a>
+          </li>
+          <li>
+            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+              <i class="fa fa-file-text-o"></i>
+              Ket. KTP Sementara
             </a>
           </li>
         </ul>

@@ -38,9 +38,15 @@ class AutentikasiController extends Controller
 
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        $logout = Auth::guard('pengguna')->logout();
+        $request
+            ->session()
+            ->flush();
+
+        $request
+            ->session()
+            ->regenerate();
 
         return redirect('/');
     }

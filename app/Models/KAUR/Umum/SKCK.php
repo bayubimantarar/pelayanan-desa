@@ -2,6 +2,7 @@
 
 namespace App\Models\KAUR\Umum;
 
+use Carbon\Carbon;
 use App\Models\Master\Penduduk;
 use App\Models\Profil\Perangkat;
 use Illuminate\Database\Eloquent\Model;

@@ -20,26 +20,26 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Keterangan Usaha</h1>
+      <h1 class="page-header">Keterangan Ghoib</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <p>
-        <a href="/kaur-ekbang/keterangan-usaha/form-tambah" class="btn btn-sm btn-primary">
-          <i class="fa fa-plus"></i> Tambah Data Keterangan Usaha
+        <a href="/kaur-umum/keterangan-ghoib/form-tambah" class="btn btn-sm btn-primary">
+          <i class="fa fa-plus"></i> Tambah Data Keterangan Ghoib
         </a>
       </p>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Tabel Data Keterangan Usaha
+          Tabel Data Keterangan Ghoib
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="keterangan-usaha-table"
+              id="keterangan-ghoib-table"
             >
               <thead>
                 <tr>
@@ -71,9 +71,9 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var keterangan_usaha = $('#keterangan-usaha-table').DataTable({
+    var keterangan_ghoib = $('#keterangan-ghoib-table').DataTable({
       ajax: {
-        url: '/kaur-ekbang/keterangan-usaha/data',
+        url: '/kaur-umum/keterangan-ghoib/data',
         type: 'get'
       },
       datatype: 'json',
