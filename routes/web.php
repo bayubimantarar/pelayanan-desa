@@ -335,5 +335,27 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.surat'
             ]);
         });
+        Route::group(['prefix' => 'keterangan-kehilangan'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@index',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@data',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@create',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@store',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@surat',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.surat'
+            ]);
+        });
     });
 });
