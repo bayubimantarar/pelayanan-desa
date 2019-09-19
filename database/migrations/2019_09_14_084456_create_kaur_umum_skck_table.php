@@ -15,7 +15,8 @@ class CreateKaurUmumSkckTable extends Migration
     {
         Schema::create('kaur_umum_skck', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nik', 75);
+            $table->bigInteger('master_penduduk_id');
+            $table->bigInteger('profil_perangkat_id');
             $table->string('rt', 75);
             $table->string('rw', 75);
             $table->date('tertanggal_rt');

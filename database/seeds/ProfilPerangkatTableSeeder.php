@@ -18,7 +18,12 @@ class ProfilPerangkatTableSeeder extends Seeder
         $insert = DB::table('profil_perangkat')
             ->insert([
                 [
-                    'nama' => 'Yayat Ruhiyat SH, MM',
+                    'nama' => 'Aas Mohamad Asor, S.H',
+                    'jabatan' => 'Kepala Desa',
+                    'created_at' => $date
+                ],
+                [
+                    'nama' => 'Yayat Ruhiyat, S.H, M.M',
                     'jabatan' => 'Sekretaris',
                     'created_at' => $date
                 ],
@@ -33,7 +38,7 @@ class ProfilPerangkatTableSeeder extends Seeder
                     'created_at' => $date
                 ],
                 [
-                    'nama' => 'Yulianti S.Ikom',
+                    'nama' => 'Yulianti, S.Ikom',
                     'jabatan' => 'KAUR Umum & T.U',
                     'created_at' => $date
                 ],
@@ -69,12 +74,12 @@ class ProfilPerangkatTableSeeder extends Seeder
                 ],
                 [
                     'nama' => 'Engkus Kuswara',
-                    'jabatan' => 'Kepala Dusun 3',
+                    'jabatan' => 'Kepala Dusun 4',
                     'created_at' => $date
                 ],
                 [
                     'nama' => 'Cecep Anang K',
-                    'jabatan' => 'Kepala Dusun 4',
+                    'jabatan' => 'Kepala Dusun 5',
                     'created_at' => $date
                 ],
                 [

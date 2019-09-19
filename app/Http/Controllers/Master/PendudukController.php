@@ -23,9 +23,25 @@ class PendudukController extends Controller
             ->json($penduduk, 200);
     }
 
+    public function APIdataNama()
+    {
+        $penduduk = Penduduk::pluck('nama');
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
     public function APIdata($nik)
     {
         $penduduk = Penduduk::where('nik', '=', $nik)->first();
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
+    public function APIdataByNama($nama)
+    {
+        $penduduk = Penduduk::where('nama', '=', $nama)->first();
 
         return response()
             ->json($penduduk, 200);

@@ -202,8 +202,14 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 Route::get('/data-nik', [
                     'uses' => 'Master\PendudukController@APIdataNIK',
                 ]);
+                Route::get('/data-nama', [
+                    'uses' => 'Master\PendudukController@APIdataNama',
+                ]);
                 Route::get('/data/{nik}', [
                     'uses' => 'Master\PendudukController@APIdata',
+                ]);
+                Route::get('/data-by-nama/{nama}', [
+                    'uses' => 'Master\PendudukController@APIdataByNama',
                 ]);
             });
             Route::get('/', [
@@ -233,6 +239,30 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::delete('/hapus/{id}', [
                 'uses' => 'Master\PendudukController@destroy',
                 'as' => 'master.penduduk.destroy'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-ekbang'], function(){
+        Route::group(['prefix' => 'keterangan-usaha'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@index',
+                'as' => 'kaur_ekbang.keterangan_usaha.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@data',
+                'as' => 'kaur_ekbang.keterangan_usaha.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@create',
+                'as' => 'kaur_ekbang.keterangan_usaha.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@store',
+                'as' => 'kaur_ekbang.keterangan_usaha.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@surat',
+                'as' => 'kaur_ekbang.keterangan_usaha.surat'
             ]);
         });
     });

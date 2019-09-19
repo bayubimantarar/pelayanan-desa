@@ -20,7 +20,7 @@
     }
     .header img {
       position: absolute;
-      margin-top: 3px;
+      margin-top: 7px;
     }
     .title {
       text-align: center;
@@ -52,39 +52,30 @@
       style=""
     />
     <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
-      Pemerintahan Kabupaten {{ $profil->kabupaten }} <br />
-      Kecamatan {{ $profil->kecamatan }}<br />
-      Desa {{ $profil->desa }}
+      Pemerintahan Kabupaten Bandung Barat <br />
+      Kecamatan Ngamprah <br />
+      Desa {{ $profil->nama }}
     </h3>
     <small style="margin: 0; padding: 0;">
       <b>
-        {{ $profil->alamat }}
+        Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552
       </b>
     </small>
   </div>
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-        Pengantar keterangan catatan kepolisian
+      surat keterangan usaha
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 200/{{ $total }}/Ds./IX/2019
+        Nomor: 583/{{ $total }}/Ds/IX/2019
       </b>
     </p>
   </div>
-  <div class="redaksi-awal">
-    <p class="text-redaksi-awal" style="">
-      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas :
-    </p>
-    <ol style="">
-      <li>Surat pengantar dari ketua RT {{ $skck->rt }} tertanggal {{ $tertanggalRT }}</li>
-      <li>Surat pengantar dari ketua RW {{ $skck->rw }} tertanggal {{ $tertanggalRW }}</li>
-    </ol>
-  </div>
   <div class="muatan-data">
     <p style="text-indent: 2.5%; margin: 0; padding: 0;">
-      Dengan ini menerangkan bahwa :
+      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan ini menerangkan bahwa :
     </p>
     <table style="padding-left: 5%;">
       <tr>
@@ -97,50 +88,68 @@
       <tr>
         <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->tempat_lahir }}, {{ $skck->penduduk->tanggal_lahir }}</td>
+        <td>{{ $keteranganUsaha->penduduk->tempat_lahir }}, {{ $keteranganUsaha->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->jenis_kelamin }}</td>
+        <td>{{ $keteranganUsaha->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->status_perkawinan }}</td>
+        <td>{{ $keteranganUsaha->penduduk->status_perkawinan }}</td>
       </tr>
       <tr>
         <td>Agama</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->agama }}</td>
+        <td>{{ $keteranganUsaha->penduduk->agama }}</td>
       </tr>
       <tr>
         <td>Pendidikan</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->pendidikan }}</td>
+        <td>{{ $keteranganUsaha->penduduk->pendidikan }}</td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->pekerjaan }}</td>
+        <td>{{ $keteranganUsaha->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
-        <td>No. KK/KTP</td>
+        <td>NIK KTP</td>
         <td>:</td>
-        <td>- / {{ $skck->penduduk->nik }}</td>
+        <td>{{ $keteranganUsaha->penduduk->nik }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $skck->penduduk->alamat }}</td>
+        <td>{{ $keteranganUsaha->penduduk->alamat }}</td>
       </tr>
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $skck->redaksi }}<br />
-      Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $skck->keperluan }}</i></b>
+      {{ $keteranganUsaha->redaksi }}<br />
     </p>
+  </div>
+  <table style="padding-left: 5%;">
+    <tr>
+      <td width="115">Jenis Usaha</td>
+      <td>:</td>
+      <td>{{ $keteranganUsaha->jenis_usaha }}</td>
+    </tr>
+    <tr>
+      <td>Lokasi</td>
+      <td>:</td>
+      <td>{{ $keteranganUsaha->lokasi }}</td>
+    </tr>
+    <tr>
+      <td>Keperluan</td>
+      <td>:</td>
+      <td>{{ $keteranganUsaha->keperluan }}</td>
+    </tr>
+  </table>
+  <div class="keterangan">
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
     </p>
@@ -151,13 +160,7 @@
         <td><center>Cilame, {{ $date }}</center></td>
       </tr>
       <tr>
-        <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $skck->profil_perangkat->jabatan }}
-            </b>
-          </center>
-        </td>
+        <td><center><b>Kepala Desa Cilame</b></center></td>
       </tr>
       <tr>
         <td></td>
@@ -232,15 +235,7 @@
         <td></td>
       </tr>
       <tr>
-        <td style="text-transform: uppercase;" width="200">
-          <center>
-            <b>
-              <u>
-                {{ $skck->profil_perangkat->nama }}
-              </u>
-            </b>
-          </center>
-        </td>
+        <td><center><b><u>AAS MOHAMAD ASOR, SH.</u></b></center></td>
       </tr>
     </table>
   </div>

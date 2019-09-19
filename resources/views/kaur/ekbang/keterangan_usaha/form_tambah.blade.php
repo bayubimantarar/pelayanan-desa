@@ -33,7 +33,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-umum/skck/simpan" method="post">
+              <form action="/kaur-ekbang/keterangan-usaha/simpan" method="post">
                 <h4>
                   Identitas Penduduk
                 </h4>
@@ -284,76 +284,6 @@
                 <hr />
                 <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
-                      <label for="">
-                        Surat Pengantar Dari
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RT
-                      </label>
-                      <input
-                        type="number"
-                        name="rt"
-                        class="form-control"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RT
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rt"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rt"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RW
-                      </label>
-                      <input
-                        type="number"
-                        name="rw"
-                        class="form-control"
-                        id="datetimepicker"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RW
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rw"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rw"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
                         Keterangan Redaksi
@@ -370,7 +300,37 @@
                         id="redaksi"
                         rows="5"
                         readonly
-                      >Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian.</textarea>
+                      >Bersangkutan adalah penduduk / warga Desa Cilame dengan alamat sebagaimana tersebut di atas yang mempunyai usaha :</textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label for="">
+                        Jenis Usaha
+                      </label>
+                      <textarea
+                        name="jenis_usaha"
+                        class="form-control"
+                        id="jenis-usaha"
+                        rows="5"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label for="">
+                        Lokasi
+                      </label>
+                      <textarea
+                        name="lokasi"
+                        class="form-control"
+                        id="lokasi"
+                        rows="5"
+                      ></textarea>
                     </div>
                   </div>
                 </div>

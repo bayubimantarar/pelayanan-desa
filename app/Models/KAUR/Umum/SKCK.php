@@ -2,14 +2,16 @@
 
 namespace App\Models\KAUR\Umum;
 
-use App\Models\KAUR\Umum\Skck;
+use App\Models\Master\Penduduk;
+use App\Models\Profil\Perangkat;
 use Illuminate\Database\Eloquent\Model;
 
 class SKCK extends Model
 {
     protected $table = 'kaur_umum_skck';
     protected $fillable = [
-        'nik',
+        'master_penduduk_id',
+        'profil_perangkat_id',
         'rt',
         'rw',
         'tertanggal_rt',
@@ -24,7 +26,12 @@ class SKCK extends Model
 
     public function penduduk()
     {
-        return $this->belongsTo('App\Models\Master\Penduduk', 'nik', 'nik');
+        return $this->belongsTo(Penduduk::class, 'master_penduduk_id', 'id');
+    }
+
+    public function profil_perangkat()
+    {
+        return $this->belongsTo(Perangkat::class, 'profil_perangkat_id', 'id');
     }
 
     // public function getTertanggalRT($value)

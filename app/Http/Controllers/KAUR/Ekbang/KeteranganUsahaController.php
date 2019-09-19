@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\KAUR\Umum;
+namespace App\Http\Controllers\KAUR\Ekbang;
 
 use PDF;
 use DataTables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\KAUR\Umum\SKCK;
 use App\Models\Profil\Perangkat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\KAUR\Umum\SKCKRequest;
+use App\Models\KAUR\Ekbang\KeteranganUsaha;
+use App\Http\Requests\KAUR\Ekbang\KeteranganUsahaRequest;
 
-class SKCKController extends Controller
+class KeteranganUsahaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,22 +21,22 @@ class SKCKController extends Controller
      */
     public function data()
     {
-        $skck = SKCK::with('penduduk')
+        $keteranganUsaha = KeteranganUsaha::with('penduduk')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $dataTablesSKCK = DataTables($skck)
-            ->addColumn('action', function($skck){
+        $dataTablesKeteranganUsaha = DataTables($keteranganUsaha)
+            ->addColumn('action', function($keteranganUsaha){
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$skck->id.'"
+                            href="/master/penduduk/form-ubah/'.$keteranganUsaha->id.'"
                             class="btn btn-circle btn-sm btn-warning"
                         >
                             <i class="fa fa-pencil"></i>
                         </a>
                         <a
-                            href="/kaur-umum/skck/surat/'.$skck->id.'"
+                            href="/kaur-ekbang/keterangan-usaha/surat/'.$keteranganUsaha->id.'"
                             class="btn btn-circle btn-sm btn-success"
                             target="_blank"
                         >
@@ -48,7 +48,7 @@ class SKCKController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $dataTablesSKCK;
+        return $dataTablesKeteranganUsaha;
     }
 
     /**
@@ -58,7 +58,7 @@ class SKCKController extends Controller
      */
     public function index()
     {
-        return view('kaur.umum.skck.index');
+        return view('kaur.ekbang.keterangan_usaha.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class SKCKController extends Controller
     {
         $perangkat = Perangkat::all();
 
-        return view('kaur.umum.skck.form_tambah', compact(
+        return view('kaur.ekbang.keterangan_usaha.form_tambah', compact(
             'perangkat'
         ));
     }
@@ -81,31 +81,27 @@ class SKCKController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SKCKRequest $skckRequest)
+    public function store(KeteranganUsahaRequest $keteranganUsahaRequest)
     {
-        $masterPendudukID = $skckRequest->master_penduduk_id;
-        $profilPerangkatID = $skckRequest->profil_perangkat_id;
-        $rt = $skckRequest->rt;
-        $rw = $skckRequest->rw;
-        $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
-        $tertanggalRW = Carbon::parse($skckRequest->tertanggal_rw);
-        $keperluan = $skckRequest->keperluan;
-        $redaksi = $skckRequest->redaksi;
+        $masterPendudukID = $keteranganUsahaRequest->master_penduduk_id;
+        $profilPerangkatID = $keteranganUsahaRequest->profil_perangkat_id;
+        $redaksi = $keteranganUsahaRequest->redaksi;
+        $jenisUsaha = $keteranganUsahaRequest->jenis_usaha;
+        $lokasi = $keteranganUsahaRequest->lokasi;
+        $keperluan = $keteranganUsahaRequest->keperluan;
 
-        $SKCKData = [
+        $keteranganUsahaData = [
             'master_penduduk_id' => $masterPendudukID,
             'profil_perangkat_id' => $profilPerangkatID,
-            'rt' => $rt,
-            'rw' => $rw,
-            'tertanggal_rt' => $tertanggalRT,
-            'tertanggal_rw' => $tertanggalRW,
+            'redaksi' => $redaksi,
+            'jenis_usaha' => $jenisUsaha,
+            'lokasi' => $lokasi,
             'keperluan' => $keperluan,
-            'redaksi' => $redaksi
         ];
 
-        $createSKCK = SKCK::create($SKCKData);
+        $createKeteranganUsaha = KeteranganUsaha::create($keteranganUsahaData);
 
-        return redirect('/kaur-umum/skck')
+        return redirect('/kaur-ekbang/keterangan-usaha')
             ->with([
                 'notification' => 'Data penduduk berhasil ditambah.'
             ]);
@@ -163,23 +159,19 @@ class SKCKController extends Controller
      */
     public function surat($id)
     {
-        $skck = SKCK::with('penduduk', 'profil_perangkat')
+        $keteranganUsaha = KeteranganUsaha::with('penduduk', 'profil_perangkat')
             ->where('id', '=', $id)
             ->first();
 
         $profil = Pemerintahan::get()->first();
-        $total = SKCK::count();
+        $total = KeteranganUsaha::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
-        $tertanggalRT = $skck->tertanggal_rt->formatLocalized('%d %B %Y');
-        $tertanggalRW = $skck->tertanggal_rw->formatLocalized('%d %B %Y');
 
-        $surat = PDF::loadView('kaur.umum.skck.surat', [
-            'skck' => $skck,
+        $surat = PDF::loadView('kaur.ekbang.keterangan_usaha.surat', [
+            'keteranganUsaha' => $keteranganUsaha,
             'date' => $date,
             'profil' => $profil,
             'total' => $total,
-            'tertanggalRT' => $tertanggalRT,
-            'tertanggalRW' => $tertanggalRW
         ]);
 
         return $surat->setPaper('A4', 'portrait')->stream();
