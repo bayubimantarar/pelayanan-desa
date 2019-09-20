@@ -151,12 +151,12 @@
               Ket. Domisili
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="/kaur-pemerintahan/keterangan-surat-pindah">
               <i class="fa fa-file-text-o"></i>
               Ket. Surat Pindah
             </a>
-          </li>
+          </li> --}}
           <li>
             <a href="/kaur-pemerintahan/keterangan-beda-identitas">
               <i class="fa fa-file-text-o"></i>

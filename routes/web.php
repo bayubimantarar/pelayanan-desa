@@ -399,4 +399,28 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             ]);
         });
     });
+    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
+        Route::group(['prefix' => 'keterangan-ktp-sementara'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@index',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@data',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@create',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@store',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@surat',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.surat'
+            ]);
+        });
+    });
 });
