@@ -423,4 +423,28 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             ]);
         });
     });
+    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
+        Route::group(['prefix' => 'keterangan-kk-sementara'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@index',
+                'as' => 'kaur_pemerintahan.keterangan_kk_sementara.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@data',
+                'as' => 'kaur_pemerintahan.keterangan_kk_sementara.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@create',
+                'as' => 'kaur_pemerintahan.keterangan_kk_sementara.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@store',
+                'as' => 'kaur_pemerintahan.keterangan_kk_sementara.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@surat',
+                'as' => 'kaur_pemerintahan.keterangan_kk_sementara.surat'
+            ]);
+        });
+    });
 });

@@ -71,12 +71,6 @@
               Data Penduduk
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-file-o"></i>
-              Data Penduduk - NON KTP
-            </a>
-          </li>
         </ul>
       </li>
       <li>
