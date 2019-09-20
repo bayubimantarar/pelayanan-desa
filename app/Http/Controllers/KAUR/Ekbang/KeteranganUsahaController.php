@@ -174,6 +174,6 @@ class KeteranganUsahaController extends Controller
             'total' => $total,
         ]);
 
-        return $surat->setPaper('A4', 'portrait')->stream();
+        return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();
     }
 }

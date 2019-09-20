@@ -124,7 +124,7 @@
   <div class="tanda-tangan">
     <table align="left">
       <tr>
-        <td><center>Mengetahui</center></td>
+        <td><center>Mengetahui,</center></td>
       </tr>
       <tr>
         <td>
@@ -320,7 +320,7 @@
     </table>
     <table align="left" style="padding-top: 200px;">
       <tr>
-        <td><center>Mengetahui</center></td>
+        <td><center>Mengetahui,</center></td>
       </tr>
       <tr>
         <td>

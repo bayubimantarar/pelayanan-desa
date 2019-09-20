@@ -20,7 +20,7 @@
     }
     .header img {
       position: absolute;
-      margin-top: 7px;
+      margin-top: 3px;
     }
     .title {
       text-align: center;
@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Usaha</title>
+  <title>Surat SKCK</title>
 </head>
 <body>
   <div class="header">
@@ -53,7 +53,7 @@
     />
     <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
       Pemerintahan Kabupaten {{ $profil->kabupaten }} <br />
-      Kecamatan {{ $profil->kecamatan }} <br />
+      Kecamatan {{ $profil->kecamatan }}<br />
       Desa {{ $profil->desa }}
     </h3>
     <small style="margin: 0; padding: 0;">
@@ -65,11 +65,11 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-      surat keterangan usaha
+       surat keterangan kehilangan
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 583/{{ $total }}/Ds/IX/2019
+        Nomor : 200/{{ $total }}/Ds./IX/2019
       </b>
     </p>
   </div>
@@ -82,74 +82,46 @@
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganUsaha->penduduk->nama }}</b>
+          <b>{{ $keteranganDomisili->penduduk->nama }}</b>
         </td>
       </tr>
       <tr>
         <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->tempat_lahir }}, {{ $keteranganUsaha->penduduk->tanggal_lahir }}</td>
-      </tr>
-      <tr>
-        <td>Jenis Kelamin</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->jenis_kelamin }}</td>
-      </tr>
-      <tr>
-        <td>Status Perkawinan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->status_perkawinan }}</td>
-      </tr>
-      <tr>
-        <td>Agama</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->agama }}</td>
-      </tr>
-      <tr>
-        <td>Pendidikan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pendidikan }}</td>
+        <td>{{ $keteranganDomisili->penduduk->tempat_lahir }}, {{ $keteranganDomisili->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pekerjaan }}</td>
+        <td>{{ $keteranganDomisili->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
-        <td>NIK KTP</td>
+        <td>Status Perkawinan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->nik }}</td>
+        <td>{{ $keteranganDomisili->penduduk->status_perkawinan }}</td>
+      </tr>
+      <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td>{{ $keteranganDomisili->penduduk->agama }}</td>
+      </tr>
+      <tr>
+        <td>No. KK/KTP</td>
+        <td>:</td>
+        <td>- / {{ $keteranganDomisili->penduduk->nik }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->alamat }}</td>
+        <td>{{ $keteranganDomisili->penduduk->alamat }}</td>
       </tr>
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $keteranganUsaha->redaksi }}<br />
+      {{ $keteranganDomisili->redaksi }}<br />
+      Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $keteranganDomisili->keperluan }}</i></b>
     </p>
-  </div>
-  <table style="padding-left: 5%;">
-    <tr>
-      <td>Jenis Usaha</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->jenis_usaha }}</td>
-    </tr>
-    <tr>
-      <td>Lokasi</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->lokasi }}</td>
-    </tr>
-    <tr>
-      <td>Keperluan</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->keperluan }}</td>
-    </tr>
-  </table>
-  <div class="keterangan">
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
     </p>
@@ -163,7 +135,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganUsaha->profil_perangkat->jabatan }}
+              {{ $keteranganDomisili->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -244,13 +216,9 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganUsaha->profil_perangkat_id != 0)
-                <u>
-                  {{ $keteranganUsaha->profil_perangkat->nama }}
-                </u>
-              @else
-                -
-              @endif
+              <u>
+                {{ $keteranganDomisili->profil_perangkat->nama }}
+              </u>
             </b>
           </center>
         </td>

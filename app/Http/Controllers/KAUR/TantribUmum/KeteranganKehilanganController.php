@@ -67,8 +67,7 @@ class KeteranganKehilanganController extends Controller
      */
     public function create()
     {
-
-        $perangkat  = Perangkat::all();
+        $perangkat = Perangkat::all();
 
         return view('kaur.tantrib_umum.keterangan_kehilangan.form_tambah', compact(
             'perangkat'
@@ -180,6 +179,6 @@ class KeteranganKehilanganController extends Controller
             'tertanggalRW' => $tertanggalRW
         ]);
 
-        return $surat->setPaper('A4', 'portrait')->stream();
+        return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();
     }
 }

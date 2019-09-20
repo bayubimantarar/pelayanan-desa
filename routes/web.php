@@ -10,11 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix' => 'autentikasi'], function(){
     Route::get('/form-login', [
         'uses' => 'Autentikasi\AutentikasiController@loginForm',
@@ -355,6 +350,52 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@surat',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-izin-rame'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@index',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@data',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@create',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@store',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@surat',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.surat'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
+        Route::group(['prefix' => 'keterangan-domisili'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@index',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@data',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@create',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@store',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@surat',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.surat'
             ]);
         });
     });

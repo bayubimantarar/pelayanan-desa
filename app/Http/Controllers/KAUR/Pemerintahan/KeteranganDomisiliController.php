@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\KAUR\Umum;
+namespace App\Http\Controllers\KAUR\Pemerintahan;
 
 use PDF;
 use DataTables;
@@ -8,10 +8,10 @@ use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
-use App\Models\KAUR\Umum\KeteranganGhoib;
-use App\Http\Requests\KAUR\Umum\KeteranganGhoibRequest;
+use App\Models\KAUR\Pemerintahan\KeteranganDomisili;
+use App\Http\Requests\KAUR\Pemerintahan\KeteranganDomisiliRequest;
 
-class KeteranganGhoibController extends Controller
+class KeteranganDomisiliController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,22 +20,22 @@ class KeteranganGhoibController extends Controller
      */
     public function data()
     {
-        $keteranganGhoib = KeteranganGhoib::with('penduduk')
+        $keteranganDomisili = KeteranganDomisili::with('penduduk')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $dataTablesKeteranganGhoib = DataTables($keteranganGhoib)
-            ->addColumn('action', function($keteranganGhoib){
+        $datatablesKeteranganDomisili = DataTables($keteranganDomisili)
+            ->addColumn('action', function($keteranganDomisili){
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganGhoib->id.'"
+                            href="/master/penduduk/form-ubah/'.$keteranganDomisili->id.'"
                             class="btn btn-circle btn-sm btn-warning"
                         >
                             <i class="fa fa-pencil"></i>
                         </a>
                         <a
-                            href="/kaur-umum/keterangan-ghoib/surat/'.$keteranganGhoib->id.'"
+                            href="/kaur-pemerintahan/keterangan-domisili/surat/'.$keteranganDomisili->id.'"
                             class="btn btn-circle btn-sm btn-success"
                             target="_blank"
                         >
@@ -47,7 +47,7 @@ class KeteranganGhoibController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $dataTablesKeteranganGhoib;
+        return $datatablesKeteranganDomisili;
     }
 
     /**
@@ -57,7 +57,7 @@ class KeteranganGhoibController extends Controller
      */
     public function index()
     {
-        return view('kaur.umum.keterangan_ghoib.index');
+        return view('kaur.pemerintahan.keterangan_domisili.index');
     }
 
     /**
@@ -69,7 +69,7 @@ class KeteranganGhoibController extends Controller
     {
         $perangkat = Perangkat::all();
 
-        return view('kaur.umum.keterangan_ghoib.form_tambah', compact(
+        return view('kaur.pemerintahan.keterangan_domisili.form_tambah', compact(
             'perangkat'
         ));
     }
@@ -80,33 +80,25 @@ class KeteranganGhoibController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KeteranganGhoibRequest $keteranganGhoibRequest)
+    public function store(KeteranganDomisiliRequest $keteranganDomisiliRequest)
     {
-        $masterPendudukID = $keteranganGhoibRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganGhoibRequest->profil_perangkat_id;
-        $nama = $keteranganGhoibRequest->nama;
-        $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
-        $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
-        $alamat = $keteranganGhoibRequest->alamat;
-        $redaksi = $keteranganGhoibRequest->redaksi;
-        $alasan = $keteranganGhoibRequest->alasan;
+        $masterPendudukID = $keteranganDomisiliRequest->master_penduduk_id;
+        $profilPerangkatID = $keteranganDomisiliRequest->profil_perangkat_id;
+        $redaksi = $keteranganDomisiliRequest->redaksi;
+        $keperluan = $keteranganDomisiliRequest->keperluan;
 
-        $keteranganGhoibData = [
+        $keteranganDomisiliData = [
             'master_penduduk_id' => $masterPendudukID,
             'profil_perangkat_id' => $profilPerangkatID,
-            'nama' => $nama,
-            'tempat_lahir' => $tempatLahir,
-            'tanggal_lahir' => $tanggalLahir,
-            'alamat' => $alamat,
             'redaksi' => $redaksi,
-            'alasan' => $alasan
+            'keperluan' => $keperluan
         ];
 
-        $createKeteranganGhoib = KeteranganGhoib::create($keteranganGhoibData);
+        $createKeteranganDomisili = KeteranganDomisili::create($keteranganDomisiliData);
 
-        return redirect('/kaur-umum/keterangan-ghoib')
+        return redirect('/kaur-pemerintahan/keterangan-domisili')
             ->with([
-                'notification' => 'Data keterangan ghoib berhasil ditambah.'
+                'notification' => 'Data keterangan domisili berhasil disimpan.'
             ]);
     }
 
@@ -139,7 +131,7 @@ class KeteranganGhoibController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KeteranganGhoibRequest $keteranganGhoibRequest)
+    public function update(KeteranganDomisiliRequest $keteranganDomisiliRequest, $id)
     {
         //
     }
@@ -162,19 +154,19 @@ class KeteranganGhoibController extends Controller
      */
     public function surat($id)
     {
-        $keteranganGhoib = KeteranganGhoib::with('penduduk', 'profil_perangkat')
+        $keteranganDomisili = KeteranganDomisili::with('penduduk', 'profil_perangkat')
             ->where('id', '=', $id)
             ->first();
 
         $profil = Pemerintahan::get()->first();
-        $total = KeteranganGhoib::count();
+        $total = KeteranganDomisili::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
-        $surat = PDF::loadView('kaur.umum.keterangan_ghoib.surat', [
-            'keteranganGhoib' => $keteranganGhoib,
+        $surat = PDF::loadView('kaur.pemerintahan.keterangan_domisili.surat', [
+            'keteranganDomisili' => $keteranganDomisili,
             'date' => $date,
             'profil' => $profil,
-            'total' => $total,
+            'total' => $total
         ]);
 
         return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();

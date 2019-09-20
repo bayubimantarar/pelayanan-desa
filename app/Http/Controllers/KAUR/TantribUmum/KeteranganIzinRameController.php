@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\KAUR\Umum;
+namespace App\Http\Controllers\KAUR\TantribUmum;
 
 use PDF;
 use DataTables;
@@ -8,10 +8,10 @@ use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
-use App\Models\KAUR\Umum\KeteranganGhoib;
-use App\Http\Requests\KAUR\Umum\KeteranganGhoibRequest;
+use App\Models\KAUR\TantribUmum\KeteranganIzinRame;
+use App\Http\Requests\KAUR\TantribUmum\KeteranganIzinRameRequest;
 
-class KeteranganGhoibController extends Controller
+class KeteranganIzinRameController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,22 +20,22 @@ class KeteranganGhoibController extends Controller
      */
     public function data()
     {
-        $keteranganGhoib = KeteranganGhoib::with('penduduk')
+        $keteranganIzinRame = KeteranganIzinRame::with('penduduk')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $dataTablesKeteranganGhoib = DataTables($keteranganGhoib)
-            ->addColumn('action', function($keteranganGhoib){
+        $dataTablesKeteranganIzinRame = DataTables($keteranganIzinRame)
+            ->addColumn('action', function($keteranganIzinRame){
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganGhoib->id.'"
+                            href="/master/penduduk/form-ubah/'.$keteranganIzinRame->id.'"
                             class="btn btn-circle btn-sm btn-warning"
                         >
                             <i class="fa fa-pencil"></i>
                         </a>
                         <a
-                            href="/kaur-umum/keterangan-ghoib/surat/'.$keteranganGhoib->id.'"
+                            href="/kaur-tantrib-dan-umum/keterangan-izin-rame/surat/'.$keteranganIzinRame->id.'"
                             class="btn btn-circle btn-sm btn-success"
                             target="_blank"
                         >
@@ -47,7 +47,7 @@ class KeteranganGhoibController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $dataTablesKeteranganGhoib;
+        return $dataTablesKeteranganIzinRame;
     }
 
     /**
@@ -57,7 +57,7 @@ class KeteranganGhoibController extends Controller
      */
     public function index()
     {
-        return view('kaur.umum.keterangan_ghoib.index');
+        return view('kaur.tantrib_umum.keterangan_izin_rame.index');
     }
 
     /**
@@ -67,9 +67,9 @@ class KeteranganGhoibController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat  = Perangkat::all();
 
-        return view('kaur.umum.keterangan_ghoib.form_tambah', compact(
+        return view('kaur.tantrib_umum.keterangan_izin_rame.form_tambah', compact(
             'perangkat'
         ));
     }
@@ -80,33 +80,39 @@ class KeteranganGhoibController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KeteranganGhoibRequest $keteranganGhoibRequest)
+    public function store(KeteranganIzinRameRequest $keteranganIzinRameRequest)
     {
-        $masterPendudukID = $keteranganGhoibRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganGhoibRequest->profil_perangkat_id;
-        $nama = $keteranganGhoibRequest->nama;
-        $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
-        $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
-        $alamat = $keteranganGhoibRequest->alamat;
-        $redaksi = $keteranganGhoibRequest->redaksi;
-        $alasan = $keteranganGhoibRequest->alasan;
+        $masterPendudukID = $keteranganIzinRameRequest->master_penduduk_id;
+        $profilPerangkatID = $keteranganIzinRameRequest->profil_perangkat_id;
+        $rt = $keteranganIzinRameRequest->rt;
+        $rw = $keteranganIzinRameRequest->rw;
+        $tertanggalRT = Carbon::parse($keteranganIzinRameRequest->tertanggal_rt);
+        $tertanggalRW = Carbon::parse($keteranganIzinRameRequest->tertanggal_rw);
+        $acara = $keteranganIzinRameRequest->acara;
+        $tanggalPelaksanaan = Carbon::parse($keteranganIzinRameRequest->tanggal_pelaksanaan);
+        $kegiatan = $keteranganIzinRameRequest->kegiatan;
+        $waktuPelaksanaan = $keteranganIzinRameRequest->waktu_pelaksanaan;
+        $alamatPelaksanaan = $keteranganIzinRameRequest->alamat_pelaksanaan;
 
-        $keteranganGhoibData = [
+        $keteranganIzinRameData = [
             'master_penduduk_id' => $masterPendudukID,
             'profil_perangkat_id' => $profilPerangkatID,
-            'nama' => $nama,
-            'tempat_lahir' => $tempatLahir,
-            'tanggal_lahir' => $tanggalLahir,
-            'alamat' => $alamat,
-            'redaksi' => $redaksi,
-            'alasan' => $alasan
+            'rt' => $rt,
+            'rw' => $rw,
+            'tertanggal_rt' => $tertanggalRT,
+            'tertanggal_rw' => $tertanggalRW,
+            'acara' => $acara,
+            'tanggal_pelaksanaan' => $tanggalPelaksanaan,
+            'kegiatan' => $kegiatan,
+            'waktu_pelaksanaan' => $waktuPelaksanaan,
+            'alamat_pelaksanaan' => $alamatPelaksanaan
         ];
 
-        $createKeteranganGhoib = KeteranganGhoib::create($keteranganGhoibData);
+        $createKeteranganIzinRame = KeteranganIzinRame::create($keteranganIzinRameData);
 
-        return redirect('/kaur-umum/keterangan-ghoib')
+        return redirect('/kaur-tantrib-umum/keterangan-izin-rame')
             ->with([
-                'notification' => 'Data keterangan ghoib berhasil ditambah.'
+                'notification' => 'Data keterangan izin rame berhasil disimpan.'
             ]);
     }
 
@@ -139,7 +145,7 @@ class KeteranganGhoibController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KeteranganGhoibRequest $keteranganGhoibRequest)
+    public function update(KeteranganIzinRameRequest $keteranganIzinRameRequest, $id)
     {
         //
     }
@@ -162,19 +168,23 @@ class KeteranganGhoibController extends Controller
      */
     public function surat($id)
     {
-        $keteranganGhoib = KeteranganGhoib::with('penduduk', 'profil_perangkat')
+        $keteranganIzinRame = KeteranganIzinRame::with('penduduk', 'profil_perangkat')
             ->where('id', '=', $id)
             ->first();
 
         $profil = Pemerintahan::get()->first();
-        $total = KeteranganGhoib::count();
+        $total = KeteranganIzinRame::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
+        $tertanggalRT = $keteranganIzinRame->tertanggal_rt->formatLocalized('%d %B %Y');
+        $tertanggalRW = $keteranganIzinRame->tertanggal_rw->formatLocalized('%d %B %Y');
 
-        $surat = PDF::loadView('kaur.umum.keterangan_ghoib.surat', [
-            'keteranganGhoib' => $keteranganGhoib,
+        $surat = PDF::loadView('kaur.tantrib_umum.keterangan_izin_rame.surat', [
+            'keteranganIzinRame' => $keteranganIzinRame,
             'date' => $date,
             'profil' => $profil,
             'total' => $total,
+            'tertanggalRT' => $tertanggalRT,
+            'tertanggalRW' => $tertanggalRW
         ]);
 
         return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();

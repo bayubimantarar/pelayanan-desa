@@ -21,19 +21,19 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Tambah Data Keterangan Ghoib</h1>
+      <h1 class="page-header">Form Tambah Data Keterangan Domisili</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Ghoib
+          Form Tambah Data Keterangan Domisili
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-tantrib-dan-umum/keterangan-bersih-diri/simpan" method="post">
+              <form action="/kaur-pemerintahan/keterangan-domisili/simpan" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -99,15 +99,15 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="nama"
                         class="form-control"
                         id="nama"
                         value="{{ old('nama') }}"
                         autocomplete="off"
                       />
-                      @if($errors->has(''))
+                      @if($errors->has('nama'))
                         <p class="text-danger">
-                          {{ $errors->first('') }}
+                          {{ $errors->first('nama') }}
                         </p>
                       @endif
                     </div>
@@ -124,7 +124,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="tempat-lahir"
                         readonly
@@ -146,7 +146,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="tanggal-lahir"
                         readonly
@@ -163,7 +163,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="jenis-kelamin"
                         readonly
@@ -187,7 +187,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="nama"
                         class="form-control"
                         id="status-perkawinan"
                         readonly
@@ -209,7 +209,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="agama"
                         readonly
@@ -231,7 +231,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="pendidikan"
                         readonly
@@ -248,7 +248,7 @@
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="jenis_kelamin"
                         class="form-control"
                         id="pekerjaan"
                         readonly
@@ -271,7 +271,7 @@
                         Alamat
                       </label>
                       <textarea
-                        name=""
+                        name="alamat"
                         class="form-control"
                         id="alamat"
                         rows="5"
@@ -280,232 +280,6 @@
                     </div>
                   </div>
                 </div>
-                {{-- <h4>
-                  <b>
-                    IDENTITAS AYAH DAN IBU
-                  </b>
-                </h4>
-                <hr />
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Nama Lengkap Ayah
-                      </label>
-                      <input
-                        type="text"
-                        name="nama_ayah"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Tempat Lahir Ayah
-                      </label>
-                      <input
-                        type="text"
-                        name="tempat_lahir_ayah"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Tanggal Lahir Ayah
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tanggal-lahir-ayah"
-                      >
-                        <input
-                          type="text"
-                          name="tanggal_lahir_ayah"
-                          class="form-control"
-                          value="{{ old('tanggal_lahir_ayah') }}"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Agama Ayah
-                      </label>
-                      <select
-                        name="agama_ayah"
-                        class="form-control"
-                      >
-                        @foreach($agama as $item)
-                          <option value="{{ $item->keterangan }}">
-                            {{ $item->keterangan }}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Pekerjaan Ayah
-                      </label>
-                      <textarea
-                        name="pekerjaan_ayah"
-                        class="form-control"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Alamat Ayah
-                      </label>
-                      <textarea
-                        name="alamat_ayah"
-                        class="form-control"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Nama Lengkap Ibu
-                      </label>
-                      <input
-                        type="text"
-                        name="nama_ibu"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Tempat Lahir Ibu
-                      </label>
-                      <input
-                        type="text"
-                        name="tempat_lahir_ibu"
-                        class="form-control"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Tanggal Lahir Ibu
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tanggal-lahir-ibu"
-                      >
-                        <input
-                          type="text"
-                          name="tanggal_lahir_ibu"
-                          class="form-control"
-                          value="{{ old('tanggal_lahir_ibu') }}"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Agama Ibu
-                      </label>
-                      <select
-                        name="agama_ibu"
-                        class="form-control"
-                      >
-                        @foreach($agama as $item)
-                          <option value="{{ $item->keterangan }}">
-                            {{ $item->keterangan }}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Pekerjaan Ibu
-                      </label>
-                      <textarea
-                        name="pekerjaan_ibu"
-                        class="form-control"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Alamat Ibu
-                      </label>
-                      <textarea
-                        name="alamat_ibu"
-                        class="form-control"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div> --}}
                 <h4>
                   <b>
                     KETERANGAN SURAT
@@ -530,7 +304,7 @@
                         id="redaksi"
                         rows="5"
                         readonly
-                      >Tersebut di atas adalah benar warga/penduduk Desa Cilame Kecamatan Ngamprah. Sepanjang catatan yang ada pada kami berkelakuan baik, tidak pernah tersangkut perkara pidana dan tidak terlibat G30S/PKI atau gerakan organisasi terlarang lainnya.</textarea>
+                      >Bersangkutan adalah  benar sebagai penduduk / warga  Desa  Cilame  yang  berdomisili sesuai alamat tersebut di atas.</textarea>
                     </div>
                   </div>
                 </div>
@@ -557,8 +331,8 @@
                       </label>
                       <select
                         name="profil_perangkat_id"
+                        id=""
                         class="form-control"
-                        id="profil-perangkat-id"
                       >
                         <option value="0">
                           -
@@ -678,17 +452,11 @@
         });
       }
     });
-    $('#tanggal-lahir-ayah').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
+    $('#tertanggal-rt').datetimepicker({
+      format: 'DD-MM-YYYY'
     });
-    $('#tanggal-lahir-ibu').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-lahir-ghoib').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
+    $('#tertanggal-rw').datetimepicker({
+      format: 'DD-MM-YYYY'
     });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();

@@ -91,7 +91,7 @@
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganUsaha->penduduk->nama }}</b>
+          <b>{{ $skck->penduduk->nama }}</b>
         </td>
       </tr>
       <tr>

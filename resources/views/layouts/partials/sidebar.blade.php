@@ -132,7 +132,7 @@
             </a>
           </li>
           <li>
-            <a href="/kaur-tantrib-dan-umum/keterangan-izin-rame-rame">
+            <a href="/kaur-tantrib-dan-umum/keterangan-izin-rame">
               <i class="fa fa-file-text-o"></i>
               Ket. Izin rame-rame
             </a>
@@ -146,31 +146,31 @@
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-pemerintahan/keterangan-kehilangan">
+            <a href="/kaur-pemerintahan/keterangan-domisili">
               <i class="fa fa-file-text-o"></i>
               Ket. Domisili
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-pemerintahan/keterangan-surat-pindah">
               <i class="fa fa-file-text-o"></i>
               Ket. Surat Pindah
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-pemerintahan/keterangan-beda-identitas">
               <i class="fa fa-file-text-o"></i>
               Ket. Beda Identitas
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
+            <a href="/kaur-pemerintahan/keterangan-kk-sementara">
               <i class="fa fa-file-text-o"></i>
               Ket. KK Sementara
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-pemerintahan/keterangan-ktp-sementara">
               <i class="fa fa-file-text-o"></i>
               Ket. KTP Sementara
             </a>
@@ -184,61 +184,61 @@
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-pemerintahan/keterangan-kehilangan">
+            <a href="/kaur-kesra/keterangan-kelahiran">
               <i class="fa fa-file-text-o"></i>
               Ket. Kelahiran
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-bersih-diri">
+            <a href="/kaur-kesra/keterangan-kematian">
               <i class="fa fa-file-text-o"></i>
               Ket. Kematian
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-janda-duda">
               <i class="fa fa-file-text-o"></i>
               Ket. Janda/Duda
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-penghasilan">
               <i class="fa fa-file-text-o"></i>
               Ket. Penghasilan
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-tidak-bekerja">
               <i class="fa fa-file-text-o"></i>
               Ket. Tidak Bekerja
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-belum-menikah">
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Menikah
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-sktm">
               <i class="fa fa-file-text-o"></i>
               Ket. SKTM
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-tanggungan-keluarga">
               <i class="fa fa-file-text-o"></i>
               Ket. Tanggungan Keluarga
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-belum-memiliki-rumah">
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Memiliki Rumah
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-izin-rame-rame">
+            <a href="/kaur-kesra/keterangan-ahli-waris">
               <i class="fa fa-file-text-o"></i>
               Ket. Ahli Waris
             </a>

@@ -5,7 +5,10 @@
     content="text/html; charset=utf-8"
   />
   <style>
-    @font-face {
+    @page{
+      size: 21.0 x 33.0;
+    }
+    @font-face{
       font-family: 'Times New Roman';
       src: url({{ storage_path('fonts/times-new-roman.ttf') }}) format("truetype");
     }
@@ -20,7 +23,7 @@
     }
     .header img {
       position: absolute;
-      margin-top: 7px;
+      margin-top: 3px;
     }
     .title {
       text-align: center;
@@ -42,7 +45,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Usaha</title>
+  <title>Surat Keterangan Izin Rame-Rame</title>
 </head>
 <body>
   <div class="header">
@@ -53,7 +56,7 @@
     />
     <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
       Pemerintahan Kabupaten {{ $profil->kabupaten }} <br />
-      Kecamatan {{ $profil->kecamatan }} <br />
+      Kecamatan {{ $profil->kecamatan }}<br />
       Desa {{ $profil->desa }}
     </h3>
     <small style="margin: 0; padding: 0;">
@@ -65,93 +68,87 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-      surat keterangan usaha
+       surat keterangan izin rame-rame
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 583/{{ $total }}/Ds/IX/2019
+        Nomor : 200/{{ $total }}/Ds./IX/2019
       </b>
     </p>
   </div>
+  <div class="redaksi-awal">
+    <p class="text-redaksi-awal" style="">
+      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan berdasarkan atas :
+    </p>
+    <ol>
+      <li>Surat pengantar dari ketua RT {{ $keteranganIzinRame->rt }} tertanggal {{ $tertanggalRT }}</li>
+      <li>Surat pengantar dari ketua RW {{ $keteranganIzinRame->rw }} tertanggal {{ $tertanggalRW }}</li>
+    </ol>
+  </div>
   <div class="muatan-data">
     <p style="text-indent: 2.5%; margin: 0; padding: 0;">
-      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan ini menerangkan bahwa :
+      Dalam rangka memenuhi permohonan izin rame-rame dari :
     </p>
     <table style="padding-left: 5%;">
       <tr>
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganUsaha->penduduk->nama }}</b>
+          <b>{{ $keteranganIzinRame->penduduk->nama }}</b>
         </td>
       </tr>
       <tr>
         <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->tempat_lahir }}, {{ $keteranganUsaha->penduduk->tanggal_lahir }}</td>
+        <td>{{ $keteranganIzinRame->penduduk->tempat_lahir }}, {{ $keteranganIzinRame->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->jenis_kelamin }}</td>
-      </tr>
-      <tr>
-        <td>Status Perkawinan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->status_perkawinan }}</td>
-      </tr>
-      <tr>
-        <td>Agama</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->agama }}</td>
-      </tr>
-      <tr>
-        <td>Pendidikan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pendidikan }}</td>
+        <td>{{ $keteranganIzinRame->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
         <td>Pekerjaan</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pekerjaan }}</td>
-      </tr>
-      <tr>
-        <td>NIK KTP</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->nik }}</td>
+        <td>{{ $keteranganIzinRame->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->alamat }}</td>
+        <td>{{ $keteranganIzinRame->penduduk->alamat }}</td>
+      </tr>
+      <tr>
+        <td>Acara</td>
+        <td>:</td>
+        <td>{{ $keteranganIzinRame->acara }}</td>
+      </tr>
+      <tr>
+        <td>Jenis Kegiatan / Hiburan</td>
+        <td>:</td>
+        <td>{{ $keteranganIzinRame->kegiatan }}</td>
+      </tr>
+      <tr>
+        <td>Tanggal Pelaksanaan</td>
+        <td>:</td>
+        <td>{{ $keteranganIzinRame->tanggal_pelaksanaan }}</td>
+      </tr>
+      <tr>
+        <td>Waktu Pelaksanaan</td>
+        <td>:</td>
+        <td>{{ $keteranganIzinRame->waktu_pelaksanaan }}</td>
       </tr>
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $keteranganUsaha->redaksi }}<br />
+      Dengan ini menerangkan bahwa pada prinsipnya kami tidak keberatan atas permohonan yang bersangkutan dengan ketentuan sebagai berikut :<br />
+      <ol>
+        <li>Pada waktu dilaksanakan rame – rame harus menjaga ketenteraman dan ketertiban di lingkungan baik dengan tetangga, menghargai waktu – waktu ibadat dalam menciptakan kerukunan umat beragama maupun lingkungan setelah selesai rame – rame.</li>
+        <li>Pada waktu dilaksanakan rame – rame tidak dibenarkan / dilarang melakukan hal – hal yang bertentangan dengan <b>ketentuan yang berlaku dan adat istiadat baik lingkungan maupun bangsa</b>.</li>
+      </ol>
     </p>
-  </div>
-  <table style="padding-left: 5%;">
-    <tr>
-      <td>Jenis Usaha</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->jenis_usaha }}</td>
-    </tr>
-    <tr>
-      <td>Lokasi</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->lokasi }}</td>
-    </tr>
-    <tr>
-      <td>Keperluan</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->keperluan }}</td>
-    </tr>
-  </table>
-  <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
+      Demikian keterangan izin rame – rame ini diberikan untuk digunakan sebagaimana mestinya.
     </p>
   </div>
   <div class="tanda-tangan">
@@ -163,7 +160,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganUsaha->profil_perangkat->jabatan }}
+              {{ $keteranganIzinRame->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -244,13 +241,9 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganUsaha->profil_perangkat_id != 0)
-                <u>
-                  {{ $keteranganUsaha->profil_perangkat->nama }}
-                </u>
-              @else
-                -
-              @endif
+              <u>
+                {{ $keteranganIzinRame->profil_perangkat->nama }}
+              </u>
             </b>
           </center>
         </td>

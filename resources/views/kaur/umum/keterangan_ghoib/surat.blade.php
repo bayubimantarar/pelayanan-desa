@@ -134,7 +134,7 @@
   </div>
   <table style="padding-left: 5%;">
     <tr>
-      <td width="115">Nama Lengkap</td>
+      <td>Nama Lengkap</td>
       <td>:</td>
       <td>{{ $keteranganGhoib->nama }}</td>
     </tr>

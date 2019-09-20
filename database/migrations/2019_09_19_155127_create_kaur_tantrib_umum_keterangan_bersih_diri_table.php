@@ -17,13 +17,13 @@ class CreateKaurTantribUmumKeteranganBersihDiriTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('master_penduduk_id');
             $table->bigInteger('profil_perangkat_id');
-            $table->string('nama_ayah', 150);
+            $table->string('nama_ayah', 150)->nullable();
             $table->string('tempat_lahir_ayah', 150)->nullable();
             $table->string('tanggal_lahir_ayah', 150)->nullable();
             $table->string('agama_ayah', 150)->nullable();
             $table->string('pekerjaan_ayah', 150)->nullable();
             $table->string('alamat_ayah', 150)->nullable();
-            $table->string('nama_ibu', 150);
+            $table->string('nama_ibu', 150)->nullable();
             $table->string('tempat_lahir_ibu', 150)->nullable();
             $table->string('tanggal_lahir_ibu', 150)->nullable();
             $table->string('agama_ibu', 150)->nullable();
