@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor &raquo; KAUR Pemerintahan &raquo; Keterangan Kartu Keluarga Sementara | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -20,28 +20,26 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">
-            Keterangan Kartu Keluarga Sementara
-        </h1>
+      <h1 class="page-header">Keterangan Beda Identitas</h1>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <p>
-        <a href="/kaur-pemerintahan/keterangan-kk-sementara/form-tambah" class="btn btn-sm btn-primary">
+        <a href="/kaur-pemerintahan/keterangan-beda-identitas/form-tambah" class="btn btn-sm btn-primary">
           <i class="fa fa-plus"></i> Tambah Data
         </a>
       </p>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Tabel Data Keterangan Kartu Keluarga Sementara
+          Tabel Data Keterangan Beda Identitas
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="keterangan-kk-sementara"
+              id="keterangan-beda-identitas-table"
             >
               <thead>
                 <tr>
@@ -73,9 +71,9 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var keterangan_kk_sementara = $('#keterangan-kk-sementara').DataTable({
+    var keterangan_beda_identitas = $('#keterangan-beda-identitas-table').DataTable({
       ajax: {
-        url: '/kaur-pemerintahan/keterangan-kk-sementara/data',
+        url: '/kaur-pemerintahan/keterangan-beda-identitas/data',
         type: 'get'
       },
       datatype: 'json',

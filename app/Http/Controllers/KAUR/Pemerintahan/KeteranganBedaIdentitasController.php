@@ -8,11 +8,11 @@ use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
-use App\Models\KAUR\Pemerintahan\KeteranganKKSementara;
-use App\Models\KAUR\Pemerintahan\KeteranganKKSementaraAnggota;
-use App\Http\Requests\KAUR\Pemerintahan\KeteranganKKSementaraRequest;
+use App\Models\KAUR\Pemerintahan\KeteranganBedaIdentitas;
+use App\Models\KAUR\Pemerintahan\KeteranganBedaIdentitasKesalahan;
+use App\Http\Requests\KAUR\Pemerintahan\KeteranganBedaIdentitasRequest;
 
-class KeteranganKKSementaraController extends Controller
+class KeteranganBedaIdentitasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,22 +21,22 @@ class KeteranganKKSementaraController extends Controller
      */
     public function data()
     {
-        $keteranganKKSementara = KeteranganKKSementara::with('penduduk', 'anggota_keluarga')
+        $keteranganBedaIdentitas = KeteranganBedaIdentitas::with('penduduk')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $datatablesKeteranganKKSementara = DataTables($keteranganKKSementara)
-            ->addColumn('action', function($keteranganKKSementara){
+        $datatablesKeteranganBedaIdentitas = DataTables($keteranganBedaIdentitas)
+            ->addColumn('action', function($keteranganBedaIdentitas){
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganKKSementara->id.'"
+                            href="/master/penduduk/form-ubah/'.$keteranganBedaIdentitas->id.'"
                             class="btn btn-circle btn-sm btn-warning"
                         >
                             <i class="fa fa-pencil"></i>
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-kk-sementara/surat/'.$keteranganKKSementara->id.'"
+                            href="/kaur-pemerintahan/keterangan-beda-identitas/surat/'.$keteranganBedaIdentitas->id.'"
                             class="btn btn-circle btn-sm btn-success"
                             target="_blank"
                         >
@@ -48,7 +48,7 @@ class KeteranganKKSementaraController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $datatablesKeteranganKKSementara;
+        return $datatablesKeteranganBedaIdentitas;
     }
 
     /**
@@ -58,7 +58,7 @@ class KeteranganKKSementaraController extends Controller
      */
     public function index()
     {
-        return view('kaur.pemerintahan.keterangan_kk_sementara.index');
+        return view('kaur.pemerintahan.keterangan_beda_identitas.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class KeteranganKKSementaraController extends Controller
     {
         $perangkat = Perangkat::all();
 
-        return view('kaur.pemerintahan.keterangan_kk_sementara.form_tambah', compact(
+        return view('kaur.pemerintahan.keterangan_beda_identitas.form_tambah', compact(
             'perangkat'
         ));
     }
@@ -81,39 +81,40 @@ class KeteranganKKSementaraController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KeteranganKKSementaraRequest $keteranganKKSementaraRequest)
+    public function store(KeteranganBedaIdentitasRequest $keteranganBedaIdentitasRequest)
     {
-        $masterPendudukID = $keteranganKKSementaraRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganKKSementaraRequest->profil_perangkat_id;
-        $anggotaKeluarga = $keteranganKKSementaraRequest->anggota_keluarga;
-        $redaksi = $keteranganKKSementaraRequest->redaksi;
+        $redaksi = $keteranganBedaIdentitasRequest->redaksi;
+        $jumlahKesalahan = $keteranganBedaIdentitasRequest->jumlah_kesalahan;
+        $masterPendudukID = $keteranganBedaIdentitasRequest->master_penduduk_id;
+        $profilPerangkatID = $keteranganBedaIdentitasRequest->profil_perangkat_id;
+        $redaksiTercantumAwal = $keteranganBedaIdentitasRequest->redaksi_tercantum_awal;
+        $redaksiTercantumAkhir = $keteranganBedaIdentitasRequest->redaksi_tercantum_akhir;
 
-        $keteranganKKSementaraData = [
+        $keteranganBedaIdentitasData = [
             'master_penduduk_id' => $masterPendudukID,
             'profil_perangkat_id' => $profilPerangkatID,
-            'anggota_keluarga' => $anggotaKeluarga,
+            'redaksi_tercantum_awal' => $redaksiTercantumAwal,
+            'redaksi_tercantum_akhir' => $redaksiTercantumAkhir,
+            'jumlah_kesalahan' => $jumlahKesalahan,
             'redaksi' => $redaksi
         ];
 
-        $createKeteranganKKSementara = KeteranganKKSementara::create($keteranganKKSementaraData);
+        $createKeteranganBedaIdentitas = KeteranganBedaIdentitas::create($keteranganBedaIdentitasData);
 
-        if($anggotaKeluarga != 0){
-            for ($x=0; $x<$anggotaKeluarga; $x++) {
-                $dataAnggotaKeluarga[] = [
-                    'kaur_pemerintahan_keterangan_kk_sementara_id' => $createKeteranganKKSementara->id,
-                    'nik' => $keteranganKKSementaraRequest->nik[$x],
-                    'nama' => $keteranganKKSementaraRequest->nama[$x],
-                    'tempat_lahir' => $keteranganKKSementaraRequest->tempat_lahir[$x],
-                    'tanggal_lahir' => Carbon::parse($keteranganKKSementaraRequest->tanggal_lahir[$x]),
-                    'hubungan_keluarga' => $keteranganKKSementaraRequest->hubungan_keluarga[$x],
+        if ($jumlahKesalahan != 0) {
+            for ($x=0; $x<$jumlahKesalahan; $x++) {
+                $jumlahKesalahanData[] = [
+                    'kaur_pemerintahan_keterangan_beda_identitas_id' => $createKeteranganBedaIdentitas->id,
+                    'data' => $keteranganBedaIdentitasRequest->data[$x],
+                    'keterangan' => $keteranganBedaIdentitasRequest->keterangan[$x],
                     'created_at' => Carbon::now()
                 ];
             }
         }
 
-        $createAnggotaKeluarga = KeteranganKKSementaraAnggota::insert($dataAnggotaKeluarga);
+        $createKeteranganBedaIdentitasKesalahan = KeteranganBedaIdentitasKesalahan::insert($jumlahKesalahanData);
 
-        return redirect('/kaur-pemerintahan/keterangan-kk-sementara')
+        return redirect('/kaur-pemerintahan/keterangan-beda-identitas')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -148,7 +149,7 @@ class KeteranganKKSementaraController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KeteranganKKSementaraRequest $keteranganKKSementaraRequest, $id)
+    public function update(KeteranganBedaIdentitasRequest $keteranganBedaIdentitasRequest, $id)
     {
         //
     }
@@ -171,25 +172,25 @@ class KeteranganKKSementaraController extends Controller
      */
     public function surat($id)
     {
-        $keteranganKKSementara = KeteranganKKSementara::with('penduduk', 'profil_perangkat', 'anggota_keluarga')
+        $keteranganBedaIdentitas = KeteranganBedaIdentitas::with('penduduk', 'profil_perangkat')
             ->where('id', '=', $id)
             ->first();
 
-        $anggotaKeluarga = KeteranganKKSementaraAnggota::where('kaur_pemerintahan_keterangan_kk_sementara_id', '=', $id)
+        $jumlahKesalahan = KeteranganBedaIdentitasKesalahan::where('kaur_pemerintahan_keterangan_beda_identitas_id', '=', $id)
             ->get();
 
         $nomor = 1;
         $profil = Pemerintahan::get()->first();
-        $total = KeteranganKKSementara::count();
+        $total = KeteranganBedaIdentitas::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
-        $surat = PDF::loadView('kaur.pemerintahan.keterangan_kk_sementara.surat', [
+        $surat = PDF::loadView('kaur.pemerintahan.keterangan_beda_identitas.surat', [
             'date' => $date,
             'nomor' => $nomor,
             'total' => $total,
             'profil' => $profil,
-            'anggotaKeluarga' => $anggotaKeluarga,
-            'keteranganKKSementara' => $keteranganKKSementara,
+            'jumlahKesalahan' => $jumlahKesalahan,
+            'keteranganBedaIdentitas' => $keteranganBedaIdentitas,
         ]);
 
         return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();

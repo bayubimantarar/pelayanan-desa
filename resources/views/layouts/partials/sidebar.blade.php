@@ -178,6 +178,12 @@
         </a>
         <ul class="nav nav-second-level">
           <li>
+            <a href="/kaur-kesra/keterangan-sktm">
+              <i class="fa fa-file-text-o"></i>
+              Ket. SKTM
+            </a>
+          </li>
+          <li>
             <a href="/kaur-kesra/keterangan-kelahiran">
               <i class="fa fa-file-text-o"></i>
               Ket. Kelahiran
@@ -214,12 +220,6 @@
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-sktm">
-              <i class="fa fa-file-text-o"></i>
-              Ket. SKTM
-            </a>
-          </li>
-          <li>
             <a href="/kaur-kesra/keterangan-tanggungan-keluarga">
               <i class="fa fa-file-text-o"></i>
               Ket. Tanggungan Keluarga
@@ -231,12 +231,12 @@
               Ket. Belum Memiliki Rumah
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="/kaur-kesra/keterangan-ahli-waris">
               <i class="fa fa-file-text-o"></i>
               Ket. Ahli Waris
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li>
     </ul>

@@ -400,6 +400,30 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
         });
     });
     Route::group(['prefix' => 'kaur-pemerintahan'], function(){
+        Route::group(['prefix' => 'keterangan-beda-identitas'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@index',
+                'as' => 'kaur_pemerintahan.keterangan_beda_identitas.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@data',
+                'as' => 'kaur_pemerintahan.keterangan_beda_identitas.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@create',
+                'as' => 'kaur_pemerintahan.keterangan_beda_identitas.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@store',
+                'as' => 'kaur_pemerintahan.keterangan_beda_identitas.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@surat',
+                'as' => 'kaur_pemerintahan.keterangan_beda_identitas.surat'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
         Route::group(['prefix' => 'keterangan-ktp-sementara'], function(){
             Route::get('/', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@index',

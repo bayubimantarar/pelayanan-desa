@@ -6,15 +6,16 @@ use Carbon\Carbon;
 use App\Models\Master\Penduduk;
 use App\Models\Profil\Perangkat;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\KAUR\Pemerintahan\KeteranganKKSementaraAnggota;
 
-class KeteranganKKSementara extends Model
+class KeteranganBedaIdentitas extends Model
 {
-    protected $table = 'kaur_pemerintahan_keterangan_kk_sementara';
+    protected $table = 'kaur_pemerintahan_keterangan_beda_identitas';
     protected $fillable = [
         'master_penduduk_id',
         'profil_perangkat_id',
-        'anggota_keluarga',
+        'redaksi_tercantum_awal',
+        'redaksi_tercantum_akhir',
+        'jumlah_kesalahan',
         'redaksi'
     ];
 
@@ -26,10 +27,5 @@ class KeteranganKKSementara extends Model
     public function profil_perangkat()
     {
         return $this->belongsTo(Perangkat::class, 'profil_perangkat_id', 'id');
-    }
-
-    public function anggota_keluarga()
-    {
-        return $this->hasMany(KeteranganKKSementaraAnggota::class, 'kaur_pemerintahan_keterangan_kk_sementara_id', 'id');
     }
 }

@@ -17,6 +17,10 @@ class CreateKaurPemerintahanKeteranganBedaIdentitasTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('master_penduduk_id');
             $table->bigInteger('profil_perangkat_id');
+            $table->text('redaksi_tercantum_awal');
+            $table->text('redaksi_tercantum_akhir');
+            $table->integer('jumlah_kesalahan');
+            $table->text('redaksi');
             $table->timestamps();
         });
     }

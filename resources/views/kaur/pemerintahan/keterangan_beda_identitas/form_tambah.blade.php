@@ -33,7 +33,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-pemerintahan/keterangan-kk-sementara/simpan" method="post">
+              <form action="/kaur-pemerintahan/keterangan-beda-identitas/simpan" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -69,7 +69,6 @@
 
                       <input
                         type="text"
-                        name=""
                         class="form-control"
                         id="nik"
                         value="{{ old('nik') }}"
@@ -99,10 +98,8 @@
                       </label>
                       <input
                         type="text"
-                        name=""
                         class="form-control"
                         id="nama"
-                        value=""
                         autocomplete="off"
                       />
                       @if($errors->has('nama'))
@@ -124,7 +121,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="tempat-lahir"
                         readonly
@@ -146,9 +142,8 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
-                        id=""
+                        id="tanggal-lahir"
                         readonly
                       />
                     </div>
@@ -163,7 +158,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="jenis-kelamin"
                         readonly
@@ -187,7 +181,6 @@
                       </label>
                       <input
                         type="text"
-                        name=""
                         class="form-control"
                         id="status-perkawinan"
                         readonly
@@ -209,7 +202,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="agama"
                         readonly
@@ -231,7 +223,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="pendidikan"
                         readonly
@@ -248,7 +239,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="pekerjaan"
                         readonly
@@ -271,12 +261,36 @@
                         Alamat
                       </label>
                       <textarea
-                        name="alamat"
                         class="form-control"
                         id="alamat"
                         rows="5"
                         readonly
                       ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label
+                        class="control-label"
+                        for="alamat"
+                      >
+                        Redaksi Awal Informasi Tercantum
+                        <button
+                          id="ubah-keterangan-redaksi-tercantum-awal"
+                          class="btn btn-sm btn-warning"
+                        >
+                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
+                        </button>
+                      </label>
+                      <textarea
+                        class="form-control"
+                        name="redaksi_tercantum_awal"
+                        id="redaksi-tercantum-awal"
+                        rows="5"
+                        readonly
+                      >Seperti yang tercantum di</textarea>
                     </div>
                   </div>
                 </div>
@@ -290,18 +304,43 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12">
                       <label for="">
-                        Jumlah Anggota Keluarga
+                        Jumlah Kesalahan Data
                       </label>
                       <input
                         type="number"
-                        name="anggota_keluarga"
+                        name="jumlah_kesalahan"
                         class="form-control"
-                        id="anggota-keluarga"
+                        id="jumlah-kesalahan"
                       />
                     </div>
                   </div>
                 </div>
                 <div id="form-keluarga"></div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label
+                        class="control-label"
+                        for="alamat"
+                      >
+                        Redaksi Akhir Informasi Tercantum
+                        <button
+                          id="ubah-keterangan-redaksi-tercantum-akhir"
+                          class="btn btn-sm btn-warning"
+                        >
+                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
+                        </button>
+                      </label>
+                      <textarea
+                        name="redaksi_tercantum_akhir"
+                        class="form-control"
+                        id="redaksi-tercantum-akhir"
+                        rows="5"
+                        readonly
+                      >Seperti yang tercantum di</textarea>
+                    </div>
+                  </div>
+                </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -320,7 +359,7 @@
                         id="redaksi"
                         rows="5"
                         readonly
-                      >Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame, dan pada saat ini Kartu Keluarga (KK) dalam proses / belum terbit.</textarea>
+                      >Bersangkutan benar sebagai penduduk / warga Desa Cilame, dimana terdapat perbedaan penulisan namun dari kedua data tersebut masih menunjukan orang yang sama.</textarea>
                     </div>
                   </div>
                 </div>
@@ -459,52 +498,40 @@
       $('#redaksi').focus();
       $('#ubah-keterangan-redaksi').attr('disabled', true);
     });
-    $('#anggota-keluarga').keyup(function(event){
+    $('#ubah-keterangan-redaksi-tercantum-awal').click(function(event){
+      event.preventDefault();
+      $('#redaksi-tercantum-awal').prop('readonly', false);
+      $('#redaksi-tercantum-awal').focus();
+      $('#ubah-keterangan-redaksi-tercantum-awal').attr('disabled', true);
+    });
+    $('#ubah-keterangan-redaksi-tercantum-akhir').click(function(event){
+      event.preventDefault();
+      $('#redaksi-tercantum-akhir').prop('readonly', false);
+      $('#redaksi-tercantum-akhir').focus();
+      $('#ubah-keterangan-redaksi-tercantum-akhir').attr('disabled', true);
+    });
+    $('#jumlah-kesalahan').keyup(function(event){
       var element;
-      var anggota_keluarga = $('#anggota-keluarga').val();
-      if(anggota_keluarga == 0 || anggota_keluarga == '') {
+      var jumlah_kesalahan = $('#jumlah-kesalahan').val();
+      if(jumlah_kesalahan == 0 || jumlah_kesalahan == '') {
         $('#form-keluarga').empty().hide();
       }else{
-        for(x=0; x<anggota_keluarga; x++){
+        for(x=0; x<jumlah_kesalahan; x++){
           element =
-            '<div class="form-group">'+
-              '<div class="row">'+
-                '<div class="col-lg-6 col-md-6 col-xs-12">'+
-                  '<label>NIK</label>'+
-                  '<input type="text" name="nik[]" class="form-control" />'+
-                '</div>'+
-              '</div>'+
-            '</div>'+
             '<div class="row">'+
-              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+              '<div class="col-lg-6 col-md-6 col-xs-12">'+
                 '<div class="form-group">'+
-                  '<label>Nama Lengkap</label>'+
-                  '<input type="text" name="nama[]" class="form-control" />'+
+                  '<label>Data</label>'+
+                  '<input type="text" name="data[]" class="form-control" />'+
                 '</div>'+
               '</div>'+
-              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+              '<div class="col-lg-6 col-md-6 col-xs-12">'+
                 '<div class="form-group">'+
-                  '<label>Tempat Lahir</label>'+
-                  '<input type="text" name="tempat_lahir[]" class="form-control" />'+
-                '</div>'+
-              '</div>'+
-              '<div class="col-lg-3 col-md-3 col-xs-12">'+
-                '<div class="form-group">'+
-                  '<label>Tanggal Lahir</label>'+
-                  '<div class="input-group date tanggal-lahir" id="">'+
-                    '<input type="text" name="tanggal_lahir[]" class="form-control" />'+
-                    '<span class="input-group-addon"><span class="fa fa-calendar"></span></span>'+
-                  '</div>'+
-                '</div>'+
-              '</div>'+
-              '<div class="col-lg-3 col-md-3 col-xs-12">'+
-                '<div class="form-group">'+
-                  '<label>Hubungan Keluarga</label>'+
-                  '<input type="text" name="hubungan_keluarga[]" class="form-control" />'+
+                  '<label>Keterangan</label>'+
+                  '<input type="text" name="keterangan[]" class="form-control" />'+
                 '</div>'+
               '</div>'+
             '</div>';
-
           $('#form-keluarga').append(element).show();
           $('.tanggal-lahir').datetimepicker({
             format: 'DD-MM-YYYY',
