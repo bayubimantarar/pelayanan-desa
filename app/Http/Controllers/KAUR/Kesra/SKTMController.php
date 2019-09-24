@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\KAUR\Kesra;
 
-use Illuminate\Http\Request;
+use PDF;
+use DataTables;
+use Carbon\Carbon;
+use App\Models\KAUR\Kesra\SKTM;
+use App\Models\Profil\Perangkat;
+use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\KAUR\Kesra\SKTMRequest;
 
 class SKTMController extends Controller
 {
@@ -12,9 +18,46 @@ class SKTMController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function data()
+    {
+        $sktm = SKTM::with('penduduk')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $datatablesSKTM = DataTables($sktm)
+            ->addColumn('action', function($sktm){
+                return '
+                    <center>
+                        <a
+                            href="/master/penduduk/form-ubah/'.$sktm->id.'"
+                            class="btn btn-circle btn-sm btn-warning"
+                        >
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a
+                            href="/kaur-kesra/sktm/surat/'.$sktm->id.'"
+                            class="btn btn-circle btn-sm btn-success"
+                            target="_blank"
+                        >
+                            <i class="fa fa-file-pdf-o"></i>
+                        </a>
+                    </center>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+
+        return $datatablesSKTM;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //
+        return view('kaur.kesra.sktm.index');
     }
 
     /**
@@ -24,7 +67,11 @@ class SKTMController extends Controller
      */
     public function create()
     {
-        //
+        $perangkat = Perangkat::all();
+
+        return view('kaur.kesra.sktm.form_tambah', compact(
+            'perangkat'
+        ));
     }
 
     /**
@@ -33,9 +80,9 @@ class SKTMController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SKTMRequest $sktmRequest)
     {
-        //
+        dd($sktmRequest->all());
     }
 
     /**
@@ -67,7 +114,7 @@ class SKTMController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SKTMRequest $sktmRequest, $id)
     {
         //
     }

@@ -398,8 +398,6 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_pemerintahan.keterangan_domisili.surat'
             ]);
         });
-    });
-    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
         Route::group(['prefix' => 'keterangan-beda-identitas'], function(){
             Route::get('/', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganBedaIdentitasController@index',
@@ -422,8 +420,6 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_pemerintahan.keterangan_beda_identitas.surat'
             ]);
         });
-    });
-    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
         Route::group(['prefix' => 'keterangan-ktp-sementara'], function(){
             Route::get('/', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@index',
@@ -446,8 +442,6 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.surat'
             ]);
         });
-    });
-    Route::group(['prefix' => 'kaur-pemerintahan'], function(){
         Route::group(['prefix' => 'keterangan-kk-sementara'], function(){
             Route::get('/', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@index',
@@ -468,6 +462,26 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKKSementaraController@surat',
                 'as' => 'kaur_pemerintahan.keterangan_kk_sementara.surat'
+            ]);
+        });
+    });
+    Route::group(['prefix' => 'kaur-kesra'], function(){
+        Route::group(['prefix' => 'sktm'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\SKTMController@index',
+                'as' => 'kaur_kesra.sktm.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\SKTMController@data',
+                'as' => 'kaur_kesra.sktm.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\SKTMController@create',
+                'as' => 'kaur_kesra.sktm.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\SKTMController@store',
+                'as' => 'kaur_kesra.sktm.store'
             ]);
         });
     });

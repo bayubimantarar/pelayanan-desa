@@ -14,23 +14,25 @@
       <li>
         <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
       </li>
-      <li>
-        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Desa<span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-          <li>
-            <a href="/profil/pemerintahan">
-              <i class="fa fa-building-o"></i>
-              Profil Desa
-            </a>
-          </li>
-          <li>
-            <a href="/profil/perangkat">
-              <i class="fa fa-users"></i>
-              Perangkat Desa
-            </a>
-          </li>
-        </ul>
-      </li>
+      @if(Auth::guard('pengguna')->User()->jenis_pengguna === "Admin")
+        <li>
+          <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Desa<span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li>
+              <a href="/profil/pemerintahan">
+                <i class="fa fa-building-o"></i>
+                Profil Desa
+              </a>
+            </li>
+            <li>
+              <a href="/profil/perangkat">
+                <i class="fa fa-users"></i>
+                Perangkat Desa
+              </a>
+            </li>
+          </ul>
+        </li>
+      @endif
       @if(Auth::guard('pengguna')->User()->jenis_pengguna === "Admin")
         <li>
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Master<span class="fa arrow"></span></a>
@@ -178,7 +180,7 @@
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-kesra/keterangan-sktm">
+            <a href="/kaur-kesra/sktm">
               <i class="fa fa-file-text-o"></i>
               Ket. SKTM
             </a>
