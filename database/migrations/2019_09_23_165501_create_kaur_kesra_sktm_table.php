@@ -19,11 +19,16 @@ class CreateKaurKesraSktmTable extends Migration
             $table->bigInteger('profil_perangkat_id');
             $table->string('jenis_sktm', 150);
             $table->string('nama', 150)->nullable();
+            $table->string('tempat_lahir', 150)->nullable();
+            $table->date('tanggal_lahir')->nullable();
+            $table->string('jenis_kelamin', 150)->nullable();
             $table->string('nama_sekolah', 150)->nullable();
             $table->string('kelas', 150)->nullable();
             $table->string('jurusan', 150)->nullable();
             $table->text('alamat_sekolah')->nullable();
             $table->string('diwakili_oleh', 150)->nullable();
+            $table->text('redaksi');
+            $table->string('keperluan', 150)->nullable();
             $table->timestamps();
         });
     }

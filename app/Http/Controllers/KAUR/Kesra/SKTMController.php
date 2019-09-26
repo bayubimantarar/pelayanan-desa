@@ -7,6 +7,7 @@ use DataTables;
 use Carbon\Carbon;
 use App\Models\KAUR\Kesra\SKTM;
 use App\Models\Profil\Perangkat;
+use App\Models\Master\JenisKelamin;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\KAUR\Kesra\SKTMRequest;
@@ -68,9 +69,11 @@ class SKTMController extends Controller
     public function create()
     {
         $perangkat = Perangkat::all();
+        $jenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.sktm.form_tambah', compact(
-            'perangkat'
+            'perangkat',
+            'jenisKelamin'
         ));
     }
 
@@ -82,7 +85,54 @@ class SKTMController extends Controller
      */
     public function store(SKTMRequest $sktmRequest)
     {
-        dd($sktmRequest->all());
+        $nama = $sktmRequest->nama;
+        $kelas = $sktmRequest->kelas;
+        $jurusan = $sktmRequest->jurusan;
+        $redaksi = $sktmRequest->redaksi;
+        $jenis = $sktmRequest->jenis_sktm;
+        $keperluan = $sktmRequest->keperluan;
+        $namaSekolah = $sktmRequest->nama_sekolah;
+        $tempatLahir = $sktmRequest->tempat_lahir;
+        $diWakiliOleh = $sktmRequest->diwakili_oleh;
+        $jenisKelamin = $sktmRequest->jenis_kelamin;
+        $alamatSekolah = $sktmRequest->alamat_sekolah;
+        $masterPendudukID = $sktmRequest->master_penduduk_id;
+        $profilPerangkatID = $sktmRequest->profil_perangkat_id;
+        $tanggalLahir = Carbon::parse($sktmRequest->tanggal_lahir);
+
+        if ($jenis == "Pendidikan") {
+            $sktmData = [
+                'master_penduduk_id' => $masterPendudukID,
+                'profil_perangkat_id' => $profilPerangkatID,
+                'jenis_sktm' => $jenis,
+                'nama' => $nama,
+                'tempat_lahir' => $tempatLahir,
+                'tanggal_lahir' => $tanggalLahir,
+                'jenis_kelamin' => $jenisKelamin,
+                'nama_sekolah' => $namaSekolah,
+                'kelas' => $kelas,
+                'jurusan' => $jurusan,
+                'alamat_sekolah' => $alamatSekolah,
+                'diwakili_oleh' => $diWakiliOleh,
+                'redaksi' => $redaksi,
+                'keperluan' => $keperluan
+            ];
+        }else{
+            $sktmData = [
+                'master_penduduk_id' => $masterPendudukID,
+                'profil_perangkat_id' => $profilPerangkatID,
+                'jenis_sktm' => $jenis,
+                'redaksi' => $redaksi,
+                'keperluan' => $keperluan
+            ];
+        }
+
+        $createSKTM = SKTM::create($sktmData);
+
+        return redirect('/kaur-kesra/sktm')
+            ->with([
+                'notification' => 'Data berhasil disimpan.'
+            ]);
     }
 
     /**
@@ -128,5 +178,30 @@ class SKTMController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function surat($id)
+    {
+        $sktm = SKTM::with('penduduk', 'profil_perangkat')
+            ->where('id', '=', $id)
+            ->first();
+
+        $profil = Pemerintahan::get()->first();
+        $total = SKTM::count();
+        $date = Carbon::now()->formatLocalized('%d %B %Y');
+
+        $surat = PDF::loadView('kaur.kesra.sktm.surat', [
+            'sktm' => $sktm,
+            'date' => $date,
+            'total' => $total,
+            'profil' => $profil,
+        ]);
+
+        return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();
     }
 }

@@ -124,7 +124,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="tempat-lahir"
                         readonly
@@ -146,7 +145,7 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
+                        name=""
                         class="form-control"
                         id="tanggal-lahir"
                         readonly
@@ -163,7 +162,7 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
+                        name=""
                         class="form-control"
                         id="jenis-kelamin"
                         readonly
@@ -209,7 +208,8 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
+                        name="
+                        "
                         class="form-control"
                         id="agama"
                         readonly
@@ -231,7 +231,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="pendidikan"
                         readonly
@@ -248,7 +247,6 @@
                       </label>
                       <input
                         type="text"
-                        name="jenis_kelamin"
                         class="form-control"
                         id="pekerjaan"
                         readonly
@@ -293,7 +291,7 @@
                         Jenis SKTM
                       </label>
                       <select
-                        name=""
+                        name="jenis_sktm"
                         id="jenis-sktm"
                         class="form-control"
                       >
@@ -309,7 +307,7 @@
                 </div>
                 <div id="sktm-pendidikan">
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <div class="form-group">
                         <label for="">
                           Nama Lengkap
@@ -319,6 +317,58 @@
                           name="nama"
                           class="form-control"
                         />
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
+                        <label for="">
+                          Tempat Lahir
+                        </label>
+                        <input
+                          type="text"
+                          name="tempat_lahir"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
+                        <label for="">
+                          Tanggal Lahir
+                        </label>
+                        <div
+                          class="input-group date"
+                          id="tanggal-lahir-anak"
+                        >
+                          <input
+                            type="text"
+                            name="tanggal_lahir"
+                            class="form-control"
+                            value="{{ old('tanggal_lahir') }}"
+                          />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
+                        <label for="">
+                          Jenis Kelamin
+                        </label>
+                        <select
+                          name="jenis_kelamin"
+                          class="form-control"
+                        >
+                          @foreach($jenisKelamin as $item)
+                            <option
+                              value="{{ $item->keterangan }}"
+                            >
+                              {{ $item->keterangan }}
+                            </option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -561,11 +611,9 @@
         });
       }
     });
-    $('#tertanggal-rt').datetimepicker({
-      format: 'DD-MM-YYYY'
-    });
-    $('#tertanggal-rw').datetimepicker({
-      format: 'DD-MM-YYYY'
+    $('#tanggal-lahir-anak').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years'
     });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();

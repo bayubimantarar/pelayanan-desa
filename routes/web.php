@@ -483,6 +483,32 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\SKTMController@store',
                 'as' => 'kaur_kesra.sktm.store'
             ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\SKTMController@surat',
+                'as' => 'kaur_kesra.sktm.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-kelahiran'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@index',
+                'as' => 'kaur_kesra.keterangan_kelahiran.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@data',
+                'as' => 'kaur_kesra.keterangan_kelahiran.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@create',
+                'as' => 'kaur_kesra.keterangan_kelahiran.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@store',
+                'as' => 'kaur_kesra.keterangan_kelahiran.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@surat',
+                'as' => 'kaur_kesra.keterangan_kelahiran.surat'
+            ]);
         });
     });
 });
