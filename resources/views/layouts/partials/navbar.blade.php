@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Pelayanan Desa Cilame</a>
+    <a class="navbar-brand" href="index.html">Desa Cilame</a>
   </div>
   <!-- /.navbar-header -->
 
@@ -226,7 +226,7 @@
                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                 >
                   <i class="fa fa-sign-out fa-fw"></i>
-                  Logout
+                  Keluar
                 </a>
                 <form
                   id="logout-form"

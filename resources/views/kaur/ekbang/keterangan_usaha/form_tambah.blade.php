@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; KAUR Ekbang &raquo; Keterangan Usaha &raquo; Form Tambah | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -10,25 +10,23 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
 @endsection
 
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Tambah Data SKCK</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li><a href="#">KAUR Ekbang - Keterangan Usaha</a></li>
+        <li class="active">Form Tambah</li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data SKCK
+          Form Tambah
         </div>
         <div class="panel-body">
           <div class="row">
@@ -43,241 +41,7 @@
                   name="_token"
                   value="{{ csrf_token() }}"
                 />
-                <input
-                  type="hidden"
-                  name="master_penduduk_id"
-                  id="master-penduduk-id"
-                />
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="form-group {{ $errors->has('nik') ? 'has-error has-feedback' : '' }}">
-                      <label
-                        class="control-label"
-                        for="nik"
-                      >
-                        NIK
-                      <a
-                        href="/master/penduduk/form-tambah"
-                      >
-                        <i class="fa fa-plus"></i>
-                        Tambah Data Penduduk
-                      </a>
-                      </label>
-                      <div class="scrollable-dropdown-menu">
-
-                      <input
-                        type="text"
-                        name="nik"
-                        class="form-control"
-                        id="nik"
-                        value="{{ old('nik') }}"
-                        autocomplete="off"
-                      />
-                      </div>
-                      @if($errors->has('nik'))
-                        <p class="text-danger">
-                          {{ $errors->first('nik') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
-                      <label
-                        class="control-label"
-                        for="nama"
-                      >
-                        Nama Lengkap
-                      <a
-                        href="/master/penduduk/form-tambah"
-                      >
-                        <i class="fa fa-plus"></i>
-                        Tambah Data Penduduk
-                      </a>
-                      </label>
-                      <input
-                        type="text"
-                        name="nama"
-                        class="form-control"
-                        id="nama"
-                        value="{{ old('nama') }}"
-                        autocomplete="off"
-                      />
-                      @if($errors->has('nama'))
-                        <p class="text-danger">
-                          {{ $errors->first('nama') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tempat-lahir"
-                      >
-                        Tempat Lahir
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="tempat-lahir"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tanggal-lahir"
-                      >
-                        Tanggal Lahir
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="tanggal-lahir"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="jenis-kelamin"
-                      >
-                        Jenis Kelamin
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="jenis-kelamin"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="nama"
-                      >
-                        Status Perkawinan
-                      </label>
-                      <input
-                        type="text"
-                        name="nama"
-                        class="form-control"
-                        id="status-perkawinan"
-                        readonly
-                      />
-                      @if($errors->has('nama'))
-                        <p class="text-danger">
-                          {{ $errors->first('nama') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tempat-lahir"
-                      >
-                        Agama
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="agama"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tanggal-lahir"
-                      >
-                        Pendidikan
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="pendidikan"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="jenis-kelamin"
-                      >
-                        Pekerjaan
-                      </label>
-                      <input
-                        type="text"
-                        name="jenis_kelamin"
-                        class="form-control"
-                        id="pekerjaan"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        class="control-label"
-                        for="alamat"
-                      >
-                        Alamat
-                      </label>
-                      <textarea
-                        name="alamat"
-                        class="form-control"
-                        id="alamat"
-                        rows="5"
-                        readonly
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
+                @include('layouts.partials.identitas_penduduk')
                 <h4>
                   Keterangan Surat
                 </h4>
@@ -286,7 +50,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Redaksi
+                        Keterangan Redaksi <i class="text-danger">*</i>
                         <button
                           id="ubah-keterangan-redaksi"
                           class="btn btn-sm btn-warning"
@@ -308,7 +72,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Jenis Usaha
+                        Jenis Usaha <i class="text-danger">*</i>
                       </label>
                       <textarea
                         name="jenis_usaha"
@@ -323,7 +87,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Lokasi
+                        Lokasi <i class="text-danger">*</i>
                       </label>
                       <textarea
                         name="lokasi"
@@ -338,7 +102,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Keperluan
+                        Keterangan Keperluan <i class="text-danger">*</i>
                       </label>
                       <textarea
                         name="keperluan"
@@ -353,7 +117,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Ditanda Tangani Oleh
+                        Ditanda Tangani Oleh <i class="text-danger">*</i>
                       </label>
                       <select
                         name="profil_perangkat_id"
@@ -404,7 +168,7 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nik',
+            url: '/kependudukan/penduduk/api/data-nik',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -421,7 +185,7 @@
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({
-          url: '/master/penduduk/api/data/'+nik,
+          url: '/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -442,7 +206,7 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nama',
+            url: '/kependudukan/penduduk/api/data-nama',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -459,7 +223,7 @@
       afterSelect: function(result){
         var nama = $('#nama').val();
         $.ajax({
-          url: '/master/penduduk/api/data-by-nama/'+nama,
+          url: '/kependudukan/penduduk/api/data-by-nama/'+nama,
           type: 'get',
           dataType: 'json',
           success: function(data){

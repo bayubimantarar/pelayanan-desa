@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::group(['prefix' => 'autentikasi'], function(){
     Route::get('/form-login', [
         'uses' => 'Autentikasi\AutentikasiController@loginForm',
@@ -192,48 +193,50 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'master.status_perkawinan.destroy'
             ]);
         });
+    });
+    Route::group(['prefix' => 'kependudukan'], function(){
         Route::group(['prefix' => 'penduduk'], function(){
             Route::group(['prefix' => 'api'], function(){
                 Route::get('/data-nik', [
-                    'uses' => 'Master\PendudukController@APIdataNIK',
+                    'uses' => 'Kependudukan\PendudukController@APIdataNIK',
                 ]);
                 Route::get('/data-nama', [
-                    'uses' => 'Master\PendudukController@APIdataNama',
+                    'uses' => 'Kependudukan\PendudukController@APIdataNama',
                 ]);
                 Route::get('/data/{nik}', [
-                    'uses' => 'Master\PendudukController@APIdata',
+                    'uses' => 'Kependudukan\PendudukController@APIdata',
                 ]);
                 Route::get('/data-by-nama/{nama}', [
-                    'uses' => 'Master\PendudukController@APIdataByNama',
+                    'uses' => 'Kependudukan\PendudukController@APIdataByNama',
                 ]);
             });
             Route::get('/', [
-                'uses' => 'Master\PendudukController@index',
-                'as' => 'master.penduduk.index'
+                'uses' => 'Kependudukan\PendudukController@index',
+                'as' => 'kependudukan.penduduk.index'
             ]);
             Route::get('/data', [
-                'uses' => 'Master\PendudukController@data',
-                'as' => 'master.penduduk.data'
+                'uses' => 'Kependudukan\PendudukController@data',
+                'as' => 'kependudukan.penduduk.data'
             ]);
             Route::get('/form-tambah', [
-                'uses' => 'Master\PendudukController@create',
-                'as' => 'master.penduduk.create'
+                'uses' => 'Kependudukan\PendudukController@create',
+                'as' => 'kependudukan.penduduk.create'
             ]);
             Route::get('/form-ubah/{id}', [
-                'uses' => 'Master\PendudukController@edit',
-                'as' => 'master.penduduk.edit'
+                'uses' => 'Kependudukan\PendudukController@edit',
+                'as' => 'kependudukan.penduduk.edit'
             ]);
             Route::post('/simpan', [
-                'uses' => 'Master\PendudukController@store',
-                'as' => 'master.penduduk.store'
+                'uses' => 'Kependudukan\PendudukController@store',
+                'as' => 'kependudukan.penduduk.store'
             ]);
             Route::put('/ubah/{id}', [
-                'uses' => 'Master\PendudukController@update',
-                'as' => 'master.penduduk.update'
+                'uses' => 'Kependudukan\PendudukController@update',
+                'as' => 'kependudukan.penduduk.update'
             ]);
             Route::delete('/hapus/{id}', [
-                'uses' => 'Master\PendudukController@destroy',
-                'as' => 'master.penduduk.destroy'
+                'uses' => 'Kependudukan\PendudukController@destroy',
+                'as' => 'kependudukan.penduduk.destroy'
             ]);
         });
     });
@@ -508,6 +511,28 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganKelahiranController@surat',
                 'as' => 'kaur_kesra.keterangan_kelahiran.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-kematian'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@index',
+                'as' => 'kaur_kesra.keterangan_kematian.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@data',
+                'as' => 'kaur_kesra.keterangan_kematian.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@create',
+                'as' => 'kaur_kesra.keterangan_kematian.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@store',
+                'as' => 'kaur_kesra.keterangan_kematian.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@surat',
+                'as' => 'kaur_kesra.keterangan_kematian.surat'
             ]);
         });
     });

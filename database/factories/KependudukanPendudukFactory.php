@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use App\Models\Master\Penduduk;
+use App\Models\Kependudukan\Penduduk;
 
 $factory->define(Penduduk::class, function (Faker $faker) {
     return [

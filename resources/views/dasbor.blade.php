@@ -7,7 +7,9 @@ Dasbor | Pelayanan Desa Cilame
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Dashboard</h1>
+      <ul class="breadcrumb">
+        <li class="active">Dasbor</li>
+      </ul>
     </div>
     <!-- /.col-lg-12 -->
 </div>

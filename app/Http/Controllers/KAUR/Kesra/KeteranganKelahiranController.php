@@ -66,7 +66,11 @@ class KeteranganKelahiranController extends Controller
      */
     public function create()
     {
-        //
+        $perangkat = Perangkat::all();
+
+        return view('kaur.kesra.keterangan_kelahiran.form_tambah', compact(
+            'perangkat'
+        ));
     }
 
     /**

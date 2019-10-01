@@ -2,8 +2,8 @@
 
 namespace App\Models\KAUR\Ekbang;
 
-use App\Models\Master\Penduduk;
 use App\Models\Profil\Perangkat;
+use App\Models\Kependudukan\Penduduk;
 use Illuminate\Database\Eloquent\Model;
 
 class KeteranganUsaha extends Model

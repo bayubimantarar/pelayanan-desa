@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  KAUR Ekbang &raquo; Keterangan Usaha | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -22,27 +22,38 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li class="active">KAUR Ekbang - Keterangan Usaha</li>
+        <li class="active">Kependudukan - Penduduk</li>
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
+      @if(session('notification'))
+        <div class="alert alert-success" role="alert">
+          {{ session('notification') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <p>
-        <a href="/kaur-ekbang/keterangan-usaha/form-tambah" class="btn btn-sm btn-primary">
-          <i class="fa fa-plus"></i> Tambah Data
+        <a
+          href="/kependudukan/penduduk/form-tambah"
+          class="btn btn-sm btn-social btn-vk"
+        >
+          <i class="fa fa-plus"></i> Tambah
         </a>
       </p>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Tabel Keterangan Usaha
+          Tabel Data Penduduk
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="keterangan-usaha-table"
+              id="penduduk-table"
             >
               <thead>
                 <tr>
@@ -74,19 +85,39 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var keterangan_usaha = $('#keterangan-usaha-table').DataTable({
+    var penduduk_table = $('#penduduk-table').DataTable({
       ajax: {
-        url: '/kaur-ekbang/keterangan-usaha/data',
-        type: 'get'
+        url: '/kependudukan/penduduk/data',
+        type: 'GET'
       },
       datatype: 'json',
       columns: [
-        {data: 'penduduk.nik'},
-        {data: 'penduduk.nama'},
-        {data: 'penduduk.alamat'},
+        {data: 'nik'},
+        {data: 'nama'},
+        {data: 'alamat'},
         {data: 'action'}
       ],
       responsive: true
     });
+
+    function destroy(id)
+    {
+      var confirmation = confirm("Yakin akan menghapus data ini?");
+
+      if (confirmation) {
+        $.ajax({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/kependudukan/penduduk/hapus/'+id,
+            type: 'delete',
+            dataType: 'json',
+            success: function(result){
+              alert('Data berhasil dihapus.');
+              penduduk_table.ajax.reload();
+            }
+        });
+      }
+    }
   </script>
 @endsection

@@ -11,7 +11,7 @@
   <link
     rel="stylesheet"
     type="text/css"
-    href="/assets/vendor/bootstrap/css/bootstrap.min.css"
+    href="/assets/vendor/bootstrap/css/bootstrap.css"
   />
   <link
     rel="stylesheet"
@@ -32,6 +32,16 @@
     rel="stylesheet"
     type="text/css"
     href="/assets/vendor/font-awesome/css/font-awesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/assets/css/custom.css"
+  />
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="/assets/css/bootstrap-social-button.css"
   />
   <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

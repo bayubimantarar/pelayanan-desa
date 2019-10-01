@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMasterPendudukTable extends Migration
+class CreateKependudukanPendudukTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMasterPendudukTable extends Migration
      */
     public function up()
     {
-        Schema::create('master_penduduk', function (Blueprint $table) {
+        Schema::create('kependudukan_penduduk', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nik', 75)->unique();
             $table->string('nama', 150);
@@ -36,6 +36,6 @@ class CreateMasterPendudukTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master_penduduk');
+        Schema::dropIfExists('kependudukan_penduduk');
     }
 }

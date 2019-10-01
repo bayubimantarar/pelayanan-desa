@@ -24,7 +24,7 @@ services:
     build:
       context: ./docker/mysql
     ports:
-      - 33061:3306
+      - 3306:3306
     command: [
       '--character-set-server=utf8mb4',
       '--collation-server=utf8mb4_unicode_ci',
@@ -44,3 +44,19 @@ services:
       PMA_PORT: 3306
     volumes:
       - ./:/usr/share/nginx/html
+  # selenium-hub:
+  #   container_name: pelayanan-desa-selenium-hub
+  #   build:
+  #     context: ./docker/selenium-hub
+  #   ports:
+  #     - 4444:4444
+  # firefox:
+  #   container_name: pelayanan-desa-firefox
+  #   build:
+  #     context: ./docker/firefox
+  #   depends_on:
+  #     - selenium-hub
+  #   environment:
+  #     - HUB_HOST=selenium-hub
+  #     - HUB_PORT=4444
+

@@ -26,7 +26,7 @@
   <div class="row">
     <div class="col-lg-12">
       <p>
-        <a href="/kaur-ekbang/keterangan-usaha/form-tambah" class="btn btn-sm btn-primary">
+        <a href="/kaur-kesra/keterangan-kelahiran/form-tambah" class="btn btn-sm btn-primary">
           <i class="fa fa-plus"></i> Tambah Data
         </a>
       </p>
