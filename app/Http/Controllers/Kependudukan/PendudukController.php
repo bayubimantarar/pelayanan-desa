@@ -70,7 +70,6 @@ class PendudukController extends Controller
                         <a
                             class="btn btn-sm btn-social btn-danger"
                             id="delete-button"
-                            class="btn btn-circle btn-sm btn-danger"
                             onclick="destroy('.$penduduk->id.')"
                         >
                             <i class="fa fa-times"></i> Hapus

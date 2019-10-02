@@ -15,7 +15,11 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Ubah Data Pendidikan</h1>
+      <ul class="breadcrumb">
+        <li><a href="/">Dasbor</a></li>
+        <li><a href="/master/pendidikan">Master - Pendidikan</a></li>
+        <li class="active">Form Ubah</li>
+      </ul>
     </div>
   </div>
   <div class="row">
@@ -45,7 +49,7 @@
                           class="control-label"
                           for="keterangan"
                         >
-                          Keterangan
+                          Keterangan <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -62,9 +66,16 @@
                       </div>
                     </div>
                   </div>
+                  <p>
+                    <small>
+                      <code>
+                        Label ber-simbol (*) perlu diisi/dipilih.
+                      </code>
+                    </small>
+                  </p>
                   <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-sm btn-social btn-vk"
                   >
                     <i class="fa fa-check"></i> Simpan
                   </button>

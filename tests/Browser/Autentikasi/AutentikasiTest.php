@@ -16,8 +16,8 @@ class AutentikasiTest extends DuskTestCase
     public function loginForm()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/test')
-                ->screenshot('test');
+            $browser->visit('/')
+                ->screenshot('localhost');
         });
     }
 }

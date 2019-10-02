@@ -20,14 +20,28 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Data Status Perkawinan</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li class="active">Master - Status Perkawinan</li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
+      @if(session('notification'))
+        <div class="alert alert-success" role="alert">
+          {{ session('notification') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <p>
-        <a href="/master/status-perkawinan/form-tambah" class="btn btn-sm btn-primary">
-          <i class="fa fa-plus"></i> Tambah Data Status Perkawinan
+        <a
+          href="/master/status-perkawinan/form-tambah"
+          class="btn btn-sm btn-social btn-vk"
+        >
+          <i class="fa fa-plus"></i> Tambah
         </a>
       </p>
       <div class="panel panel-default">
@@ -44,7 +58,7 @@
               <thead>
                 <tr>
                   <th>Keterangan</th>
-                  <th>Opsi</th>
+                  <th width="150">Opsi</th>
                 </tr>
               </thead>
             </table>

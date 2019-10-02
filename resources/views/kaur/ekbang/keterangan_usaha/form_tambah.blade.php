@@ -50,12 +50,12 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Redaksi <i class="text-danger">*</i>
+                        Keterangan Redaksi <small class="text-danger">*</small>
                         <button
                           id="ubah-keterangan-redaksi"
-                          class="btn btn-sm btn-warning"
+                          class="btn btn-sm btn-social btn-warning"
                         >
-                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
+                          <i class="fa fa-pencil"></i> Ubah
                         </button>
                       </label>
                       <textarea
@@ -72,7 +72,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Jenis Usaha <i class="text-danger">*</i>
+                        Jenis Usaha <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="jenis_usaha"
@@ -87,7 +87,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Lokasi <i class="text-danger">*</i>
+                        Lokasi <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="lokasi"
@@ -102,7 +102,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Keperluan <i class="text-danger">*</i>
+                        Keterangan Keperluan <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="keperluan"
@@ -117,7 +117,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Ditanda Tangani Oleh <i class="text-danger">*</i>
+                        Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
                         name="profil_perangkat_id"
@@ -136,9 +136,16 @@
                     </div>
                   </div>
                 </div>
+                <p>
+                  <small>
+                    <code>
+                      Label ber-simbol (*) perlu diisi/dipilih.
+                    </code>
+                  </small>
+                </p>
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  class="btn btn-sm btn-social btn-vk"
                 >
                   <i class="fa fa-check"></i> Simpan
                 </button>

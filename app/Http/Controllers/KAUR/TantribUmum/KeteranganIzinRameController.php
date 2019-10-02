@@ -30,16 +30,16 @@ class KeteranganIzinRameController extends Controller
                     <center>
                         <a
                             href="/master/penduduk/form-ubah/'.$keteranganIzinRame->id.'"
-                            class="btn btn-circle btn-sm btn-warning"
+                            class="btn btn-sm btn-social btn-warning"
                         >
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
                             href="/kaur-tantrib-dan-umum/keterangan-izin-rame/surat/'.$keteranganIzinRame->id.'"
-                            class="btn btn-circle btn-sm btn-success"
+                            class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
-                            <i class="fa fa-file-pdf-o"></i>
+                            <i class="fa fa-file-pdf-o"></i> Cetak
                         </a>
                     </center>
                 ';
@@ -110,7 +110,7 @@ class KeteranganIzinRameController extends Controller
 
         $createKeteranganIzinRame = KeteranganIzinRame::create($keteranganIzinRameData);
 
-        return redirect('/kaur-tantrib-umum/keterangan-izin-rame')
+        return redirect('/kaur-tantrib-dan-umum/keterangan-izin-rame')
             ->with([
                 'notification' => 'Data keterangan izin rame berhasil disimpan.'
             ]);

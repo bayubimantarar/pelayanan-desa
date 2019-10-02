@@ -3,8 +3,8 @@
 namespace App\Models\KAUR\Umum;
 
 use Carbon\Carbon;
-use App\Models\Master\Penduduk;
 use App\Models\Profil\Perangkat;
+use App\Models\Kependudukan\Penduduk;
 use Illuminate\Database\Eloquent\Model;
 
 class KeteranganGhoib extends Model

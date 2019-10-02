@@ -24,17 +24,16 @@ class AgamaController extends Controller
                     <center>
                         <a
                             href="/master/agama/form-ubah/'.$agama->id.'"
-                            class="btn btn-circle btn-sm btn-warning"
+                            class="btn btn-sm btn-social btn-warning"
                         >
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="#hapus"
+                            class="btn btn-sm btn-social btn-danger"
                             id="delete-button"
-                            class="btn btn-circle btn-sm btn-danger"
                             onclick="destroy('.$agama->id.')"
                         >
-                            <i class="fa fa-times"></i>
+                            <i class="fa fa-times"></i> Hapus
                         </a>
                     </center>
                 ';

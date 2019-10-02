@@ -20,19 +20,33 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Keterangan Izin Rame</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li class="active">KAUR Tantrib & Umum - Keterangan Izin Rame-Rame</li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
+      @if(session('notification'))
+        <div class="alert alert-success" role="alert">
+          {{ session('notification') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <p>
-        <a href="/kaur-tantrib-dan-umum/keterangan-izin-rame/form-tambah" class="btn btn-sm btn-primary">
-          <i class="fa fa-plus"></i> Tambah Data Keterangan Izin Rame
+        <a
+          href="/kaur-tantrib-dan-umum/keterangan-izin-rame/form-tambah"
+          class="btn btn-sm btn-social btn-vk"
+        >
+          <i class="fa fa-plus"></i> Tambah
         </a>
       </p>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Tabel Data Keterangan Izin Rame
+          Tabel Data
         </div>
         <div class="panel-body">
           <div class="table-responsive">
@@ -46,7 +60,7 @@
                   <th>NIK</th>
                   <th>Nama</th>
                   <th>Alamat</th>
-                  <th>Opsi</th>
+                  <th width="150">Opsi</th>
                 </tr>
               </thead>
             </table>

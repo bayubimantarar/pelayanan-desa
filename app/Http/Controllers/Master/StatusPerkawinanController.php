@@ -24,17 +24,16 @@ class StatusPerkawinanController extends Controller
                     <center>
                         <a
                             href="/master/status-perkawinan/form-ubah/'.$statusPerkawinan->id.'"
-                            class="btn btn-circle btn-sm btn-warning"
+                            class="btn btn-sm btn-social btn-warning"
                         >
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="#hapus"
+                            class="btn btn-sm btn-social btn-danger"
                             id="delete-button"
-                            class="btn btn-circle btn-sm btn-danger"
                             onclick="destroy('.$statusPerkawinan->id.')"
                         >
-                            <i class="fa fa-times"></i>
+                            <i class="fa fa-times"></i> Hapus
                         </a>
                     </center>
                 ';

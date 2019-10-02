@@ -36,7 +36,7 @@ class AgamaRequest extends FormRequest
     public function messages()
     {
         return [
-            'keterangan.required' => 'Keterangan harus diisi.',
+            'keterangan.required' => 'Keterangan perlu diisi.',
             'keterangan.unique' => 'Keterangan sudah ada.'
         ];
     }

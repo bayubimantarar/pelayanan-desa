@@ -20,14 +20,28 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Keterangan Beda Identitas</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li class="active">KAUR Pemerintahan - Keterangan Beda Identitas</li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
+      @if(session('notification'))
+        <div class="alert alert-success" role="alert">
+          {{ session('notification') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <p>
-        <a href="/kaur-pemerintahan/keterangan-beda-identitas/form-tambah" class="btn btn-sm btn-primary">
-          <i class="fa fa-plus"></i> Tambah Data
+        <a
+          href="/kaur-pemerintahan/keterangan-beda-identitas/form-tambah"
+          class="btn btn-sm btn-social btn-vk"
+        >
+          <i class="fa fa-plus"></i> Tambah
         </a>
       </p>
       <div class="panel panel-default">
@@ -46,7 +60,7 @@
                   <th>NIK</th>
                   <th>Nama</th>
                   <th>Alamat</th>
-                  <th>Opsi</th>
+                  <th width="150">Opsi</th>
                 </tr>
               </thead>
             </table>

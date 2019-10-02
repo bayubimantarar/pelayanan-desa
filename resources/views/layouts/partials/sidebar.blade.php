@@ -19,7 +19,7 @@
           class="{{ Request::segment(1) === 'profil' ? 'active' : ''}}"
         >
           <a href="#">
-            <i class="fa fa-bar-chart-o fa-fw"></i> Data Desa<span class="fa arrow"></span>
+            <i class="fa fa-bar-chart-o fa-fw"></i> Data Profil<span class="fa arrow"></span>
           </a>
           <ul class="nav nav-second-level">
             <li>
@@ -118,46 +118,61 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{ Request::segment(1) === 'kaur-umum' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Umum
           <span class="fa arrow"></span>
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-umum/skck">
+            <a
+              href="/kaur-umum/skck"
+              class="{{ Request::segment(2) === 'skck' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. SKCK
             </a>
           </li>
           <li>
-            <a href="/kaur-umum/keterangan-ghoib">
+            <a
+              href="/kaur-umum/keterangan-ghoib"
+              class="{{ Request::segment(2) === 'keterangan-ghoib' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Ghoib
             </a>
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{ Request::segment(1) === 'kaur-tantrib-dan-umum' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Tantrib & Umum
           <span class="fa arrow"></span>
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-tantrib-dan-umum/keterangan-bersih-diri">
+            <a
+              href="/kaur-tantrib-dan-umum/keterangan-bersih-diri"
+              class="{{ Request::segment(2) === 'keterangan-bersih-diri' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Bersih Diri
             </a>
           </li>
           <li>
-            <a href="/kaur-tantrib-dan-umum/keterangan-kehilangan">
+            <a
+              href="/kaur-tantrib-dan-umum/keterangan-kehilangan"
+              class="{{ Request::segment(2) === 'keterangan-kehilangan' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Kehilangan
             </a>
           </li>
           <li>
-            <a href="/kaur-tantrib-dan-umum/keterangan-izin-rame">
+            <a
+              href="/kaur-tantrib-dan-umum/keterangan-izin-rame"
+              class="{{ Request::segment(2) === 'keterangan-izin-rame' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Izin rame-rame
             </a>

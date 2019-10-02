@@ -60,7 +60,7 @@
                   <th>NIK</th>
                   <th>Nama</th>
                   <th>Alamat</th>
-                  <th>Opsi</th>
+                  <th width="150">Opsi</th>
                 </tr>
               </thead>
             </table>

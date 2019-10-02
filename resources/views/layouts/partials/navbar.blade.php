@@ -7,7 +7,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="index.html">Desa Cilame</a>
+    <a class="navbar-brand" href="index.html">
+      <img
+        src="/assets/img/logo-bandung-barat.jpg"
+        alt=""
+        height="30"
+        style="display: inline;"
+      />
+      Desa Cilame
+    </a>
   </div>
   <!-- /.navbar-header -->
 

@@ -31,16 +31,16 @@ class KeteranganBersihDiriController extends Controller
                     <center>
                         <a
                             href="/master/penduduk/form-ubah/'.$keteranganBersihDiri->id.'"
-                            class="btn btn-circle btn-sm btn-warning"
+                            class="btn btn-sm btn-social btn-warning"
                         >
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
                             href="/kaur-tantrib-dan-umum/keterangan-bersih-diri/surat/'.$keteranganBersihDiri->id.'"
-                            class="btn btn-circle btn-sm btn-success"
+                            class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
-                            <i class="fa fa-file-pdf-o"></i>
+                            <i class="fa fa-file-pdf-o"></i> Cetak
                         </a>
                     </center>
                 ';

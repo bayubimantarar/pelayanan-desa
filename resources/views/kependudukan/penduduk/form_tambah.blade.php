@@ -48,7 +48,7 @@
                           class="control-label"
                           for="nik"
                         >
-                          NIK <i class="text-danger">*</i>
+                          NIK <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -72,7 +72,7 @@
                           class="control-label"
                           for="nama"
                         >
-                          Nama Lengkap <i class="text-danger">*</i>
+                          Nama Lengkap <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -94,7 +94,7 @@
                           class="control-label"
                           for="tempat-lahir"
                         >
-                          Tempat Lahir <i class="text-danger">*</i>
+                          Tempat Lahir <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -116,7 +116,7 @@
                           class="control-label"
                           for="tanggal-lahir"
                         >
-                          Tanggal Lahir <i class="text-danger">*</i>
+                          Tanggal Lahir <small class="text-danger">*</small>
                         </label>
                         <div
                           class="input-group date"
@@ -145,7 +145,7 @@
                           class="control-label"
                           for="jenis-kelamin"
                         >
-                          Jenis Kelamin <i class="text-danger">*</i>
+                          Jenis Kelamin <small class="text-danger">*</small>
                         </label>
                         <select
                           name="jenis_kelamin"
@@ -171,7 +171,7 @@
                         class="control-label"
                         for="status-perkawinan"
                       >
-                        Status Perkawinan <i class="text-danger">*</i>
+                        Status Perkawinan <small class="text-danger">*</small>
                       </label>
                       <select
                         name="status_perkawinan"
@@ -195,7 +195,7 @@
                           class="control-label"
                           for="agama"
                         >
-                          Agama <i class="text-danger">*</i>
+                          Agama <small class="text-danger">*</small>
                         </label>
                         <select
                           name="agama"
@@ -219,7 +219,7 @@
                           class="control-label"
                           for="pendidikan"
                         >
-                          Pendidikan <i class="text-danger">*</i>
+                          Pendidikan <small class="text-danger">*</small>
                         </label>
                         <select
                           name="pendidikan"
@@ -243,7 +243,7 @@
                           class="control-label"
                           for="pekerjaan"
                         >
-                          Pekerjaan <i class="text-danger">*</i>
+                          Pekerjaan <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -267,7 +267,7 @@
                           class="control-label"
                           for="alamat"
                         >
-                          Alamat <i class="text-danger">*</i>
+                          Alamat <small class="text-danger">*</small>
                         </label>
                         <textarea
                           name="alamat"
@@ -283,6 +283,13 @@
                       </div>
                     </div>
                   </div>
+                  <p>
+                    <small>
+                      <code>
+                        Label ber-simbol (*) perlu diisi/dipilih.
+                      </code>
+                    </small>
+                  </p>
                   <button
                     type="submit"
                     class="btn btn-sm btn-social btn-vk"

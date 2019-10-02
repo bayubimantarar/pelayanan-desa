@@ -21,7 +21,11 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Tambah Data Keterangan Kehilangan</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li><a href="#">KAUR Tantrib & Umum - Keterangan Kehilangan</a></li>
+        <li class="active">Form Tambah</li>
+      </ul>
     </div>
   </div>
   <div class="row">
@@ -59,7 +63,7 @@
                       >
                         NIK
                       <a
-                        href="/master/penduduk/form-tambah"
+                        href="/kependudukan/penduduk/form-tambah"
                       >
                         <i class="fa fa-plus"></i>
                         Tambah Data Penduduk
@@ -91,7 +95,7 @@
                       >
                         Nama Lengkap
                       <a
-                        href="/master/penduduk/form-tambah"
+                        href="/kependudukan/penduduk/form-tambah"
                       >
                         <i class="fa fa-plus"></i>
                         Tambah Data Penduduk
@@ -299,7 +303,7 @@
                   <div class="row">
                     <div class="col-lg-3 col-md-3 col-xs-12">
                       <label for="">
-                        RT
+                        RT <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
@@ -309,7 +313,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
                       <label for="">
-                        Tertanggal dari RT
+                        Tertanggal dari RT <small class="text-danger">*</small>
                       </label>
                       <div
                         class="input-group date"
@@ -327,7 +331,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
                       <label for="">
-                        RW
+                        RW <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
@@ -338,7 +342,7 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
                       <label for="">
-                        Tertanggal dari RW
+                        Tertanggal dari RW <small class="text-danger">*</small>
                       </label>
                       <div
                         class="input-group date"
@@ -360,7 +364,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Alasan Kehilangan
+                        Alasan Kehilangan <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="alasan"
@@ -375,7 +379,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Ditanda Tangani Oleh
+                        Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
                         name="profil_perangkat_id"
@@ -394,9 +398,16 @@
                     </div>
                   </div>
                 </div>
+                <p>
+                  <small>
+                    <code>
+                      Label ber-simbol (*) perlu diisi/dipilih.
+                    </code>
+                  </small>
+                </p>
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  class="btn btn-sm btn-social btn-vk"
                 >
                   <i class="fa fa-check"></i> Simpan
                 </button>
@@ -426,7 +437,7 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nik',
+            url: '/kependudukan/penduduk/api/data-nik',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -443,7 +454,7 @@
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({
-          url: '/master/penduduk/api/data/'+nik,
+          url: '/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -464,7 +475,7 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nama',
+            url: '/kependudukan/penduduk/api/data-nama',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -481,7 +492,7 @@
       afterSelect: function(result){
         var nama = $('#nama').val();
         $.ajax({
-          url: '/master/penduduk/api/data-by-nama/'+nama,
+          url: '/kependudukan/penduduk/api/data-by-nama/'+nama,
           type: 'get',
           dataType: 'json',
           success: function(data){

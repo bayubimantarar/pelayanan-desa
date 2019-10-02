@@ -15,11 +15,22 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Profil Pemerintahan</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li class="active">Profil - Pemerintahan</li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
+      @if(session('notification'))
+        <div class="alert alert-success" role="alert">
+          {{ session('notification') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <div class="panel panel-default">
         <div class="panel-heading">
           Data Profil Pemerintahan
@@ -45,7 +56,7 @@
                           class="control-label"
                           for="kabupaten"
                         >
-                          Kabupaten
+                          Kabupaten <i class="text-danger">*</i>
                         </label>
                         <input
                           type="text"
@@ -69,7 +80,7 @@
                           class="control-label"
                           for="kecamatan"
                         >
-                          Kecamatan
+                          Kecamatan <i class="text-danger">*</i>
                         </label>
                         <input
                           type="text"
@@ -93,7 +104,7 @@
                           class="control-label"
                           for="desa"
                         >
-                          Nama Desa
+                          Nama Desa <i class="text-danger">*</i>
                         </label>
                         <input
                           type="text"
@@ -117,7 +128,7 @@
                           class="control-label"
                           for="nama-kepala-desa"
                         >
-                          Nama Kepala Desa
+                          Nama Kepala Desa <i class="text-danger">*</i>
                         </label>
                         <input
                           type="text"
@@ -141,7 +152,7 @@
                           class="control-label"
                           for="email"
                         >
-                          Email Desa
+                          Email Desa <i class="text-danger">*</i>
                         </label>
                         <input
                           type="text"
@@ -165,7 +176,7 @@
                           class="control-label"
                           for="alamat"
                         >
-                          Alamat Desa
+                          Alamat Desa <i class="text-danger">*</i>
                         </label>
                         <textarea
                           name="alamat"
@@ -180,11 +191,18 @@
                       </div>
                     </div>
                   </div>
+                  <p>
+                    <small>
+                      <code>
+                        Label ber-simbol (*) perlu diisi/dipilih.
+                      </code>
+                    </small>
+                  </p>
                   <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-sm btn-social btn-vk"
                   >
-                    <i class="fa fa-check"></i> Ubah
+                    <i class="fa fa-check"></i> Simpan
                   </button>
                 </form>
               </div>

@@ -10,6 +10,8 @@ services:
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
       - ./:/usr/share/nginx/html
+    links:
+      - selenium
   php:
     container_name: pelayanan-desa-php
     build:
@@ -44,19 +46,8 @@ services:
       PMA_PORT: 3306
     volumes:
       - ./:/usr/share/nginx/html
-  # selenium-hub:
-  #   container_name: pelayanan-desa-selenium-hub
-  #   build:
-  #     context: ./docker/selenium-hub
-  #   ports:
-  #     - 4444:4444
-  # firefox:
-  #   container_name: pelayanan-desa-firefox
-  #   build:
-  #     context: ./docker/firefox
-  #   depends_on:
-  #     - selenium-hub
-  #   environment:
-  #     - HUB_HOST=selenium-hub
-  #     - HUB_PORT=4444
+  selenium:
+    container_name: pelayanan-desa-selenium
+    build:
+      context: ./docker/selenium
 
