@@ -56,7 +56,7 @@
                           class="control-label"
                           for="kabupaten"
                         >
-                          Kabupaten <i class="text-danger">*</i>
+                          Kabupaten <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -80,7 +80,7 @@
                           class="control-label"
                           for="kecamatan"
                         >
-                          Kecamatan <i class="text-danger">*</i>
+                          Kecamatan <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -104,7 +104,7 @@
                           class="control-label"
                           for="desa"
                         >
-                          Nama Desa <i class="text-danger">*</i>
+                          Nama Desa <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -128,7 +128,7 @@
                           class="control-label"
                           for="nama-kepala-desa"
                         >
-                          Nama Kepala Desa <i class="text-danger">*</i>
+                          Nama Kepala Desa <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -152,7 +152,7 @@
                           class="control-label"
                           for="email"
                         >
-                          Email Desa <i class="text-danger">*</i>
+                          Email Desa <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
@@ -176,7 +176,7 @@
                           class="control-label"
                           for="alamat"
                         >
-                          Alamat Desa <i class="text-danger">*</i>
+                          Alamat Desa <small class="text-danger">*</small>
                         </label>
                         <textarea
                           name="alamat"

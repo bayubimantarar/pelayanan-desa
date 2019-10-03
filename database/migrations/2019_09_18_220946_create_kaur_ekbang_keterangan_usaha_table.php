@@ -15,8 +15,8 @@ class CreateKaurEkbangKeteranganUsahaTable extends Migration
     {
         Schema::create('kaur_ekbang_keterangan_usaha', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->text('redaksi');
             $table->string('jenis_usaha', 150);
             $table->text('lokasi');

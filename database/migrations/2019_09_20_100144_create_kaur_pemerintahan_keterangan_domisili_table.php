@@ -15,8 +15,8 @@ class CreateKaurPemerintahanKeteranganDomisiliTable extends Migration
     {
         Schema::create('kaur_pemerintahan_keterangan_domisili', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->text('redaksi');
             $table->string('keperluan', 150);
             $table->timestamps();

@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\KAUR\Kesra;
 
-use Illuminate\Http\Request;
+use PDF;
+use DataTables;
+use Carbon\Carbon;
+use App\Models\Profil\Perangkat;
+use App\Models\Master\JenisKelamin;
 use App\Http\Controllers\Controller;
+use App\Models\KAUR\Kesra\KeteranganKematian;
+use App\Http\Requests\KAUR\Kesra\KeteranganKematianRequest;
 
 class KeteranganKematianController extends Controller
 {
@@ -12,9 +18,46 @@ class KeteranganKematianController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function data()
+    {
+        $keteranganKematian = KeteranganKematian::with('penduduk')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $datatablesKeteranganKematian = DataTables($keteranganKematian)
+            ->addColumn('action', function($keteranganKematian){
+                return '
+                    <center>
+                        <a
+                            href="/master/penduduk/form-ubah/'.$keteranganKematian->id.'"
+                            class="btn btn-circle btn-sm btn-warning"
+                        >
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a
+                            href="/kaur-pemerintahan/keterangan-kelahiran/surat/'.$keteranganKematian->id.'"
+                            class="btn btn-circle btn-sm btn-success"
+                            target="_blank"
+                        >
+                            <i class="fa fa-file-pdf-o"></i>
+                        </a>
+                    </center>
+                ';
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+
+        return $datatablesKeteranganKematian;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        //
+        return view('kaur.kesra.keterangan_kematian.index');
     }
 
     /**
@@ -24,7 +67,13 @@ class KeteranganKematianController extends Controller
      */
     public function create()
     {
-        //
+        $perangkat = Perangkat::all();
+        $jenisKelamin = JenisKelamin::all();
+
+        return view('kaur.kesra.keterangan_kematian.form_tambah', compact(
+            'perangkat',
+            'jenisKelamin'
+        ));
     }
 
     /**
@@ -33,9 +82,13 @@ class KeteranganKematianController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(KeteranganKematianRequest $keteranganKematianRequest)
     {
-        //
+        $jamMeninggal = Carbon::parse($keteranganKematianRequest->jam_meninggal);
+
+        $data = [
+            'jam_meninggal' => $jamMeninggal
+        ];
     }
 
     /**
@@ -67,7 +120,7 @@ class KeteranganKematianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KeteranganKematianRequest $keteranganKematianRequest, $id)
     {
         //
     }

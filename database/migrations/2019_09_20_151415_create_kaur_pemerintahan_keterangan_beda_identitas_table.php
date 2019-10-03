@@ -15,8 +15,8 @@ class CreateKaurPemerintahanKeteranganBedaIdentitasTable extends Migration
     {
         Schema::create('kaur_pemerintahan_keterangan_beda_identitas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->text('redaksi_tercantum_awal');
             $table->text('redaksi_tercantum_akhir');
             $table->integer('jumlah_kesalahan');

@@ -13,7 +13,7 @@ abstract class DuskTestCase extends BaseTestCase
 
     protected function baseUrl()
     {
-        return 'http://localhost:8080/';
+        return 'http://pelayanan-desa.test';
     }
 
     /**
@@ -38,19 +38,15 @@ abstract class DuskTestCase extends BaseTestCase
             '--disable-gpu',
             '--headless',
             '--no-sandbox',
-            '--ignore-certificate-errors',
-            '--window-size=1920,1080',
+            '--window-size=1366,780',
         ]);
 
         return RemoteWebDriver::create(
             'http://selenium:4444/wd/hub', DesiredCapabilities::chrome()
+                ->setCapability(
+                    ChromeOptions::CAPABILITY,
+                    $options
+                )
         );
-
-        // return RemoteWebDriver::create(
-        //     'http://localhost:9515', DesiredCapabilities::chrome()->setCapability(
-        //         ChromeOptions::CAPABILITY, $options
-        //     )
-        //     ->setCapability('acceptInsecureCerts', true)
-        // );
     }
 }

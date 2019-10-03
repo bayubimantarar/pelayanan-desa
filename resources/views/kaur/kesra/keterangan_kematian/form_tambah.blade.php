@@ -23,7 +23,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li><a href="#">KAUR Pemerintahan - SKTM</a></li>
+        <li><a href="#">KAUR Kesra - Keterangan Kematian</a></li>
         <li class="active">Form Tambah</li>
       </ul>
     </div>
@@ -37,7 +37,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-kesra/sktm/simpan" method="post">
+              <form action="/kaur-kesra/keterangan-kematian/simpan" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -56,165 +56,171 @@
                   </b>
                 </h4>
                 <hr />
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
                       <label for="">
-                        Jenis SKTM <small class="text-danger">*</small>
+                        Nama Lengkap <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="nama"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Tempat Lahir
+                      </label>
+                      <input
+                        type="text"
+                        name="tempat_lahir"
+                        class="form-control"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Tanggal Lahir
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="tanggal-lahir-anak"
+                      >
+                        <input
+                          type="text"
+                          name="tanggal_lahir"
+                          class="form-control"
+                          value="{{ old('tanggal_lahir') }}"
+                        />
+                        <span class="input-group-addon">
+                          <span class="fa fa-calendar"></span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Jenis Kelamin
                       </label>
                       <select
-                        name="jenis_sktm"
-                        id="jenis-sktm"
+                        name="jenis_kelamin"
                         class="form-control"
                       >
-                        <option value="Kesehatan">
-                          Kesehatan
-                        </option>
-                        <option value="Pendidikan">
-                          Pendidikan
-                        </option>
+                        @foreach($jenisKelamin as $item)
+                          <option
+                            value="{{ $item->keterangan }}"
+                          >
+                            {{ $item->keterangan }}
+                          </option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
                 </div>
-                <div id="sktm-pendidikan">
+                <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Nama Lengkap <small class="text-danger">*</small>
-                        </label>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label for="">
+                        Telah meninggal dunia pada :
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Tanggal
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="tanggal-meninggal"
+                      >
                         <input
                           type="text"
-                          name="nama"
+                          name="tanggal_meninggal"
                           class="form-control"
+                          value="{{ old('tanggal_meninggal') }}"
                         />
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Tempat Lahir
-                        </label>
-                        <input
-                          type="text"
-                          name="tempat_lahir"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Tanggal Lahir
-                        </label>
-                        <div
-                          class="input-group date"
-                          id="tanggal-lahir-anak"
-                        >
-                          <input
-                            type="text"
-                            name="tanggal_lahir"
-                            class="form-control"
-                            value="{{ old('tanggal_lahir') }}"
-                          />
-                          <span class="input-group-addon">
-                            <span class="fa fa-calendar"></span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Jenis Kelamin
-                        </label>
-                        <select
-                          name="jenis_kelamin"
-                          class="form-control"
-                        >
-                          @foreach($jenisKelamin as $item)
-                            <option
-                              value="{{ $item->keterangan }}"
-                            >
-                              {{ $item->keterangan }}
-                            </option>
-                          @endforeach
-                        </select>
+                        <span class="input-group-addon">
+                          <span class="fa fa-calendar"></span>
+                        </span>
                       </div>
                     </div>
                   </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Hari
+                      </label>
+                      <input
+                        type="text"
+                        name="hari_meninggal"
+                        class="form-control"
+                        id="hari-meninggal"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Jam
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="jam-meninggal"
+                      >
+                        <input
+                          type="text"
+                          name="jam_meninggal"
+                          class="form-control"
+                          value="{{ old('jam_meninggal') }}"
+                        />
+                        <span class="input-group-addon">
+                          <span class="fa fa-clock-o"></span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Nama Sekolah <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          name="nama_sekolah"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Kelas <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          name="kelas"
-                          class="form-control"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Jurusan <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          name="jurusan"
-                          class="form-control"
-                        />
-                      </div>
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <label for="">
+                        Alamat Sekolah <small class="text-danger">*</small>
+                      </label>
+                      <textarea
+                        name="alamat_sekolah"
+                        class="form-control"
+                        id=""
+                        rows="5"
+                      ></textarea>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-xs-12">
-                        <label for="">
-                          Alamat Sekolah <small class="text-danger">*</small>
-                        </label>
-                        <textarea
-                          name="alamat_sekolah"
-                          class="form-control"
-                          id=""
-                          rows="5"
-                        ></textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 col-md-6 col-xs-12">
-                        <label
-                          class="control-label"
-                          for=""
-                        >
-                          Diwakili Oleh <small class="text-danger">*</small>
-                        </label>
-                        <select
-                          name="diwakili_oleh"
-                          class="form-control"
-                        >
-                          <option value="Ayah">Ayah</option>
-                          <option value="Ibu">Ibu</option>
-                          <option value="Wali">Wali</option>
-                        </select>
-                      </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                      <label
+                        class="control-label"
+                        for=""
+                      >
+                        Diwakili Oleh <small class="text-danger">*</small>
+                      </label>
+                      <select
+                        name="diwakili_oleh"
+                        class="form-control"
+                      >
+                        <option value="Ayah">Ayah</option>
+                        <option value="Ibu">Ibu</option>
+                        <option value="Wali">Wali</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -307,7 +313,7 @@
   ></script>
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment-with-locales.js"
   ></script>
   <script
     type="text/javascript"
@@ -395,6 +401,33 @@
     $('#tanggal-lahir-anak').datetimepicker({
       format: 'DD-MM-YYYY',
       viewMode: 'years'
+    });
+    $('#tanggal-meninggal').datetimepicker({
+      format: 'DD-MM-YYYY',
+      locale: 'id',
+    }).on('dp.change', function(e){
+      // console.log(e.date);
+      console.log(e.date._d.getDay());
+      var day = e.date._d.getDay();
+
+      if (day == 1) {
+        $('#hari-meninggal').val('Senin');
+      }else if(day == 2){
+        $('#hari-meninggal').val('Selasa');
+      }else if(day == 3){
+        $('#hari-meninggal').val('Rabu');
+      }else if(day == 4){
+        $('#hari-meninggal').val('Kamis');
+      }else if(day == 5){
+        $('#hari-meninggal').val('Jumat');
+      }else if(day == 6){
+        $('#hari-meninggal').val('Sabtu');
+      }else if(day == 0){
+        $('#hari-meninggal').val('Minggu');
+      }
+    });
+    $('#jam-meninggal').datetimepicker({
+      format: 'HH:mm',
     });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();

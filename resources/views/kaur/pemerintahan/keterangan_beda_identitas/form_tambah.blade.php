@@ -85,7 +85,7 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12">
                       <label for="">
-                        Jumlah Kesalahan Data
+                        Jumlah Kesalahan Data <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
@@ -104,7 +104,7 @@
                         class="control-label"
                         for="alamat"
                       >
-                        Redaksi Akhir Informasi Tercantum
+                        Redaksi Akhir Informasi Tercantum <small class="text-danger">*</small>
                         <button
                           id="ubah-keterangan-redaksi-tercantum-akhir"
                           class="btn btn-sm btn-social btn-warning"
@@ -126,7 +126,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Redaksi
+                        Keterangan Redaksi <small class="text-danger">*</small>
                         <button
                           id="ubah-keterangan-redaksi"
                           class="btn btn-sm btn-social btn-warning"
@@ -148,7 +148,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Ditanda Tangani Oleh
+                        Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
                         name="profil_perangkat_id"
@@ -309,13 +309,13 @@
             '<div class="row">'+
               '<div class="col-lg-6 col-md-6 col-xs-12">'+
                 '<div class="form-group">'+
-                  '<label>Data</label>'+
+                  '<label>Data <small class="text-danger">*</small></label>'+
                   '<input type="text" name="data[]" class="form-control" />'+
                 '</div>'+
               '</div>'+
               '<div class="col-lg-6 col-md-6 col-xs-12">'+
                 '<div class="form-group">'+
-                  '<label>Keterangan</label>'+
+                  '<label>Keterangan <small class="text-danger">*</small></label>'+
                   '<input type="text" name="keterangan[]" class="form-control" />'+
                 '</div>'+
               '</div>'+

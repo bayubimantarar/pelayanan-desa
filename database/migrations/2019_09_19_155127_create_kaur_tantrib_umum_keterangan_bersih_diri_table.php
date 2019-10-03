@@ -15,8 +15,8 @@ class CreateKaurTantribUmumKeteranganBersihDiriTable extends Migration
     {
         Schema::create('kaur_tantrib_umum_keterangan_bersih_diri', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->string('nama_ayah', 150)->nullable();
             $table->string('tempat_lahir_ayah', 150)->nullable();
             $table->string('tanggal_lahir_ayah', 150)->nullable();

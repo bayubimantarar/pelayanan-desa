@@ -22,7 +22,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li class="active">KAUR Kesra - SKTM</li>
+        <li class="active">KAUR Kesra - Keterangan Kematian</li>
       </ul>
     </div>
   </div>
@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/sktm/form-tambah"
+          href="/kaur-kesra/keterangan-kematian/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -46,14 +46,14 @@
       </p>
       <div class="panel panel-default">
         <div class="panel-heading">
-          Tabel Data Keterangan Tidak Mampu
+          Tabel Data
         </div>
         <div class="panel-body">
           <div class="table-responsive">
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="sktm-table"
+              id="keterangan-izin-rame-table"
             >
               <thead>
                 <tr>
@@ -85,9 +85,9 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var sktm = $('#sktm-table').DataTable({
+    var keterangan_izin_rame = $('#keterangan-izin-rame-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/sktm/data',
+        url: '/kaur-tantrib-dan-umum/keterangan-izin-rame/data',
         type: 'get'
       },
       datatype: 'json',

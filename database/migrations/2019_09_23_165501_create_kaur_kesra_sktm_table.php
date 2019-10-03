@@ -15,8 +15,8 @@ class CreateKaurKesraSktmTable extends Migration
     {
         Schema::create('kaur_kesra_sktm', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->string('jenis_sktm', 150);
             $table->string('nama', 150)->nullable();
             $table->string('tempat_lahir', 150)->nullable();

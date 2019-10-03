@@ -21,7 +21,7 @@
       <div class="scrollable-dropdown-menu">
 
       <input
-        type="text"
+        type="number"
         name="nik"
         class="form-control"
         id="nik"

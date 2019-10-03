@@ -6,12 +6,11 @@ services:
     build:
       context: ./docker/nginx
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/hosts:/etc/hosts
       - ./:/usr/share/nginx/html
-    links:
-      - selenium
   php:
     container_name: pelayanan-desa-php
     build:
@@ -50,4 +49,6 @@ services:
     container_name: pelayanan-desa-selenium
     build:
       context: ./docker/selenium
+    links:
+      - nginx:pelayanan-desa.test
 

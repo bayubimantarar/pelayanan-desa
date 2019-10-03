@@ -49,6 +49,7 @@ class KeteranganKelahiranController extends Controller
 
         return $datatablesKeteranganKelahiran;
     }
+
     /**
      * Display a listing of the resource.
      *

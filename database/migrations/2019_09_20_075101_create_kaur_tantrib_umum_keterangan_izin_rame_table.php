@@ -15,8 +15,8 @@ class CreateKaurTantribUmumKeteranganIzinRameTable extends Migration
     {
         Schema::create('kaur_tantrib_umum_keterangan_izin_rame', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('master_penduduk_id');
-            $table->bigInteger('profil_perangkat_id');
+            $table->bigInteger('penduduk_id');
+            $table->bigInteger('perangkat_id');
             $table->string('rt', 75);
             $table->string('rw', 75);
             $table->date('tertanggal_rt');
