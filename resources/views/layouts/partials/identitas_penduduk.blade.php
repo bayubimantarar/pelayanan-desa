@@ -1,6 +1,6 @@
 <input
   type="hidden"
-  name="master_penduduk_id"
+  name="penduduk_id"
   id="master-penduduk-id"
 />
 <div class="row">

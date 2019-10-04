@@ -53,7 +53,7 @@
             <table
               width="100%"
               class="table table-striped table-bordered table-hover"
-              id="keterangan-izin-rame-table"
+              id="keterangan-kematian-table"
             >
               <thead>
                 <tr>
@@ -85,9 +85,9 @@
     src="/assets/vendor/datatables-responsive/dataTables.responsive.js"
   ></script>
   <script>
-    var keterangan_izin_rame = $('#keterangan-izin-rame-table').DataTable({
+    var keterangan_kematian = $('#keterangan-kematian-table').DataTable({
       ajax: {
-        url: '/kaur-tantrib-dan-umum/keterangan-izin-rame/data',
+        url: '/kaur-kesra/keterangan-kematian/data',
         type: 'get'
       },
       datatype: 'json',

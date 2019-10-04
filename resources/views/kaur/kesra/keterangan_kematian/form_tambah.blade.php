@@ -135,7 +135,7 @@
                   <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="form-group">
                       <label for="">
-                        Tanggal
+                        Tanggal <small class="text-danger">*</small>
                       </label>
                       <div
                         class="input-group date"
@@ -189,75 +189,41 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
                       <label for="">
-                        Alamat Sekolah <small class="text-danger">*</small>
+                        Meninggal Di <small class="text-danger">*</small>
                       </label>
-                      <textarea
-                        name="alamat_sekolah"
+                      <input
+                        type="text"
+                        name="alamat_meninggal"
                         class="form-control"
-                        id=""
-                        rows="5"
-                      ></textarea>
+                      />
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
-                      <label
-                        class="control-label"
-                        for=""
-                      >
-                        Diwakili Oleh <small class="text-danger">*</small>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Penyebab <small class="text-danger">*</small>
                       </label>
-                      <select
-                        name="diwakili_oleh"
+                      <input
+                        type="text"
+                        name="penyebab_meninggal"
                         class="form-control"
-                      >
-                        <option value="Ayah">Ayah</option>
-                        <option value="Ibu">Ibu</option>
-                        <option value="Wali">Wali</option>
-                      </select>
+                      />
                     </div>
                   </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
                       <label for="">
-                        Keterangan Redaksi <small class="text-danger">*</small>
-                        <button
-                          id="ubah-keterangan-redaksi"
-                          class="btn btn-sm btn-social btn-warning"
-                        >
-                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
-                        </button>
+                        Hubungan Pelapor <small class="text-danger">*</small>
                       </label>
-                      <textarea
-                        name="redaksi"
+                      <input
+                        type="text"
+                        name="hubungan_pelapor"
                         class="form-control"
-                        id="redaksi"
-                        rows="5"
-                        readonly
-                      >Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame yang berdomisili sesuai alamat tersebut di atas dan sepengetahuan kami termasuk kategori tidak mampu (Pra-KS) karena tidak mempunyai penghasilan tetap dan kekayaan yang dapat diandalkan.</textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
-                        Keperluan <small class="text-danger">*</small>
-                      </label>
-                      <textarea
-                        name="keperluan"
-                        class="form-control"
-                        id="keperluan"
-                        rows="5"
-                      ></textarea>
+                      />
                     </div>
                   </div>
                 </div>
@@ -268,7 +234,7 @@
                         Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
-                        name="profil_perangkat_id"
+                        name="perangkat_id"
                         id=""
                         class="form-control"
                       >

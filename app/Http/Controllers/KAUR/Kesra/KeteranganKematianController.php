@@ -7,6 +7,7 @@ use DataTables;
 use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Master\JenisKelamin;
+use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
 use App\Models\KAUR\Kesra\KeteranganKematian;
 use App\Http\Requests\KAUR\Kesra\KeteranganKematianRequest;
@@ -30,16 +31,16 @@ class KeteranganKematianController extends Controller
                     <center>
                         <a
                             href="/master/penduduk/form-ubah/'.$keteranganKematian->id.'"
-                            class="btn btn-circle btn-sm btn-warning"
+                            class="btn btn-sm btn-social btn-warning"
                         >
-                            <i class="fa fa-pencil"></i>
+                            <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-kelahiran/surat/'.$keteranganKematian->id.'"
-                            class="btn btn-circle btn-sm btn-success"
+                            href="/kaur-kesra/keterangan-kematian/surat/'.$keteranganKematian->id.'"
+                            class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
-                            <i class="fa fa-file-pdf-o"></i>
+                            <i class="fa fa-file-pdf-o"></i> Cetak
                         </a>
                     </center>
                 ';
@@ -84,11 +85,40 @@ class KeteranganKematianController extends Controller
      */
     public function store(KeteranganKematianRequest $keteranganKematianRequest)
     {
+        $pendudukID = $keteranganKematianRequest->penduduk_id;
+        $perangkatID = $keteranganKematianRequest->perangkat_id;
+        $nama = $keteranganKematianRequest->nama;
+        $tempatLahir = $keteranganKematianRequest->tempat_lahir;
+        $tanggalLahir = Carbon::parse($keteranganKematianRequest->tanggal_lahir);
+        $jenisKelamin = $keteranganKematianRequest->jenis_kelamin;
+        $tanggalMeninggal = Carbon::parse($keteranganKematianRequest->tanggal_meninggal);
+        $hariMeninggal = $keteranganKematianRequest->hari_meninggal;
         $jamMeninggal = Carbon::parse($keteranganKematianRequest->jam_meninggal);
+        $alamatMeninggal = $keteranganKematianRequest->alamat_meninggal;
+        $penyebabMeninggal = $keteranganKematianRequest->penyebab_meninggal;
+        $hubunganPelapor = $keteranganKematianRequest->hubungan_pelapor;
 
-        $data = [
-            'jam_meninggal' => $jamMeninggal
+        $keteranganKematianData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'nama' => $nama,
+            'tempat_lahir' => $tempatLahir,
+            'tanggal_lahir' => $tanggalLahir,
+            'jenis_kelamin' => $jenisKelamin,
+            'tanggal_meninggal' => $tanggalMeninggal,
+            'hari_meninggal' => $hariMeninggal,
+            'jam_meninggal' => $jamMeninggal,
+            'alamat_meninggal' => $alamatMeninggal,
+            'penyebab_meninggal' => $penyebabMeninggal,
+            'hubungan_pelapor' => $hubunganPelapor
         ];
+
+        $createKeteranganKematian = KeteranganKematian::create($keteranganKematianData);
+
+        return redirect('/kaur-kesra/keterangan-kematian')
+            ->with([
+                'notification' => 'Data berhasil ditambah.'
+            ]);
     }
 
     /**
@@ -134,5 +164,30 @@ class KeteranganKematianController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function surat($id)
+    {
+        $keteranganKematian = KeteranganKematian::with('penduduk', 'profil_perangkat')
+            ->where('id', '=', $id)
+            ->first();
+
+        $profil = Pemerintahan::get()->first();
+        $total = KeteranganKematian::count();
+        $date = Carbon::now()->formatLocalized('%d %B %Y');
+
+        $surat = PDF::loadView('kaur.kesra.keterangan_kematian.surat', [
+            'keteranganKematian' => $keteranganKematian,
+            'date' => $date,
+            'total' => $total,
+            'profil' => $profil,
+        ]);
+
+        return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();
     }
 }
