@@ -179,14 +179,17 @@
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{ Request::segment(1) === 'kaur-pemerintahan' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Pemerintahan
           <span class="fa arrow"></span>
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-pemerintahan/keterangan-domisili">
+            <a
+              href="/kaur-pemerintahan/keterangan-domisili"
+              class="{{ Request::segment(2) === 'keterangan-domisili' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Domisili
             </a>
@@ -198,81 +201,117 @@
             </a>
           </li> --}}
           <li>
-            <a href="/kaur-pemerintahan/keterangan-beda-identitas">
+            <a
+              href="/kaur-pemerintahan/keterangan-beda-identitas"
+              class="{{ Request::segment(2) === 'keterangan-beda-identitas' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Beda Identitas
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-kk-sementara">
+            <a
+              href="/kaur-pemerintahan/keterangan-kk-sementara"
+              class="{{ Request::segment(2) === 'keterangan-kk-sementara' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. KK Sementara
             </a>
           </li>
           <li>
-            <a href="/kaur-pemerintahan/keterangan-ktp-sementara">
+            <a
+              href="/kaur-pemerintahan/keterangan-ktp-sementara"
+              class="{{ Request::segment(2) === 'keterangan-ktp-sementara' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. KTP Sementara
             </a>
           </li>
         </ul>
       </li>
-      <li>
+      <li class="{{ Request::segment(1) === 'kaur-kesra' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Kesra
           <span class="fa arrow"></span>
         </a>
         <ul class="nav nav-second-level">
           <li>
-            <a href="/kaur-kesra/sktm">
+            <a
+              href="/kaur-kesra/sktm"
+              class="{{ Request::segment(2) === 'sktm' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. SKTM
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-kelahiran">
+            <a
+              href="/kaur-kesra/keterangan-kelahiran"
+              class="{{ Request::segment(2) === 'keterangan-kelahiran' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Kelahiran
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-kematian">
+            <a
+              href="/kaur-kesra/keterangan-kematian"
+              class="{{ Request::segment(2) === 'keterangan-kematian' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Kematian
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-janda-duda">
+            <a
+              href="/kaur-kesra/keterangan-janda-duda"
+              class="{{ Request::segment(2) === 'keterangan-janda-duda' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Janda/Duda
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-penghasilan">
+            <a
+              href="/kaur-kesra/keterangan-penghasilan"
+              class="{{ Request::segment(2) === 'keterangan-penghasilan' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Penghasilan
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-tidak-bekerja">
+            <a
+              href="/kaur-kesra/keterangan-tidak-bekerja"
+              class="{{ Request::segment(2) === 'keterangan-tidak-bekerja' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Tidak Bekerja
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-belum-menikah">
+            <a
+              href="/kaur-kesra/keterangan-belum-menikah"
+              class="{{ Request::segment(2) === 'keterangan-belum-menikah' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Menikah
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-tanggungan-keluarga">
+            <a
+              href="/kaur-kesra/keterangan-tanggungan-keluarga"
+              class="{{ Request::segment(2) === 'keterangan-tanggungan-keluarga' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Tanggungan Keluarga
             </a>
           </li>
           <li>
-            <a href="/kaur-kesra/keterangan-belum-memiliki-rumah">
+            <a
+              href="/kaur-kesra/keterangan-belum-memiliki-rumah"
+              class="{{ Request::segment(2) === 'keterangan-belum-memiliki-rumah' ? 'active' : ''}}"
+            >
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Memiliki Rumah
             </a>

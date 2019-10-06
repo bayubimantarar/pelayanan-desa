@@ -22,7 +22,7 @@
 
       <input
         type="number"
-        name="nik"
+        name=""
         class="form-control"
         id="nik"
         value="{{ old('nik') }}"
@@ -52,7 +52,7 @@
       </label>
       <input
         type="text"
-        name="nama"
+        name=""
         class="form-control"
         id="nama"
         value="{{ old('nama') }}"
@@ -77,7 +77,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="tempat-lahir"
         readonly
@@ -99,7 +99,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="tanggal-lahir"
         readonly
@@ -116,7 +116,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="jenis-kelamin"
         readonly
@@ -140,7 +140,7 @@
       </label>
       <input
         type="text"
-        name="nama"
+        name=""
         class="form-control"
         id="status-perkawinan"
         readonly
@@ -162,7 +162,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="agama"
         readonly
@@ -184,7 +184,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="pendidikan"
         readonly
@@ -201,7 +201,7 @@
       </label>
       <input
         type="text"
-        name="jenis_kelamin"
+        name=""
         class="form-control"
         id="pekerjaan"
         readonly
@@ -224,7 +224,7 @@
         Alamat
       </label>
       <textarea
-        name="alamat"
+        name=""
         class="form-control"
         id="alamat"
         rows="5"

@@ -535,5 +535,49 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_kesra.keterangan_kematian.surat'
             ]);
         });
+        Route::group(['prefix' => 'keterangan-janda-duda'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@index',
+                'as' => 'kaur_kesra.keterangan_janda_duda.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@data',
+                'as' => 'kaur_kesra.keterangan_janda_duda.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@create',
+                'as' => 'kaur_kesra.keterangan_janda_duda.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@store',
+                'as' => 'kaur_kesra.keterangan_janda_duda.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@surat',
+                'as' => 'kaur_kesra.keterangan_janda_duda.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-penghasilan'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@index',
+                'as' => 'kaur_kesra.keterangan_penghasilan.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@data',
+                'as' => 'kaur_kesra.keterangan_penghasilan.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@create',
+                'as' => 'kaur_kesra.keterangan_penghasilan.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@store',
+                'as' => 'kaur_kesra.keterangan_penghasilan.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@surat',
+                'as' => 'kaur_kesra.keterangan_penghasilan.surat'
+            ]);
+        });
     });
 });

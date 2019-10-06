@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,8 @@ return [
 
         Yajra\DataTables\DataTablesServiceProvider::class,
 
+        Riskihajar\Terbilang\TerbilangServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Terbilang' => Riskihajar\Terbilang\Facades\Terbilang::class,
 
     ],
 
