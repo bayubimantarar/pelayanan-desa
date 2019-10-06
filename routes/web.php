@@ -579,5 +579,27 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_kesra.keterangan_penghasilan.surat'
             ]);
         });
+        Route::group(['prefix' => 'keterangan-tidak-bekerja'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@index',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@data',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@create',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@store',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@surat',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.surat'
+            ]);
+        });
     });
 });
