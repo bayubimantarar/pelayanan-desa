@@ -85,8 +85,8 @@ class KeteranganBersihDiriController extends Controller
      */
     public function store(KeteranganBersihDiriRequest $keteranganBersihDiriRequest)
     {
-        $masterPendudukID = $keteranganBersihDiriRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganBersihDiriRequest->profil_perangkat_id;
+        $pendudukID = $keteranganBersihDiriRequest->penduduk_id;
+        $perangkatID = $keteranganBersihDiriRequest->perangkat_id;
         // $namaAyah = $keteranganBersihDiriRequest->nama_ayah;
         // $tempatLahirAyah = $keteranganBersihDiriRequest->tempat_lahir_ayah;
         // $tanggalLahirAyah = Carbon::parse($keteranganBersihDiriRequest->tanggal_lahir_ayah);
@@ -103,8 +103,8 @@ class KeteranganBersihDiriController extends Controller
         $keperluan = $keteranganBersihDiriRequest->keperluan;
 
         $keteranganBersihDiriData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             // 'nama_ayah' => $namaAyah,
             // 'tempat_lahir_ayah' => $tempatLahirAyah,
             // 'tanggal_lahir_ayah' => $tanggalLahirAyah,

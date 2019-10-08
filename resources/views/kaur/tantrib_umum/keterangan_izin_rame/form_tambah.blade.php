@@ -220,7 +220,7 @@
                         Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
-                        name="profil_perangkat_id"
+                        name="perangkat_id"
                         class="form-control"
                       >
                         <option value="0">

@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat SKCK</title>
+  <title>Surat Keterangan Kartu Keluarga Sementara</title>
 </head>
 <body>
   <div class="header">
@@ -65,62 +65,85 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-       surat keterangan domisili
+       surat keterangan tanggungan keluarga
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 200/{{ $total }}/Ds./IX/2019
+        Nomor : 400/{{ $total }}/Ds./IX/2019
       </b>
     </p>
   </div>
-  <div class="muatan-data">
-    <p style="text-indent: 2.5%; margin: 0; padding: 0;">
-      Kepala Desa Cilame Kecamatan Ngamprah Kabupaten Bandung Barat dengan ini menerangkan bahwa :
+  <div class="redaksi-awal">
+    <p class="text-redaksi-awal" style="">
+      Kepala Desa {{ $profil->desa }} Kecamatan {{ $profil->kecamatan }} Kabupaten {{ $profil->kabupaten }} dengan ini menerangkan bahwa :
     </p>
+  </div>
+  <div class="muatan-data">
     <table style="padding-left: 5%;">
       <tr>
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganDomisili->penduduk->nama }}</b>
+          <b>{{ $keteranganTanggunganKeluarga->penduduk->nama }}</b>
         </td>
       </tr>
       <tr>
         <td>Tempat / Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->tempat_lahir }}, {{ $keteranganDomisili->penduduk->tanggal_lahir }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->tempat_lahir }}, {{ $keteranganTanggunganKeluarga->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
-        <td>Pekerjaan</td>
+        <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->pekerjaan }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->status_perkawinan }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->status_perkawinan }}</td>
       </tr>
       <tr>
         <td>Agama</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->agama }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->agama }}</td>
       </tr>
       <tr>
-        <td>No. KK/KTP</td>
+        <td>Pekerjaan</td>
         <td>:</td>
-        <td>- / {{ $keteranganDomisili->penduduk->nik }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->pekerjaan }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->alamat }}</td>
+        <td>{{ $keteranganTanggunganKeluarga->penduduk->alamat }}</td>
       </tr>
+    </table>
+  </div>
+  <div class="anggota-keluarga">
+    <table align="center" border="0.1">
+      <tr>
+        <td align="center"><b>No.</b></td>
+        <td width="100" align="center"><b>NAMA</b></td>
+        <td width="170" align="center"><b>Tempat, Tanggal lahir</b></td>
+        <td align="center"><b>Hub. Keluarga</b></td>
+        <td align="center"><b>Jenis Kelamin</b></td>
+        <td align="center"><b>Pekerjaan</b></td>
+      </tr>
+      @foreach($anggotaKeluarga as $item)
+        <tr>
+          <td align="center">{{ $nomor++ }}.</td>
+          <td align="center">{{ $item->nama }}</td>
+          <td align="center">{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
+          <td align="center">{{ $item->hubungan_keluarga }}</td>
+          <td align="center">{{ $item->jenis_kelamin }}</td>
+          <td align="center">{{ $item->pekerjaan }}</td>
+        </tr>
+      @endforeach
     </table>
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $keteranganDomisili->redaksi }}<br />
-      Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $keteranganDomisili->keperluan }}</i></b>
+      {{ $keteranganTanggunganKeluarga->redaksi }}
     </p>
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
@@ -135,7 +158,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganDomisili->profil_perangkat->jabatan }}
+              {{ $keteranganTanggunganKeluarga->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -217,7 +240,7 @@
           <center>
             <b>
               <u>
-                {{ $keteranganDomisili->profil_perangkat->nama }}
+                {{ $keteranganTanggunganKeluarga->profil_perangkat->nama }}
               </u>
             </b>
           </center>

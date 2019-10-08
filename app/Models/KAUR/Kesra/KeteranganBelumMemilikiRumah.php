@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Models\KAUR\Pemerintahan;
+namespace App\Models\KAUR\Kesra;
 
-use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Kependudukan\Penduduk;
 use Illuminate\Database\Eloquent\Model;
 
-class KeteranganDomisili extends Model
+class KeteranganBelumMemilikiRumah extends Model
 {
-    protected $table = 'kaur_pemerintahan_keterangan_domisili';
+    protected $table = 'kaur_kesra_keterangan_belum_memiliki_rumah';
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',

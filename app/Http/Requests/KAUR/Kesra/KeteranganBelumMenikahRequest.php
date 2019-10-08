@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\KAUR\Umum;
+namespace App\Http\Requests\KAUR\Kesra;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SKCKRequest extends FormRequest
+class KeteranganBelumMenikahRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,7 @@ class SKCKRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'nik' => 'required'
-        ];
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'nik.required' => 'NIK perlu diisi.'
+            //
         ];
     }
 }

@@ -82,8 +82,8 @@ class KeteranganGhoibController extends Controller
      */
     public function store(KeteranganGhoibRequest $keteranganGhoibRequest)
     {
-        $masterPendudukID = $keteranganGhoibRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganGhoibRequest->profil_perangkat_id;
+        $pendudukID = $keteranganGhoibRequest->penduduk_id;
+        $perangkatID = $keteranganGhoibRequest->perangkat_id;
         $nama = $keteranganGhoibRequest->nama;
         $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
         $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
@@ -92,8 +92,8 @@ class KeteranganGhoibController extends Controller
         $alasan = $keteranganGhoibRequest->alasan;
 
         $keteranganGhoibData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'nama' => $nama,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,

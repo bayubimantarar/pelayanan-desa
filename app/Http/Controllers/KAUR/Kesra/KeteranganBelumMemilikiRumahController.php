@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\KAUR\Ekbang;
+namespace App\Http\Controllers\KAUR\Kesra;
 
 use PDF;
 use DataTables;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Models\Profil\Perangkat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
-use App\Models\KAUR\Ekbang\KeteranganUsaha;
-use App\Http\Requests\KAUR\Ekbang\KeteranganUsahaRequest;
+use App\Models\KAUR\Kesra\KeteranganBelumMemilikiRumah;
+use App\Http\Requests\KAUR\Kesra\KeteranganBelumMilikiRumahRequest;
 
-class KeteranganUsahaController extends Controller
+class KeteranganBelumMemilikiRumahController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,22 +20,22 @@ class KeteranganUsahaController extends Controller
      */
     public function data()
     {
-        $keteranganUsaha = KeteranganUsaha::with('penduduk')
+        $keteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::with('penduduk')
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $dataTablesKeteranganUsaha = DataTables($keteranganUsaha)
-            ->addColumn('action', function($keteranganUsaha){
+        $datatablesKeteranganBelumMemilikiRumah = DataTables($keteranganBelumMemilikiRumah)
+            ->addColumn('action', function($keteranganBelumMemilikiRumah){
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganUsaha->id.'"
+                            href="/master/penduduk/form-ubah/'.$keteranganBelumMemilikiRumah->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-ekbang/keterangan-usaha/surat/'.$keteranganUsaha->id.'"
+                            href="/kaur-kesra/keterangan-belum-memiliki-rumah/surat/'.$keteranganBelumMemilikiRumah->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -48,7 +47,7 @@ class KeteranganUsahaController extends Controller
             ->rawColumns(['action'])
             ->toJson();
 
-        return $dataTablesKeteranganUsaha;
+        return $datatablesKeteranganBelumMemilikiRumah;
     }
 
     /**
@@ -58,7 +57,7 @@ class KeteranganUsahaController extends Controller
      */
     public function index()
     {
-        return view('kaur.ekbang.keterangan_usaha.index');
+        return view('kaur.kesra.keterangan_belum_memiliki_rumah.index');
     }
 
     /**
@@ -70,7 +69,7 @@ class KeteranganUsahaController extends Controller
     {
         $perangkat = Perangkat::all();
 
-        return view('kaur.ekbang.keterangan_usaha.form_tambah', compact(
+        return view('kaur.kesra.keterangan_belum_memiliki_rumah.form_tambah', compact(
             'perangkat'
         ));
     }
@@ -81,29 +80,25 @@ class KeteranganUsahaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(KeteranganUsahaRequest $keteranganUsahaRequest)
+    public function store(KeteranganBelumMilikiRumahRequest $keteranganBelumMilikiRumahRequest)
     {
-        $pendudukID = $keteranganUsahaRequest->penduduk_id;
-        $perangkatID = $keteranganUsahaRequest->perangkat_id;
-        $redaksi = $keteranganUsahaRequest->redaksi;
-        $jenisUsaha = $keteranganUsahaRequest->jenis_usaha;
-        $lokasi = $keteranganUsahaRequest->lokasi;
-        $keperluan = $keteranganUsahaRequest->keperluan;
+        $pendudukID = $keteranganBelumMilikiRumahRequest->penduduk_id;
+        $perangkatID = $keteranganBelumMilikiRumahRequest->perangkat_id;
+        $redaksi = $keteranganBelumMilikiRumahRequest->redaksi;
+        $keperluan = $keteranganBelumMilikiRumahRequest->keperluan;
 
-        $keteranganUsahaData = [
+        $keteranganBelumMilikiRumahData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
             'redaksi' => $redaksi,
-            'jenis_usaha' => $jenisUsaha,
-            'lokasi' => $lokasi,
-            'keperluan' => $keperluan,
+            'keperluan' => $keperluan
         ];
 
-        $createKeteranganUsaha = KeteranganUsaha::create($keteranganUsahaData);
+        $createKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::create($keteranganBelumMilikiRumahData);
 
-        return redirect('/kaur-ekbang/keterangan-usaha')
+        return redirect('/kaur-kesra/keterangan-belum-memiliki-rumah')
             ->with([
-                'notification' => 'Data penduduk berhasil ditambah.'
+                'notification' => 'Data berhasil ditambah.'
             ]);
     }
 
@@ -136,7 +131,7 @@ class KeteranganUsahaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KeteranganBelumMilikiRumahRequest $keteranganBelumMilikiRumahRequest, $id)
     {
         //
     }
@@ -159,19 +154,19 @@ class KeteranganUsahaController extends Controller
      */
     public function surat($id)
     {
-        $keteranganUsaha = KeteranganUsaha::with('penduduk', 'profil_perangkat')
+        $keteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::with('penduduk', 'profil_perangkat')
             ->where('id', '=', $id)
             ->first();
 
         $profil = Pemerintahan::get()->first();
-        $total = KeteranganUsaha::count();
+        $total = KeteranganBelumMemilikiRumah::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
-        $surat = PDF::loadView('kaur.ekbang.keterangan_usaha.surat', [
-            'keteranganUsaha' => $keteranganUsaha,
+        $surat = PDF::loadView('kaur.kesra.keterangan_belum_memiliki_rumah.surat', [
+            'keteranganBelumMemilikiRumah' => $keteranganBelumMemilikiRumah,
             'date' => $date,
-            'profil' => $profil,
             'total' => $total,
+            'profil' => $profil,
         ]);
 
         return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();

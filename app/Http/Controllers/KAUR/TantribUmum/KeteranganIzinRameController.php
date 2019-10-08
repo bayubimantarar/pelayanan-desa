@@ -82,8 +82,8 @@ class KeteranganIzinRameController extends Controller
      */
     public function store(KeteranganIzinRameRequest $keteranganIzinRameRequest)
     {
-        $masterPendudukID = $keteranganIzinRameRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganIzinRameRequest->profil_perangkat_id;
+        $pendudukID = $keteranganIzinRameRequest->penduduk_id;
+        $perangkatID = $keteranganIzinRameRequest->perangkat_id;
         $rt = $keteranganIzinRameRequest->rt;
         $rw = $keteranganIzinRameRequest->rw;
         $tertanggalRT = Carbon::parse($keteranganIzinRameRequest->tertanggal_rt);
@@ -95,8 +95,8 @@ class KeteranganIzinRameController extends Controller
         $alamatPelaksanaan = $keteranganIzinRameRequest->alamat_pelaksanaan;
 
         $keteranganIzinRameData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,

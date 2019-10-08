@@ -14,7 +14,7 @@ $factory->define(Penduduk::class, function (Faker $faker) {
         'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
         'status_perkawinan' => $faker->randomElement(['Kawin', 'Belum Kawin']),
         'agama' => $faker->randomElement(['Islam', 'Kristen', 'Katolik', 'Hindu', 'Buddha', 'Kong Hu Cu']),
-        'pendidikan' => $faker->randomElement(['SD', 'SMP', 'SMA', 'D1', 'D2', 'D3', 'S1', 'S2', 'S3']),
+        'pendidikan' => $faker->randomElement(['Tidak/Belum Sekolah', 'Belum Tamat SD/Sederajat', 'Tamat SD/Sederajat', 'SLTP/Sederajat', 'SLTA/Sederajat', 'Diploma I/II', 'Akademi/Diploma III/S.Muda', 'Diploma IV/Strata I', 'Strata II', 'Strata III']),
         'pekerjaan' => $faker->jobTitle(),
         'alamat' => $faker->address()
     ];

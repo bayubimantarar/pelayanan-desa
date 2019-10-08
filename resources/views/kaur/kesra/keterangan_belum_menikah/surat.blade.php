@@ -65,11 +65,11 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-       surat keterangan domisili
+       surat keterangan belum pernah menikah
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 200/{{ $total }}/Ds./IX/2019
+        Nomor : 400/{{ $total }}/Ds./IX/2019
       </b>
     </p>
   </div>
@@ -81,52 +81,154 @@
       <tr>
         <td>Nama</td>
         <td>:</td>
-        <td style="text-transform: uppercase;">
-          <b>{{ $keteranganDomisili->penduduk->nama }}</b>
-        </td>
+        <td style="text-transform: uppercase;"><b>{{ $keteranganBelumMenikah->penduduk->nama }}</b></td>
       </tr>
       <tr>
-        <td>Tempat / Tanggal Lahir</td>
+        <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->tempat_lahir }}, {{ $keteranganDomisili->penduduk->tanggal_lahir }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->jenis_kelamin }}</td>
       </tr>
       <tr>
-        <td>Pekerjaan</td>
+        <td>Tempat, Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->pekerjaan }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->tempat_lahir }}, {{ $keteranganBelumMenikah->penduduk->tanggal_lahir }}</td>
       </tr>
       <tr>
         <td>Status Perkawinan</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->status_perkawinan }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->status_perkawinan }}</td>
       </tr>
       <tr>
         <td>Agama</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->agama }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->agama }}</td>
       </tr>
       <tr>
-        <td>No. KK/KTP</td>
+        <td>Pekerjaan</td>
         <td>:</td>
-        <td>- / {{ $keteranganDomisili->penduduk->nik }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->pekerjaan }}</td>
+      </tr>
+      <tr>
+        <td>No. KK / NIK</td>
+        <td>:</td>
+        <td>- / {{ $keteranganBelumMenikah->penduduk->nik }}</td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganDomisili->penduduk->alamat }}</td>
+        <td>{{ $keteranganBelumMenikah->penduduk->alamat }}</td>
       </tr>
     </table>
+    <p style="text-indent: 2.5%;">
+      Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame yang berdomisili sesuai alamat tersebut di atas yang sampai saat ini <b>statusnya belum pernah menikah</b>.
+    </p>
+    <p style="text-indent: 2.5%; margin: 0; padding: 0;">
+      Surat Keterangan ini dibuat untuk keperluan : <b><i>{{ $keteranganBelumMenikah->keperluan }}</i></b>
+    </p>
   </div>
   <div class="keterangan">
-    <p style="text-indent: 2.5%;">
-      {{ $keteranganDomisili->redaksi }}<br />
-      Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $keteranganDomisili->keperluan }}</i></b>
-    </p>
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
     </p>
   </div>
   <div class="tanda-tangan">
+    @if($keteranganBelumMenikah->jenis_sktm == "Kesehatan")
+      <table align="left">
+        <tr>
+          <td><center>Mengetahui,</center></td>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <b style="text-transform: uppercase;">
+                camat ngamprah
+              </b>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;" width="200">
+            <center>
+              <b>
+                <hr style="margin-top: 15px" />
+              </b>
+            </center>
+          </td>
+        </tr>
+      </table>
+    @endif
     <table align="right">
       <tr>
         <td><center>Cilame, {{ $date }}</center></td>
@@ -135,7 +237,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganDomisili->profil_perangkat->jabatan }}
+              {{ $keteranganBelumMenikah->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -217,7 +319,7 @@
           <center>
             <b>
               <u>
-                {{ $keteranganDomisili->profil_perangkat->nama }}
+                {{ $keteranganBelumMenikah->profil_perangkat->nama }}
               </u>
             </b>
           </center>

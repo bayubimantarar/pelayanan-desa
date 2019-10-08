@@ -11,8 +11,8 @@ class KeteranganIzinRame extends Model
 {
     protected $table = 'kaur_tantrib_umum_keterangan_izin_rame';
     protected $fillable = [
-        'master_penduduk_id',
-        'profil_perangkat_id',
+        'penduduk_id',
+        'perangkat_id',
         'rt',
         'rw',
         'tertanggal_rt',
@@ -31,12 +31,12 @@ class KeteranganIzinRame extends Model
 
     public function penduduk()
     {
-        return $this->belongsTo(Penduduk::class, 'master_penduduk_id', 'id');
+        return $this->belongsTo(Penduduk::class, 'penduduk_id', 'id');
     }
 
     public function profil_perangkat()
     {
-        return $this->belongsTo(Perangkat::class, 'profil_perangkat_id', 'id');
+        return $this->belongsTo(Perangkat::class, 'perangkat_id', 'id');
     }
 
     public function getTanggalPelaksanaanAttribute($value)

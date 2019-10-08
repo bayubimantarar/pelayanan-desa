@@ -82,8 +82,8 @@ class KeteranganKehilanganController extends Controller
      */
     public function store(KeteranganKehilanganRequest $keteranganKehilanganRequest)
     {
-        $masterPendudukID = $keteranganKehilanganRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganKehilanganRequest->profil_perangkat_id;
+        $pendudukID = $keteranganKehilanganRequest->penduduk_id;
+        $perangkatID = $keteranganKehilanganRequest->perangkat_id;
         $rt = $keteranganKehilanganRequest->rt;
         $rw = $keteranganKehilanganRequest->rw;
         $tertanggalRT = Carbon::parse($keteranganKehilanganRequest->tertanggal_rt);
@@ -91,8 +91,8 @@ class KeteranganKehilanganController extends Controller
         $alasan = $keteranganKehilanganRequest->alasan;
 
         $keteranganKehilanganData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,

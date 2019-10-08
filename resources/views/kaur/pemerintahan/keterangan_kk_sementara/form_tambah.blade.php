@@ -101,7 +101,7 @@
                         Ditanda Tangani Oleh
                       </label>
                       <select
-                        name="profil_perangkat_id"
+                        name="perangkat_id"
                         id=""
                         class="form-control"
                       >

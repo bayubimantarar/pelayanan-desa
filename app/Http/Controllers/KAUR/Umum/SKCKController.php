@@ -83,8 +83,8 @@ class SKCKController extends Controller
      */
     public function store(SKCKRequest $skckRequest)
     {
-        $masterPendudukID = $skckRequest->master_penduduk_id;
-        $profilPerangkatID = $skckRequest->profil_perangkat_id;
+        $pendudukID = $skckRequest->penduduk_id;
+        $perangkatID = $skckRequest->perangkat_id;
         $rt = $skckRequest->rt;
         $rw = $skckRequest->rw;
         $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
@@ -93,8 +93,8 @@ class SKCKController extends Controller
         $redaksi = $skckRequest->redaksi;
 
         $SKCKData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,

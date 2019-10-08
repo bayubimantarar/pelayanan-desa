@@ -601,5 +601,71 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'as' => 'kaur_kesra.keterangan_tidak_bekerja.surat'
             ]);
         });
+        Route::group(['prefix' => 'keterangan-belum-menikah'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@index',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@data',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@create',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@store',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@surat',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-tanggungan-keluarga'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@index',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@data',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@create',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@store',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@surat',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.surat'
+            ]);
+        });
+        Route::group(['prefix' => 'keterangan-belum-memiliki-rumah'], function(){
+            Route::get('/', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@index',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.index'
+            ]);
+            Route::get('/data', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@data',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.data'
+            ]);
+            Route::get('/form-tambah', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@create',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.create'
+            ]);
+            Route::post('/simpan', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@store',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.store'
+            ]);
+            Route::get('/surat/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@surat',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.surat'
+            ]);
+        });
     });
 });

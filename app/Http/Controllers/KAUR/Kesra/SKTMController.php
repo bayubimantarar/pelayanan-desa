@@ -96,14 +96,14 @@ class SKTMController extends Controller
         $diWakiliOleh = $sktmRequest->diwakili_oleh;
         $jenisKelamin = $sktmRequest->jenis_kelamin;
         $alamatSekolah = $sktmRequest->alamat_sekolah;
-        $masterPendudukID = $sktmRequest->master_penduduk_id;
-        $profilPerangkatID = $sktmRequest->profil_perangkat_id;
+        $pendudukID = $sktmRequest->penduduk_id;
+        $perangkatID = $sktmRequest->perangkat_id;
         $tanggalLahir = Carbon::parse($sktmRequest->tanggal_lahir);
 
         if ($jenis == "Pendidikan") {
             $sktmData = [
-                'master_penduduk_id' => $masterPendudukID,
-                'profil_perangkat_id' => $profilPerangkatID,
+                'penduduk_id' => $pendudukID,
+                'perangkat_id' => $perangkatID,
                 'jenis_sktm' => $jenis,
                 'nama' => $nama,
                 'tempat_lahir' => $tempatLahir,
@@ -119,8 +119,8 @@ class SKTMController extends Controller
             ];
         }else{
             $sktmData = [
-                'master_penduduk_id' => $masterPendudukID,
-                'profil_perangkat_id' => $profilPerangkatID,
+                'penduduk_id' => $pendudukID,
+                'perangkat_id' => $perangkatID,
                 'jenis_sktm' => $jenis,
                 'redaksi' => $redaksi,
                 'keperluan' => $keperluan

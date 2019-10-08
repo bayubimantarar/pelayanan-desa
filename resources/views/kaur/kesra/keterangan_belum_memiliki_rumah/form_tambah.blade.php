@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Form Tambah | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -23,7 +23,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li><a href="#">KAUR Umum - SKCK</a></li>
+        <li><a href="#">KAUR Kesra - Keterangan Tidak Bekerja</a></li>
         <li class="active">Form Tambah</li>
       </ul>
     </div>
@@ -32,14 +32,16 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah
+          Form Tambah Data Keterangan Tidak Bekerja
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-umum/skck/simpan" method="post">
+              <form action="/kaur-kesra/keterangan-belum-memiliki-rumah/simpan" method="post">
                 <h4>
-                  Identitas Penduduk
+                  <b>
+                    IDENTITAS PENDUDUK
+                  </b>
                 </h4>
                 <hr />
                 <input
@@ -49,79 +51,11 @@
                 />
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
-                  Keterangan Surat
+                  <b>
+                    KETERANGAN SURAT
+                  </b>
                 </h4>
                 <hr />
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
-                      <label for="">
-                        Surat Pengantar Dari
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RT <small class="text-danger">*</small>
-                      </label>
-                      <input
-                        type="number"
-                        name="rt"
-                        class="form-control"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RT <small class="text-danger">*</small>
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rt"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rt"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RW <small class="text-danger">*</small>
-                      </label>
-                      <input
-                        type="number"
-                        name="rw"
-                        class="form-control"
-                        id="datetimepicker"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RW <small class="text-danger">*</small>
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rw"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rw"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -140,7 +74,7 @@
                         id="redaksi"
                         rows="5"
                         readonly
-                      >Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian.</textarea>
+                      >Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame yang berdomisili dengan alamat tersebut di atas dan sampai surat ini dibuat yang bersangkutan belum memiliki rumah.</textarea>
                     </div>
                   </div>
                 </div>
@@ -148,12 +82,11 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Keperluan <small class="text-danger">*</small>
+                        Keperluan <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="keperluan"
                         class="form-control"
-                        id="keperluan"
                         rows="5"
                       ></textarea>
                     </div>
@@ -211,13 +144,18 @@
   ></script>
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment-with-locales.js"
   ></script>
   <script
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/jquery-mask.js"
+  ></script>
   <script>
+    $('#sktm-pendidikan').hide();
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
@@ -295,12 +233,40 @@
         });
       }
     });
-    $('#tertanggal-rt').datetimepicker({
-      format: 'DD-MM-YYYY'
+    $('#tanggal-lahir-anak').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years'
     });
-    $('#tertanggal-rw').datetimepicker({
-      format: 'DD-MM-YYYY'
+    $('#tanggal-meninggal').datetimepicker({
+      format: 'DD-MM-YYYY',
+      locale: 'id',
+    }).on('dp.change', function(e){
+      // console.log(e.date);
+      console.log(e.date._d.getDay());
+      var day = e.date._d.getDay();
+
+      if (day == 1) {
+        $('#hari-meninggal').val('Senin');
+      }else if(day == 2){
+        $('#hari-meninggal').val('Selasa');
+      }else if(day == 3){
+        $('#hari-meninggal').val('Rabu');
+      }else if(day == 4){
+        $('#hari-meninggal').val('Kamis');
+      }else if(day == 5){
+        $('#hari-meninggal').val('Jumat');
+      }else if(day == 6){
+        $('#hari-meninggal').val('Sabtu');
+      }else if(day == 0){
+        $('#hari-meninggal').val('Minggu');
+      }
     });
+    // $('#penghasilan-mask').mask('000.000.000', {
+    //   reverse: true,
+    //   onChange: function(result){
+    //     console.log(Math.trunc(result));
+    //   }
+    // });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

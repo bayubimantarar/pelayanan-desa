@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Form Tambah | Pelayanan Desa Cilame
+  Dasbor &raquo; KAUR Pemerintahan &raquo; Keterangan KK Sementara &raquo; Form Tambah | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -23,7 +23,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li><a href="#">KAUR Umum - SKCK</a></li>
+        <li><a href="#">KAUR Pemerintahan - Keterangan Tanggungan Keluarga</a></li>
         <li class="active">Form Tambah</li>
       </ul>
     </div>
@@ -32,14 +32,16 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah
+          Form Data Baru Keterangan Kartu Keluarga Sementara
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-umum/skck/simpan" method="post">
+              <form action="/kaur-kesra/keterangan-tanggungan-keluarga/simpan" method="post">
                 <h4>
-                  Identitas Penduduk
+                  <b>
+                    IDENTITAS PENDUDUK
+                  </b>
                 </h4>
                 <hr />
                 <input
@@ -49,79 +51,27 @@
                 />
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
-                  Keterangan Surat
+                  <b>
+                    KETERANGAN SURAT
+                  </b>
                 </h4>
                 <hr />
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12">
                       <label for="">
-                        Surat Pengantar Dari
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RT <small class="text-danger">*</small>
+                        Jumlah Anggota Keluarga <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
-                        name="rt"
+                        name="anggota_keluarga"
                         class="form-control"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RT <small class="text-danger">*</small>
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rt"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rt"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        RW <small class="text-danger">*</small>
-                      </label>
-                      <input
-                        type="number"
-                        name="rw"
-                        class="form-control"
-                        id="datetimepicker"
-                      >
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
-                        Tertanggal dari RW <small class="text-danger">*</small>
-                      </label>
-                      <div
-                        class="input-group date"
-                        id="tertanggal-rw"
-                      >
-                        <input
-                          type="text"
-                          name="tertanggal_rw"
-                          class="form-control"
-                        />
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
-                      </div>
+                        id="anggota-keluarga"
+                      />
                     </div>
                   </div>
                 </div>
+                <div id="form-keluarga"></div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
@@ -140,7 +90,7 @@
                         id="redaksi"
                         rows="5"
                         readonly
-                      >Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian.</textarea>
+                      >Nama – nama tanggungan tersebut di atas benar-benar tidak mempunyai penghasilan / tidak bekerja dan tidak mendapat fasilitas kesehatan / biaya rawat inap dari pihak manapun baik Intansi Pemerintah maupun Swasta. Keterangan Tanggungan ini dipergunakan untuk melengkapi persyaratan administrasi tanggungan keluarga.</textarea>
                     </div>
                   </div>
                 </div>
@@ -148,26 +98,10 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label for="">
-                        Keterangan Keperluan <small class="text-danger">*</small>
-                      </label>
-                      <textarea
-                        name="keperluan"
-                        class="form-control"
-                        id="keperluan"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
-                        Ditanda Tangani Oleh <small class="text-danger">*</small>
+                        Ditanda Tangani Oleh
                       </label>
                       <select
                         name="perangkat_id"
-                        id=""
                         class="form-control"
                       >
                         <option value="0">
@@ -295,17 +229,89 @@
         });
       }
     });
-    $('#tertanggal-rt').datetimepicker({
-      format: 'DD-MM-YYYY'
-    });
-    $('#tertanggal-rw').datetimepicker({
-      format: 'DD-MM-YYYY'
-    });
-    $('#ubah-keterangan-redaksi').click(function(e){
-      e.preventDefault();
+    $('#ubah-keterangan-redaksi').click(function(event){
+      event.preventDefault();
       $('#redaksi').prop('readonly', false);
       $('#redaksi').focus();
       $('#ubah-keterangan-redaksi').attr('disabled', true);
+    });
+    $('#anggota-keluarga').keyup(function(event){
+      var element;
+      var anggota_keluarga = $('#anggota-keluarga').val();
+      if(anggota_keluarga == 0 || anggota_keluarga == '') {
+        $('#form-keluarga').empty().hide();
+      }else{
+        for(x=0; x<anggota_keluarga; x++){
+          element =
+            '<div class="form-group">'+
+              '<div class="row">'+
+                '<div class="col-lg-6 col-md-6 col-xs-12">'+
+                  '<label>NIK <small class="text-danger">*</small></label>'+
+                  '<input type="text" name="nik[]" class="form-control" />'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="row">'+
+              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label>Nama Lengkap <small class="text-danger">*</small></label>'+
+                  '<input type="text" name="nama[]" class="form-control" />'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label>Tempat Lahir <small class="text-danger">*</small></label>'+
+                  '<input type="text" name="tempat_lahir[]" class="form-control" />'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label>Tanggal Lahir <small class="text-danger">*</small></label>'+
+                  '<div class="input-group date tanggal-lahir" id="">'+
+                    '<input type="text" name="tanggal_lahir[]" class="form-control" />'+
+                    '<span class="input-group-addon"><span class="fa fa-calendar"></span></span>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-lg-3 col-md-3 col-xs-12">'+
+                '<div class="form-group">'+
+                  '<label>Jenis Kelamin<small class="text-danger">*</small></label>'+
+                  '<select name="jenis_kelamin[]" class="form-control">'+
+                    '<option value="Laki-laki">Laki-laki</option>'+
+                    '<option value="Perempuan">Perempuan</option>'+
+                  '</select>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '<div class="row">'+
+              '<div class="col-lg-6 col-md-6 col-xs-12">'+
+                '<div class="form-group">'+
+                    '<label>Hubungan Keluarga <small class="text-danger">*</small></label>'+
+                    '<input type="text" name="hubungan_keluarga[]" class="form-control" />'+
+                '</div>'+
+              '</div>'+
+              '<div class="col-lg-6 col-md-6 col-xs-12">'+
+                '<div class="form-group">'+
+                    '<label>Pekerjaan <small class="text-danger">*</small></label>'+
+                    '<input type="text" name="pekerjaan[]" class="form-control" />'+
+                '</div>'+
+              '</div>'+
+            '</div>';
+          //   '<div class="col-lg-3 col-md-3 col-xs-12">'+
+          //     '<div class="form-group">'+
+          //       '<label>Hubungan Keluarga <small class="text-danger">*</small></label>'+
+          //       '<input type="text" name="hubungan_keluarga[]" class="form-control" />'+
+          //     '</div>'+
+          //   '</div>'+
+          // '</div>';
+
+          $('#form-keluarga').append(element).show();
+          $('.tanggal-lahir').datetimepicker({
+            format: 'DD-MM-YYYY',
+            viewMode: 'years'
+          });
+        }
+      }
     });
   </script>
 @endsection

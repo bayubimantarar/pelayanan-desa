@@ -82,14 +82,14 @@ class KeteranganDomisiliController extends Controller
      */
     public function store(KeteranganDomisiliRequest $keteranganDomisiliRequest)
     {
-        $masterPendudukID = $keteranganDomisiliRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganDomisiliRequest->profil_perangkat_id;
+        $pendudukID = $keteranganDomisiliRequest->penduduk_id;
+        $perangkatID = $keteranganDomisiliRequest->perangkat_id;
         $redaksi = $keteranganDomisiliRequest->redaksi;
         $keperluan = $keteranganDomisiliRequest->keperluan;
 
         $keteranganDomisiliData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'redaksi' => $redaksi,
             'keperluan' => $keperluan
         ];

@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Models\KAUR\Pemerintahan;
+namespace App\Models\KAUR\Kesra;
 
-use Carbon\Carbon;
 use App\Models\Profil\Perangkat;
 use App\Models\Kependudukan\Penduduk;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\KAUR\Kesra\KeteranganTanggunganKeluargaAnggota;
 
-class KeteranganDomisili extends Model
+class KeteranganTanggunganKeluarga extends Model
 {
-    protected $table = 'kaur_pemerintahan_keterangan_domisili';
+    protected $table = 'kaur_kesra_keterangan_tanggungan_keluarga';
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',
-        'redaksi',
-        'keperluan'
+        'redaksi'
     ];
 
     public function penduduk()
@@ -25,5 +24,10 @@ class KeteranganDomisili extends Model
     public function profil_perangkat()
     {
         return $this->belongsTo(Perangkat::class, 'perangkat_id', 'id');
+    }
+
+    public function anggota_keluarga()
+    {
+        return $this->hasMany(KeteranganTanggunganKeluargaAnggota::class, 'kaur_kesra_keterangan_tanggungan_keluarga_id', 'id');
     }
 }

@@ -82,13 +82,13 @@ class KeteranganKTPSementaraController extends Controller
      */
     public function store(KeteranganKTPSementaraRequest $keteranganKTPSementaraRequest)
     {
-        $masterPendudukID = $keteranganKTPSementaraRequest->master_penduduk_id;
-        $profilPerangkatID = $keteranganKTPSementaraRequest->profil_perangkat_id;
+        $pendudukID = $keteranganKTPSementaraRequest->penduduk_id;
+        $perangkatID = $keteranganKTPSementaraRequest->perangkat_id;
         $redaksi = $keteranganKTPSementaraRequest->redaksi;
 
         $keteranganKTPSementaraData = [
-            'master_penduduk_id' => $masterPendudukID,
-            'profil_perangkat_id' => $profilPerangkatID,
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
             'redaksi' => $redaksi
         ];
 
