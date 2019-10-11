@@ -24,7 +24,7 @@ class KeteranganKKSementaraRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required'
         ];
     }
 }

@@ -24,7 +24,21 @@ class KeteranganTidakBekerjaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'keperluan' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'keperluan.required' => 'Keperluan perlu diisi.',
         ];
     }
 }

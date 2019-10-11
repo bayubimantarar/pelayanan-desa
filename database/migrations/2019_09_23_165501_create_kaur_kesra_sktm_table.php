@@ -28,7 +28,7 @@ class CreateKaurKesraSktmTable extends Migration
             $table->text('alamat_sekolah')->nullable();
             $table->string('diwakili_oleh', 150)->nullable();
             $table->text('redaksi');
-            $table->string('keperluan', 150)->nullable();
+            $table->string('keperluan', 150);
             $table->timestamps();
         });
     }

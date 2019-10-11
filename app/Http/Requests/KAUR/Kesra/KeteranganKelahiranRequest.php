@@ -24,7 +24,31 @@ class KeteranganKelahiranRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'tempat_lahir_anak' => 'required',
+            'tanggal_lahir_anak' => 'required',
+            'nama_anak' => 'required',
+            'anak_ke' => 'required',
+            'nama_ayah' => 'required',
+            'nama_ibu' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'nama_anak.required' => 'Nama anak perlu diisi.',
+            'tempat_lahir_anak.required' => 'Tempat lahir anak perlu diisi.',
+            'tanggal_lahir_anak.required' => 'Tanggal lahir anak perlu diisi.',
+            'anak_ke.required' => 'Anak ke perlu diisi.',
+            'nama_ayah.required' => 'Nama lengkap ayah perlu diisi.',
+            'nama_ibu.required' => 'Nama lengkap ibu perlu diisi.'
         ];
     }
 }

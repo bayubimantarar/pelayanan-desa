@@ -76,7 +76,7 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
                       <label
                         class="control-label"
                         for="nama"
@@ -87,11 +87,17 @@
                         type="text"
                         name="nama"
                         class="form-control"
+                        value="{{ old('nama') }}"
                       >
+                      @if($errors->has('nama'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error has-feedback' : '' }}">
                       <label
                         class="control-label"
                         for="tempat-lahir"
@@ -102,11 +108,17 @@
                         type="text"
                         name="tempat_lahir"
                         class="form-control"
+                        value="{{ old('tempat_lahir') }}"
                       >
+                      @if($errors->has('tempat_lahir'))
+                        <p class="text-danger">
+                          {{ $errors->first('tempat_lahir') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error has-feedback' : '' }}">
                       <label
                         class="control-label"
                         for="tanggal-lahir-ghoib"
@@ -127,10 +139,15 @@
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tanggal_lahir'))
+                        <p class="text-danger">
+                          {{ $errors->first('tanggal_lahir') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('alamat') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label
@@ -144,14 +161,22 @@
                         class="form-control"
                         id=""
                         rows="5"
-                      ></textarea>
+                      >{{ old('alamat') }}</textarea>
+                      @if($errors->has('alamat'))
+                        <p class="text-danger">
+                          {{ $errors->first('alamat') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('alasan') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Alasan Ghoib <small class="text-danger">*</small>
                       </label>
                       <textarea
@@ -159,7 +184,12 @@
                         class="form-control"
                         id="alasan"
                         rows="5"
-                      ></textarea>
+                      >{{ old('alasan') }}</textarea>
+                      @if($errors->has('alasan'))
+                        <p class="text-danger">
+                          {{ $errors->first('alasan') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -178,7 +208,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach

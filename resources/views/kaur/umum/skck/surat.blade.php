@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat SKCK</title>
+  <title>Surat SKCK - {{ $skck->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">

@@ -15,7 +15,11 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Tambah Data Keterangan Kelahiran</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li><a href="#">KAUR Kesra - Keterangan Kelahiran</a></li>
+        <li class="active">Form Tambah</li>
+      </ul>
     </div>
   </div>
   <div class="row">
@@ -27,10 +31,10 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-tantrib-dan-umum/keterangan-bersih-diri/simpan" method="post">
+              <form action="/kaur-kesra/keterangan-kelahiran/simpan" method="post">
                 <h4>
                   <b>
-                    IDENTITAS AYAH & IBU
+                    Identitas
                   </b>
                 </h4>
                 <hr />
@@ -39,292 +43,401 @@
                   name="_token"
                   value="{{ csrf_token() }}"
                 />
-                <input
-                  type="hidden"
-                  name="master_penduduk_id"
-                  id="master-penduduk-id"
-                />
+                @include('layouts.partials.identitas_penduduk')
+                <h4>
+                  <b>
+                    Identitas Anak
+                  </b>
+                </h4>
+                <hr />
                 <div class="row">
                   <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="form-group {{ $errors->has('nik') ? 'has-error has-feedback' : '' }}">
+                    <div class="form-group {{ $errors->has('nama_anak') ? 'has-error has-feedback' : '' }}">
                       <label
+                        for=""
                         class="control-label"
-                        for="nik"
                       >
-                        NIK
-                      <a
-                        href="/master/penduduk/form-tambah"
-                      >
-                        <i class="fa fa-plus"></i>
-                        Tambah Data Penduduk
-                      </a>
+                        Nama Lengkap <small class="text-danger">*</small>
                       </label>
-                      <div class="scrollable-dropdown-menu">
-
                       <input
                         type="text"
-                        name="nik"
+                        name="nama_anak"
                         class="form-control"
-                        id="nik"
-                        value="{{ old('nik') }}"
-                        autocomplete="off"
+                        value="{{ old('nama_anak') }}"
                       />
+                      @if($errors->has('nama_anak'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama_anak') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('tempat_lahir_anak') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tempat Lahir <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="tempat_lahir_anak"
+                        class="form-control"
+                        value="{{ old('tempat_lahir_anak') }}"
+                      />
+                      @if($errors->has('tempat_lahir_anak'))
+                        <p class="text-danger">
+                          {{ $errors->first('tempat_lahir_anak') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('tanggal_lahir_anak') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tanggal Lahir <small class="text-danger">*</small>
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="tanggal-lahir-anak"
+                      >
+                        <input
+                          type="text"
+                          name="tanggal_lahir_anak"
+                          class="form-control"
+                          value="{{ old('tanggal_lahir_anak') }}"
+                        />
+                        <span class="input-group-addon">
+                          <span class="fa fa-calendar"></span>
+                        </span>
                       </div>
-                      @if($errors->has('nik'))
+                      @if($errors->has('tanggal_lahir_anak'))
                         <p class="text-danger">
-                          {{ $errors->first('nik') }}
+                          {{ $errors->first('tanggal_lahir_anak') }}
                         </p>
                       @endif
                     </div>
                   </div>
-                  <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
                       <label
+                        for=""
                         class="control-label"
-                        for="nama"
                       >
-                        Nama Lengkap
-                      <a
-                        href="/master/penduduk/form-tambah"
-                      >
-                        <i class="fa fa-plus"></i>
-                        Tambah Data Penduduk
-                      </a>
+                        Hari Lahir <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="hari_lahir_anak"
                         class="form-control"
-                        id="nama"
-                        value="{{ old('nama') }}"
-                        autocomplete="off"
+                        id="hari-lahir-anak"
+                        value="{{ old('hari_lahir_anak') }}"
+                        readonly
                       />
-                      @if($errors->has(''))
-                        <p class="text-danger">
-                          {{ $errors->first('') }}
-                        </p>
-                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Jam Lahir
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="jam-lahir-anak"
+                      >
+                        <input
+                          type="text"
+                          name="jam_lahir_anak"
+                          class="form-control"
+                          value="{{ old('jam_lahir_anak') }}"
+                        />
+                        <span class="input-group-addon">
+                          <span class="fa fa-clock-o"></span>
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-6 col-md-6 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="form-group">
                       <label
+                        for=""
                         class="control-label"
-                        for="tempat-lahir"
                       >
-                        Tempat Lahir
+                        Jenis Kelamin <small class="text-danger">*</small>
+                      </label>
+                      <select
+                        name="jenis_kelamin_anak"
+                        class="form-control"
+                      >
+                        @foreach($jenisKelamin as $item)
+                          <option
+                            value="{{ $item->keterangan}}"
+                            {{ old('jenis_kelamin_anak') == $item->keterangan ? 'selected' : '' }}
+                          >
+                            {{ $item->keterangan}}
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group {{ $errors->has('anak_ke') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Anak Ke <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
-                        name=""
+                        name="anak_ke"
                         class="form-control"
-                        id="tempat-lahir"
-                        readonly
+                        value="{{ old('anak_ke') }}"
                       />
-                      @if($errors->has('jenis_kelamin'))
+                      @if($errors->has('anak_ke'))
                         <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
+                          {{ $errors->first('anak_ke') }}
                         </p>
                       @endif
                     </div>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="form-group">
                       <label
+                        for=""
                         class="control-label"
-                        for="tanggal-lahir"
-                      >
-                        Tanggal Lahir
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="tanggal-lahir"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="jenis-kelamin"
-                      >
-                        Jenis Kelamin
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="jenis-kelamin"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="nama"
-                      >
-                        Status Perkawinan
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="status-perkawinan"
-                        readonly
-                      />
-                      @if($errors->has('nama'))
-                        <p class="text-danger">
-                          {{ $errors->first('nama') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tempat-lahir"
-                      >
-                        Agama
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="agama"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="tanggal-lahir"
-                      >
-                        Pendidikan
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="pendidikan"
-                        readonly
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label
-                        class="control-label"
-                        for="jenis-kelamin"
-                      >
-                        Pekerjaan
-                      </label>
-                      <input
-                        type="text"
-                        name=""
-                        class="form-control"
-                        id="pekerjaan"
-                        readonly
-                      />
-                      @if($errors->has('jenis_kelamin'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_kelamin') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        class="control-label"
-                        for="alamat"
                       >
                         Alamat
                       </label>
                       <textarea
-                        name=""
-                        class="form-control"
-                        id="alamat"
+                        name="alamat_anak"
                         rows="5"
-                        readonly
-                      ></textarea>
+                        class="form-control"
+                      >{{ old('alamat_anak') }}</textarea>
                     </div>
                   </div>
                 </div>
                 <h4>
                   <b>
-                    KETERANGAN SURAT
+                    Identitas Ayah & Ibu
+                  </b>
+                </h4>
+                <hr />
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group {{ $errors->has('nama_ayah') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Nama Lengkap Ayah <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="nama_ayah"
+                        class="form-control"
+                        value="{{ old('nama_ayah') }}"
+                      />
+                      @if($errors->has('nama_ayah'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama_ayah') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Umur Ayah
+                      </label>
+                      <input
+                        type="number"
+                        name="umur_ayah"
+                        class="form-control"
+                        value="{{ old('umur_ayah') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Agama Ayah
+                      </label>
+                      <select
+                        name="agama_ayah"
+                        class="form-control"
+                      >
+                        @foreach($agama as $item)
+                          <option
+                            value="{{ $item->keterangan }}"
+                            {{ old('agama_ayah') == $item->keterangan ? 'selected' : '' }}
+                          >
+                            {{ $item->keterangan }}
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Pekerjaan Ayah
+                      </label>
+                      <input
+                        type="text"
+                        name="pekerjaan_ayah"
+                        class="form-control"
+                        value="{{ old('pekerjaan_ayah') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Alamat Ayah
+                      </label>
+                      <textarea
+                        name="alamat_ayah"
+                        class="form-control"
+                        rows="5"
+                      >{{ old('alamat_ayah') }}</textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group {{ $errors->has('nama_ibu') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Nama Lengkap Ibu <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="nama_ibu"
+                        class="form-control"
+                        value="{{ old('nama_ibu') }}"
+                      />
+                    </div>
+                    @if($errors->has('nama_ibu'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama_ibu') }}
+                        </p>
+                      @endif
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Umur Ibu
+                      </label>
+                      <input
+                        type="number"
+                        name="umur_ibu"
+                        class="form-control"
+                        value="{{ old('umur_ibu') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Agama Ibu
+                      </label>
+                      <select
+                        name="agama_ibu"
+                        class="form-control"
+                      >
+                        @foreach($agama as $item)
+                          <option
+                            value="{{ $item->keterangan }}"
+                            {{ old('agama_ibu') == $item->keterangan ? 'selected' : '' }}
+                          >
+                            {{ $item->keterangan }}
+                          </option>
+                        @endforeach
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Pekerjaan Ibu
+                      </label>
+                      <input
+                        type="text"
+                        name="pekerjaan_ibu"
+                        class="form-control"
+                        value="{{ old('pekerjaan_ibu') }}"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="form-group">
+                      <label for="">
+                        Alamat Ibu
+                      </label>
+                      <textarea
+                        name="alamat_ibu"
+                        class="form-control"
+                        rows="5"
+                      >{{ old('alamat_ibu') }}</textarea>
+                    </div>
+                  </div>
+                </div>
+                <h4>
+                  <b>
+                    Keterangan Surat
                   </b>
                 </h4>
                 <hr />
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
-                        Keterangan Redaksi
-                        <button
-                          id="ubah-keterangan-redaksi"
-                          class="btn btn-sm btn-warning"
-                        >
-                          <i class="fa fa-pencil"></i> Ubah Keterangan Redaksi
-                        </button>
-                      </label>
-                      <textarea
-                        name="redaksi"
-                        class="form-control"
-                        id="redaksi"
-                        rows="5"
-                        readonly
-                      >Tersebut di atas adalah benar warga/penduduk Desa Cilame Kecamatan Ngamprah. Sepanjang catatan yang ada pada kami berkelakuan baik, tidak pernah tersangkut perkara pidana dan tidak terlibat G30S/PKI atau gerakan organisasi terlarang lainnya.</textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
-                        Keperluan
-                      </label>
-                      <textarea
-                        name="keperluan"
-                        class="form-control"
-                        id="keperluan"
-                        rows="5"
-                      ></textarea>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Ditanda Tangani Oleh
                       </label>
                       <select
-                        name="profil_perangkat_id"
+                        name="perangkat_id"
                         class="form-control"
                         id="profil-perangkat-id"
                       >
@@ -332,7 +445,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach
@@ -340,9 +456,16 @@
                     </div>
                   </div>
                 </div>
+                <p>
+                  <small>
+                    <code>
+                      Label ber-simbol (*) perlu diisi/dipilih.
+                    </code>
+                  </small>
+                </p>
                 <button
                   type="submit"
-                  class="btn btn-primary"
+                  class="btn btn-sm btn-social btn-vk"
                 >
                   <i class="fa fa-check"></i> Simpan
                 </button>
@@ -372,7 +495,7 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nik',
+            url: '/kependudukan/penduduk/api/data-nik',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -389,7 +512,7 @@
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({
-          url: '/master/penduduk/api/data/'+nik,
+          url: '/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -410,7 +533,7 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/master/penduduk/api/data-nama',
+            url: '/kependudukan/penduduk/api/data-nama',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -427,7 +550,7 @@
       afterSelect: function(result){
         var nama = $('#nama').val();
         $.ajax({
-          url: '/master/penduduk/api/data-by-nama/'+nama,
+          url: '/kependudukan/penduduk/api/data-by-nama/'+nama,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -445,6 +568,34 @@
           }
         });
       }
+    });
+    $('#tanggal-lahir-anak').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years',
+      locale: 'id',
+    }).on('dp.change', function(e){
+      // console.log(e.date);
+      console.log(e.date._d.getDay());
+      var day = e.date._d.getDay();
+
+      if (day == 1) {
+        $('#hari-lahir-anak').val('Senin');
+      }else if(day == 2){
+        $('#hari-lahir-anak').val('Selasa');
+      }else if(day == 3){
+        $('#hari-lahir-anak').val('Rabu');
+      }else if(day == 4){
+        $('#hari-lahir-anak').val('Kamis');
+      }else if(day == 5){
+        $('#hari-lahir-anak').val('Jumat');
+      }else if(day == 6){
+        $('#hari-lahir-anak').val('Sabtu');
+      }else if(day == 0){
+        $('#hari-lahir-anak').val('Minggu');
+      }
+    });
+    $('#jam-lahir-anak').datetimepicker({
+      format: 'HH:mm',
     });
     $('#tanggal-lahir-ayah').datetimepicker({
       format: 'DD-MM-YYYY',

@@ -24,7 +24,23 @@ class KeteranganPenghasilanRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'penghasilan' => 'required',
+            'redaksi' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'penghasilan.required' => 'Penghasilan perlu diisi.',
+            'redaksi.required' => 'Redaksi perlu diisi.',
         ];
     }
 }

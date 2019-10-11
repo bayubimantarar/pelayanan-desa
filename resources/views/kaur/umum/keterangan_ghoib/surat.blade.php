@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Ghoib</title>
+  <title>Surat Keterangan Ghoib - {{ $keteranganGhoib->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">
@@ -247,7 +247,7 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganGhoib->profil_perangkat_id != 0)
+              @if($keteranganGhoib->perangkat_id != 0)
                 <u>
                   {{ $keteranganGhoib->profil_perangkat->nama }}
                 </u>

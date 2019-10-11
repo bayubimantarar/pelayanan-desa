@@ -40,7 +40,7 @@
               <form action="/kaur-kesra/keterangan-kematian/simpan" method="post">
                 <h4>
                   <b>
-                    IDENTITAS PENDUDUK
+                    Identitas Penduduk
                   </b>
                 </h4>
                 <hr />
@@ -58,33 +58,54 @@
                 <hr />
                 <div class="row">
                   <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Nama Lengkap <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="nama"
                         class="form-control"
+                        value="{{ old('nama') }}"
                       />
+                      @if($errors->has('nama'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
-                        Tempat Lahir
+                    <div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tempat Lahir <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="tempat_lahir"
                         class="form-control"
+                        value="{{ old('tempat_lahir') }}"
                       />
+                      @if($errors->has('tempat_lahir'))
+                        <p class="text-danger">
+                          {{ $errors->first('tempat_lahir') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
-                        Tanggal Lahir
+                    <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tanggal Lahir <small class="text-danger">*</small>
                       </label>
                       <div
                         class="input-group date"
@@ -100,12 +121,20 @@
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tanggal_lahir'))
+                        <p class="text-danger">
+                          {{ $errors->first('tanggal_lahir') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-3 col-xs-12">
                     <div class="form-group">
-                      <label for="">
-                        Jenis Kelamin
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Jenis Kelamin <small class="text-danger">*</small>
                       </label>
                       <select
                         name="jenis_kelamin"
@@ -114,6 +143,7 @@
                         @foreach($jenisKelamin as $item)
                           <option
                             value="{{ $item->keterangan }}"
+                            {{ old('jenis_kelamin') == $item->keterangan ? 'selected' : '' }}
                           >
                             {{ $item->keterangan }}
                           </option>
@@ -133,8 +163,11 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Tanggal <small class="text-danger">*</small>
                       </label>
                       <div
@@ -151,11 +184,19 @@
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tanggal_lahir'))
+                        <p class="text-danger">
+                          {{ $errors->first('tanggal_lahir') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="form-group">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Hari
                       </label>
                       <input
@@ -163,6 +204,7 @@
                         name="hari_meninggal"
                         class="form-control"
                         id="hari-meninggal"
+                        value="{{ old('hari_meninggal') }}"
                         readonly
                       />
                     </div>
@@ -191,39 +233,66 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('alamat_meninggal') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Meninggal Di <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="alamat_meninggal"
                         class="form-control"
+                        value="{{ old('alamat_meninggal') }}"
                       />
+                      @if($errors->has('alamat_meninggal'))
+                        <p class="text-danger">
+                          {{ $errors->first('alamat_meninggal') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('penyebab_meninggal') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Penyebab <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="penyebab_meninggal"
                         class="form-control"
+                        value="{{ old('penyebab_meninggal') }}"
                       />
+                      @if($errors->has('penyebab_meninggal'))
+                        <p class="text-danger">
+                          {{ $errors->first('penyebab_meninggal') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('hubungan_pelapor') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Hubungan Pelapor <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="hubungan_pelapor"
                         class="form-control"
+                        value="{{ old('hubungan_pelapor') }}"
                       />
+                      @if($errors->has('hubungan_pelapor'))
+                        <p class="text-danger">
+                          {{ $errors->first('hubungan_pelapor') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -242,7 +311,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach

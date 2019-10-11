@@ -24,7 +24,10 @@ class KeteranganBedaIdentitasRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'jumlah_kesalahan' => 'required',
+            'data.*' => 'required',
+            'keterangan.*' => 'required'
         ];
     }
 }

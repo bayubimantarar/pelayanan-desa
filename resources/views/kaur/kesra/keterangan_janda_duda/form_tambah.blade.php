@@ -66,10 +66,16 @@
                         name="status"
                         class="form-control"
                       >
-                        <option value="Janda">
+                        <option
+                          value="Janda"
+                          {{ old('status') == 'Janda' ? 'selected' : '' }}
+                        >
                           Janda
                         </option>
-                        <option value="Duda">
+                        <option
+                          value="Duda"
+                          {{ old('status') == 'Duda' ? 'selected' : '' }}
+                        >
                           Duda
                         </option>
                       </select>
@@ -78,33 +84,49 @@
                 </div>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
+                    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Nama Lengkap <small class="text-danger">*</small>
                       </label>
                       <input
                         type="text"
                         name="nama"
                         class="form-control"
+                        value="{{ old('nama') }}"
                       />
+                      @if($errors->has('nama'))
+                        <p class="text-danger">
+                          {{ $errors->first('nama') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="form-group">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Nomor Pensiun
                       </label>
                       <input
                         type="text"
                         name="nomor_pensiun"
                         class="form-control"
+                        value="{{ old('nomor_pensiun') }}"
                       />
                     </div>
                   </div>
                   <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="form-group">
-                      <label for="">
-                        Tanggal Meninggal
+                    <div class="form-group {{ $errors->has('tanggal_meninggal') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tanggal Meninggal <small class="text-danger">*</small>
                       </label>
                       <div
                         class="input-group date"
@@ -114,45 +136,58 @@
                           type="text"
                           name="tanggal_meninggal"
                           class="form-control"
-                          value="{{ old('tanggal_lahir') }}"
+                          value="{{ old('tanggal_meninggal') }}"
                         />
                         <span class="input-group-addon">
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tanggal_meninggal'))
+                        <p class="text-danger">
+                          {{ $errors->first('tanggal_meninggal') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Penerima Pensiun Dari Departemen/Instansi
                       </label>
                       <textarea
-                        name=""
+                        name="pensiunan"
                         class="form-control"
                         rows="5"
-                      ></textarea>
+                      >{{ old('pensiunan') }}</textarea>
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
                         name="perangkat_id"
-                        id=""
                         class="form-control"
                       >
                         <option value="0">
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach
@@ -281,6 +316,7 @@
     $('#tanggal-meninggal').datetimepicker({
       format: 'DD-MM-YYYY',
       locale: 'id',
+      viewMode: 'years'
     }).on('dp.change', function(e){
       // console.log(e.date);
       console.log(e.date._d.getDay());

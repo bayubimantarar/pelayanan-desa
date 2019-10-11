@@ -10,12 +10,6 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
 @endsection
 
 @section('content')
@@ -81,10 +75,13 @@
                   </b>
                 </h4>
                 <hr />
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('jumlah_kesalahan') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Jumlah Kesalahan Data <small class="text-danger">*</small>
                       </label>
                       <input
@@ -92,7 +89,13 @@
                         name="jumlah_kesalahan"
                         class="form-control"
                         id="jumlah-kesalahan"
+                        value="{{ old('jumlah_kesalahan') }}"
                       />
+                      @if($errors->has('jumlah_kesalahan'))
+                        <p class="text-danger">
+                          {{ $errors->first('jumlah_kesalahan') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -159,7 +162,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach
@@ -203,6 +209,34 @@
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
   <script>
+    var jumlah_kesalahan = $('#jumlah-kesalahan').val();
+
+    if (jumlah_kesalahan != 0) {
+      for(x=0; x<jumlah_kesalahan; x++){
+        element =
+          '<div class="row">'+
+            '<div class="col-lg-6 col-md-6 col-xs-12">'+
+              '<div class="form-group {{ $errors->has('data.'.$total) ? 'has-error has-feedback' : '' }}">'+
+                '<label>Data <small class="text-danger">*</small></label>'+
+                '<input type="text" name="data['+x+']" class="form-control" value="{{ old('data.'.$total) }}"/>'+
+                '<p>{{ $errors->first('data.'.$total) }}</p>'+
+              '</div>'+
+            '</div>'+
+            '<div class="col-lg-6 col-md-6 col-xs-12">'+
+              '<div class="form-group">'+
+                '<label>Keterangan <small class="text-danger">*</small></label>'+
+                '<input type="text" name="keterangan['+x+']" class="form-control" />'+
+              '</div>'+
+            '</div>'+
+          '</div>';
+        $('#form-keluarga').append(element).show();
+        $('.tanggal-lahir').datetimepicker({
+          format: 'DD-MM-YYYY',
+          viewMode: 'years'
+        });
+      }
+    }
+
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({

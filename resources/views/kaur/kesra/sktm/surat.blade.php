@@ -65,7 +65,7 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-       surat keterangan kehilangan
+       surat keterangan tidak mampu
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>

@@ -5,39 +5,29 @@
 />
 <div class="row">
   <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group {{ $errors->has('nik') ? 'has-error has-feedback' : '' }}">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
-        for="nik"
+        for="penduduk-id"
       >
         NIK
-      <a
-        href="/master/penduduk/form-tambah"
-      >
-        <i class="fa fa-plus"></i>
-        Tambah Data Penduduk
-      </a>
+        <a
+          href="/master/penduduk/form-tambah"
+        >
+          <i class="fa fa-plus"></i>
+          Tambah Data Penduduk
+        </a>
       </label>
-      <div class="scrollable-dropdown-menu">
-
       <input
         type="number"
-        name=""
         class="form-control"
         id="nik"
-        value="{{ old('nik') }}"
         autocomplete="off"
       />
-      </div>
-      @if($errors->has('nik'))
-        <p class="text-danger">
-          {{ $errors->first('nik') }}
-        </p>
-      @endif
     </div>
   </div>
   <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="nama"
@@ -58,17 +48,12 @@
         value="{{ old('nama') }}"
         autocomplete="off"
       />
-      @if($errors->has('nama'))
-        <p class="text-danger">
-          {{ $errors->first('nama') }}
-        </p>
-      @endif
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-6 col-md-6 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="tempat-lahir"
@@ -82,15 +67,10 @@
         id="tempat-lahir"
         readonly
       />
-      @if($errors->has('jenis_kelamin'))
-        <p class="text-danger">
-          {{ $errors->first('jenis_kelamin') }}
-        </p>
-      @endif
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="tanggal-lahir"
@@ -107,7 +87,7 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="jenis-kelamin"
@@ -121,17 +101,12 @@
         id="jenis-kelamin"
         readonly
       />
-      @if($errors->has('jenis_kelamin'))
-        <p class="text-danger">
-          {{ $errors->first('jenis_kelamin') }}
-        </p>
-      @endif
     </div>
   </div>
 </div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="nama"
@@ -145,15 +120,10 @@
         id="status-perkawinan"
         readonly
       />
-      @if($errors->has('nama'))
-        <p class="text-danger">
-          {{ $errors->first('nama') }}
-        </p>
-      @endif
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="tempat-lahir"
@@ -167,15 +137,10 @@
         id="agama"
         readonly
       />
-      @if($errors->has('jenis_kelamin'))
-        <p class="text-danger">
-          {{ $errors->first('jenis_kelamin') }}
-        </p>
-      @endif
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="tanggal-lahir"
@@ -192,7 +157,7 @@
     </div>
   </div>
   <div class="col-lg-3 col-md-3 col-xs-12">
-    <div class="form-group">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="jenis-kelamin"
@@ -206,17 +171,12 @@
         id="pekerjaan"
         readonly
       />
-      @if($errors->has('jenis_kelamin'))
-        <p class="text-danger">
-          {{ $errors->first('jenis_kelamin') }}
-        </p>
-      @endif
     </div>
   </div>
 </div>
 <div class="form-group">
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="col-lg-12 col-md-12 col-xs-12 {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
       <label
         class="control-label"
         for="alamat"
@@ -233,3 +193,8 @@
     </div>
   </div>
 </div>
+@if($errors->has('penduduk_id'))
+  <p class="text-danger">
+    {{ $errors->first('penduduk_id') }}
+  </p>
+@endif

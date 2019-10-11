@@ -24,7 +24,23 @@ class KeteranganJandaDudaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'nama' => 'required',
+            'tanggal_meninggal' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'nama.required' => 'Nama lengkap perlu diisi',
+            'tanggal_meninggal.required' => 'Tanggal meninggal perlu diisi.'
         ];
     }
 }

@@ -24,7 +24,13 @@ class SKCKRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'nik' => 'required'
+            'penduduk_id' => 'required',
+            'rt' => 'required',
+            'rw' => 'required',
+            'tertanggal_rt' => 'required',
+            'tertanggal_rw' => 'required',
+            'redaksi' => 'required',
+            'keperluan' => 'required'
         ];
     }
 
@@ -36,7 +42,13 @@ class SKCKRequest extends FormRequest
     public function messages()
     {
         return [
-            'nik.required' => 'NIK perlu diisi.'
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'rt.required' => 'Pengantar RT perlu diisi.',
+            'rw.required' => 'Pengantar RW perlu diisi.',
+            'tertanggal_rt.required' => 'Tanggal pengantar RT perlu diisi.',
+            'tertanggal_rw.required' => 'Tanggal pengantar RW perlu diisi.',
+            'redaksi.required' => 'Redaksi perlu diisi.',
+            'keperluan.required' => 'Keperluan perlu diisi.'
         ];
     }
 }

@@ -24,7 +24,27 @@ class KeteranganUsahaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'penduduk_id' => 'required',
+            'jenis_usaha' => 'required',
+            'redaksi' => 'required',
+            'lokasi' => 'required',
+            'keperluan' => 'required'
+        ];
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'penduduk_id.required' => 'Identitas peminta berkas perlu diisi.',
+            'jenis_usaha.required' => 'Jenis usaha perlu diisi.',
+            'redaksi.required' => 'Redaksi perlu diisi.',
+            'lokasi.required' => 'Lokasi perlu diisi.',
+            'keperluan.required' => 'Keperluan perlu diisi.'
         ];
     }
 }

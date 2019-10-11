@@ -10,12 +10,6 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
 @endsection
 
 @section('content')
@@ -65,20 +59,34 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('rt') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         RT <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
                         name="rt"
                         class="form-control"
+                        value="{{ old('rt') }}"
                       >
+                      @if($errors->has('rt'))
+                        <p class="text-danger">
+                          {{ $errors->first('rt') }}
+                        </p>
+                      @endif
                     </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('rt') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Tertanggal dari RT <small class="text-danger">*</small>
                       </label>
                       <div
@@ -89,25 +97,46 @@
                           type="text"
                           name="tertanggal_rt"
                           class="form-control"
+                          value="{{ old('tertanggal_rt') }}"
                         />
                         <span class="input-group-addon">
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tertanggal_rt'))
+                        <p class="text-danger">
+                          {{ $errors->first('tertanggal_rt') }}
+                        </p>
+                      @endif
                     </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('rt') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         RW <small class="text-danger">*</small>
                       </label>
                       <input
                         type="number"
                         name="rw"
                         class="form-control"
-                        id="datetimepicker"
+                        value="{{ old('rw') }}"
                       >
+                      @if($errors->has('rw'))
+                        <p class="text-danger">
+                          {{ $errors->first('rw') }}
+                        </p>
+                      @endif
                     </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <label for="">
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-xs-12">
+                    <div class="form-group {{ $errors->has('tertanggal_rt') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Tertanggal dari RW <small class="text-danger">*</small>
                       </label>
                       <div
@@ -118,18 +147,27 @@
                           type="text"
                           name="tertanggal_rw"
                           class="form-control"
+                          value="{{ old('tertanggal_rw') }}"
                         />
                         <span class="input-group-addon">
                           <span class="fa fa-calendar"></span>
                         </span>
                       </div>
+                      @if($errors->has('tertanggal_rw'))
+                        <p class="text-danger">
+                          {{ $errors->first('tertanggal_rw') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('alasan') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Alasan Kehilangan <small class="text-danger">*</small>
                       </label>
                       <textarea
@@ -137,7 +175,12 @@
                         class="form-control"
                         id="alasan"
                         rows="5"
-                      ></textarea>
+                      >{{ old('alasan') }}</textarea>
+                      @if($errors->has('alasan'))
+                        <p class="text-danger">
+                          {{ $errors->first('alasan') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -156,7 +199,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach

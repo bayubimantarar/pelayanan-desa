@@ -11,9 +11,8 @@
     }
     body{
       font-family: 'Times New Roman';
-      font-size: 16px;
-      margin-left: 45px;
-      margin-right: 45px;
+      font-size: 13px;
+      margin-right: 50%;
     }
     .header {
       text-align: center;
@@ -21,7 +20,9 @@
     }
     .header img {
       position: absolute;
-      margin-top: 7px;
+      padding-left: 25px;
+      padding-bottom: 25px;
+      /*margin-top: 3px;*/
     }
     .title {
       text-align: center;
@@ -43,7 +44,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Usaha - {{ $keteranganUsaha->penduduk->nama }}</title>
+  <title>Surat Keterangan Kelahiran</title>
 </head>
 <body>
   <div class="header">
@@ -52,12 +53,12 @@
       height="75"
       style=""
     />
-    <h3 style="margin: 0; padding: 0; text-transform: uppercase;">
+    <h3 style="padding-left:50px; margin: 0; text-transform: uppercase;">
       Pemerintahan Kabupaten {{ $profil->kabupaten }} <br />
-      Kecamatan {{ $profil->kecamatan }} <br />
+      Kecamatan {{ $profil->kecamatan }}<br />
       Desa {{ $profil->desa }}
     </h3>
-    <small style="margin: 0; padding: 0;">
+    <small style="margin: 0; padding-left:50px;">
       <b>
         {{ $profil->alamat }}
       </b>
@@ -66,11 +67,11 @@
   <hr size="4" style="margin: 0; padding: 0;"/>
   <div class="title">
     <h4 class="underline" style="margin: 0; padding: 10;">
-      surat keterangan usaha
+       surat keterangan kelahiran
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 583/{{ $total }}/Ds/IX/2019
+        Nomor : 474/{{ $total }}/Ds./IX/2019
       </b>
     </p>
   </div>
@@ -83,73 +84,121 @@
         <td>Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
-          <b>{{ $keteranganUsaha->penduduk->nama }}</b>
+          <b>{{ $keteranganKelahiran->penduduk->nama }}</b>
         </td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td>Tempat / Tanggal Lahir</td>
+        <td>Tempat/Tanggal Lahir</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->tempat_lahir }}, {{ $keteranganUsaha->penduduk->tanggal_lahir }}</td>
-      </tr>
-      <tr>
+        <td>{{ $keteranganKelahiran->penduduk->tempat_lahir }}, {{ $keteranganKelahiran->penduduk->tanggal_lahir }}</td>
         <td>Jenis Kelamin</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->jenis_kelamin }}</td>
+        <td>{{ $keteranganKelahiran->jenis_kelamin_anak === 'Laki-laki' ? 'L' : 'P' }}</td>
       </tr>
       <tr>
-        <td>Status Perkawinan</td>
+        <td>Hari/Waktu</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->status_perkawinan }}</td>
+        <td>{{ $keteranganKelahiran->hari_lahir_anak }} / {{ $keteranganKelahiran->jam_lahir_anak }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
-        <td>Agama</td>
+        <td>Anak Ke</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->agama }}</td>
-      </tr>
-      <tr>
-        <td>Pendidikan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pendidikan }}</td>
-      </tr>
-      <tr>
-        <td>Pekerjaan</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->pekerjaan }}</td>
-      </tr>
-      <tr>
-        <td>NIK KTP</td>
-        <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->nik }}</td>
+        <td>{{ $keteranganKelahiran->anak_ke }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
       <tr>
         <td>Alamat</td>
         <td>:</td>
-        <td>{{ $keteranganUsaha->penduduk->alamat }}</td>
+        <td>{{ $keteranganKelahiran->penduduk->alamat }}</td><td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <p style="text-indent: 2.5%;">
+      Adalah anak dari pasangan suami / istri :
+    </p>
+    <table style="padding-left: 5%;">
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td style="text-transform: uppercase;">
+          <b>{{ $keteranganKelahiran->nama_ayah }}</b>
+        </td>
+        <td>Umur</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->umur_ayah }} Tahun</td>
+      </tr>
+      <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->agama_ayah }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Pekerjaan</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->pekerjaan_ayah }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->alamat_ayah }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <table style="padding-left: 5%; padding-top: 10px;">
+      <tr>
+        <td>Nama</td>
+        <td>:</td>
+        <td style="text-transform: uppercase;">
+          <b>{{ $keteranganKelahiran->nama_ibu }}</b>
+        </td>
+        <td>Umur</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->umur_ibu }} Tahun</td>
+      </tr>
+      <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->agama_ibu }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Pekerjaan</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->pekerjaan_ibu }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Alamat</td>
+        <td>:</td>
+        <td>{{ $keteranganKelahiran->alamat_ibu }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
     </table>
   </div>
-  <div class="keterangan">
-    <p style="text-indent: 2.5%;">
-      {{ $keteranganUsaha->redaksi }}<br />
-    </p>
-  </div>
-  <table style="padding-left: 5%;">
-    <tr>
-      <td>Jenis Usaha</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->jenis_usaha }}</td>
-    </tr>
-    <tr>
-      <td>Lokasi</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->lokasi }}</td>
-    </tr>
-    <tr>
-      <td>Keperluan</td>
-      <td>:</td>
-      <td>{{ $keteranganUsaha->keperluan }}</td>
-    </tr>
-  </table>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
       Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya dan akan diadakan perubahan atau pembatalan jika terdapat kekeliruan.
@@ -164,7 +213,7 @@
         <td>
           <center>
             <b style="text-transform: uppercase;">
-              {{ $keteranganUsaha->profil_perangkat->jabatan }}
+              {{ $keteranganKelahiran->profil_perangkat->jabatan }}
             </b>
           </center>
         </td>
@@ -245,13 +294,9 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganUsaha->perangkat_id != 0)
-                <u>
-                  {{ $keteranganUsaha->profil_perangkat->nama }}
-                </u>
-              @else
-                -
-              @endif
+              <u>
+                {{ $keteranganKelahiran->profil_perangkat->nama }}
+              </u>
             </b>
           </center>
         </td>

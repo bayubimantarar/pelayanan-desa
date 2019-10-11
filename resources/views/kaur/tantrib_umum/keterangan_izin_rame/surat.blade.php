@@ -45,7 +45,7 @@
 
     }
   </style>
-  <title>Surat Keterangan Izin Rame-Rame</title>
+  <title>Surat Keterangan Izin Rame-Rame - {{ $keteranganIzinRame->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">

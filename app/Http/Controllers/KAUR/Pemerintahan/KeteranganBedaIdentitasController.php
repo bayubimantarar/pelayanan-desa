@@ -69,8 +69,10 @@ class KeteranganBedaIdentitasController extends Controller
     public function create()
     {
         $perangkat = Perangkat::all();
+        $total = 0;
 
         return view('kaur.pemerintahan.keterangan_beda_identitas.form_tambah', compact(
+            'total',
             'perangkat'
         ));
     }

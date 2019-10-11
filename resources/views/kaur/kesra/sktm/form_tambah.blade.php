@@ -67,10 +67,10 @@
                         id="jenis-sktm"
                         class="form-control"
                       >
-                        <option value="Kesehatan">
+                        <option value="Kesehatan" {{ old('jenis_sktm') == 'Kesehatan' ? 'selected' : '' }}>
                           Kesehatan
                         </option>
-                        <option value="Pendidikan">
+                        <option value="Pendidikan" {{ old('jenis_sktm') == 'Pendidikan' ? 'selected' : '' }}>
                           Pendidikan
                         </option>
                       </select>
@@ -80,33 +80,54 @@
                 <div id="sktm-pendidikan">
                   <div class="row">
                     <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
+                      <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          for=""
+                          class="control-label"
+                        >
                           Nama Lengkap <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
                           name="nama"
                           class="form-control"
+                          value="{{ old('nama') }}"
                         />
+                        @if($errors->has('nama'))
+                          <p class="text-danger">
+                            {{ $errors->first('nama') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Tempat Lahir
+                      <div class="form-group {{ $errors->has('tempat_lahir') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Tempat Lahir <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
                           name="tempat_lahir"
                           class="form-control"
+                          value="{{ old('tempat_lahir') }}"
                         />
+                        @if($errors->has('tempat_lahir'))
+                          <p class="text-danger">
+                            {{ $errors->first('tempat_lahir') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Tanggal Lahir
+                      <div class="form-group {{ $errors->has('tanggal_lahir') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Tanggal Lahir <small class="text-danger">*</small>
                         </label>
                         <div
                           class="input-group date"
@@ -122,12 +143,20 @@
                             <span class="fa fa-calendar"></span>
                           </span>
                         </div>
+                        @if($errors->has('tanggal_lahir'))
+                          <p class="text-danger">
+                            {{ $errors->first('tanggal_lahir') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-3 col-md-3 col-xs-12">
                       <div class="form-group">
-                        <label for="">
-                          Jenis Kelamin
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Jenis Kelamin <small class="text-danger">*</small>
                         </label>
                         <select
                           name="jenis_kelamin"
@@ -136,6 +165,7 @@
                           @foreach($jenisKelamin as $item)
                             <option
                               value="{{ $item->keterangan }}"
+                              {{ old('jenis_kelamin') == $item->keterangan ? 'selected' : '' }}
                             >
                               {{ $item->keterangan }}
                             </option>
@@ -146,54 +176,78 @@
                   </div>
                   <div class="row">
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                      <div class="form-group">
-                        <label for="">
-                          Nama Sekolah <small class="text-danger">*</small>
+                      <div class="form-group {{ $errors->has('nama_sekolah') ? 'has-error has-feedback' : '' }}">
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Nama Sekolah / Institusi <small class="text-danger">*</small>
                         </label>
                         <input
                           type="text"
                           name="nama_sekolah"
                           class="form-control"
+                          value="{{ old('nama_sekolah') }}"
                         />
+                        @if($errors->has('nama_sekolah'))
+                          <p class="text-danger">
+                            {{ $errors->first('nama_sekolah') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
                       <div class="form-group">
-                        <label for="">
-                          Kelas <small class="text-danger">*</small>
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Kelas
                         </label>
                         <input
                           type="text"
                           name="kelas"
                           class="form-control"
+                          value="{{ old('kelas') }}"
                         />
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
                       <div class="form-group">
-                        <label for="">
-                          Jurusan <small class="text-danger">*</small>
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Jurusan
                         </label>
                         <input
                           type="text"
                           name="jurusan"
                           class="form-control"
+                          value="{{ old('jurusan') }}"
                         />
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
+                  <div class="form-group {{ $errors->has('alamat_sekolah') ? 'has-error has-feedback' : '' }}">
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-xs-12">
-                        <label for="">
-                          Alamat Sekolah <small class="text-danger">*</small>
+                        <label
+                          for=""
+                          class="control-label"
+                        >
+                          Alamat Sekolah / Institusi <small class="text-danger">*</small>
                         </label>
                         <textarea
                           name="alamat_sekolah"
                           class="form-control"
-                          id=""
                           rows="5"
-                        ></textarea>
+                        >{{ old('alamat_sekolah') }}</textarea>
+                        @if($errors->has('alamat_sekolah'))
+                          <p class="text-danger">
+                            {{ $errors->first('alamat_sekolah') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
                   </div>
@@ -201,8 +255,8 @@
                     <div class="row">
                       <div class="col-lg-6 col-md-6 col-xs-12">
                         <label
-                          class="control-label"
                           for=""
+                          class="control-label"
                         >
                           Diwakili Oleh <small class="text-danger">*</small>
                         </label>
@@ -210,18 +264,36 @@
                           name="diwakili_oleh"
                           class="form-control"
                         >
-                          <option value="Ayah">Ayah</option>
-                          <option value="Ibu">Ibu</option>
-                          <option value="Wali">Wali</option>
+                          <option
+                            value="Ayah"
+                            {{ old('diwakili_oleh') == 'Ayah' ? 'selected' : '' }}
+                          >
+                            Ayah
+                          </option>
+                          <option
+                            value="Ibu"
+                            {{ old('diwakili_oleh') == 'Ibu' ? 'selected' : '' }}
+                          >
+                            Ibu
+                          </option>
+                          <option
+                            value="Wali"
+                            {{ old('diwakili_oleh') == 'Wali' ? 'selected' : '' }}
+                          >
+                            Wali
+                          </option>
                         </select>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('redaksi') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Keterangan Redaksi <small class="text-danger">*</small>
                         <button
                           id="ubah-keterangan-redaksi"
@@ -237,13 +309,21 @@
                         rows="5"
                         readonly
                       >Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame yang berdomisili sesuai alamat tersebut di atas dan sepengetahuan kami termasuk kategori tidak mampu (Pra-KS) karena tidak mempunyai penghasilan tetap dan kekayaan yang dapat diandalkan.</textarea>
+                      @if($errors->has('redaksi'))
+                        <p class="text-danger">
+                          {{ $errors->first('redaksi') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('keperluan') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label for="">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
                         Keperluan <small class="text-danger">*</small>
                       </label>
                       <textarea
@@ -251,7 +331,12 @@
                         class="form-control"
                         id="keperluan"
                         rows="5"
-                      ></textarea>
+                      >{{ old('keperluan') }}</textarea>
+                      @if($errors->has('keperluan'))
+                        <p class="text-danger">
+                          {{ $errors->first('keperluan') }}
+                        </p>
+                      @endif
                     </div>
                   </div>
                 </div>
@@ -270,7 +355,10 @@
                           -
                         </option>
                         @foreach($perangkat as $item)
-                          <option value="{{ $item->id }}">
+                          <option
+                            value="{{ $item->id }}"
+                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                          >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
                         @endforeach
@@ -314,7 +402,14 @@
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
   <script>
-    $('#sktm-pendidikan').hide();
+    var jenis_sktm = $('#jenis-sktm').val();
+
+    if (jenis_sktm != "Pendidikan") {
+      $('#sktm-pendidikan').hide();
+    }else{
+      $('#sktm-pendidikan').show();
+    }
+
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
