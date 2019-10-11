@@ -209,6 +209,9 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 Route::get('/data-by-nama/{nama}', [
                     'uses' => 'Kependudukan\PendudukController@APIdataByNama',
                 ]);
+                Route::get('/data-by-id/{id}', [
+                    'uses' => 'Kependudukan\PendudukController@APIdataByID',
+                ]);
             });
             Route::get('/', [
                 'uses' => 'Kependudukan\PendudukController@index',
@@ -254,9 +257,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Ekbang\KeteranganUsahaController@create',
                 'as' => 'kaur_ekbang.keterangan_usaha.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@edit',
+                'as' => 'kaur_ekbang.keterangan_usaha.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Ekbang\KeteranganUsahaController@store',
                 'as' => 'kaur_ekbang.keterangan_usaha.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Ekbang\KeteranganUsahaController@update',
+                'as' => 'kaur_ekbang.keterangan_usaha.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Ekbang\KeteranganUsahaController@surat',

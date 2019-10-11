@@ -30,7 +30,7 @@ class KeteranganUsahaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganUsaha->id.'"
+                            href="/kaur-ekbang/keterangan-usaha/form-ubah/'.$keteranganUsaha->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -126,7 +126,13 @@ class KeteranganUsahaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganUsaha = KeteranganUsaha::findOrFail($id);
+
+        return view('kaur.ekbang.keterangan_usaha.form_ubah', compact(
+            'perangkat',
+            'keteranganUsaha'
+        ));
     }
 
     /**
@@ -136,9 +142,31 @@ class KeteranganUsahaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KeteranganUsahaRequest $keteranganUsahaRequest, $id)
     {
-        //
+        $pendudukID = $keteranganUsahaRequest->penduduk_id;
+        $perangkatID = $keteranganUsahaRequest->perangkat_id;
+        $redaksi = $keteranganUsahaRequest->redaksi;
+        $jenisUsaha = $keteranganUsahaRequest->jenis_usaha;
+        $lokasi = $keteranganUsahaRequest->lokasi;
+        $keperluan = $keteranganUsahaRequest->keperluan;
+
+        $keteranganUsahaData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'redaksi' => $redaksi,
+            'jenis_usaha' => $jenisUsaha,
+            'lokasi' => $lokasi,
+            'keperluan' => $keperluan,
+        ];
+
+        $createKeteranganUsaha = KeteranganUsaha::where('id', '=', $id)
+            ->update($keteranganUsahaData);
+
+        return redirect('/kaur-ekbang/keterangan-usaha')
+            ->with([
+                'notification' => 'Data penduduk berhasil diubah.'
+            ]);
     }
 
     /**

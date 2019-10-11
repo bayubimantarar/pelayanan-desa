@@ -15,6 +15,11 @@ use App\Http\Requests\Kependudukan\PendudukRequest;
 
 class PendudukController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function APIdataNIK()
     {
         $penduduk = Penduduk::pluck('nik');
@@ -23,6 +28,11 @@ class PendudukController extends Controller
             ->json($penduduk, 200);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function APIdataNama()
     {
         $penduduk = Penduduk::pluck('nama');
@@ -31,6 +41,11 @@ class PendudukController extends Controller
             ->json($penduduk, 200);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function APIdata($nik)
     {
         $penduduk = Penduduk::where('nik', '=', $nik)->first();
@@ -39,9 +54,27 @@ class PendudukController extends Controller
             ->json($penduduk, 200);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function APIdataByNama($nama)
     {
         $penduduk = Penduduk::where('nama', '=', $nama)->first();
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function APIdataByID($id)
+    {
+        $penduduk = Penduduk::where('id', '=', $id)->first();
 
         return response()
             ->json($penduduk, 200);
