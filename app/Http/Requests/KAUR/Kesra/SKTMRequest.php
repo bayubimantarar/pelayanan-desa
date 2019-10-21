@@ -52,7 +52,8 @@ class SKTMRequest extends FormRequest
             'tanggal_lahir.required_if' => 'Tanggal lahir perlu diisi.',
             'jenis_kelamin.required_if' => 'Jenis kelamin perlu dipilih.',
             'nama_sekolah.required_if' => 'Nama sekolah / institusi perlu diisi.',
-            'alamat_sekolah.required_if' => 'Alamat sekolah / institusi perlu diisi.'
+            'alamat_sekolah.required_if' => 'Alamat sekolah / institusi perlu diisi.',
+            'keperluan.required' => 'Keperluan perlu diisi.'
         ];
     }
 }

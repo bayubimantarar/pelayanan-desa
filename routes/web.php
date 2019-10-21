@@ -27,9 +27,10 @@ Route::group(['prefix' => 'autentikasi'], function(){
 });
 
 Route::group(['middleware' => 'auth:pengguna'], function(){
-    Route::get('/', function(){
-        return view('dasbor');
-    });
+    Route::get('/', [
+        'uses' => 'DasborController@index',
+        'as' => 'dasbor.index'
+    ]);
     Route::group(['prefix' => 'profil'], function(){
         Route::group(['prefix' => 'pemerintahan'], function(){
             Route::get('/', [
@@ -289,6 +290,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Umum\SKCKController@create',
                 'as' => 'kaur_umum.skck.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Umum\SKCKController@edit',
+                'as' => 'kaur_umum.skck.edit'
+            ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Umum\SKCKController@surat',
                 'as' => 'kaur_umum.skck.surat'
@@ -296,6 +301,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::post('/simpan', [
                 'uses' => 'KAUR\Umum\SKCKController@store',
                 'as' => 'kaur_umum.skck.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Umum\SKCKController@update',
+                'as' => 'kaur_umum.skck.update'
             ]);
         });
         Route::group(['prefix' => 'keterangan-ghoib'], function(){
@@ -311,6 +320,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Umum\KeteranganGhoibController@create',
                 'as' => 'kaur_umum.keterangan_ghoib.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@edit',
+                'as' => 'kaur_umum.keterangan_ghoib.edit'
+            ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Umum\KeteranganGhoibController@surat',
                 'as' => 'kaur_umum.keterangan_ghoib.surat'
@@ -318,6 +331,10 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::post('/simpan', [
                 'uses' => 'KAUR\Umum\KeteranganGhoibController@store',
                 'as' => 'kaur_umum.keterangan_ghoib.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Umum\KeteranganGhoibController@update',
+                'as' => 'kaur_umum.keterangan_ghoib.update'
             ]);
         });
     });
@@ -335,9 +352,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@create',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@edit',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@store',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@update',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_bersih_diri.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\TantribUmum\KeteranganBersihDiriController@surat',
@@ -357,9 +382,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@create',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@edit',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@store',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@update',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_kehilangan.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\TantribUmum\KeteranganKehilanganController@surat',
@@ -379,9 +412,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@create',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@edit',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@store',
                 'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@update',
+                'as' => 'kaur_tantrib_dan_umum.keterangan_izin_rame.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\TantribUmum\KeteranganIzinRameController@surat',
@@ -403,9 +444,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@create',
                 'as' => 'kaur_pemerintahan.keterangan_domisili.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@edit',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@store',
                 'as' => 'kaur_pemerintahan.keterangan_domisili.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@update',
+                'as' => 'kaur_pemerintahan.keterangan_domisili.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganDomisiliController@surat',
@@ -447,9 +496,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@create',
                 'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@edit',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@store',
                 'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@update',
+                'as' => 'kaur_pemerintahan.keterangan_ktp_sementara.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Pemerintahan\KeteranganKTPSementaraController@surat',
@@ -493,9 +550,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\SKTMController@create',
                 'as' => 'kaur_kesra.sktm.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\SKTMController@edit',
+                'as' => 'kaur_kesra.sktm.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\SKTMController@store',
                 'as' => 'kaur_kesra.sktm.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\SKTMController@update',
+                'as' => 'kaur_kesra.sktm.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\SKTMController@surat',
@@ -515,9 +580,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganKelahiranController@create',
                 'as' => 'kaur_kesra.keterangan_kelahiran.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@edit',
+                'as' => 'kaur_kesra.keterangan_kelahiran.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganKelahiranController@store',
                 'as' => 'kaur_kesra.keterangan_kelahiran.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKelahiranController@update',
+                'as' => 'kaur_kesra.keterangan_kelahiran.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganKelahiranController@surat',
@@ -537,9 +610,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganKematianController@create',
                 'as' => 'kaur_kesra.keterangan_kematian.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@edit',
+                'as' => 'kaur_kesra.keterangan_kematian.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganKematianController@store',
                 'as' => 'kaur_kesra.keterangan_kematian.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganKematianController@update',
+                'as' => 'kaur_kesra.keterangan_kematian.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganKematianController@surat',
@@ -559,9 +640,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@create',
                 'as' => 'kaur_kesra.keterangan_janda_duda.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@edit',
+                'as' => 'kaur_kesra.keterangan_janda_duda.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@store',
                 'as' => 'kaur_kesra.keterangan_janda_duda.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@update',
+                'as' => 'kaur_kesra.keterangan_janda_duda.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganJandaDudaController@surat',
@@ -581,9 +670,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@create',
                 'as' => 'kaur_kesra.keterangan_penghasilan.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@edit',
+                'as' => 'kaur_kesra.keterangan_penghasilan.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@store',
                 'as' => 'kaur_kesra.keterangan_penghasilan.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@update',
+                'as' => 'kaur_kesra.keterangan_penghasilan.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganPenghasilanController@surat',
@@ -603,9 +700,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@create',
                 'as' => 'kaur_kesra.keterangan_tidak_bekerja.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@edit',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@store',
                 'as' => 'kaur_kesra.keterangan_tidak_bekerja.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@update',
+                'as' => 'kaur_kesra.keterangan_tidak_bekerja.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganTidakBekerjaController@surat',
@@ -625,9 +730,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@create',
                 'as' => 'kaur_kesra.keterangan_belum_menikah.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@edit',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@store',
                 'as' => 'kaur_kesra.keterangan_belum_menikah.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@update',
+                'as' => 'kaur_kesra.keterangan_belum_menikah.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganBelumMenikahController@surat',
@@ -647,9 +760,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@create',
                 'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@edit',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@store',
                 'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.store'
+            ]);
+            Route::post('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@update',
+                'as' => 'kaur_kesra.keterangan_tanggungan_keluarga.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganTanggunganKeluargaController@surat',
@@ -669,9 +790,17 @@ Route::group(['middleware' => 'auth:pengguna'], function(){
                 'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@create',
                 'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.create'
             ]);
+            Route::get('/form-ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@edit',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.edit'
+            ]);
             Route::post('/simpan', [
                 'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@store',
                 'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.store'
+            ]);
+            Route::put('/ubah/{id}', [
+                'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@update',
+                'as' => 'kaur_kesra.keterangan_belum_memiliki_rumah.update'
             ]);
             Route::get('/surat/{id}', [
                 'uses' => 'KAUR\Kesra\KeteranganBelumMemilikiRumahController@surat',

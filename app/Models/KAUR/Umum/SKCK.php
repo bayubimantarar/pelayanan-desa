@@ -35,10 +35,16 @@ class SKCK extends Model
         return $this->belongsTo(Perangkat::class, 'perangkat_id', 'id');
     }
 
-    // public function getTertanggalRT($value)
-    // {
-    //     return Carbon::parse($this->tertanggal_rt)->format('d-m-Y');
-    // }
+    public function getTertanggalRtEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rt)->format('d-m-Y');
+    }
+
+    public function getTertanggalRwEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rw)->format('d-m-Y');
+    }
+
     // public function getTertanggalRW($value)
     // {
     //     return Carbon::parse($this->tertanggal_rw)->format('d-m-Y');

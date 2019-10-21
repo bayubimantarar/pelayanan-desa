@@ -29,7 +29,7 @@ class KeteranganIzinRameController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganIzinRame->id.'"
+                            href="/kaur-tantrib-dan-umum/keterangan-izin-rame/form-ubah/'.$keteranganIzinRame->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -135,7 +135,13 @@ class KeteranganIzinRameController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat  = Perangkat::all();
+        $keteranganIzinRame = keteranganIzinRame::findOrFail($id);
+
+        return view('kaur.tantrib_umum.keterangan_izin_rame.form_ubah', compact(
+            'perangkat',
+            'keteranganIzinRame'
+        ));
     }
 
     /**
@@ -147,7 +153,39 @@ class KeteranganIzinRameController extends Controller
      */
     public function update(KeteranganIzinRameRequest $keteranganIzinRameRequest, $id)
     {
-        //
+        $pendudukID = $keteranganIzinRameRequest->penduduk_id;
+        $perangkatID = $keteranganIzinRameRequest->perangkat_id;
+        $rt = $keteranganIzinRameRequest->rt;
+        $rw = $keteranganIzinRameRequest->rw;
+        $tertanggalRT = Carbon::parse($keteranganIzinRameRequest->tertanggal_rt);
+        $tertanggalRW = Carbon::parse($keteranganIzinRameRequest->tertanggal_rw);
+        $acara = $keteranganIzinRameRequest->acara;
+        $tanggalPelaksanaan = Carbon::parse($keteranganIzinRameRequest->tanggal_pelaksanaan);
+        $kegiatan = $keteranganIzinRameRequest->kegiatan;
+        $waktuPelaksanaan = $keteranganIzinRameRequest->waktu_pelaksanaan;
+        $alamatPelaksanaan = $keteranganIzinRameRequest->alamat_pelaksanaan;
+
+        $keteranganIzinRameData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'rt' => $rt,
+            'rw' => $rw,
+            'tertanggal_rt' => $tertanggalRT,
+            'tertanggal_rw' => $tertanggalRW,
+            'acara' => $acara,
+            'tanggal_pelaksanaan' => $tanggalPelaksanaan,
+            'kegiatan' => $kegiatan,
+            'waktu_pelaksanaan' => $waktuPelaksanaan,
+            'alamat_pelaksanaan' => $alamatPelaksanaan
+        ];
+
+        $createKeteranganIzinRame = KeteranganIzinRame::where('id', '=', $id)
+            ->update($keteranganIzinRameData);
+
+        return redirect('/kaur-tantrib-dan-umum/keterangan-izin-rame')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

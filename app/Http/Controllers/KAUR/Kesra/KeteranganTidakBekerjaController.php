@@ -29,7 +29,7 @@ class KeteranganTidakBekerjaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganTidakBekerja->id.'"
+                            href="/kaur-kesra/keterangan-tidak-bekerja/form-ubah/'.$keteranganTidakBekerja->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -121,7 +121,13 @@ class KeteranganTidakBekerjaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganTidakBekerja = KeteranganTidakBekerja::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_tidak_bekerja.form_ubah', compact(
+            'perangkat',
+            'keteranganTidakBekerja'
+        ));
     }
 
     /**
@@ -133,7 +139,25 @@ class KeteranganTidakBekerjaController extends Controller
      */
     public function update(KeteranganTidakBekerjaRequest $keteranganTidakBekerjaRequest, $id)
     {
-        //
+        $pendudukID = $keteranganTidakBekerjaRequest->penduduk_id;
+        $perangkatID = $keteranganTidakBekerjaRequest->perangkat_id;
+        $status = $keteranganTidakBekerjaRequest->status;
+        $keperluan = $keteranganTidakBekerjaRequest->keperluan;
+
+        $keteranganTidakBekerjaData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'status' => $status,
+            'keperluan' => $keperluan
+        ];
+
+        $createKeteranganTidakBekerja = KeteranganTidakBekerja::where('id', '=', $id)
+            ->update($keteranganTidakBekerjaData);
+
+        return redirect('/kaur-kesra/keterangan-tidak-bekerja')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

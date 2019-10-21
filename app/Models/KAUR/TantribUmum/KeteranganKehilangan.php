@@ -24,6 +24,16 @@ class KeteranganKehilangan extends Model
         'tertanggal_rw',
     ];
 
+    public function getTertanggalRtEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rt)->format('d-m-Y');
+    }
+
+    public function getTertanggalRwEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rw)->format('d-m-Y');
+    }
+
     public function penduduk()
     {
         return $this->belongsTo(Penduduk::class, 'penduduk_id', 'id');

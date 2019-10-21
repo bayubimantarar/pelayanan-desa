@@ -29,7 +29,7 @@ class KeteranganDomisiliController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganDomisili->id.'"
+                            href="/kaur-pemerintahan/keterangan-domisili/form-ubah/'.$keteranganDomisili->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -121,7 +121,13 @@ class KeteranganDomisiliController extends Controller
      */
     public function edit($id)
     {
-        //
+        $keteranganDomisili = KeteranganDomisili::findOrFail($id);
+        $perangkat = Perangkat::all();
+
+        return view('kaur.pemerintahan.keterangan_domisili.form_ubah', compact(
+            'perangkat',
+            'keteranganDomisili'
+        ));
     }
 
     /**
@@ -133,7 +139,25 @@ class KeteranganDomisiliController extends Controller
      */
     public function update(KeteranganDomisiliRequest $keteranganDomisiliRequest, $id)
     {
-        //
+        $pendudukID = $keteranganDomisiliRequest->penduduk_id;
+        $perangkatID = $keteranganDomisiliRequest->perangkat_id;
+        $redaksi = $keteranganDomisiliRequest->redaksi;
+        $keperluan = $keteranganDomisiliRequest->keperluan;
+
+        $keteranganDomisiliData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'redaksi' => $redaksi,
+            'keperluan' => $keperluan
+        ];
+
+        $updateKeteranganDomisili = KeteranganDomisili::where('id', '=', $id)
+            ->update($keteranganDomisiliData);
+
+        return redirect('/kaur-pemerintahan/keterangan-domisili')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

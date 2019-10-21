@@ -43,4 +43,14 @@ class KeteranganIzinRame extends Model
     {
         return Carbon::parse($value)->formatLocalized('%A, %d-%m-%Y');
     }
+
+    public function getTertanggalRtEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rt)->format('d-m-Y');
+    }
+
+    public function getTertanggalRwEditAttribute($value)
+    {
+        return Carbon::parse($this->tertanggal_rw)->format('d-m-Y');
+    }
 }

@@ -1,9 +1,3 @@
-<input
-  type="hidden"
-  name="penduduk_id"
-  id="master-penduduk-id"
-  value="{{ $keteranganUsaha->penduduk_id }}"
-/>
 <div class="row">
   <div class="col-lg-6 col-md-6 col-xs-12">
     <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">

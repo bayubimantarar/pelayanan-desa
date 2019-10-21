@@ -29,7 +29,7 @@ class KeteranganJandaDudaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganJandaDuda->id.'"
+                            href="/kaur-kesra/keterangan-janda-duda/form-ubah/'.$keteranganJandaDuda->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -128,7 +128,13 @@ class KeteranganJandaDudaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganJandaDuda = KeteranganJandaDuda::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_janda_duda.form_ubah', compact(
+            'perangkat',
+            'keteranganJandaDuda'
+        ));
     }
 
     /**
@@ -140,7 +146,32 @@ class KeteranganJandaDudaController extends Controller
      */
     public function update(KeteranganJandaDudaRequest $keteranganJandaDudaRequest, $id)
     {
-        //
+        $pendudukID = $keteranganJandaDudaRequest->penduduk_id;
+        $perangkatID = $keteranganJandaDudaRequest->perangkat_id;
+        $status = $keteranganJandaDudaRequest->status;
+        $nama = $keteranganJandaDudaRequest->nama;
+        $nomorPensiun = $keteranganJandaDudaRequest->nomor_pensiun;
+        $status = $keteranganJandaDudaRequest->status;
+        $tanggalMeninggal = Carbon::parse($keteranganJandaDudaRequest->tanggal_meninggal);
+        $pensiunan = $keteranganJandaDudaRequest->pensiunan;
+
+        $keteranganJandaDudaData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'status' => $status,
+            'nama' => $nama,
+            'nomor_pensiun' => $nomorPensiun,
+            'tanggal_meninggal' => $tanggalMeninggal,
+            'pensiunan' => $pensiunan
+        ];
+
+        $createKeteranganJandaDuda = KeteranganJandaDuda::where('id', '=', $id)
+            ->update($keteranganJandaDudaData);
+
+        return redirect('/kaur-kesra/keterangan-janda-duda')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

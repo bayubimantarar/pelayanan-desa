@@ -40,6 +40,11 @@ class KeteranganKematian extends Model
         return Carbon::parse($value)->format('d-m-Y');
     }
 
+    public function getTanggalMeninggalAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
     public function penduduk()
     {
         return $this->belongsTo(Penduduk::class, 'penduduk_id', 'id');

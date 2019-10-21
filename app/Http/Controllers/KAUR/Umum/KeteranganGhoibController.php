@@ -29,7 +29,7 @@ class KeteranganGhoibController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganGhoib->id.'"
+                            href="/kaur-umum/keterangan-ghoib/form-ubah/'.$keteranganGhoib->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -129,7 +129,13 @@ class KeteranganGhoibController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganGhoib = KeteranganGhoib::findOrFail($id);
+
+        return view('kaur.umum.keterangan_ghoib.form_ubah', compact(
+            'perangkat',
+            'keteranganGhoib'
+        ));
     }
 
     /**
@@ -139,9 +145,35 @@ class KeteranganGhoibController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(KeteranganGhoibRequest $keteranganGhoibRequest)
+    public function update(KeteranganGhoibRequest $keteranganGhoibRequest, $id)
     {
-        //
+        $pendudukID = $keteranganGhoibRequest->penduduk_id;
+        $perangkatID = $keteranganGhoibRequest->perangkat_id;
+        $nama = $keteranganGhoibRequest->nama;
+        $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
+        $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
+        $alamat = $keteranganGhoibRequest->alamat;
+        $redaksi = $keteranganGhoibRequest->redaksi;
+        $alasan = $keteranganGhoibRequest->alasan;
+
+        $keteranganGhoibData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'nama' => $nama,
+            'tempat_lahir' => $tempatLahir,
+            'tanggal_lahir' => $tanggalLahir,
+            'alamat' => $alamat,
+            'redaksi' => $redaksi,
+            'alasan' => $alasan
+        ];
+
+        $updateKeteranganGhoib = KeteranganGhoib::where('id', '=', $id)
+            ->update($keteranganGhoibData);
+
+        return redirect('/kaur-umum/keterangan-ghoib')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

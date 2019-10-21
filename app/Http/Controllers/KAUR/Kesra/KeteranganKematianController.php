@@ -30,7 +30,7 @@ class KeteranganKematianController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganKematian->id.'"
+                            href="/kaur-kesra/keterangan-kematian/form-ubah/'.$keteranganKematian->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -140,7 +140,15 @@ class KeteranganKematianController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $jenisKelamin = JenisKelamin::all();
+        $keteranganKematian = KeteranganKematian::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_kematian.form_ubah', compact(
+            'perangkat',
+            'jenisKelamin',
+            'keteranganKematian'
+        ));
     }
 
     /**
@@ -152,7 +160,41 @@ class KeteranganKematianController extends Controller
      */
     public function update(KeteranganKematianRequest $keteranganKematianRequest, $id)
     {
-        //
+        $pendudukID = $keteranganKematianRequest->penduduk_id;
+        $perangkatID = $keteranganKematianRequest->perangkat_id;
+        $nama = $keteranganKematianRequest->nama;
+        $tempatLahir = $keteranganKematianRequest->tempat_lahir;
+        $tanggalLahir = Carbon::parse($keteranganKematianRequest->tanggal_lahir);
+        $jenisKelamin = $keteranganKematianRequest->jenis_kelamin;
+        $tanggalMeninggal = Carbon::parse($keteranganKematianRequest->tanggal_meninggal);
+        $hariMeninggal = $keteranganKematianRequest->hari_meninggal;
+        $jamMeninggal = Carbon::parse($keteranganKematianRequest->jam_meninggal);
+        $alamatMeninggal = $keteranganKematianRequest->alamat_meninggal;
+        $penyebabMeninggal = $keteranganKematianRequest->penyebab_meninggal;
+        $hubunganPelapor = $keteranganKematianRequest->hubungan_pelapor;
+
+        $keteranganKematianData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'nama' => $nama,
+            'tempat_lahir' => $tempatLahir,
+            'tanggal_lahir' => $tanggalLahir,
+            'jenis_kelamin' => $jenisKelamin,
+            'tanggal_meninggal' => $tanggalMeninggal,
+            'hari_meninggal' => $hariMeninggal,
+            'jam_meninggal' => $jamMeninggal,
+            'alamat_meninggal' => $alamatMeninggal,
+            'penyebab_meninggal' => $penyebabMeninggal,
+            'hubungan_pelapor' => $hubunganPelapor
+        ];
+
+        $updateKeteranganKematian = KeteranganKematian::where('id', '=', $id)
+            ->update($keteranganKematianData);
+
+        return redirect('/kaur-kesra/keterangan-kematian')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

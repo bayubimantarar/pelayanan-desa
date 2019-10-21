@@ -30,7 +30,7 @@ class KeteranganBersihDiriController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganBersihDiri->id.'"
+                            href="/kaur-tantrib-dan-umum/keterangan-bersih-diri/form-ubah/'.$keteranganBersihDiri->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -68,8 +68,8 @@ class KeteranganBersihDiriController extends Controller
      */
     public function create()
     {
-        $perangkat  = Perangkat::all();
         $agama      = Agama::all();
+        $perangkat  = Perangkat::all();
 
         return view('kaur.tantrib_umum.keterangan_bersih_diri.form_tambah', compact(
             'agama',
@@ -148,7 +148,15 @@ class KeteranganBersihDiriController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agama = Agama::all();
+        $perangkat  = Perangkat::all();
+        $keteranganBersihDiri = KeteranganBersihDiri::findOrFail($id);
+
+        return view('kaur.tantrib_umum.keterangan_bersih_diri.form_ubah', compact(
+            'agama',
+            'perangkat',
+            'keteranganBersihDiri'
+        ));
     }
 
     /**
@@ -160,7 +168,49 @@ class KeteranganBersihDiriController extends Controller
      */
     public function update(KeteranganBersihDiriRequest $keteranganBersihDiriRequest, $id)
     {
-        //
+        $pendudukID = $keteranganBersihDiriRequest->penduduk_id;
+        $perangkatID = $keteranganBersihDiriRequest->perangkat_id;
+        // $namaAyah = $keteranganBersihDiriRequest->nama_ayah;
+        // $tempatLahirAyah = $keteranganBersihDiriRequest->tempat_lahir_ayah;
+        // $tanggalLahirAyah = Carbon::parse($keteranganBersihDiriRequest->tanggal_lahir_ayah);
+        // $agamaAyah = $keteranganBersihDiriRequest->agama_ayah;
+        // $pekerjaanAyah = $keteranganBersihDiriRequest->pekerjaan_ayah;
+        // $alamatAyah = $keteranganBersihDiriRequest->alamat_ayah;
+        // $namaIbu = $keteranganBersihDiriRequest->nama_ibu;
+        // $tempatLahirIbu = $keteranganBersihDiriRequest->tempat_lahir_ibu;
+        // $tanggalLahirIbu = Carbon::parse($keteranganBersihDiriRequest->tanggal_lahir_ibu);
+        // $agamaIbu = $keteranganBersihDiriRequest->agama_ibu;
+        // $pekerjaanIbu = $keteranganBersihDiriRequest->pekerjaan_ibu;
+        // $alamatIbu = $keteranganBersihDiriRequest->alamat_ibu;
+        $redaksi = $keteranganBersihDiriRequest->redaksi;
+        $keperluan = $keteranganBersihDiriRequest->keperluan;
+
+        $keteranganBersihDiriData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            // 'nama_ayah' => $namaAyah,
+            // 'tempat_lahir_ayah' => $tempatLahirAyah,
+            // 'tanggal_lahir_ayah' => $tanggalLahirAyah,
+            // 'agama_ayah' => $agamaAyah,
+            // 'pekerjaan_ayah' => $pekerjaanAyah,
+            // 'alamat_ayah' => $alamatAyah,
+            // 'nama_ibu' => $namaIbu,
+            // 'tempat_lahir_ibu' => $tempatLahirIbu,
+            // 'tanggal_lahir_ibu' => $tanggalLahirIbu,
+            // 'agama_ibu' => $agamaIbu,
+            // 'pekerjaan_ibu' => $pekerjaanIbu,
+            // 'alamat_ibu' => $alamatIbu,
+            'redaksi' => $redaksi,
+            'keperluan' => $keperluan
+        ];
+
+        $updateketeranganBersihDiri = KeteranganBersihDiri::where('id', '=', $id)
+            ->update($keteranganBersihDiriData);
+
+        return redirect('/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

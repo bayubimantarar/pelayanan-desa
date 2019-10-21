@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Form Tambah | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -17,7 +17,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li><a href="#">KAUR Umum - SKCK</a></li>
+        <li><a href="#">KAUR Tantrib & Umum - Keterangan Izin Rame-Rame</a></li>
         <li class="active">Form Tambah</li>
       </ul>
     </div>
@@ -26,14 +26,16 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah
+          Form Tambah Data Keterangan Izin Rame
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-umum/skck/simpan" method="post">
+              <form action="/kaur-tantrib-dan-umum/keterangan-izin-rame/ubah/{{ $keteranganIzinRame->id }}" method="post">
                 <h4>
-                  <b>IDENTITAS PENDUDUK</b>
+                  <b>
+                    IDENTITAS PENDUDUK
+                  </b>
                 </h4>
                 <hr />
                 <input
@@ -41,9 +43,22 @@
                   name="_token"
                   value="{{ csrf_token() }}"
                 />
-                @include('layouts.partials.identitas_penduduk')
+                <input
+                  type="hidden"
+                  name="_method"
+                  value="put"
+                />
+                <input
+                  type="hidden"
+                  name="penduduk_id"
+                  id="master-penduduk-id"
+                  value="{{ $keteranganIzinRame->penduduk_id }}"
+                />
+                @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
-                  <b>KETERANGAN SURAT</b>
+                  <b>
+                    KETERANGAN SURAT
+                  </b>
                 </h4>
                 <hr />
                 <div class="form-group">
@@ -68,7 +83,7 @@
                         type="number"
                         name="rt"
                         class="form-control"
-                        value="{{ old('rt') }}"
+                        value="{{ $keteranganIzinRame->rt }}"
                       >
                       @if($errors->has('rt'))
                         <p class="text-danger">
@@ -78,7 +93,7 @@
                     </div>
                   </div>
                   <div class="col-lg-3 col-md-3 col-xs-12">
-                    <div class="form-group {{ $errors->has('rt') ? 'has-error has-feedback' : '' }}">
+                    <div class="form-group {{ $errors->has('tertanggal_rt') ? 'has-error has-feedback' : '' }}">
                       <label
                         for=""
                         class="control-label"
@@ -93,7 +108,7 @@
                           type="text"
                           name="tertanggal_rt"
                           class="form-control"
-                          value="{{ old('tertanggal_rt') }}"
+                          value="{{ $keteranganIzinRame->tertanggal_rt_edit }}"
                         />
                         <span class="input-group-addon">
                           <span class="fa fa-calendar"></span>
@@ -118,7 +133,7 @@
                         type="number"
                         name="rw"
                         class="form-control"
-                        value="{{ old('rw') }}"
+                        value="{{ $keteranganIzinRame->rw }}"
                       >
                       @if($errors->has('rw'))
                         <p class="text-danger">
@@ -143,7 +158,7 @@
                           type="text"
                           name="tertanggal_rw"
                           class="form-control"
-                          value="{{ old('tertanggal_rw') }}"
+                          value="{{ $keteranganIzinRame->tertanggal_rw_edit }}"
                         />
                         <span class="input-group-addon">
                           <span class="fa fa-calendar"></span>
@@ -157,54 +172,120 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group {{ $errors->has('rt') ? 'has-error has-feedback' : '' }}">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
+                <div class="row">
+                  <div class="col-lg-3 col-md-3">
+                    <div class="form-group {{ $errors->has('acara') ? 'has-error has-feedback' : '' }}">
                       <label
                         for=""
                         class="control-label"
                       >
-                        Keterangan Redaksi <small class="text-danger">*</small>
-                        <button
-                          id="ubah-keterangan-redaksi"
-                          class="btn btn-sm btn-social btn-warning"
-                        >
-                          <i class="fa fa-pencil"></i> Ubah
-                        </button>
+                        Acara <small class="text-danger">*</small>
                       </label>
-                      <textarea
-                        name="redaksi"
+                      <input
+                        type="text"
+                        name="acara"
                         class="form-control"
-                        id="redaksi"
-                        rows="5"
-                        readonly
-                      >Orang tersebut sebagaimana dalam catatan kami berkelakuan baik, belum pernah tersangkut perkara pidana, tidak terlibat minuman keras ataupun perjudian.</textarea>
-                      @if($errors->has('redaksi'))
+                        value="{{ $keteranganIzinRame->acara }}"
+                      >
+                      @if($errors->has('acara'))
                         <p class="text-danger">
-                          {{ $errors->first('redaksi') }}
+                          {{ $errors->first('acara') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3">
+                    <div class="form-group {{ $errors->has('tanggal_pelaksanaan') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for=""
+                        class="control-label"
+                      >
+                        Tanggal Pelaksanaan <small class="text-danger">*</small>
+                      </label>
+                      <div
+                        class="input-group date"
+                        id="tanggal-pelaksanaan"
+                      >
+                        <input
+                          type="text"
+                          name="tanggal_pelaksanaan"
+                          class="form-control"
+                          value="{{ $keteranganIzinRame->tanggal_pelaksanaan }}"
+                        />
+                        <span class="input-group-addon">
+                          <span class="fa fa-calendar"></span>
+                        </span>
+                      </div>
+                      @if($errors->has('tanggal_pelaksanaan'))
+                        <p class="text-danger">
+                          {{ $errors->first('tanggal_pelaksanaan') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3">
+                    <div class="form-group {{ $errors->has('kegiatan') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for="kegiatan"
+                        class="control-label"
+                      >
+                        Jenis Kegiatan / Hiburan <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="kegiatan"
+                        class="form-control"
+                        id="kegiatan"
+                        value="{{ $keteranganIzinRame->kegiatan }}"
+                      >
+                      @if($errors->has('kegiatan'))
+                        <p class="text-danger">
+                          {{ $errors->first('kegiatan') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3">
+                    <div class="form-group {{ $errors->has('waktu_pelaksanaan') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        for="waktu-pelaksanaan"
+                        class="control-label"
+                      >
+                        Waktu Pelaksanaan <small class="text-danger">*</small>
+                      </label>
+                      <input
+                        type="text"
+                        name="waktu_pelaksanaan"
+                        class="form-control"
+                        id="waktu-pelaksanaan"
+                        value="{{ $keteranganIzinRame->waktu_pelaksanaan }}"
+                      >
+                      @if($errors->has('waktu_pelaksanaan'))
+                        <p class="text-danger">
+                          {{ $errors->first('waktu_pelaksanaan') }}
                         </p>
                       @endif
                     </div>
                   </div>
                 </div>
-                <div class="form-group {{ $errors->has('keperluan') ? 'has-error has-feedback' : '' }}">
+                <div class="form-group {{ $errors->has('alamat_pelaksanaan') ? 'has-error has-feedback' : '' }}">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
                       <label
-                        for=""
+                        for="alamat-pelaksanaan"
                         class="control-label"
                       >
-                        Keterangan Keperluan <small class="text-danger">*</small>
+                        Alamat Pelaksanaan <small class="text-danger">*</small>
                       </label>
                       <textarea
-                        name="keperluan"
+                        name="alamat_pelaksanaan"
                         class="form-control"
-                        id="keperluan"
+                        id="alamat-pelaksanaan"
                         rows="5"
-                      >{{ old('keperluan') }}</textarea>
-                      @if($errors->has('keperluan'))
+                      >{{ $keteranganIzinRame->alamat_pelaksanaan }}</textarea>
+                      @if($errors->has('alamat_pelaksanaan'))
                         <p class="text-danger">
-                          {{ $errors->first('keperluan') }}
+                          {{ $errors->first('alamat_pelaksanaan') }}
                         </p>
                       @endif
                     </div>
@@ -218,7 +299,6 @@
                       </label>
                       <select
                         name="perangkat_id"
-                        id=""
                         class="form-control"
                       >
                         <option value="0">
@@ -227,7 +307,7 @@
                         @foreach($perangkat as $item)
                           <option
                             value="{{ $item->id }}"
-                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                            {{ $keteranganIzinRame->perangkat_id == $item->id ? 'selected' : '' }}
                           >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
@@ -272,6 +352,28 @@
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
   <script>
+    var penduduk_id = $('#master-penduduk-id').val();
+
+    if (penduduk_id != 0 || penduduk_id != null) {
+      $.ajax({
+        url: '/kependudukan/penduduk/api/data-by-id/'+penduduk_id,
+        type: 'get',
+        dataType: 'json',
+        success: function(result){
+          $('#nik').val(result.nik);
+          $('#nama').val(result.nama);
+          $('#tempat-lahir').val(result.tempat_lahir);
+          $('#tanggal-lahir').val(result.tanggal_lahir);
+          $('#jenis-kelamin').val(result.jenis_kelamin);
+          $('#status-perkawinan').val(result.status_perkawinan);
+          $('#agama').val(result.agama);
+          $('#pendidikan').val(result.pendidikan);
+          $('#pekerjaan').val(result.pekerjaan);
+          $('#alamat').val(result.alamat);
+        }
+      });
+    }
+
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
@@ -353,6 +455,9 @@
       format: 'DD-MM-YYYY'
     });
     $('#tertanggal-rw').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#tanggal-pelaksanaan').datetimepicker({
       format: 'DD-MM-YYYY'
     });
     $('#ubah-keterangan-redaksi').click(function(e){

@@ -32,7 +32,7 @@ class KeteranganPenghasilanController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganPenghasilan->id.'"
+                            href="/kaur-kesra/keterangan-penghasilan/form-ubah/'.$keteranganPenghasilan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -124,7 +124,13 @@ class KeteranganPenghasilanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganPenghasilan = KeteranganPenghasilan::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_penghasilan.form_ubah', compact(
+            'perangkat',
+            'keteranganPenghasilan'
+        ));
     }
 
     /**
@@ -136,7 +142,25 @@ class KeteranganPenghasilanController extends Controller
      */
     public function update(KeteranganPenghasilanRequest $keteranganPenghasilanRequest, $id)
     {
-        //
+        $pendudukID = $keteranganPenghasilanRequest->penduduk_id;
+        $perangkatID = $keteranganPenghasilanRequest->perangkat_id;
+        $penghasilan = $keteranganPenghasilanRequest->penghasilan;
+        $redaksi = $keteranganPenghasilanRequest->redaksi;
+
+        $keteranganPenghasilanData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'penghasilan' => $penghasilan,
+            'redaksi' => $redaksi
+        ];
+
+        $updateKeteranganPenghasilan = KeteranganPenghasilan::where('id', '=', $id)
+            ->update($keteranganPenghasilanData);
+
+        return redirect('/kaur-kesra/keterangan-penghasilan')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

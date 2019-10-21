@@ -30,7 +30,7 @@ class SKCKController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$skck->id.'"
+                            href="/kaur-umum/skck/form-ubah/'.$skck->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -107,7 +107,7 @@ class SKCKController extends Controller
 
         return redirect('/kaur-umum/skck')
             ->with([
-                'notification' => 'Data penduduk berhasil ditambah.'
+                'notification' => 'Data berhasil ditambah.'
             ]);
     }
 
@@ -130,7 +130,13 @@ class SKCKController extends Controller
      */
     public function edit($id)
     {
-        //
+        $skck = SKCK::findOrFail($id);
+        $perangkat = Perangkat::all();
+
+        return view('kaur.umum.skck.form_ubah', compact(
+            'skck',
+            'perangkat'
+        ));
     }
 
     /**
@@ -140,9 +146,35 @@ class SKCKController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SKCKRequest $skckRequest, $id)
     {
-        //
+        $pendudukID = $skckRequest->penduduk_id;
+        $perangkatID = $skckRequest->perangkat_id;
+        $rt = $skckRequest->rt;
+        $rw = $skckRequest->rw;
+        $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
+        $tertanggalRW = Carbon::parse($skckRequest->tertanggal_rw);
+        $keperluan = $skckRequest->keperluan;
+        $redaksi = $skckRequest->redaksi;
+
+        $SKCKData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'rt' => $rt,
+            'rw' => $rw,
+            'tertanggal_rt' => $tertanggalRT,
+            'tertanggal_rw' => $tertanggalRW,
+            'keperluan' => $keperluan,
+            'redaksi' => $redaksi
+        ];
+
+        $createSKCK = SKCK::where('id', '=', $id)
+            ->update($SKCKData);
+
+        return redirect('/kaur-umum/skck')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

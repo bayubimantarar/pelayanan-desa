@@ -42,6 +42,8 @@ class SKTM extends Model
 
     public function getTanggalLahirAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        if ($value != null) {
+            return Carbon::parse($value)->format('d-m-Y');
+        }
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor &raquo; KAUR Ekbang &raquo; Keterangan Usaha &raquo; Form Tambah | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -10,6 +10,12 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
+  <style>
+    #scrollable-dropdown-menu .tt-dropdown-menu {
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  </style>
 @endsection
 
 @section('content')
@@ -17,7 +23,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="#">Dasbor</a></li>
-        <li><a href="#">KAUR Ekbang - Keterangan Usaha</a></li>
+        <li><a href="#">KAUR Kesra - Keterangan Tidak Bekerja</a></li>
         <li class="active">Form Tambah</li>
       </ul>
     </div>
@@ -26,12 +32,12 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah
+          Form Tambah Data Keterangan Tidak Bekerja
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-ekbang/keterangan-usaha/simpan" method="post">
+              <form action="/kaur-kesra/keterangan-tidak-bekerja/ubah/{{ $keteranganTidakBekerja->id }}" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -43,82 +49,37 @@
                   name="_token"
                   value="{{ csrf_token() }}"
                 />
-                @include('layouts.partials.identitas_penduduk')
+                <input
+                  type="hidden"
+                  name="_method"
+                  value="put"
+                />
+                <input
+                  type="hidden"
+                  name="penduduk_id"
+                  id="master-penduduk-id"
+                  value="{{ $keteranganTidakBekerja->penduduk_id }}"
+                />
+                @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
                   <b>
                     KETERANGAN SURAT
                   </b>
                 </h4>
                 <hr />
-                <div class="form-group {{ $errors->has('redaksi') ? 'has-error has-feedback' : '' }}">
+                <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
+                    <div class="col-6 col-md-6 col-xs-12">
                       <label for="">
-                        Keterangan Redaksi <small class="text-danger">*</small>
-                        <button
-                          id="ubah-keterangan-redaksi"
-                          class="btn btn-sm btn-social btn-warning"
-                        >
-                          <i class="fa fa-pencil"></i> Ubah
-                        </button>
+                        Status
                       </label>
-                      <textarea
-                        name="redaksi"
+                      <input
+                        type="text"
+                        name="status"
                         class="form-control"
-                        id="redaksi"
-                        rows="5"
+                        value="Tidak Bekerja"
                         readonly
-                      >Bersangkutan adalah penduduk / warga Desa Cilame dengan alamat sebagaimana tersebut di atas yang mempunyai usaha :</textarea>
-                      @if($errors->has('redaksi'))
-                        <p class="text-danger">
-                          {{ $errors->first('redaksi') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group {{ $errors->has('jenis_usaha') ? 'has-error has-feedback' : '' }}">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        class="control-label"
-                      >
-                        Jenis Usaha <small class="text-danger">*</small>
-                      </label>
-                      <textarea
-                        name="jenis_usaha"
-                        class="form-control"
-                        id="jenis-usaha"
-                        rows="5"
-                      >{{ old('jenis_usaha') }}</textarea>
-                      @if($errors->has('jenis_usaha'))
-                        <p class="text-danger">
-                          {{ $errors->first('jenis_usaha') }}
-                        </p>
-                      @endif
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group {{ $errors->has('lokasi') ? 'has-error has-feedback' : '' }}">
-                  <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                        class="control-label"
-                      >
-                        Lokasi <small class="text-danger">*</small>
-                      </label>
-                      <textarea
-                        name="lokasi"
-                        class="form-control"
-                        id="lokasi"
-                        rows="5"
-                      >{{ old('lokasi') }}</textarea>
-                      @if($errors->has('lokasi'))
-                        <p class="text-danger">
-                          {{ $errors->first('lokasi') }}
-                        </p>
-                      @endif
+                      />
                     </div>
                   </div>
                 </div>
@@ -129,14 +90,13 @@
                         for=""
                         class="control-label"
                       >
-                        Keterangan Keperluan <small class="text-danger">*</small>
+                        Keperluan <small class="text-danger">*</small>
                       </label>
                       <textarea
                         name="keperluan"
                         class="form-control"
-                        id="keperluan"
                         rows="5"
-                      >{{ old('keperluan') }}</textarea>
+                      >{{ $keteranganTidakBekerja->keperluan }}</textarea>
                       @if($errors->has('keperluan'))
                         <p class="text-danger">
                           {{ $errors->first('keperluan') }}
@@ -148,13 +108,12 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                      <label
-                        for=""
-                      >
+                      <label for="">
                         Ditanda Tangani Oleh <small class="text-danger">*</small>
                       </label>
                       <select
                         name="perangkat_id"
+                        id=""
                         class="form-control"
                       >
                         <option value="0">
@@ -163,7 +122,7 @@
                         @foreach($perangkat as $item)
                           <option
                             value="{{ $item->id }}"
-                            {{ old('perangkat_id') == $item->id ? 'selected' : '' }}
+                            {{ $keteranganTidakBekerja->perangkat_id == $item->id ? 'selected' : '' }}
                           >
                             {{ $item->jabatan }} - {{ $item->nama }}
                           </option>
@@ -201,13 +160,39 @@
   ></script>
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment-with-locales.js"
   ></script>
   <script
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/jquery-mask.js"
+  ></script>
   <script>
+    var penduduk_id = $('#master-penduduk-id').val();
+
+    if (penduduk_id != 0 || penduduk_id != null) {
+      $.ajax({
+        url: '/kependudukan/penduduk/api/data-by-id/'+penduduk_id,
+        type: 'get',
+        dataType: 'json',
+        success: function(result){
+          $('#nik').val(result.nik);
+          $('#nama').val(result.nama);
+          $('#tempat-lahir').val(result.tempat_lahir);
+          $('#tanggal-lahir').val(result.tanggal_lahir);
+          $('#jenis-kelamin').val(result.jenis_kelamin);
+          $('#status-perkawinan').val(result.status_perkawinan);
+          $('#agama').val(result.agama);
+          $('#pendidikan').val(result.pendidikan);
+          $('#pekerjaan').val(result.pekerjaan);
+          $('#alamat').val(result.alamat);
+        }
+      });
+    }
+
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
@@ -285,12 +270,40 @@
         });
       }
     });
-    $('#tertanggal-rt').datetimepicker({
-      format: 'DD-MM-YYYY'
+    $('#tanggal-lahir-anak').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years'
     });
-    $('#tertanggal-rw').datetimepicker({
-      format: 'DD-MM-YYYY'
+    $('#tanggal-meninggal').datetimepicker({
+      format: 'DD-MM-YYYY',
+      locale: 'id',
+    }).on('dp.change', function(e){
+      // console.log(e.date);
+      console.log(e.date._d.getDay());
+      var day = e.date._d.getDay();
+
+      if (day == 1) {
+        $('#hari-meninggal').val('Senin');
+      }else if(day == 2){
+        $('#hari-meninggal').val('Selasa');
+      }else if(day == 3){
+        $('#hari-meninggal').val('Rabu');
+      }else if(day == 4){
+        $('#hari-meninggal').val('Kamis');
+      }else if(day == 5){
+        $('#hari-meninggal').val('Jumat');
+      }else if(day == 6){
+        $('#hari-meninggal').val('Sabtu');
+      }else if(day == 0){
+        $('#hari-meninggal').val('Minggu');
+      }
     });
+    // $('#penghasilan-mask').mask('000.000.000', {
+    //   reverse: true,
+    //   onChange: function(result){
+    //     console.log(Math.trunc(result));
+    //   }
+    // });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

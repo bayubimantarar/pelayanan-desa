@@ -29,7 +29,7 @@ class KeteranganKTPSementaraController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganKTPSementara->id.'"
+                            href="/kaur-pemerintahan/keterangan-ktp-sementara/form-ubah/'.$keteranganKTPSementara->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -119,7 +119,13 @@ class KeteranganKTPSementaraController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganKTPSementara = KeteranganKTPSementara::findOrFail($id);
+
+        return view('kaur.pemerintahan.keterangan_ktp_sementara.form_ubah', compact(
+            'perangkat',
+            'keteranganKTPSementara'
+        ));
     }
 
     /**
@@ -131,7 +137,23 @@ class KeteranganKTPSementaraController extends Controller
      */
     public function update(KeteranganKTPSementaraRequest $keteranganKTPSementaraRequest, $id)
     {
-        //
+        $pendudukID = $keteranganKTPSementaraRequest->penduduk_id;
+        $perangkatID = $keteranganKTPSementaraRequest->perangkat_id;
+        $redaksi = $keteranganKTPSementaraRequest->redaksi;
+
+        $keteranganKTPSementaraData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'redaksi' => $redaksi
+        ];
+
+        $updateKeteranganKTPSementara = KeteranganKTPSementara::where('id', '=', $id)
+            ->update($keteranganKTPSementaraData);
+
+        return redirect('/kaur-pemerintahan/keterangan-ktp-sementara')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

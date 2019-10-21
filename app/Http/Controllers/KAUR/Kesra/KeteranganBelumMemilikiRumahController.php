@@ -29,7 +29,7 @@ class KeteranganBelumMemilikiRumahController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganBelumMemilikiRumah->id.'"
+                            href="/kaur-kesra/keterangan-belum-memiliki-rumah/form-ubah/'.$keteranganBelumMemilikiRumah->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -121,7 +121,13 @@ class KeteranganBelumMemilikiRumahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_belum_memiliki_rumah.form_ubah', compact(
+            'perangkat',
+            'keteranganBelumMemilikiRumah'
+        ));
     }
 
     /**
@@ -133,7 +139,25 @@ class KeteranganBelumMemilikiRumahController extends Controller
      */
     public function update(KeteranganBelumMilikiRumahRequest $keteranganBelumMilikiRumahRequest, $id)
     {
-        //
+        $pendudukID = $keteranganBelumMilikiRumahRequest->penduduk_id;
+        $perangkatID = $keteranganBelumMilikiRumahRequest->perangkat_id;
+        $redaksi = $keteranganBelumMilikiRumahRequest->redaksi;
+        $keperluan = $keteranganBelumMilikiRumahRequest->keperluan;
+
+        $keteranganBelumMilikiRumahData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'redaksi' => $redaksi,
+            'keperluan' => $keperluan
+        ];
+
+        $createKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::where('id', '=', $id)
+            ->update($keteranganBelumMilikiRumahData);
+
+        return redirect('/kaur-kesra/keterangan-belum-memiliki-rumah')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

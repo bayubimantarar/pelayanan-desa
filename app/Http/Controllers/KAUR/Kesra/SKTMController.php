@@ -30,7 +30,7 @@ class SKTMController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$sktm->id.'"
+                            href="/kaur-kesra/sktm/form-ubah/'.$sktm->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -154,7 +154,15 @@ class SKTMController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sktm = SKTM::findOrFail($id);
+        $perangkat = Perangkat::all();
+        $jenisKelamin = JenisKelamin::all();
+
+        return view('kaur.kesra.sktm.form_ubah', compact(
+            'sktm',
+            'perangkat',
+            'jenisKelamin'
+        ));
     }
 
     /**
@@ -166,7 +174,55 @@ class SKTMController extends Controller
      */
     public function update(SKTMRequest $sktmRequest, $id)
     {
-        //
+        $nama = $sktmRequest->nama;
+        $kelas = $sktmRequest->kelas;
+        $jurusan = $sktmRequest->jurusan;
+        $redaksi = $sktmRequest->redaksi;
+        $jenis = $sktmRequest->jenis_sktm;
+        $keperluan = $sktmRequest->keperluan;
+        $namaSekolah = $sktmRequest->nama_sekolah;
+        $tempatLahir = $sktmRequest->tempat_lahir;
+        $diWakiliOleh = $sktmRequest->diwakili_oleh;
+        $jenisKelamin = $sktmRequest->jenis_kelamin;
+        $alamatSekolah = $sktmRequest->alamat_sekolah;
+        $pendudukID = $sktmRequest->penduduk_id;
+        $perangkatID = $sktmRequest->perangkat_id;
+        $tanggalLahir = Carbon::parse($sktmRequest->tanggal_lahir);
+
+        if ($jenis == "Pendidikan") {
+            $sktmData = [
+                'penduduk_id' => $pendudukID,
+                'perangkat_id' => $perangkatID,
+                'jenis_sktm' => $jenis,
+                'nama' => $nama,
+                'tempat_lahir' => $tempatLahir,
+                'tanggal_lahir' => $tanggalLahir,
+                'jenis_kelamin' => $jenisKelamin,
+                'nama_sekolah' => $namaSekolah,
+                'kelas' => $kelas,
+                'jurusan' => $jurusan,
+                'alamat_sekolah' => $alamatSekolah,
+                'diwakili_oleh' => $diWakiliOleh,
+                'redaksi' => $redaksi,
+                'keperluan' => $keperluan
+            ];
+        }else{
+            $sktmData = [
+                'penduduk_id' => $pendudukID,
+                'perangkat_id' => $perangkatID,
+                'jenis_sktm' => $jenis,
+                'redaksi' => $redaksi,
+                'keperluan' => $keperluan
+            ];
+        }
+
+        $createSKTM = SKTM::where('id', '=', $id)
+            ->update($sktmData);
+
+        return redirect('/kaur-kesra/sktm')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

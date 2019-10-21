@@ -31,7 +31,7 @@ class KeteranganKelahiranController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganKelahiran->id.'"
+                            href="/kaur-kesra/keterangan-kelahiran/form-ubah/'.$keteranganKelahiran->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -159,7 +159,17 @@ class KeteranganKelahiranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $agama = Agama::all();
+        $perangkat = Perangkat::all();
+        $jenisKelamin = JenisKelamin::all();
+        $keteranganKelahiran = KeteranganKelahiran::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_kelahiran.form_ubah', compact(
+            'agama',
+            'perangkat',
+            'jenisKelamin',
+            'keteranganKelahiran'
+        ));
     }
 
     /**
@@ -171,7 +181,57 @@ class KeteranganKelahiranController extends Controller
      */
     public function update(KeteranganKelahiranRequest $keteranganKelahiranRequest, $id)
     {
-        //
+        $pendudukID = $keteranganKelahiranRequest->penduduk_id;
+        $perangkatID = $keteranganKelahiranRequest->perangkat_id;
+        $namaAnak = $keteranganKelahiranRequest->nama_anak;
+        $tempatLahirAnak = $keteranganKelahiranRequest->tempat_lahir_anak;
+        $tanggalLahirAnak = Carbon::parse($keteranganKelahiranRequest->tanggal_lahir_anak);
+        $hariLahirAnak = $keteranganKelahiranRequest->hari_lahir_anak;
+        $jamLahirAnak = Carbon::parse($keteranganKelahiranRequest->jam_lahir_anak);
+        $jenisKelaminAnak = $keteranganKelahiranRequest->jenis_kelamin_anak;
+        $anakKe = $keteranganKelahiranRequest->anak_ke;
+        $alamatAnak = $keteranganKelahiranRequest->alamat_anak;
+        $namaAyah = $keteranganKelahiranRequest->nama_ayah;
+        $umurAyah = $keteranganKelahiranRequest->umur_ayah;
+        $agamaAyah = $keteranganKelahiranRequest->agama_ayah;
+        $pekerjaanAyah = $keteranganKelahiranRequest->pekerjaan_ayah;
+        $alamatAyah = $keteranganKelahiranRequest->alamat_ayah;
+        $namaIbu = $keteranganKelahiranRequest->nama_ibu;
+        $umurIbu = $keteranganKelahiranRequest->umur_ibu;
+        $agamaIbu = $keteranganKelahiranRequest->agama_ibu;
+        $pekerjaanIbu = $keteranganKelahiranRequest->pekerjaan_ibu;
+        $alamatIbu = $keteranganKelahiranRequest->alamat_ibu;
+
+        $keteranganKelahiranData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'nama_anak' => $namaAnak,
+            'tempat_lahir_anak' => $tempatLahirAnak,
+            'tanggal_lahir_anak' => $tanggalLahirAnak,
+            'hari_lahir_anak' => $hariLahirAnak,
+            'jam_lahir_anak' => $jamLahirAnak,
+            'jenis_kelamin_anak' => $jenisKelaminAnak,
+            'anak_ke' => $anakKe,
+            'alamat_anak' => $alamatAnak,
+            'nama_ayah' => $namaAyah,
+            'umur_ayah' => $umurAyah,
+            'agama_ayah' => $agamaAyah,
+            'pekerjaan_ayah' => $pekerjaanAyah,
+            'alamat_ayah' => $alamatAyah,
+            'nama_ibu' => $namaIbu,
+            'umur_ibu' => $umurIbu,
+            'agama_ibu' => $agamaIbu,
+            'pekerjaan_ibu' => $pekerjaanIbu,
+            'alamat_ibu' => $alamatIbu
+        ];
+
+        $updateKeteranganKelahiran = KeteranganKelahiran::where('id', '=', $id)
+            ->update($keteranganKelahiranData);
+
+        return redirect('/kaur-kesra/keterangan-kelahiran')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

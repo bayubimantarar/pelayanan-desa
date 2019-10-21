@@ -29,7 +29,7 @@ class KeteranganKehilanganController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganKehilangan->id.'"
+                            href="/kaur-tantrib-dan-umum/keterangan-kehilangan/form-ubah/'.$keteranganKehilangan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -127,7 +127,13 @@ class KeteranganKehilanganController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganKehilangan = KeteranganKehilangan::findOrFail($id);
+
+        return view('kaur.tantrib_umum.keterangan_kehilangan.form_ubah', compact(
+            'perangkat',
+            'keteranganKehilangan'
+        ));
     }
 
     /**
@@ -137,9 +143,33 @@ class KeteranganKehilanganController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(KeteranganKehilanganRequest $keteranganKehilanganRequest, $id)
     {
-        //
+        $pendudukID = $keteranganKehilanganRequest->penduduk_id;
+        $perangkatID = $keteranganKehilanganRequest->perangkat_id;
+        $rt = $keteranganKehilanganRequest->rt;
+        $rw = $keteranganKehilanganRequest->rw;
+        $tertanggalRT = Carbon::parse($keteranganKehilanganRequest->tertanggal_rt);
+        $tertanggalRW = Carbon::parse($keteranganKehilanganRequest->tertanggal_rw);
+        $alasan = $keteranganKehilanganRequest->alasan;
+
+        $keteranganKehilanganData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'rt' => $rt,
+            'rw' => $rw,
+            'tertanggal_rt' => $tertanggalRT,
+            'tertanggal_rw' => $tertanggalRW,
+            'alasan' => $alasan
+        ];
+
+        $createKeteranganKehilangan = KeteranganKehilangan::where('id', '=', $id)
+            ->update($keteranganKehilanganData);
+
+        return redirect('/kaur-tantrib-dan-umum/keterangan-kehilangan')
+            ->with([
+                'notification' => 'Data berhasil diubah'
+            ]);
     }
 
     /**

@@ -29,7 +29,7 @@ class KeteranganBelumMenikahController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganBelumMenikah->id.'"
+                            href="/kaur-kesra/keterangan-belum-menikah/form-ubah/'.$keteranganBelumMenikah->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -119,7 +119,13 @@ class KeteranganBelumMenikahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $perangkat = Perangkat::all();
+        $keteranganBelumMenikah = KeteranganBelumMenikah::findOrFail($id);
+
+        return view('kaur.kesra.keterangan_belum_menikah.form_ubah', compact(
+            'perangkat',
+            'keteranganBelumMenikah'
+        ));
     }
 
     /**
@@ -131,7 +137,23 @@ class KeteranganBelumMenikahController extends Controller
      */
     public function update(KeteranganBelumMenikahRequest $keteranganBelumMenikahRequest, $id)
     {
-        //
+        $pendudukID = $keteranganBelumMenikahRequest->penduduk_id;
+        $perangkatID = $keteranganBelumMenikahRequest->perangkat_id;
+        $keperluan = $keteranganBelumMenikahRequest->keperluan;
+
+        $keteranganBelumMenikahData = [
+            'penduduk_id' => $pendudukID,
+            'perangkat_id' => $perangkatID,
+            'keperluan' => $keperluan
+        ];
+
+        $createKeteranganBelumMenikah = KeteranganBelumMenikah::where('id', '=', $id)
+            ->update($keteranganBelumMenikahData);
+
+        return redirect('/kaur-kesra/keterangan-belum-menikah')
+            ->with([
+                'notification' => 'Data berhasil diubah.'
+            ]);
     }
 
     /**

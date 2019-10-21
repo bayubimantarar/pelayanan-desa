@@ -31,7 +31,7 @@ class KeteranganTanggunganKeluargaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/penduduk/form-ubah/'.$keteranganTanggunganKeluarga->id.'"
+                            href="/kaur-kesra/keterangan-tanggungan-keluarga/form-ubah/'.$keteranganTanggunganKeluarga->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
