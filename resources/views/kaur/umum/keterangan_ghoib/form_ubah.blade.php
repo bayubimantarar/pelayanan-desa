@@ -54,6 +54,11 @@
                 />
                 <input
                   type="hidden"
+                  name="pengguna_id"
+                  value="{{ Auth::guard('pengguna')->User()->id }}"
+                />
+                <input
+                  type="hidden"
                   name="penduduk_id"
                   id="master-penduduk-id"
                   value="{{ $keteranganGhoib->penduduk_id }}"

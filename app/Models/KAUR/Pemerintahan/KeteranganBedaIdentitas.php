@@ -13,6 +13,7 @@ class KeteranganBedaIdentitas extends Model
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',
+        'pengguna_id',
         'redaksi_tercantum_awal',
         'redaksi_tercantum_akhir',
         'jumlah_kesalahan',

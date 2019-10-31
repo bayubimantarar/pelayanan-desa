@@ -17,6 +17,7 @@ class CreateKaurKesraKeteranganJandaDudaTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->string('status', 150);
             $table->string('nama', 150);
             $table->string('nomor_pensiun', 150)->nullable();

@@ -17,6 +17,7 @@ class CreateKaurPemerintahanKeteranganDomisiliTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->text('redaksi');
             $table->string('keperluan', 150);
             $table->timestamps();

@@ -84,11 +84,13 @@ class KeteranganBelumMenikahController extends Controller
     {
         $pendudukID = $keteranganBelumMenikahRequest->penduduk_id;
         $perangkatID = $keteranganBelumMenikahRequest->perangkat_id;
+        $penggunaID = $keteranganBelumMenikahRequest->pengguna_id;
         $keperluan = $keteranganBelumMenikahRequest->keperluan;
 
         $keteranganBelumMenikahData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'keperluan' => $keperluan
         ];
 
@@ -139,15 +141,17 @@ class KeteranganBelumMenikahController extends Controller
     {
         $pendudukID = $keteranganBelumMenikahRequest->penduduk_id;
         $perangkatID = $keteranganBelumMenikahRequest->perangkat_id;
+        $penggunaID = $keteranganBelumMenikahRequest->pengguna_id;
         $keperluan = $keteranganBelumMenikahRequest->keperluan;
 
         $keteranganBelumMenikahData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'keperluan' => $keperluan
         ];
 
-        $createKeteranganBelumMenikah = KeteranganBelumMenikah::where('id', '=', $id)
+        $updateKeteranganBelumMenikah = KeteranganBelumMenikah::where('id', '=', $id)
             ->update($keteranganBelumMenikahData);
 
         return redirect('/kaur-kesra/keterangan-belum-menikah')

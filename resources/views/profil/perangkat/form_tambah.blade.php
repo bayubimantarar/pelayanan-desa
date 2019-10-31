@@ -85,7 +85,7 @@
                   </div>
                   <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-sm btn-social btn-vk"
                   >
                     <i class="fa fa-check"></i> Simpan
                   </button>

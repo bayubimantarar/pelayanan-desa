@@ -85,6 +85,7 @@ class SKCKController extends Controller
     {
         $pendudukID = $skckRequest->penduduk_id;
         $perangkatID = $skckRequest->perangkat_id;
+        $penggunaID = $skckRequest->pengguna_id;
         $rt = $skckRequest->rt;
         $rw = $skckRequest->rw;
         $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
@@ -95,6 +96,7 @@ class SKCKController extends Controller
         $SKCKData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,
@@ -150,6 +152,7 @@ class SKCKController extends Controller
     {
         $pendudukID = $skckRequest->penduduk_id;
         $perangkatID = $skckRequest->perangkat_id;
+        $penggunaID = $skckRequest->pengguna_id;
         $rt = $skckRequest->rt;
         $rw = $skckRequest->rw;
         $tertanggalRT = Carbon::parse($skckRequest->tertanggal_rt);
@@ -160,6 +163,7 @@ class SKCKController extends Controller
         $SKCKData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,

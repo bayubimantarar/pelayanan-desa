@@ -85,6 +85,7 @@ class KeteranganUsahaController extends Controller
     {
         $pendudukID = $keteranganUsahaRequest->penduduk_id;
         $perangkatID = $keteranganUsahaRequest->perangkat_id;
+        $penggunaID = $keteranganUsahaRequest->pengguna_id;
         $redaksi = $keteranganUsahaRequest->redaksi;
         $jenisUsaha = $keteranganUsahaRequest->jenis_usaha;
         $lokasi = $keteranganUsahaRequest->lokasi;
@@ -93,6 +94,7 @@ class KeteranganUsahaController extends Controller
         $keteranganUsahaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'jenis_usaha' => $jenisUsaha,
             'lokasi' => $lokasi,
@@ -103,7 +105,7 @@ class KeteranganUsahaController extends Controller
 
         return redirect('/kaur-ekbang/keterangan-usaha')
             ->with([
-                'notification' => 'Data penduduk berhasil ditambah.'
+                'notification' => 'Data berhasil disimpan.'
             ]);
     }
 
@@ -146,6 +148,7 @@ class KeteranganUsahaController extends Controller
     {
         $pendudukID = $keteranganUsahaRequest->penduduk_id;
         $perangkatID = $keteranganUsahaRequest->perangkat_id;
+        $penggunaID = $keteranganUsahaRequest->pengguna_id;
         $redaksi = $keteranganUsahaRequest->redaksi;
         $jenisUsaha = $keteranganUsahaRequest->jenis_usaha;
         $lokasi = $keteranganUsahaRequest->lokasi;
@@ -154,6 +157,7 @@ class KeteranganUsahaController extends Controller
         $keteranganUsahaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'jenis_usaha' => $jenisUsaha,
             'lokasi' => $lokasi,
@@ -165,7 +169,7 @@ class KeteranganUsahaController extends Controller
 
         return redirect('/kaur-ekbang/keterangan-usaha')
             ->with([
-                'notification' => 'Data penduduk berhasil diubah.'
+                'notification' => 'Data berhasil diubah.'
             ]);
     }
 

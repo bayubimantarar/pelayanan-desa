@@ -84,11 +84,13 @@ class KeteranganKTPSementaraController extends Controller
     {
         $pendudukID = $keteranganKTPSementaraRequest->penduduk_id;
         $perangkatID = $keteranganKTPSementaraRequest->perangkat_id;
+        $penggunaID = $keteranganKTPSementaraRequest->pengguna_id;
         $redaksi = $keteranganKTPSementaraRequest->redaksi;
 
         $keteranganKTPSementaraData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi
         ];
 
@@ -96,7 +98,7 @@ class KeteranganKTPSementaraController extends Controller
 
         return redirect('/kaur-pemerintahan/keterangan-ktp-sementara')
             ->with([
-                'notification' => 'Data keterangan KTP sementara berhasil disimpan.'
+                'notification' => 'Data berhasil disimpan.'
             ]);
     }
 
@@ -139,11 +141,13 @@ class KeteranganKTPSementaraController extends Controller
     {
         $pendudukID = $keteranganKTPSementaraRequest->penduduk_id;
         $perangkatID = $keteranganKTPSementaraRequest->perangkat_id;
+        $penggunaID = $keteranganKTPSementaraRequest->pengguna_id;
         $redaksi = $keteranganKTPSementaraRequest->redaksi;
 
         $keteranganKTPSementaraData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi
         ];
 

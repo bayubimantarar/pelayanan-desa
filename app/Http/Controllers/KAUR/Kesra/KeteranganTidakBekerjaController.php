@@ -84,12 +84,14 @@ class KeteranganTidakBekerjaController extends Controller
     {
         $pendudukID = $keteranganTidakBekerjaRequest->penduduk_id;
         $perangkatID = $keteranganTidakBekerjaRequest->perangkat_id;
+        $penggunaID = $keteranganTidakBekerjaRequest->pengguna_id;
         $status = $keteranganTidakBekerjaRequest->status;
         $keperluan = $keteranganTidakBekerjaRequest->keperluan;
 
         $keteranganTidakBekerjaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'status' => $status,
             'keperluan' => $keperluan
         ];
@@ -141,12 +143,14 @@ class KeteranganTidakBekerjaController extends Controller
     {
         $pendudukID = $keteranganTidakBekerjaRequest->penduduk_id;
         $perangkatID = $keteranganTidakBekerjaRequest->perangkat_id;
+        $penggunaID = $keteranganTidakBekerjaRequest->pengguna_id;
         $status = $keteranganTidakBekerjaRequest->status;
         $keperluan = $keteranganTidakBekerjaRequest->keperluan;
 
         $keteranganTidakBekerjaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'status' => $status,
             'keperluan' => $keperluan
         ];

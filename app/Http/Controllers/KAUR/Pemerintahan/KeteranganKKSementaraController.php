@@ -85,12 +85,14 @@ class KeteranganKKSementaraController extends Controller
     {
         $pendudukID = $keteranganKKSementaraRequest->penduduk_id;
         $perangkatID = $keteranganKKSementaraRequest->perangkat_id;
+        $penggunaID = $keteranganKKSementaraRequest->pengguna_id;
         $anggotaKeluarga = $keteranganKKSementaraRequest->anggota_keluarga;
         $redaksi = $keteranganKKSementaraRequest->redaksi;
 
         $keteranganKKSementaraData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'anggota_keluarga' => $anggotaKeluarga,
             'redaksi' => $redaksi
         ];

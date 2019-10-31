@@ -24,6 +24,7 @@ class ProfilPemerintahanTableSeeder extends Seeder
                     'nama_kepala_desa' => 'Aas Mohamad Asor, SH',
                     'email' => 'info@cilame.desa.id',
                     'alamat' => 'Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552',
+                    'logo' => 'logo-bandung-barat@grayscale.jpg',
                     'created_at' => $date
                 ]
             ]);

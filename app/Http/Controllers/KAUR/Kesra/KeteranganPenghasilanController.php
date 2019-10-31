@@ -87,12 +87,14 @@ class KeteranganPenghasilanController extends Controller
     {
         $pendudukID = $keteranganPenghasilanRequest->penduduk_id;
         $perangkatID = $keteranganPenghasilanRequest->perangkat_id;
+        $penggunaID = $keteranganPenghasilanRequest->pengguna_id;
         $penghasilan = $keteranganPenghasilanRequest->penghasilan;
         $redaksi = $keteranganPenghasilanRequest->redaksi;
 
         $keteranganPenghasilanData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'penghasilan' => $penghasilan,
             'redaksi' => $redaksi
         ];
@@ -144,12 +146,14 @@ class KeteranganPenghasilanController extends Controller
     {
         $pendudukID = $keteranganPenghasilanRequest->penduduk_id;
         $perangkatID = $keteranganPenghasilanRequest->perangkat_id;
+        $penggunaID = $keteranganPenghasilanRequest->pengguna_id;
         $penghasilan = $keteranganPenghasilanRequest->penghasilan;
         $redaksi = $keteranganPenghasilanRequest->redaksi;
 
         $keteranganPenghasilanData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'penghasilan' => $penghasilan,
             'redaksi' => $redaksi
         ];

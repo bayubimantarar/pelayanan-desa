@@ -95,6 +95,7 @@
         {data: 'jabatan'},
         {data: 'action'}
       ],
+      order: [],
       responsive: true
     });
 

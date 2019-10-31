@@ -84,6 +84,7 @@ class KeteranganJandaDudaController extends Controller
     {
         $pendudukID = $keteranganJandaDudaRequest->penduduk_id;
         $perangkatID = $keteranganJandaDudaRequest->perangkat_id;
+        $penggunaID = $keteranganJandaDudaRequest->pengguna_id;
         $status = $keteranganJandaDudaRequest->status;
         $nama = $keteranganJandaDudaRequest->nama;
         $nomorPensiun = $keteranganJandaDudaRequest->nomor_pensiun;
@@ -94,6 +95,7 @@ class KeteranganJandaDudaController extends Controller
         $keteranganJandaDudaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'status' => $status,
             'nama' => $nama,
             'nomor_pensiun' => $nomorPensiun,
@@ -148,6 +150,7 @@ class KeteranganJandaDudaController extends Controller
     {
         $pendudukID = $keteranganJandaDudaRequest->penduduk_id;
         $perangkatID = $keteranganJandaDudaRequest->perangkat_id;
+        $penggunaID = $keteranganJandaDudaRequest->pengguna_id;
         $status = $keteranganJandaDudaRequest->status;
         $nama = $keteranganJandaDudaRequest->nama;
         $nomorPensiun = $keteranganJandaDudaRequest->nomor_pensiun;
@@ -158,6 +161,7 @@ class KeteranganJandaDudaController extends Controller
         $keteranganJandaDudaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'status' => $status,
             'nama' => $nama,
             'nomor_pensiun' => $nomorPensiun,

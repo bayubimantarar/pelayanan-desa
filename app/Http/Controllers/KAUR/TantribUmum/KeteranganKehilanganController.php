@@ -84,6 +84,7 @@ class KeteranganKehilanganController extends Controller
     {
         $pendudukID = $keteranganKehilanganRequest->penduduk_id;
         $perangkatID = $keteranganKehilanganRequest->perangkat_id;
+        $penggunaID = $keteranganKehilanganRequest->pengguna_id;
         $rt = $keteranganKehilanganRequest->rt;
         $rw = $keteranganKehilanganRequest->rw;
         $tertanggalRT = Carbon::parse($keteranganKehilanganRequest->tertanggal_rt);
@@ -93,6 +94,7 @@ class KeteranganKehilanganController extends Controller
         $keteranganKehilanganData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,
@@ -104,7 +106,7 @@ class KeteranganKehilanganController extends Controller
 
         return redirect('/kaur-tantrib-dan-umum/keterangan-kehilangan')
             ->with([
-                'notification' => 'Data keterangan kehilangan berhasil disimpan'
+                'notification' => 'Data berhasil disimpan'
             ]);
     }
 

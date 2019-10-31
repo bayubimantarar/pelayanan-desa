@@ -17,6 +17,7 @@ class CreateKaurKesraKeteranganKelahiranTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->string('nama_anak', 150);
             $table->string('tempat_lahir_anak', 150);
             $table->date('tanggal_lahir_anak');

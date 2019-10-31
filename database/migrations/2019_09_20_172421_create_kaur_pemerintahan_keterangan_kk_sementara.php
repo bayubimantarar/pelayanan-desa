@@ -17,6 +17,7 @@ class CreateKaurPemerintahanKeteranganKkSementara extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->integer('anggota_keluarga')->nullable();
             $table->text('redaksi');
             $table->timestamps();

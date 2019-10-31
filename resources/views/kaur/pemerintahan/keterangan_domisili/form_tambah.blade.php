@@ -10,12 +10,6 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
 @endsection
 
 @section('content')
@@ -48,6 +42,11 @@
                   type="hidden"
                   name="_token"
                   value="{{ csrf_token() }}"
+                />
+                <input
+                  type="hidden"
+                  name="pengguna_id"
+                  value="{{ Auth::guard('pengguna')->User()->id }}"
                 />
                 @include('layouts.partials.identitas_penduduk')
                 <h4>

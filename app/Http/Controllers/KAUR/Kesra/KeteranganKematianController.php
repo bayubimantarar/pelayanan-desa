@@ -87,6 +87,7 @@ class KeteranganKematianController extends Controller
     {
         $pendudukID = $keteranganKematianRequest->penduduk_id;
         $perangkatID = $keteranganKematianRequest->perangkat_id;
+        $penggunaID = $keteranganKematianRequest->pengguna_id;
         $nama = $keteranganKematianRequest->nama;
         $tempatLahir = $keteranganKematianRequest->tempat_lahir;
         $tanggalLahir = Carbon::parse($keteranganKematianRequest->tanggal_lahir);
@@ -101,6 +102,7 @@ class KeteranganKematianController extends Controller
         $keteranganKematianData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama' => $nama,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,
@@ -162,6 +164,7 @@ class KeteranganKematianController extends Controller
     {
         $pendudukID = $keteranganKematianRequest->penduduk_id;
         $perangkatID = $keteranganKematianRequest->perangkat_id;
+        $penggunaID = $keteranganKematianRequest->pengguna_id;
         $nama = $keteranganKematianRequest->nama;
         $tempatLahir = $keteranganKematianRequest->tempat_lahir;
         $tanggalLahir = Carbon::parse($keteranganKematianRequest->tanggal_lahir);
@@ -176,6 +179,7 @@ class KeteranganKematianController extends Controller
         $keteranganKematianData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama' => $nama,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,

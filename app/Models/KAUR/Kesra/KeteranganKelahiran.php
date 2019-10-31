@@ -13,6 +13,7 @@ class KeteranganKelahiran extends Model
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',
+        'pengguna_id',
         'nama_anak',
         'tempat_lahir_anak',
         'tanggal_lahir_anak',

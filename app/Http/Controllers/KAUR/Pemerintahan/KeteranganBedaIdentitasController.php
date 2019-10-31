@@ -89,12 +89,14 @@ class KeteranganBedaIdentitasController extends Controller
         $jumlahKesalahan = $keteranganBedaIdentitasRequest->jumlah_kesalahan;
         $pendudukID = $keteranganBedaIdentitasRequest->penduduk_id;
         $perangkatID = $keteranganBedaIdentitasRequest->perangkat_id;
+        $penggunaID = $keteranganBedaIdentitasRequest->pengguna_id;
         $redaksiTercantumAwal = $keteranganBedaIdentitasRequest->redaksi_tercantum_awal;
         $redaksiTercantumAkhir = $keteranganBedaIdentitasRequest->redaksi_tercantum_akhir;
 
         $keteranganBedaIdentitasData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi_tercantum_awal' => $redaksiTercantumAwal,
             'redaksi_tercantum_akhir' => $redaksiTercantumAkhir,
             'jumlah_kesalahan' => $jumlahKesalahan,

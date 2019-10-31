@@ -88,12 +88,14 @@ class KeteranganTanggunganKeluargaController extends Controller
     {
         $pendudukID = $keteranganTanggunganKeluargaRequest->penduduk_id;
         $perangkatID = $keteranganTanggunganKeluargaRequest->perangkat_id;
+        $penggunaID = $keteranganTanggunganKeluargaRequest->pengguna_id;
         $anggotaKeluarga = $keteranganTanggunganKeluargaRequest->anggota_keluarga;
         $redaksi = $keteranganTanggunganKeluargaRequest->redaksi;
 
         $keteranganTanggunganKeluargaData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'anggota_keluarga' => $anggotaKeluarga,
             'redaksi' => $redaksi
         ];

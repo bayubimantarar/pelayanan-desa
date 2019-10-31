@@ -43,6 +43,11 @@
                   name="_token"
                   value="{{ csrf_token() }}"
                 />
+                <input
+                  type="hidden"
+                  name="pengguna_id"
+                  value="{{ Auth::guard('pengguna')->User()->id }}"
+                />
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
                   <b>

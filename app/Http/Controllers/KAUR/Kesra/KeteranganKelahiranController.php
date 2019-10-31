@@ -90,6 +90,7 @@ class KeteranganKelahiranController extends Controller
     {
         $pendudukID = $keteranganKelahiranRequest->penduduk_id;
         $perangkatID = $keteranganKelahiranRequest->perangkat_id;
+        $penggunaID = $keteranganKelahiranRequest->pengguna_id;
         $namaAnak = $keteranganKelahiranRequest->nama_anak;
         $tempatLahirAnak = $keteranganKelahiranRequest->tempat_lahir_anak;
         $tanggalLahirAnak = Carbon::parse($keteranganKelahiranRequest->tanggal_lahir_anak);
@@ -112,6 +113,7 @@ class KeteranganKelahiranController extends Controller
         $keteranganKelahiranData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama_anak' => $namaAnak,
             'tempat_lahir_anak' => $tempatLahirAnak,
             'tanggal_lahir_anak' => $tanggalLahirAnak,
@@ -183,6 +185,7 @@ class KeteranganKelahiranController extends Controller
     {
         $pendudukID = $keteranganKelahiranRequest->penduduk_id;
         $perangkatID = $keteranganKelahiranRequest->perangkat_id;
+        $penggunaID = $keteranganKelahiranRequest->pengguna_id;
         $namaAnak = $keteranganKelahiranRequest->nama_anak;
         $tempatLahirAnak = $keteranganKelahiranRequest->tempat_lahir_anak;
         $tanggalLahirAnak = Carbon::parse($keteranganKelahiranRequest->tanggal_lahir_anak);
@@ -205,6 +208,7 @@ class KeteranganKelahiranController extends Controller
         $keteranganKelahiranData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama_anak' => $namaAnak,
             'tempat_lahir_anak' => $tempatLahirAnak,
             'tanggal_lahir_anak' => $tanggalLahirAnak,

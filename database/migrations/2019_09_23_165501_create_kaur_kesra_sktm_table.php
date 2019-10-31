@@ -17,6 +17,7 @@ class CreateKaurKesraSktmTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->string('jenis_sktm', 150);
             $table->string('nama', 150)->nullable();
             $table->string('tempat_lahir', 150)->nullable();

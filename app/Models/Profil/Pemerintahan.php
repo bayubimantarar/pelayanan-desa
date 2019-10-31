@@ -13,6 +13,7 @@ class Pemerintahan extends Model
         'desa',
         'nama_kepala_desa',
         'email',
-        'alamat'
+        'alamat',
+        'logo'
     ];
 }

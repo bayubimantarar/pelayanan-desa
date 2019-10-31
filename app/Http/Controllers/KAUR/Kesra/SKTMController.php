@@ -98,12 +98,14 @@ class SKTMController extends Controller
         $alamatSekolah = $sktmRequest->alamat_sekolah;
         $pendudukID = $sktmRequest->penduduk_id;
         $perangkatID = $sktmRequest->perangkat_id;
+        $penggunaID = $sktmRequest->pengguna_id;
         $tanggalLahir = Carbon::parse($sktmRequest->tanggal_lahir);
 
         if ($jenis == "Pendidikan") {
             $sktmData = [
                 'penduduk_id' => $pendudukID,
                 'perangkat_id' => $perangkatID,
+                'pengguna_id' => $penggunaID,
                 'jenis_sktm' => $jenis,
                 'nama' => $nama,
                 'tempat_lahir' => $tempatLahir,
@@ -121,6 +123,7 @@ class SKTMController extends Controller
             $sktmData = [
                 'penduduk_id' => $pendudukID,
                 'perangkat_id' => $perangkatID,
+                'pengguna_id' => $penggunaID,
                 'jenis_sktm' => $jenis,
                 'redaksi' => $redaksi,
                 'keperluan' => $keperluan
@@ -187,12 +190,14 @@ class SKTMController extends Controller
         $alamatSekolah = $sktmRequest->alamat_sekolah;
         $pendudukID = $sktmRequest->penduduk_id;
         $perangkatID = $sktmRequest->perangkat_id;
+        $penggunaID = $sktmRequest->pengguna_id;
         $tanggalLahir = Carbon::parse($sktmRequest->tanggal_lahir);
 
         if ($jenis == "Pendidikan") {
             $sktmData = [
                 'penduduk_id' => $pendudukID,
                 'perangkat_id' => $perangkatID,
+                'pengguna_id' => $penggunaID,
                 'jenis_sktm' => $jenis,
                 'nama' => $nama,
                 'tempat_lahir' => $tempatLahir,
@@ -210,13 +215,14 @@ class SKTMController extends Controller
             $sktmData = [
                 'penduduk_id' => $pendudukID,
                 'perangkat_id' => $perangkatID,
+                'pengguna_id' => $penggunaID,
                 'jenis_sktm' => $jenis,
                 'redaksi' => $redaksi,
                 'keperluan' => $keperluan
             ];
         }
 
-        $createSKTM = SKTM::where('id', '=', $id)
+        $updateSKTM = SKTM::where('id', '=', $id)
             ->update($sktmData);
 
         return redirect('/kaur-kesra/sktm')

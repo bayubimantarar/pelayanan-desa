@@ -8,15 +8,33 @@
   <meta name="author" content="">
   <title>Login | Pelayanan Desa Cilame</title>
   <!-- Bootstrap Core CSS -->
-  <link href="/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="/assets/vendor/bootstrap/css/bootstrap.css"
+  />
   <!-- MetisMenu CSS -->
-  <link href="/assets/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="/assets/vendor/metisMenu/metisMenu.min.css"
+  />
   <!-- Custom CSS -->
-  <link href="/assets/dist/css/sb-admin-2.css" rel="stylesheet">
+  <link
+    rel="stylesheet"
+    href="/assets/dist/css/sb-admin-2.css"
+  />
   <!-- Custom Fonts -->
-  <link href="/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/custom.css" />
+  <link
+    rel="stylesheet"
+    href="/assets/vendor/font-awesome/css/font-awesome.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+  />
+  <link
+    rel="stylesheet"
+    href="/assets/css/custom.css"
+  />
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>

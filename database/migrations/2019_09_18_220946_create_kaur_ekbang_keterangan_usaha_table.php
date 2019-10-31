@@ -17,6 +17,7 @@ class CreateKaurEkbangKeteranganUsahaTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->text('redaksi');
             $table->string('jenis_usaha', 150);
             $table->text('lokasi');

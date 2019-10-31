@@ -17,6 +17,7 @@ class CreateKaurTantribUmumKeteranganKehilanganTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
             $table->bigInteger('perangkat_id');
+            $table->bigInteger('pengguna_id');
             $table->string('rt', 75);
             $table->string('rw', 75);
             $table->date('tertanggal_rt');

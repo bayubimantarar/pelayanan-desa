@@ -13,6 +13,7 @@ class KeteranganTanggunganKeluarga extends Model
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',
+        'pengguna_id',
         'redaksi'
     ];
 

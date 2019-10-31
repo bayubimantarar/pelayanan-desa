@@ -191,6 +191,34 @@
                       </div>
                     </div>
                   </div>
+                  <div class="form-group {{ $errors->has('logo') ? 'has-error has-feedback' : '' }}">
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-xs-12">
+                        @if($pemerintahan->logo != null || $pemerintahan->logo != '')
+                          <img
+                            src="/assets/img/{{ $pemerintahan->logo }}"
+                            alt="Logo Desa"
+                            class="img-responsive"
+                          />
+                        @endif
+                        <label
+                          class="control-label"
+                          for="logo"
+                        >
+                          Logo Desa <small class="text-danger">*</small>
+                        </label>
+                        <input
+                          type="file"
+                          name="logo"
+                        />
+                        @if($errors->has('logo'))
+                          <p class="text-danger">
+                            {{ $errors->first('logo') }}
+                          </p>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
                   <p>
                     <small>
                       <code>

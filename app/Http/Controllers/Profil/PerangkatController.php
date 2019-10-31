@@ -16,7 +16,7 @@ class PerangkatController extends Controller
      */
     public function data()
     {
-        $perangkat = Perangkat::orderBy('created_at', 'desc')
+        $perangkat = Perangkat::orderBy('created_at', 'asc')
             ->get();
 
         $datatablesPerangkat = DataTables($perangkat)

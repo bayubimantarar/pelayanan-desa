@@ -84,6 +84,7 @@ class KeteranganIzinRameController extends Controller
     {
         $pendudukID = $keteranganIzinRameRequest->penduduk_id;
         $perangkatID = $keteranganIzinRameRequest->perangkat_id;
+        $penggunaID = $keteranganIzinRameRequest->pengguna_id;
         $rt = $keteranganIzinRameRequest->rt;
         $rw = $keteranganIzinRameRequest->rw;
         $tertanggalRT = Carbon::parse($keteranganIzinRameRequest->tertanggal_rt);
@@ -97,6 +98,7 @@ class KeteranganIzinRameController extends Controller
         $keteranganIzinRameData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,
@@ -112,7 +114,7 @@ class KeteranganIzinRameController extends Controller
 
         return redirect('/kaur-tantrib-dan-umum/keterangan-izin-rame')
             ->with([
-                'notification' => 'Data keterangan izin rame berhasil disimpan.'
+                'notification' => 'Data berhasil disimpan.'
             ]);
     }
 
@@ -155,6 +157,7 @@ class KeteranganIzinRameController extends Controller
     {
         $pendudukID = $keteranganIzinRameRequest->penduduk_id;
         $perangkatID = $keteranganIzinRameRequest->perangkat_id;
+        $penggunaID = $keteranganIzinRameRequest->pengguna_id;
         $rt = $keteranganIzinRameRequest->rt;
         $rw = $keteranganIzinRameRequest->rw;
         $tertanggalRT = Carbon::parse($keteranganIzinRameRequest->tertanggal_rt);
@@ -168,6 +171,7 @@ class KeteranganIzinRameController extends Controller
         $keteranganIzinRameData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'rt' => $rt,
             'rw' => $rw,
             'tertanggal_rt' => $tertanggalRT,

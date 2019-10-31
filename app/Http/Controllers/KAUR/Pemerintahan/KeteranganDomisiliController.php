@@ -84,12 +84,14 @@ class KeteranganDomisiliController extends Controller
     {
         $pendudukID = $keteranganDomisiliRequest->penduduk_id;
         $perangkatID = $keteranganDomisiliRequest->perangkat_id;
+        $penggunaID = $keteranganDomisiliRequest->pengguna_id;
         $redaksi = $keteranganDomisiliRequest->redaksi;
         $keperluan = $keteranganDomisiliRequest->keperluan;
 
         $keteranganDomisiliData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'keperluan' => $keperluan
         ];
@@ -98,7 +100,7 @@ class KeteranganDomisiliController extends Controller
 
         return redirect('/kaur-pemerintahan/keterangan-domisili')
             ->with([
-                'notification' => 'Data keterangan domisili berhasil disimpan.'
+                'notification' => 'Data berhasil disimpan.'
             ]);
     }
 
@@ -141,12 +143,14 @@ class KeteranganDomisiliController extends Controller
     {
         $pendudukID = $keteranganDomisiliRequest->penduduk_id;
         $perangkatID = $keteranganDomisiliRequest->perangkat_id;
+        $penggunaID = $keteranganDomisiliRequest->pengguna_id;
         $redaksi = $keteranganDomisiliRequest->redaksi;
         $keperluan = $keteranganDomisiliRequest->keperluan;
 
         $keteranganDomisiliData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'keperluan' => $keperluan
         ];

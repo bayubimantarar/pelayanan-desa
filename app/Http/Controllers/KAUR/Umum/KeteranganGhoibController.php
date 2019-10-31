@@ -84,6 +84,7 @@ class KeteranganGhoibController extends Controller
     {
         $pendudukID = $keteranganGhoibRequest->penduduk_id;
         $perangkatID = $keteranganGhoibRequest->perangkat_id;
+        $penggunaID = $keteranganGhoibRequest->pengguna_id;
         $nama = $keteranganGhoibRequest->nama;
         $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
         $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
@@ -94,6 +95,7 @@ class KeteranganGhoibController extends Controller
         $keteranganGhoibData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama' => $nama,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,
@@ -149,6 +151,7 @@ class KeteranganGhoibController extends Controller
     {
         $pendudukID = $keteranganGhoibRequest->penduduk_id;
         $perangkatID = $keteranganGhoibRequest->perangkat_id;
+        $penggunaID = $keteranganGhoibRequest->pengguna_id;
         $nama = $keteranganGhoibRequest->nama;
         $tempatLahir = $keteranganGhoibRequest->tempat_lahir;
         $tanggalLahir = Carbon::parse($keteranganGhoibRequest->tanggal_lahir);
@@ -159,6 +162,7 @@ class KeteranganGhoibController extends Controller
         $keteranganGhoibData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'nama' => $nama,
             'tempat_lahir' => $tempatLahir,
             'tanggal_lahir' => $tanggalLahir,

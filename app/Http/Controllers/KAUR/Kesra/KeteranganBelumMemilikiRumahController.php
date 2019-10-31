@@ -84,12 +84,14 @@ class KeteranganBelumMemilikiRumahController extends Controller
     {
         $pendudukID = $keteranganBelumMilikiRumahRequest->penduduk_id;
         $perangkatID = $keteranganBelumMilikiRumahRequest->perangkat_id;
+        $penggunaID = $keteranganBelumMilikiRumahRequest->pengguna_id;
         $redaksi = $keteranganBelumMilikiRumahRequest->redaksi;
         $keperluan = $keteranganBelumMilikiRumahRequest->keperluan;
 
         $keteranganBelumMilikiRumahData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'keperluan' => $keperluan
         ];
@@ -141,17 +143,19 @@ class KeteranganBelumMemilikiRumahController extends Controller
     {
         $pendudukID = $keteranganBelumMilikiRumahRequest->penduduk_id;
         $perangkatID = $keteranganBelumMilikiRumahRequest->perangkat_id;
+        $penggunaID = $keteranganBelumMilikiRumahRequest->pengguna_id;
         $redaksi = $keteranganBelumMilikiRumahRequest->redaksi;
         $keperluan = $keteranganBelumMilikiRumahRequest->keperluan;
 
         $keteranganBelumMilikiRumahData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             'redaksi' => $redaksi,
             'keperluan' => $keperluan
         ];
 
-        $createKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::where('id', '=', $id)
+        $updateKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::where('id', '=', $id)
             ->update($keteranganBelumMilikiRumahData);
 
         return redirect('/kaur-kesra/keterangan-belum-memiliki-rumah')

@@ -87,6 +87,7 @@ class KeteranganBersihDiriController extends Controller
     {
         $pendudukID = $keteranganBersihDiriRequest->penduduk_id;
         $perangkatID = $keteranganBersihDiriRequest->perangkat_id;
+        $penggunaID = $keteranganBersihDiriRequest->pengguna_id;
         // $namaAyah = $keteranganBersihDiriRequest->nama_ayah;
         // $tempatLahirAyah = $keteranganBersihDiriRequest->tempat_lahir_ayah;
         // $tanggalLahirAyah = Carbon::parse($keteranganBersihDiriRequest->tanggal_lahir_ayah);
@@ -105,6 +106,7 @@ class KeteranganBersihDiriController extends Controller
         $keteranganBersihDiriData = [
             'penduduk_id' => $pendudukID,
             'perangkat_id' => $perangkatID,
+            'pengguna_id' => $penggunaID,
             // 'nama_ayah' => $namaAyah,
             // 'tempat_lahir_ayah' => $tempatLahirAyah,
             // 'tanggal_lahir_ayah' => $tanggalLahirAyah,
@@ -125,7 +127,7 @@ class KeteranganBersihDiriController extends Controller
 
         return redirect('/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
             ->with([
-                'notification' => 'Data keterangan bersih diri berhasil disimpan.'
+                'notification' => 'Data berhasil disimpan.'
             ]);
     }
 

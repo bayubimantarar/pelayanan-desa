@@ -13,6 +13,7 @@ class SKTM extends Model
     protected $fillable = [
         'penduduk_id',
         'perangkat_id',
+        'pengguna_id',
         'jenis_sktm',
         'nama',
         'tempat_lahir',
