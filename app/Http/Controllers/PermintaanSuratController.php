@@ -142,8 +142,6 @@ class PermintaanSuratController extends Controller
             'status_proses' => 'Belum diproses'
         ];
 
-        $createPermintaanSurat = PermintaanSurat::create($permintaanSuratData);
-
         if ($surat == 'Keterangan Usaha') {
             $permintaanSuratDetailData = [
                 'permintaan_surat_id' => $createPermintaanSurat->id,
@@ -293,30 +291,28 @@ class PermintaanSuratController extends Controller
             ];
         }
 
-        $createPermintaanSuratDetail = PermintaanSuratDetail::create($permintaanSuratDetailData);
+        $stafDesa = Pengguna::where('jenis_pengguna', '=', 'Pelayanan')->get();
 
-        // $stafDesa = Pengguna::where('jenis_pengguna', '=', 'Pelayanan')
-        //     ->get();
+        try {
+            foreach ($stafDesa as $item) {
+                Mail::to($item->email)
+                    ->send(new PermintaanSuratMail($item->nama));
+            }
 
-        // try {
-            // foreach ($stafDesa as $item) {
-            //     Mail::to($item->email)
-            //         ->send(new PermintaanSuratMail($item->nama));
-            // }
+            $createPermintaanSurat = PermintaanSurat::create($permintaanSuratData);
+            $createPermintaanSuratDetail = PermintaanSuratDetail::create($permintaanSuratDetailData);
 
-            // $createPermintaanSurat = PermintaanSurat::create($data);
-
-            // return redirect('/permintaan-surat')
-            //     ->with([
-            //         'status' => true,
-            //         'notification' => 'Permintaan surat berhasil dikirim dan selanjutnya jadwal pengambilan surat akan diberitahukan via sms'
-            //     ]);
-        // } catch (\Exception $e) {
-            // return redirect('/permintaan-surat')
-            //     ->with([
-            //         'status' => true,
-            //         'notification' => 'Permintaan surat gagal dikirim silahkan cek koneksi internet atau coba beberapa saat lagi'
-            //     ]);
-        // }
+            return redirect('/permintaan-surat')
+                ->with([
+                    'status' => true,
+                    'notification' => 'Permintaan surat berhasil dikirim dan selanjutnya jadwal pengambilan surat akan diberitahukan via sms'
+                ]);
+        } catch (\Exception $e) {
+            return redirect('/permintaan-surat')
+                ->with([
+                    'status' => true,
+                    'notification' => 'Permintaan surat gagal dikirim silahkan cek koneksi internet atau coba beberapa saat lagi'
+                ]);
+        }
     }
 }

@@ -167,10 +167,14 @@ class PermintaanSuratController extends Controller
             ];
 
             $createKeteranganUsaha = KeteranganUsaha::create($suratData);
-        }else if($surat == 'Keterangan Usaha')
+        }
 
         $createPengambilanSurat = PengambilanSurat::create($pengambilanSuratData);
         $updatePermintaanSurat = PermintaanSurat::where('id', '=', $id)->update($permintaanSuratData);
+
+        return redirect('/dasbor/pelayanan/permintaan-surat')->with([
+            'notification' => 'Surat berhasil diproses'
+        ]);
     }
 
     /**
