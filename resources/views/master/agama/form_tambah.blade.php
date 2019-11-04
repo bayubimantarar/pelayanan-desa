@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/master/agama/simpan" method="post">
+                <form action="/dasbor/master/agama/simpan" method="post">
                   <input
                     type="hidden"
                     name="_token"

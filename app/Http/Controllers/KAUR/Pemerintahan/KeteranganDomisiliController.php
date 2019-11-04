@@ -29,13 +29,13 @@ class KeteranganDomisiliController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-pemerintahan/keterangan-domisili/form-ubah/'.$keteranganDomisili->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-domisili/form-ubah/'.$keteranganDomisili->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-domisili/surat/'.$keteranganDomisili->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-domisili/surat/'.$keteranganDomisili->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganDomisiliController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.pemerintahan.keterangan_domisili.form_tambah', compact(
             'perangkat'
@@ -98,7 +98,7 @@ class KeteranganDomisiliController extends Controller
 
         $createKeteranganDomisili = KeteranganDomisili::create($keteranganDomisiliData);
 
-        return redirect('/kaur-pemerintahan/keterangan-domisili')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-domisili')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -123,8 +123,8 @@ class KeteranganDomisiliController extends Controller
      */
     public function edit($id)
     {
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganDomisili = KeteranganDomisili::findOrFail($id);
-        $perangkat = Perangkat::all();
 
         return view('kaur.pemerintahan.keterangan_domisili.form_ubah', compact(
             'perangkat',
@@ -158,7 +158,7 @@ class KeteranganDomisiliController extends Controller
         $updateKeteranganDomisili = KeteranganDomisili::where('id', '=', $id)
             ->update($keteranganDomisiliData);
 
-        return redirect('/kaur-pemerintahan/keterangan-domisili')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-domisili')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

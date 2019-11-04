@@ -29,13 +29,13 @@ class KeteranganBelumMemilikiRumahController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-belum-memiliki-rumah/form-ubah/'.$keteranganBelumMemilikiRumah->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah/form-ubah/'.$keteranganBelumMemilikiRumah->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-belum-memiliki-rumah/surat/'.$keteranganBelumMemilikiRumah->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah/surat/'.$keteranganBelumMemilikiRumah->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganBelumMemilikiRumahController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.kesra.keterangan_belum_memiliki_rumah.form_tambah', compact(
             'perangkat'
@@ -98,7 +98,7 @@ class KeteranganBelumMemilikiRumahController extends Controller
 
         $createKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::create($keteranganBelumMilikiRumahData);
 
-        return redirect('/kaur-kesra/keterangan-belum-memiliki-rumah')
+        return redirect('/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -123,7 +123,7 @@ class KeteranganBelumMemilikiRumahController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::findOrFail($id);
 
         return view('kaur.kesra.keterangan_belum_memiliki_rumah.form_ubah', compact(
@@ -158,7 +158,7 @@ class KeteranganBelumMemilikiRumahController extends Controller
         $updateKeteranganBelumMemilikiRumah = KeteranganBelumMemilikiRumah::where('id', '=', $id)
             ->update($keteranganBelumMilikiRumahData);
 
-        return redirect('/kaur-kesra/keterangan-belum-memiliki-rumah')
+        return redirect('/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

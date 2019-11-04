@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/sktm/form-tambah"
+          href="/dasbor/kaur-kesra/sktm/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var sktm = $('#sktm-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/sktm/data',
+        url: '/dasbor/kaur-kesra/sktm/data',
         type: 'get'
       },
       datatype: 'json',

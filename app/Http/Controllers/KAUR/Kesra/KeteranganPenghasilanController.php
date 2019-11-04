@@ -32,13 +32,13 @@ class KeteranganPenghasilanController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-penghasilan/form-ubah/'.$keteranganPenghasilan->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-penghasilan/form-ubah/'.$keteranganPenghasilan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-penghasilan/surat/'.$keteranganPenghasilan->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-penghasilan/surat/'.$keteranganPenghasilan->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -70,7 +70,8 @@ class KeteranganPenghasilanController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
 
         return view('kaur.kesra.keterangan_penghasilan.form_tambah', compact(
             'perangkat'
@@ -101,7 +102,7 @@ class KeteranganPenghasilanController extends Controller
 
         $createKeteranganPenghasilan = KeteranganPenghasilan::create($keteranganPenghasilanData);
 
-        return redirect('/kaur-kesra/keterangan-penghasilan')
+        return redirect('/dasbor/kaur-kesra/keterangan-penghasilan')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -126,7 +127,8 @@ class KeteranganPenghasilanController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $keteranganPenghasilan = KeteranganPenghasilan::findOrFail($id);
 
         return view('kaur.kesra.keterangan_penghasilan.form_ubah', compact(
@@ -161,7 +163,7 @@ class KeteranganPenghasilanController extends Controller
         $updateKeteranganPenghasilan = KeteranganPenghasilan::where('id', '=', $id)
             ->update($keteranganPenghasilanData);
 
-        return redirect('/kaur-kesra/keterangan-penghasilan')
+        return redirect('/dasbor/kaur-kesra/keterangan-penghasilan')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

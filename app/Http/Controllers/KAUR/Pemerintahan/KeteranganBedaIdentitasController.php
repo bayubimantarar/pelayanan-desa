@@ -36,7 +36,7 @@ class KeteranganBedaIdentitasController extends Controller
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-beda-identitas/surat/'.$keteranganBedaIdentitas->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-beda-identitas/surat/'.$keteranganBedaIdentitas->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,8 +68,8 @@ class KeteranganBedaIdentitasController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
         $total = 0;
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.pemerintahan.keterangan_beda_identitas.form_tambah', compact(
             'total',
@@ -118,7 +118,7 @@ class KeteranganBedaIdentitasController extends Controller
 
         $createKeteranganBedaIdentitasKesalahan = KeteranganBedaIdentitasKesalahan::insert($jumlahKesalahanData);
 
-        return redirect('/kaur-pemerintahan/keterangan-beda-identitas')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-beda-identitas')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);

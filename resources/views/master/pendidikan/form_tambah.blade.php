@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/master/pendidikan/simpan" method="post">
+                <form action="/dasbor/master/pendidikan/simpan" method="post">
                   <input
                     type="hidden"
                     name="_token"

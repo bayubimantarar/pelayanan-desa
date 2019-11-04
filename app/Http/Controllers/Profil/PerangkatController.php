@@ -24,7 +24,7 @@ class PerangkatController extends Controller
                 return '
                     <center>
                         <a
-                            href="/profil/perangkat/form-ubah/'.$perangkat->id.'"
+                            href="/dasbor/profil/perangkat/form-ubah/'.$perangkat->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -75,15 +75,17 @@ class PerangkatController extends Controller
     {
         $nama = $perangkatRequest->nama;
         $jabatan = $perangkatRequest->jabatan;
+        $status = $perangkatRequest->status;
 
         $data = [
             'nama' => $nama,
-            'jabatan' => $jabatan
+            'jabatan' => $jabatan,
+            'status' => $status
         ];
 
         $createPerangkat = Perangkat::create($data);
 
-        return redirect('/profil/perangkat')
+        return redirect('/dasbor/profil/perangkat')
             ->with([
                 'notification' => 'Data perangkat berhasil ditambah.'
             ]);
@@ -126,16 +128,18 @@ class PerangkatController extends Controller
     {
         $nama = $perangkatRequest->nama;
         $jabatan = $perangkatRequest->jabatan;
+        $status = $perangkatRequest->status;
 
         $data = [
             'nama' => $nama,
-            'jabatan' => $jabatan
+            'jabatan' => $jabatan,
+            'status' => $status
         ];
 
         $updatePerangkat = Perangkat::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/profil/perangkat')
+        return redirect('/dasbor/profil/perangkat')
             ->with([
                 'notification' => 'Data perangkat berhasil ditambah.'
             ]);

@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/profil/perangkat/form-tambah"
+          href="/dasbor/profil/perangkat/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -86,7 +86,7 @@
   <script>
     var perangkat_table = $('#perangkat-table').DataTable({
       ajax: {
-        url: '/profil/perangkat/data',
+        url: '/dasbor/profil/perangkat/data',
         type: 'GET'
       },
       datatype: 'json',
@@ -108,7 +108,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/profil/perangkat/hapus/'+id,
+            url: '/dasbor/profil/perangkat/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){

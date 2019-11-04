@@ -29,13 +29,13 @@ class KeteranganIzinRameController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-izin-rame/form-ubah/'.$keteranganIzinRame->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame/form-ubah/'.$keteranganIzinRame->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-izin-rame/surat/'.$keteranganIzinRame->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame/surat/'.$keteranganIzinRame->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganIzinRameController extends Controller
      */
     public function create()
     {
-        $perangkat  = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.tantrib_umum.keterangan_izin_rame.form_tambah', compact(
             'perangkat'
@@ -112,7 +112,7 @@ class KeteranganIzinRameController extends Controller
 
         $createKeteranganIzinRame = KeteranganIzinRame::create($keteranganIzinRameData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-izin-rame')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -137,7 +137,7 @@ class KeteranganIzinRameController extends Controller
      */
     public function edit($id)
     {
-        $perangkat  = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganIzinRame = keteranganIzinRame::findOrFail($id);
 
         return view('kaur.tantrib_umum.keterangan_izin_rame.form_ubah', compact(
@@ -186,7 +186,7 @@ class KeteranganIzinRameController extends Controller
         $createKeteranganIzinRame = KeteranganIzinRame::where('id', '=', $id)
             ->update($keteranganIzinRameData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-izin-rame')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

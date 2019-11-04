@@ -30,13 +30,13 @@ class KeteranganBersihDiriController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-bersih-diri/form-ubah/'.$keteranganBersihDiri->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/form-ubah/'.$keteranganBersihDiri->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-bersih-diri/surat/'.$keteranganBersihDiri->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/surat/'.$keteranganBersihDiri->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -69,7 +69,7 @@ class KeteranganBersihDiriController extends Controller
     public function create()
     {
         $agama      = Agama::all();
-        $perangkat  = Perangkat::all();
+        $perangkat  = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.tantrib_umum.keterangan_bersih_diri.form_tambah', compact(
             'agama',
@@ -125,7 +125,7 @@ class KeteranganBersihDiriController extends Controller
 
         $storeketeranganBersihDiri = KeteranganBersihDiri::create($keteranganBersihDiriData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -151,7 +151,7 @@ class KeteranganBersihDiriController extends Controller
     public function edit($id)
     {
         $agama = Agama::all();
-        $perangkat  = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganBersihDiri = KeteranganBersihDiri::findOrFail($id);
 
         return view('kaur.tantrib_umum.keterangan_bersih_diri.form_ubah', compact(
@@ -209,7 +209,7 @@ class KeteranganBersihDiriController extends Controller
         $updateketeranganBersihDiri = KeteranganBersihDiri::where('id', '=', $id)
             ->update($keteranganBersihDiriData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

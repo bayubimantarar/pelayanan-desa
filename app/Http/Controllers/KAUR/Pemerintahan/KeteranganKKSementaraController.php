@@ -36,7 +36,7 @@ class KeteranganKKSementaraController extends Controller
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-kk-sementara/surat/'.$keteranganKKSementara->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-kk-sementara/surat/'.$keteranganKKSementara->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,7 +68,7 @@ class KeteranganKKSementaraController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.pemerintahan.keterangan_kk_sementara.form_tambah', compact(
             'perangkat'
@@ -115,7 +115,7 @@ class KeteranganKKSementaraController extends Controller
 
         $createAnggotaKeluarga = KeteranganKKSementaraAnggota::insert($dataAnggotaKeluarga);
 
-        return redirect('/kaur-pemerintahan/keterangan-kk-sementara')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-kk-sementara')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);

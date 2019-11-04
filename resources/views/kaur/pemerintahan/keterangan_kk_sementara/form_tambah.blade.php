@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-pemerintahan/keterangan-kk-sementara/simpan" method="post">
+              <form action="/dasbor/kaur-pemerintahan/keterangan-kk-sementara/simpan" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -155,7 +155,7 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/kependudukan/penduduk/api/data-nik',
+            url: '/dasbor/kependudukan/penduduk/api/data-nik',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -172,7 +172,7 @@
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({
-          url: '/kependudukan/penduduk/api/data/'+nik,
+          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -193,7 +193,7 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/kependudukan/penduduk/api/data-nama',
+            url: '/dasbor/kependudukan/penduduk/api/data-nama',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -210,7 +210,7 @@
       afterSelect: function(result){
         var nama = $('#nama').val();
         $.ajax({
-          url: '/kependudukan/penduduk/api/data-by-nama/'+nama,
+          url: '/dasbor/kependudukan/penduduk/api/data-by-nama/'+nama,
           type: 'get',
           dataType: 'json',
           success: function(data){

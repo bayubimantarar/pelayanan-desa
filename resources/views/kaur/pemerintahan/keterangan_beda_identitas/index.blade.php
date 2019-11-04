@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-pemerintahan/keterangan-beda-identitas/form-tambah"
+          href="/dasbor/kaur-pemerintahan/keterangan-beda-identitas/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_beda_identitas = $('#keterangan-beda-identitas-table').DataTable({
       ajax: {
-        url: '/kaur-pemerintahan/keterangan-beda-identitas/data',
+        url: '/dasbor/kaur-pemerintahan/keterangan-beda-identitas/data',
         type: 'get'
       },
       datatype: 'json',

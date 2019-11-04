@@ -35,56 +35,81 @@
                     value="{{ csrf_token() }}"
                   />
                   <div class="row">
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12">
                       <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-xs-12">
-                            <label
-                              class="control-label"
-                              for="nama"
-                            >
-                              Nama Lengkap
-                            </label>
-                            <input
-                              type="text"
-                              name="nama"
-                              class="form-control"
-                              id="nama"
-                              value="{{ $perangkat->nama }}"
-                            />
-                            @if($errors->has('nama'))
-                              <p class="text-danger">
-                                {{ $errors->first('nama') }}
-                              </p>
-                            @endif
-                          </div>
-                        </div>
+                        <label
+                          class="control-label"
+                          for="nama"
+                        >
+                          Nama Lengkap
+                        </label>
+                        <input
+                          type="text"
+                          name="nama"
+                          class="form-control"
+                          id="nama"
+                          value="{{ $perangkat->nama }}"
+                        />
+                        @if($errors->has('nama'))
+                          <p class="text-danger">
+                            {{ $errors->first('nama') }}
+                          </p>
+                        @endif
                       </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-xs-12">
                       <div class="form-group {{ $errors->has('jabatan') ? 'has-error has-feedback' : '' }}">
-                        <div class="row">
-                          <div class="col-lg-12 col-md-12 col-xs-12">
-                            <label
-                              class="control-label"
-                              for="jabatan"
+                          <label
+                            class="control-label"
+                            for="jabatan"
+                          >
+                            Jabatan
+                          </label>
+                          <input
+                            type="text"
+                            name="jabatan"
+                            class="form-control"
+                            id="jabatan"
+                            value="{{ $perangkat->jabatan }}"
+                          />
+                          @if($errors->has('jabatan'))
+                            <p class="text-danger">
+                              {{ $errors->first('jabatan') }}
+                            </p>
+                          @endif
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-xs-12">
+                      <div class="form-group {{ $errors->has('status') ? 'has-error has-feedback' : '' }}">
+                          <label
+                            class="control-label"
+                            for="status"
+                          >
+                            Bertanggung Jawab Atas Tanda Tangan Surat
+                          </label>
+                          <select
+                            name="status"
+                            id="status"
+                            class="form-control"
+                          >
+                            <option
+                              value="1"
+                              {{ $perangkat->status == '1' ? 'selected' : '' }}
                             >
-                              Jabatan
-                            </label>
-                            <input
-                              type="text"
-                              name="jabatan"
-                              class="form-control"
-                              id="jabatan"
-                              value="{{ $perangkat->jabatan }}"
-                            />
-                            @if($errors->has('jabatan'))
-                              <p class="text-danger">
-                                {{ $errors->first('jabatan') }}
-                              </p>
-                            @endif
-                          </div>
-                        </div>
+                              Ya
+                            </option>
+                            <option
+                              value="0"
+                              {{ $perangkat->status == '0' ? 'selected ': ''}}
+                            >
+                              Tidak
+                            </option>
+                          </select>
+                          @if($errors->has('stau'))
+                            <p class="text-danger">
+                              {{ $errors->first('stau') }}
+                            </p>
+                          @endif
                       </div>
                     </div>
                   </div>

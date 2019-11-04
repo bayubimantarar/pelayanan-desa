@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/kependudukan/penduduk/ubah/{{ $penduduk->id }}" method="post">
+                <form action="/dasbor/kependudukan/penduduk/ubah/{{ $penduduk->id }}" method="post">
                   <input
                     type="hidden"
                     name="_token"

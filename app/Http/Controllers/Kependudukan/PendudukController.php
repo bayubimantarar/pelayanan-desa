@@ -95,7 +95,7 @@ class PendudukController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kependudukan/penduduk/form-ubah/'.$penduduk->id.'"
+                            href="/dasbor/kependudukan/penduduk/form-ubah/'.$penduduk->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -180,7 +180,7 @@ class PendudukController extends Controller
 
         $createPenduduk = Penduduk::create($pendudukData);
 
-        return redirect('/kependudukan/penduduk')
+        return redirect('/dasbor/kependudukan/penduduk')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -256,7 +256,7 @@ class PendudukController extends Controller
         $updatePenduduk = Penduduk::where('id', $id)
             ->update($pendudukData);
 
-        return redirect('/kependudukan/penduduk')
+        return redirect('/dasbor/kependudukan/penduduk')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

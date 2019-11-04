@@ -30,13 +30,13 @@ class KeteranganKematianController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-kematian/form-ubah/'.$keteranganKematian->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-kematian/form-ubah/'.$keteranganKematian->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-kematian/surat/'.$keteranganKematian->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-kematian/surat/'.$keteranganKematian->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,7 +68,8 @@ class KeteranganKematianController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.keterangan_kematian.form_tambah', compact(
@@ -117,7 +118,7 @@ class KeteranganKematianController extends Controller
 
         $createKeteranganKematian = KeteranganKematian::create($keteranganKematianData);
 
-        return redirect('/kaur-kesra/keterangan-kematian')
+        return redirect('/dasbor/kaur-kesra/keterangan-kematian')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -142,7 +143,8 @@ class KeteranganKematianController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
         $keteranganKematian = KeteranganKematian::findOrFail($id);
 
@@ -195,7 +197,7 @@ class KeteranganKematianController extends Controller
         $updateKeteranganKematian = KeteranganKematian::where('id', '=', $id)
             ->update($keteranganKematianData);
 
-        return redirect('/kaur-kesra/keterangan-kematian')
+        return redirect('/dasbor/kaur-kesra/keterangan-kematian')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

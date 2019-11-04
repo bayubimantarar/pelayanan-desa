@@ -31,13 +31,13 @@ class KeteranganTanggunganKeluargaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-tanggungan-keluarga/form-ubah/'.$keteranganTanggunganKeluarga->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-tanggungan-keluarga/form-ubah/'.$keteranganTanggunganKeluarga->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-tanggungan-keluarga/surat/'.$keteranganTanggunganKeluarga->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-tanggungan-keluarga/surat/'.$keteranganTanggunganKeluarga->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -69,7 +69,8 @@ class KeteranganTanggunganKeluargaController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $JenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.keterangan_tanggungan_keluarga.form_tambah', compact(
@@ -120,7 +121,7 @@ class KeteranganTanggunganKeluargaController extends Controller
 
         $createAnggotaKeluarga = KeteranganTanggunganKeluargaAnggota::insert($dataAnggotaKeluarga);
 
-        return redirect('/kaur-kesra/keterangan-tanggungan-keluarga')
+        return redirect('/dasbor/kaur-kesra/keterangan-tanggungan-keluarga')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);

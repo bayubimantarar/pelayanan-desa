@@ -29,13 +29,13 @@ class KeteranganKTPSementaraController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-pemerintahan/keterangan-ktp-sementara/form-ubah/'.$keteranganKTPSementara->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-ktp-sementara/form-ubah/'.$keteranganKTPSementara->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-pemerintahan/keterangan-ktp-sementara/surat/'.$keteranganKTPSementara->id.'"
+                            href="/dasbor/kaur-pemerintahan/keterangan-ktp-sementara/surat/'.$keteranganKTPSementara->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganKTPSementaraController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.pemerintahan.keterangan_ktp_sementara.form_tambah', compact(
             'perangkat'
@@ -96,7 +96,7 @@ class KeteranganKTPSementaraController extends Controller
 
         $createKeteranganKTPSementara = KeteranganKTPSementara::create($keteranganKTPSementaraData);
 
-        return redirect('/kaur-pemerintahan/keterangan-ktp-sementara')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-ktp-sementara')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -121,7 +121,7 @@ class KeteranganKTPSementaraController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganKTPSementara = KeteranganKTPSementara::findOrFail($id);
 
         return view('kaur.pemerintahan.keterangan_ktp_sementara.form_ubah', compact(
@@ -154,7 +154,7 @@ class KeteranganKTPSementaraController extends Controller
         $updateKeteranganKTPSementara = KeteranganKTPSementara::where('id', '=', $id)
             ->update($keteranganKTPSementaraData);
 
-        return redirect('/kaur-pemerintahan/keterangan-ktp-sementara')
+        return redirect('/dasbor/kaur-pemerintahan/keterangan-ktp-sementara')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

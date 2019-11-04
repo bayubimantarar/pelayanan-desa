@@ -23,7 +23,7 @@ class JenisKelaminController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/jenis-kelamin/form-ubah/'.$jenisKelamin->id.'"
+                            href="/dasbor/master/jenis-kelamin/form-ubah/'.$jenisKelamin->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -80,7 +80,7 @@ class JenisKelaminController extends Controller
 
         $createJenisKelamin = JenisKelamin::create($data);
 
-        return redirect('/master/jenis-kelamin')
+        return redirect('/dasbor/master/jenis-kelamin')
             ->with([
                 'notification' => 'Data jenis kelamin berhasil ditambah.'
             ]);
@@ -130,7 +130,7 @@ class JenisKelaminController extends Controller
         $createJenisKelamin = JenisKelamin::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/master/jenis-kelamin')
+        return redirect('/dasbor/master/jenis-kelamin')
             ->with([
                 'notification' => 'Data jenis kelamin berhasil diubah.'
             ]);

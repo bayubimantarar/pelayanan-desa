@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/keterangan-tanggungan-keluarga/form-tambah"
+          href="/dasbor/kaur-kesra/keterangan-tanggungan-keluarga/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_tanggungan_keluarga = $('#keterangan-tanggungan-keluarga-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/keterangan-tanggungan-keluarga/data',
+        url: '/dasbor/kaur-kesra/keterangan-tanggungan-keluarga/data',
         type: 'get'
       },
       datatype: 'json',

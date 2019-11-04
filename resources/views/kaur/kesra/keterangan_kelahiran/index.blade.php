@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/keterangan-kelahiran/form-tambah"
+          href="/dasbor/kaur-kesra/keterangan-kelahiran/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_kelahiran = $('#keterangan-kelahiran-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/keterangan-kelahiran/data',
+        url: '/dasbor/kaur-kesra/keterangan-kelahiran/data',
         type: 'get'
       },
       datatype: 'json',

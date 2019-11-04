@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-ekbang/keterangan-usaha/form-tambah"
+          href="/dasbor/kaur-ekbang/keterangan-usaha/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_usaha = $('#keterangan-usaha-table').DataTable({
       ajax: {
-        url: '/kaur-ekbang/keterangan-usaha/data',
+        url: '/dasbor/kaur-ekbang/keterangan-usaha/data',
         type: 'get'
       },
       datatype: 'json',

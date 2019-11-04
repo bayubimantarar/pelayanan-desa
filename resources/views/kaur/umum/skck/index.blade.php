@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-umum/skck/form-tambah"
+          href="/dasbor/kaur-umum/skck/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var skck_table = $('#skck-table').DataTable({
       ajax: {
-        url: '/kaur-umum/skck/data',
+        url: '/dasbor/kaur-umum/skck/data',
         type: 'get'
       },
       datatype: 'json',

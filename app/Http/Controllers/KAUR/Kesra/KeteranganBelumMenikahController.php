@@ -29,13 +29,13 @@ class KeteranganBelumMenikahController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-belum-menikah/form-ubah/'.$keteranganBelumMenikah->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-belum-menikah/form-ubah/'.$keteranganBelumMenikah->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-belum-menikah/surat/'.$keteranganBelumMenikah->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-belum-menikah/surat/'.$keteranganBelumMenikah->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganBelumMenikahController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.kesra.keterangan_belum_menikah.form_tambah', compact(
             'perangkat'
@@ -96,7 +96,7 @@ class KeteranganBelumMenikahController extends Controller
 
         $createKeteranganBelumMenikah = KeteranganBelumMenikah::create($keteranganBelumMenikahData);
 
-        return redirect('/kaur-kesra/keterangan-belum-menikah')
+        return redirect('/dasbor/kaur-kesra/keterangan-belum-menikah')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -121,7 +121,7 @@ class KeteranganBelumMenikahController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganBelumMenikah = KeteranganBelumMenikah::findOrFail($id);
 
         return view('kaur.kesra.keterangan_belum_menikah.form_ubah', compact(
@@ -154,7 +154,7 @@ class KeteranganBelumMenikahController extends Controller
         $updateKeteranganBelumMenikah = KeteranganBelumMenikah::where('id', '=', $id)
             ->update($keteranganBelumMenikahData);
 
-        return redirect('/kaur-kesra/keterangan-belum-menikah')
+        return redirect('/dasbor/kaur-kesra/keterangan-belum-menikah')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

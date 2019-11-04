@@ -31,13 +31,13 @@ class KeteranganKelahiranController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-kelahiran/form-ubah/'.$keteranganKelahiran->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-kelahiran/form-ubah/'.$keteranganKelahiran->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-kelahiran/surat/'.$keteranganKelahiran->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-kelahiran/surat/'.$keteranganKelahiran->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -70,7 +70,8 @@ class KeteranganKelahiranController extends Controller
     public function create()
     {
         $agama = Agama::all();
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.keterangan_kelahiran.form_tambah', compact(
@@ -136,7 +137,7 @@ class KeteranganKelahiranController extends Controller
 
         $createKeteranganKelahiran = KeteranganKelahiran::create($keteranganKelahiranData);
 
-        return redirect('/kaur-kesra/keterangan-kelahiran')
+        return redirect('/dasbor/kaur-kesra/keterangan-kelahiran')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -162,7 +163,8 @@ class KeteranganKelahiranController extends Controller
     public function edit($id)
     {
         $agama = Agama::all();
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
         $keteranganKelahiran = KeteranganKelahiran::findOrFail($id);
 
@@ -232,7 +234,7 @@ class KeteranganKelahiranController extends Controller
         $updateKeteranganKelahiran = KeteranganKelahiran::where('id', '=', $id)
             ->update($keteranganKelahiranData);
 
-        return redirect('/kaur-kesra/keterangan-kelahiran')
+        return redirect('/dasbor/kaur-kesra/keterangan-kelahiran')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

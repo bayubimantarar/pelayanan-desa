@@ -29,13 +29,13 @@ class KeteranganGhoibController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-umum/keterangan-ghoib/form-ubah/'.$keteranganGhoib->id.'"
+                            href="/dasbor/kaur-umum/keterangan-ghoib/form-ubah/'.$keteranganGhoib->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-umum/keterangan-ghoib/surat/'.$keteranganGhoib->id.'"
+                            href="/dasbor/kaur-umum/keterangan-ghoib/surat/'.$keteranganGhoib->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganGhoibController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.umum.keterangan_ghoib.form_tambah', compact(
             'perangkat'
@@ -106,7 +106,7 @@ class KeteranganGhoibController extends Controller
 
         $createKeteranganGhoib = KeteranganGhoib::create($keteranganGhoibData);
 
-        return redirect('/kaur-umum/keterangan-ghoib')
+        return redirect('/dasbor/kaur-umum/keterangan-ghoib')
             ->with([
                 'notification' => 'Data keterangan ghoib berhasil ditambah.'
             ]);
@@ -131,8 +131,8 @@ class KeteranganGhoibController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
         $keteranganGhoib = KeteranganGhoib::findOrFail($id);
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.umum.keterangan_ghoib.form_ubah', compact(
             'perangkat',
@@ -174,7 +174,7 @@ class KeteranganGhoibController extends Controller
         $updateKeteranganGhoib = KeteranganGhoib::where('id', '=', $id)
             ->update($keteranganGhoibData);
 
-        return redirect('/kaur-umum/keterangan-ghoib')
+        return redirect('/dasbor/kaur-umum/keterangan-ghoib')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

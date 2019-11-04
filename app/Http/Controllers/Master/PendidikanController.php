@@ -23,7 +23,7 @@ class PendidikanController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/pendidikan/form-ubah/'.$pendidikan->id.'"
+                            href="/dasbor/master/pendidikan/form-ubah/'.$pendidikan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -80,7 +80,7 @@ class PendidikanController extends Controller
 
         $createPendidikan = Pendidikan::create($data);
 
-        return redirect('/master/pendidikan')
+        return redirect('/dasbor/master/pendidikan')
             ->with([
                 'notification' => 'Data pendidikan berhasil ditambah.'
             ]);
@@ -130,7 +130,7 @@ class PendidikanController extends Controller
         $createPendidikan = Pendidikan::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/master/pendidikan')
+        return redirect('/dasbor/master/pendidikan')
             ->with([
                 'notification' => 'Data pendidikan berhasil diubah.'
             ]);

@@ -31,7 +31,7 @@ class AutentikasiController extends Controller
             return redirect()
                 ->intended();
         }
-        return redirect('/autentikasi/form-login')
+        return redirect('/dasbor/autentikasi/form-login')
             ->withErrors([
                 'notification' => 'Email atau kata sandi salah.'
             ]);
@@ -48,6 +48,6 @@ class AutentikasiController extends Controller
             ->session()
             ->regenerate();
 
-        return redirect('/');
+        return redirect('/dasbor');
     }
 }

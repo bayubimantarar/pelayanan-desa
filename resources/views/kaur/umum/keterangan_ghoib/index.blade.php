@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-umum/keterangan-ghoib/form-tambah"
+          href="/dasbor/kaur-umum/keterangan-ghoib/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_ghoib = $('#keterangan-ghoib-table').DataTable({
       ajax: {
-        url: '/kaur-umum/keterangan-ghoib/data',
+        url: '/dasbor/kaur-umum/keterangan-ghoib/data',
         type: 'get'
       },
       datatype: 'json',

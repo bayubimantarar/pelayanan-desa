@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/master/status-perkawinan/form-tambah"
+          href="/dasbor/master/status-perkawinan/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -85,7 +85,7 @@
   <script>
     var status_perkawinan_table = $('#status-perkawinan-table').DataTable({
       ajax: {
-        url: '/master/status-perkawinan/data',
+        url: '/dasbor/master/status-perkawinan/data',
         type: 'get'
       },
       datatype: 'json',
@@ -105,7 +105,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/master/status-perkawinan/hapus/'+id,
+            url: '/dasbor/master/status-perkawinan/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){

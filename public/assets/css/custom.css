@@ -1,7 +1,11 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .breadcrumb{
   margin-top: 15px;
+}
+
+.disabled {
+  cursor: not-allowed;
 }

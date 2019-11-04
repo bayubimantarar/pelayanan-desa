@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
-              <form action="/kaur-tantrib-dan-umum/keterangan-izin-rame/ubah/{{ $keteranganIzinRame->id }}" method="post">
+              <form action="/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame/ubah/{{ $keteranganIzinRame->id }}" method="post">
                 <h4>
                   <b>
                     IDENTITAS PENDUDUK
@@ -361,7 +361,7 @@
 
     if (penduduk_id != 0 || penduduk_id != null) {
       $.ajax({
-        url: '/kependudukan/penduduk/api/data-by-id/'+penduduk_id,
+        url: '/dasbor/kependudukan/penduduk/api/data-by-id/'+penduduk_id,
         type: 'get',
         dataType: 'json',
         success: function(result){
@@ -382,7 +382,7 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/kependudukan/penduduk/api/data-nik',
+            url: '/dasbor/kependudukan/penduduk/api/data-nik',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -399,7 +399,7 @@
       afterSelect: function(result){
         var nik = $('#nik').val();
         $.ajax({
-          url: '/kependudukan/penduduk/api/data/'+nik,
+          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){
@@ -420,7 +420,7 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/kependudukan/penduduk/api/data-nama',
+            url: '/dasbor/kependudukan/penduduk/api/data-nama',
             type: 'get',
             dataType: 'json',
             success: function(json){
@@ -437,7 +437,7 @@
       afterSelect: function(result){
         var nama = $('#nama').val();
         $.ajax({
-          url: '/kependudukan/penduduk/api/data-by-nama/'+nama,
+          url: '/dasbor/kependudukan/penduduk/api/data-by-nama/'+nama,
           type: 'get',
           dataType: 'json',
           success: function(data){

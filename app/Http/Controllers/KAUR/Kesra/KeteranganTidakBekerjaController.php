@@ -29,13 +29,13 @@ class KeteranganTidakBekerjaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-tidak-bekerja/form-ubah/'.$keteranganTidakBekerja->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-tidak-bekerja/form-ubah/'.$keteranganTidakBekerja->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-tidak-bekerja/surat/'.$keteranganTidakBekerja->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-tidak-bekerja/surat/'.$keteranganTidakBekerja->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,8 @@ class KeteranganTidakBekerjaController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
 
         return view('kaur.kesra.keterangan_tidak_bekerja.form_tambah', compact(
             'perangkat'
@@ -98,7 +99,7 @@ class KeteranganTidakBekerjaController extends Controller
 
         $createKeteranganTidakBekerja = KeteranganTidakBekerja::create($keteranganTidakBekerjaData);
 
-        return redirect('/kaur-kesra/keterangan-tidak-bekerja')
+        return redirect('/dasbor/kaur-kesra/keterangan-tidak-bekerja')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -123,7 +124,8 @@ class KeteranganTidakBekerjaController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $keteranganTidakBekerja = KeteranganTidakBekerja::findOrFail($id);
 
         return view('kaur.kesra.keterangan_tidak_bekerja.form_ubah', compact(
@@ -158,7 +160,7 @@ class KeteranganTidakBekerjaController extends Controller
         $createKeteranganTidakBekerja = KeteranganTidakBekerja::where('id', '=', $id)
             ->update($keteranganTidakBekerjaData);
 
-        return redirect('/kaur-kesra/keterangan-tidak-bekerja')
+        return redirect('/dasbor/kaur-kesra/keterangan-tidak-bekerja')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

@@ -13,6 +13,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "nexmo/client": "^2.0",
+        "nexmo/laravel": "^2.1",
         "riskihajar/terbilang": "^1.2",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

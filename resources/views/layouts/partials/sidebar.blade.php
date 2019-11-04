@@ -12,11 +12,11 @@
         </div>
       </li>
       <li>
-        <a href="/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+        <a href="/dasbor"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
       </li>
       @if(Auth::guard('pengguna')->User()->jenis_pengguna === "Admin")
         <li
-          class="{{ Request::segment(1) === 'profil' ? 'active' : ''}}"
+          class="{{ Request::segment(2) === 'profil' ? 'active' : ''}}"
         >
           <a href="#">
             <i class="fa fa-bar-chart-o fa-fw"></i> Data Profil<span class="fa arrow"></span>
@@ -24,8 +24,8 @@
           <ul class="nav nav-second-level">
             <li>
               <a
-                href="/profil/pemerintahan"
-                class="{{ Request::segment(2) === 'pemerintahan' ? 'active' : ''}}"
+                href="/dasbor/profil/pemerintahan"
+                class="{{ Request::segment(3) === 'pemerintahan' ? 'active' : ''}}"
               >
                 <i class="fa fa-building-o"></i>
                 Profil Desa
@@ -33,8 +33,8 @@
             </li>
             <li>
               <a
-                href="/profil/perangkat"
-                class="{{ Request::segment(2) === 'perangkat' ? 'active' : ''}}"
+                href="/dasbor/profil/perangkat"
+                class="{{ Request::segment(3) === 'perangkat' ? 'active' : ''}}"
               >
                 <i class="fa fa-users"></i>
                 Perangkat Desa
@@ -45,22 +45,30 @@
       @endif
       @if(Auth::guard('pengguna')->User()->jenis_pengguna === "Admin")
         <li
-          class="{{ Request::segment(1) === 'master' ? 'active' : ''}}"
+          class="{{ Request::segment(2) === 'master' ? 'active' : ''}}"
         >
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Master<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
             <li>
               <a
-                href="/master/agama"
-                class="{{ Request::segment(2) === 'agama' ? 'active' : ''}}">
+                href="/dasbor/master/surat"
+                class="{{ Request::segment(3) === 'surat' ? 'active' : ''}}">
+                <i class="fa fa-file-o"></i>
+                Surat
+              </a>
+            </li>
+            <li>
+              <a
+                href="/dasbor/master/agama"
+                class="{{ Request::segment(3) === 'agama' ? 'active' : ''}}">
                 <i class="fa fa-file-o"></i>
                 Agama
               </a>
             </li>
             <li>
               <a
-                href="/master/pendidikan"
-                class="{{ Request::segment(2) === 'pendidikan' ? 'active' : ''}}"
+                href="/dasbor/master/pendidikan"
+                class="{{ Request::segment(3) === 'pendidikan' ? 'active' : ''}}"
               >
                 <i class="fa fa-file-o"></i>
                 Pendidikan
@@ -68,8 +76,8 @@
             </li>
             <li>
               <a
-                href="/master/jenis-kelamin"
-                class="{{ Request::segment(2) === 'jenis-kelamin' ? 'active' : ''}}"
+                href="/dasbor/master/jenis-kelamin"
+                class="{{ Request::segment(3) === 'jenis-kelamin' ? 'active' : ''}}"
               >
                 <i class="fa fa-file-o"></i>
                 Jenis Kelamin
@@ -77,8 +85,8 @@
             </li>
             <li>
               <a
-                href="/master/status-perkawinan"
-                class="{{ Request::segment(2) === 'status-perkawinan' ? 'active' : ''}}"
+                href="/dasbor/master/status-perkawinan"
+                class="{{ Request::segment(3) === 'status-perkawinan' ? 'active' : ''}}"
               >
                 <i class="fa fa-file-o"></i>
                 Status Perkawinan
@@ -87,13 +95,13 @@
           </ul>
         </li>
       @endif
-      <li class="{{ Request::segment(1) === 'kependudukan' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'kependudukan' ? 'active' : ''}}">
         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Kependudukan<span class="fa arrow"></span></a>
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kependudukan/penduduk"
-              class="{{ Request::segment(2) === 'penduduk' ? 'active' : ''}}"
+              href="/dasbor/kependudukan/penduduk"
+              class="{{ Request::segment(3) === 'penduduk' ? 'active' : ''}}"
             >
               <i class="fa fa-file-o"></i>
               Data Penduduk
@@ -101,7 +109,21 @@
           </li>
         </ul>
       </li>
-      <li class="{{ Request::segment(1) === 'kaur-ekbang' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'pelayanan' ? 'active' : ''}}">
+        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Pelayanan<span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+          <li>
+            <a
+              href="/dasbor/pelayanan/permintaan-surat"
+              class="{{ Request::segment(3) === 'permintan-surat' ? 'active' : ''}}"
+            >
+              <i class="fa fa-file-o"></i>
+              Permintaan Surat
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="{{ Request::segment(2) === 'kaur-ekbang' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Ekbang
           <span class="fa arrow"></span>
@@ -109,8 +131,8 @@
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kaur-ekbang/keterangan-usaha"
-              class="{{ Request::segment(2) === 'keterangan-usaha' ? 'active' : ''}}"
+              href="/dasbor/kaur-ekbang/keterangan-usaha"
+              class="{{ Request::segment(3) === 'keterangan-usaha' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Usaha
@@ -118,7 +140,7 @@
           </li>
         </ul>
       </li>
-      <li class="{{ Request::segment(1) === 'kaur-umum' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'kaur-umum' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Umum
           <span class="fa arrow"></span>
@@ -126,8 +148,8 @@
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kaur-umum/skck"
-              class="{{ Request::segment(2) === 'skck' ? 'active' : ''}}"
+              href="/dasbor/kaur-umum/skck"
+              class="{{ Request::segment(3) === 'skck' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. SKCK
@@ -135,8 +157,8 @@
           </li>
           <li>
             <a
-              href="/kaur-umum/keterangan-ghoib"
-              class="{{ Request::segment(2) === 'keterangan-ghoib' ? 'active' : ''}}"
+              href="/dasbor/kaur-umum/keterangan-ghoib"
+              class="{{ Request::segment(3) === 'keterangan-ghoib' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Ghoib
@@ -144,7 +166,7 @@
           </li>
         </ul>
       </li>
-      <li class="{{ Request::segment(1) === 'kaur-tantrib-dan-umum' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'kaur-tantrib-dan-umum' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Tantrib & Umum
           <span class="fa arrow"></span>
@@ -152,8 +174,8 @@
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kaur-tantrib-dan-umum/keterangan-bersih-diri"
-              class="{{ Request::segment(2) === 'keterangan-bersih-diri' ? 'active' : ''}}"
+              href="/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri"
+              class="{{ Request::segment(3) === 'keterangan-bersih-diri' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Bersih Diri
@@ -161,8 +183,8 @@
           </li>
           <li>
             <a
-              href="/kaur-tantrib-dan-umum/keterangan-kehilangan"
-              class="{{ Request::segment(2) === 'keterangan-kehilangan' ? 'active' : ''}}"
+              href="/dasbor/kaur-tantrib-dan-umum/keterangan-kehilangan"
+              class="{{ Request::segment(3) === 'keterangan-kehilangan' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Kehilangan
@@ -170,8 +192,8 @@
           </li>
           <li>
             <a
-              href="/kaur-tantrib-dan-umum/keterangan-izin-rame"
-              class="{{ Request::segment(2) === 'keterangan-izin-rame' ? 'active' : ''}}"
+              href="/dasbor/kaur-tantrib-dan-umum/keterangan-izin-rame"
+              class="{{ Request::segment(3) === 'keterangan-izin-rame' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Izin rame-rame
@@ -179,7 +201,7 @@
           </li>
         </ul>
       </li>
-      <li class="{{ Request::segment(1) === 'kaur-pemerintahan' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'kaur-pemerintahan' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Pemerintahan
           <span class="fa arrow"></span>
@@ -187,8 +209,8 @@
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kaur-pemerintahan/keterangan-domisili"
-              class="{{ Request::segment(2) === 'keterangan-domisili' ? 'active' : ''}}"
+              href="/dasbor/kaur-pemerintahan/keterangan-domisili"
+              class="{{ Request::segment(3) === 'keterangan-domisili' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Domisili
@@ -202,8 +224,8 @@
           </li> --}}
           <li>
             <a
-              href="/kaur-pemerintahan/keterangan-beda-identitas"
-              class="{{ Request::segment(2) === 'keterangan-beda-identitas' ? 'active' : ''}}"
+              href="/dasbor/kaur-pemerintahan/keterangan-beda-identitas"
+              class="{{ Request::segment(3) === 'keterangan-beda-identitas' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Beda Identitas
@@ -211,8 +233,8 @@
           </li>
           <li>
             <a
-              href="/kaur-pemerintahan/keterangan-kk-sementara"
-              class="{{ Request::segment(2) === 'keterangan-kk-sementara' ? 'active' : ''}}"
+              href="/dasbor/kaur-pemerintahan/keterangan-kk-sementara"
+              class="{{ Request::segment(3) === 'keterangan-kk-sementara' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. KK Sementara
@@ -220,8 +242,8 @@
           </li>
           <li>
             <a
-              href="/kaur-pemerintahan/keterangan-ktp-sementara"
-              class="{{ Request::segment(2) === 'keterangan-ktp-sementara' ? 'active' : ''}}"
+              href="/dasbor/kaur-pemerintahan/keterangan-ktp-sementara"
+              class="{{ Request::segment(3) === 'keterangan-ktp-sementara' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. KTP Sementara
@@ -229,7 +251,7 @@
           </li>
         </ul>
       </li>
-      <li class="{{ Request::segment(1) === 'kaur-kesra' ? 'active' : ''}}">
+      <li class="{{ Request::segment(2) === 'kaur-kesra' ? 'active' : ''}}">
         <a href="#">
           <i class="fa fa-bar-chart-o fa-fw"></i> KAUR Kesra
           <span class="fa arrow"></span>
@@ -237,8 +259,8 @@
         <ul class="nav nav-second-level">
           <li>
             <a
-              href="/kaur-kesra/sktm"
-              class="{{ Request::segment(2) === 'sktm' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/sktm"
+              class="{{ Request::segment(3) === 'sktm' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. SKTM
@@ -246,8 +268,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-kelahiran"
-              class="{{ Request::segment(2) === 'keterangan-kelahiran' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-kelahiran"
+              class="{{ Request::segment(3) === 'keterangan-kelahiran' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Kelahiran
@@ -255,8 +277,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-kematian"
-              class="{{ Request::segment(2) === 'keterangan-kematian' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-kematian"
+              class="{{ Request::segment(3) === 'keterangan-kematian' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Kematian
@@ -264,8 +286,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-janda-duda"
-              class="{{ Request::segment(2) === 'keterangan-janda-duda' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-janda-duda"
+              class="{{ Request::segment(3) === 'keterangan-janda-duda' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Janda/Duda
@@ -273,8 +295,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-penghasilan"
-              class="{{ Request::segment(2) === 'keterangan-penghasilan' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-penghasilan"
+              class="{{ Request::segment(3) === 'keterangan-penghasilan' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Penghasilan
@@ -282,8 +304,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-tidak-bekerja"
-              class="{{ Request::segment(2) === 'keterangan-tidak-bekerja' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-tidak-bekerja"
+              class="{{ Request::segment(3) === 'keterangan-tidak-bekerja' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Tidak Bekerja
@@ -291,8 +313,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-belum-menikah"
-              class="{{ Request::segment(2) === 'keterangan-belum-menikah' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-belum-menikah"
+              class="{{ Request::segment(3) === 'keterangan-belum-menikah' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Menikah
@@ -300,8 +322,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-tanggungan-keluarga"
-              class="{{ Request::segment(2) === 'keterangan-tanggungan-keluarga' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-tanggungan-keluarga"
+              class="{{ Request::segment(3) === 'keterangan-tanggungan-keluarga' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Tanggungan Keluarga
@@ -309,8 +331,8 @@
           </li>
           <li>
             <a
-              href="/kaur-kesra/keterangan-belum-memiliki-rumah"
-              class="{{ Request::segment(2) === 'keterangan-belum-memiliki-rumah' ? 'active' : ''}}"
+              href="/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah"
+              class="{{ Request::segment(3) === 'keterangan-belum-memiliki-rumah' ? 'active' : ''}}"
             >
               <i class="fa fa-file-text-o"></i>
               Ket. Belum Memiliki Rumah

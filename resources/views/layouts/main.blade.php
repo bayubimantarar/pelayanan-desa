@@ -46,7 +46,7 @@
   <link
     rel="stylesheet"
     type="text/css"
-    href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+    href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet"
   />
   <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

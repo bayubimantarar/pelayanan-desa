@@ -29,13 +29,13 @@ class KeteranganJandaDudaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/keterangan-janda-duda/form-ubah/'.$keteranganJandaDuda->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-janda-duda/form-ubah/'.$keteranganJandaDuda->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/keterangan-janda-duda/surat/'.$keteranganJandaDuda->id.'"
+                            href="/dasbor/kaur-kesra/keterangan-janda-duda/surat/'.$keteranganJandaDuda->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganJandaDudaController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.kesra.keterangan_janda_duda.form_tambah', compact(
             'perangkat',
@@ -105,7 +105,7 @@ class KeteranganJandaDudaController extends Controller
 
         $createKeteranganJandaDuda = KeteranganJandaDuda::create($keteranganJandaDudaData);
 
-        return redirect('/kaur-kesra/keterangan-janda-duda')
+        return redirect('/dasbor/kaur-kesra/keterangan-janda-duda')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -130,7 +130,7 @@ class KeteranganJandaDudaController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganJandaDuda = KeteranganJandaDuda::findOrFail($id);
 
         return view('kaur.kesra.keterangan_janda_duda.form_ubah', compact(
@@ -172,7 +172,7 @@ class KeteranganJandaDudaController extends Controller
         $createKeteranganJandaDuda = KeteranganJandaDuda::where('id', '=', $id)
             ->update($keteranganJandaDudaData);
 
-        return redirect('/kaur-kesra/keterangan-janda-duda')
+        return redirect('/dasbor/kaur-kesra/keterangan-janda-duda')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

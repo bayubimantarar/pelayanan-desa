@@ -196,7 +196,7 @@
                       <div class="col-lg-12 col-md-12 col-xs-12">
                         @if($pemerintahan->logo != null || $pemerintahan->logo != '')
                           <img
-                            src="/assets/img/{{ $pemerintahan->logo }}"
+                            src="/assets/frontend/img/{{ $pemerintahan->logo }}"
                             alt="Logo Desa"
                             class="img-responsive"
                           />

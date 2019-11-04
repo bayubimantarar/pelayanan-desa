@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/keterangan-tidak-bekerja/form-tambah"
+          href="/dasbor/kaur-kesra/keterangan-tidak-bekerja/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_tidak_bekerja = $('#keterangan-tidak-bekerja-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/keterangan-tidak-bekerja/data',
+        url: '/dasbor/kaur-kesra/keterangan-tidak-bekerja/data',
         type: 'get'
       },
       datatype: 'json',

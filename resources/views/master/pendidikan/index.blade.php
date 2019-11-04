@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/master/pendidikan/form-tambah"
+          href="/dasbor/master/pendidikan/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -85,7 +85,7 @@
   <script>
     var pendidikan_table = $('#pendidikan-table').DataTable({
       ajax: {
-        url: '/master/pendidikan/data',
+        url: '/dasbor/master/pendidikan/data',
         type: 'get'
       },
       datatype: 'json',
@@ -105,7 +105,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/master/pendidikan/hapus/'+id,
+            url: '/dasbor/master/pendidikan/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){

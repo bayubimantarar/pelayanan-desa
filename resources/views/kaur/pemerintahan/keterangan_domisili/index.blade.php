@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-pemerintahan/keterangan-domisili/form-tambah"
+          href="/dasbor/kaur-pemerintahan/keterangan-domisili/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_domisili = $('#keterangan-domisili-table').DataTable({
       ajax: {
-        url: '/kaur-pemerintahan/keterangan-domisili/data',
+        url: '/dasbor/kaur-pemerintahan/keterangan-domisili/data',
         type: 'get'
       },
       datatype: 'json',

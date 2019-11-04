@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Kependudukan &raquo; Penduduk | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kependudukan/penduduk/form-tambah"
+          href="/dasbor/kependudukan/penduduk/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var penduduk_table = $('#penduduk-table').DataTable({
       ajax: {
-        url: '/kependudukan/penduduk/data',
+        url: '/dasbor/kependudukan/penduduk/data',
         type: 'GET'
       },
       datatype: 'json',
@@ -109,7 +109,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/kependudukan/penduduk/hapus/'+id,
+            url: '/dasbor/kependudukan/penduduk/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){

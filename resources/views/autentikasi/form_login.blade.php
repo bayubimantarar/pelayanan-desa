@@ -29,7 +29,8 @@
   />
   <link
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+    type="text/css"
+    href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap"
   />
   <link
     rel="stylesheet"
@@ -53,7 +54,7 @@
             </h3>
         </div>
         <div class="panel-body">
-          <form action="/autentikasi/login" method="post">
+          <form action="/dasbor/autentikasi/login" method="post">
             @if($errors->has('notification'))
               <div class="alert alert-danger" role="alert">
                 {{ $errors->first('notification') }}

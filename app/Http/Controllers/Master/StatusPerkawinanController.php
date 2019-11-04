@@ -23,7 +23,7 @@ class StatusPerkawinanController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/status-perkawinan/form-ubah/'.$statusPerkawinan->id.'"
+                            href="/dasbor/master/status-perkawinan/form-ubah/'.$statusPerkawinan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -80,7 +80,7 @@ class StatusPerkawinanController extends Controller
 
         $createStatusPerkawinan = StatusPerkawinan::create($data);
 
-        return redirect('/master/status-perkawinan')
+        return redirect('/dasbor/master/status-perkawinan')
             ->with([
                 'notification' => 'Data status perkawinan berhasil ditambah.'
             ]);
@@ -130,7 +130,7 @@ class StatusPerkawinanController extends Controller
         $createStatusPerkawinan = StatusPerkawinan::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/master/status-perkawinan')
+        return redirect('/dasbor/master/status-perkawinan')
             ->with([
                 'notification' => 'Data status perkawinan berhasil diubah.'
             ]);

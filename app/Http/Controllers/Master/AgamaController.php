@@ -23,7 +23,7 @@ class AgamaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/master/agama/form-ubah/'.$agama->id.'"
+                            href="/dasbor/master/agama/form-ubah/'.$agama->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
@@ -80,7 +80,7 @@ class AgamaController extends Controller
 
         $createAgama = Agama::create($data);
 
-        return redirect('/master/agama')
+        return redirect('/dasbor/master/agama')
             ->with([
                 'notification' => 'Data agama berhasil ditambah.'
             ]);
@@ -130,7 +130,7 @@ class AgamaController extends Controller
         $createAgama = Agama::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/master/agama')
+        return redirect('/dasbor/master/agama')
             ->with([
                 'notification' => 'Data agama berhasil diubah.'
             ]);

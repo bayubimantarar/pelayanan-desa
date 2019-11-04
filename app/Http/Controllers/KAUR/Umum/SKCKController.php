@@ -30,13 +30,13 @@ class SKCKController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-umum/skck/form-ubah/'.$skck->id.'"
+                            href="/dasbor/kaur-umum/skck/form-ubah/'.$skck->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-umum/skck/surat/'.$skck->id.'"
+                            href="/dasbor/kaur-umum/skck/surat/'.$skck->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,7 +68,7 @@ class SKCKController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.umum.skck.form_tambah', compact(
             'perangkat'
@@ -107,7 +107,7 @@ class SKCKController extends Controller
 
         $createSKCK = SKCK::create($SKCKData);
 
-        return redirect('/kaur-umum/skck')
+        return redirect('/dasbor/kaur-umum/skck')
             ->with([
                 'notification' => 'Data berhasil ditambah.'
             ]);
@@ -133,7 +133,7 @@ class SKCKController extends Controller
     public function edit($id)
     {
         $skck = SKCK::findOrFail($id);
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.umum.skck.form_ubah', compact(
             'skck',
@@ -175,7 +175,7 @@ class SKCKController extends Controller
         $createSKCK = SKCK::where('id', '=', $id)
             ->update($SKCKData);
 
-        return redirect('/kaur-umum/skck')
+        return redirect('/dasbor/kaur-umum/skck')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

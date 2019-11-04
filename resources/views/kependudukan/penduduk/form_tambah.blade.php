@@ -35,7 +35,7 @@
           <hr />
           <div class="row">
               <div class="col-lg-12">
-                <form action="/kependudukan/penduduk/simpan" method="post">
+                <form action="/dasbor/kependudukan/penduduk/simpan" method="post">
                   <input
                     type="hidden"
                     name="_token"

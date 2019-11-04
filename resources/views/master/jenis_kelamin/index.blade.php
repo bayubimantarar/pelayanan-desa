@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/master/jenis-kelamin/form-tambah"
+          href="/dasbor/master/jenis-kelamin/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -85,7 +85,7 @@
   <script>
     var jenis_kelamin_table = $('#jenis-kelamin-table').DataTable({
       ajax: {
-        url: '/master/jenis-kelamin/data',
+        url: '/dasbor/master/jenis-kelamin/data',
         type: 'GET'
       },
       datatype: 'json',
@@ -105,7 +105,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/master/jenis-kelamin/hapus/'+id,
+            url: '/dasbor/master/jenis-kelamin/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){

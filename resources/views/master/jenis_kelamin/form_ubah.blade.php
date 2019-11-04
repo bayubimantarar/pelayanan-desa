@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/master/jenis-kelamin/ubah/{{ $jenisKelamin->id }}" method="post">
+                <form action="/dasbor/master/jenis-kelamin/ubah/{{ $jenisKelamin->id }}" method="post">
                   <input
                     type="hidden"
                     name="_method"

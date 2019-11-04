@@ -179,6 +179,8 @@ return [
 
         Riskihajar\Terbilang\TerbilangServiceProvider::class,
 
+        Nexmo\Laravel\NexmoServiceProvider::class,
+
     ],
 
     /*
@@ -232,6 +234,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Terbilang' => Riskihajar\Terbilang\Facades\Terbilang::class,
+        'Nexmo' => Nexmo\Laravel\Facade\Nexmo::class,
 
     ],
 

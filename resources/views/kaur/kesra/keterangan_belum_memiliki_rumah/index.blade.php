@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/keterangan-belum-memiliki-rumah/form-tambah"
+          href="/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_belum_memiliki_rumah = $('#keterangan-belum-memiliki-rumah-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/keterangan-belum-memiliki-rumah/data',
+        url: '/dasbor/kaur-kesra/keterangan-belum-memiliki-rumah/data',
         type: 'get'
       },
       datatype: 'json',

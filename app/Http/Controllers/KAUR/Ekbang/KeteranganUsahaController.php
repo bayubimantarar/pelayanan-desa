@@ -30,13 +30,13 @@ class KeteranganUsahaController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-ekbang/keterangan-usaha/form-ubah/'.$keteranganUsaha->id.'"
+                            href="/dasbor/kaur-ekbang/keterangan-usaha/form-ubah/'.$keteranganUsaha->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-ekbang/keterangan-usaha/surat/'.$keteranganUsaha->id.'"
+                            href="/dasbor/kaur-ekbang/keterangan-usaha/surat/'.$keteranganUsaha->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,7 +68,7 @@ class KeteranganUsahaController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.ekbang.keterangan_usaha.form_tambah', compact(
             'perangkat'
@@ -103,7 +103,7 @@ class KeteranganUsahaController extends Controller
 
         $createKeteranganUsaha = KeteranganUsaha::create($keteranganUsahaData);
 
-        return redirect('/kaur-ekbang/keterangan-usaha')
+        return redirect('/dasbor/kaur-ekbang/keterangan-usaha')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -128,7 +128,8 @@ class KeteranganUsahaController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $keteranganUsaha = KeteranganUsaha::findOrFail($id);
 
         return view('kaur.ekbang.keterangan_usaha.form_ubah', compact(
@@ -167,7 +168,7 @@ class KeteranganUsahaController extends Controller
         $createKeteranganUsaha = KeteranganUsaha::where('id', '=', $id)
             ->update($keteranganUsahaData);
 
-        return redirect('/kaur-ekbang/keterangan-usaha')
+        return redirect('/dasbor/kaur-ekbang/keterangan-usaha')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

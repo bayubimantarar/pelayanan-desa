@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-tantrib-dan-umum/keterangan-bersih-diri/form-tambah"
+          href="/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_bersih_diri = $('#keterangan-bersi-diri-table').DataTable({
       ajax: {
-        url: '/kaur-tantrib-dan-umum/keterangan-bersih-diri/data',
+        url: '/dasbor/kaur-tantrib-dan-umum/keterangan-bersih-diri/data',
         type: 'get'
       },
       datatype: 'json',

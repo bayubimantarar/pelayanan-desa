@@ -29,13 +29,13 @@ class KeteranganKehilanganController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-kehilangan/form-ubah/'.$keteranganKehilangan->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-kehilangan/form-ubah/'.$keteranganKehilangan->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-tantrib-dan-umum/keterangan-kehilangan/surat/'.$keteranganKehilangan->id.'"
+                            href="/dasbor/kaur-tantrib-dan-umum/keterangan-kehilangan/surat/'.$keteranganKehilangan->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -67,7 +67,7 @@ class KeteranganKehilanganController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
 
         return view('kaur.tantrib_umum.keterangan_kehilangan.form_tambah', compact(
             'perangkat'
@@ -104,7 +104,7 @@ class KeteranganKehilanganController extends Controller
 
         $createKeteranganKehilangan = KeteranganKehilangan::create($keteranganKehilanganData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-kehilangan')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-kehilangan')
             ->with([
                 'notification' => 'Data berhasil disimpan'
             ]);
@@ -129,7 +129,7 @@ class KeteranganKehilanganController extends Controller
      */
     public function edit($id)
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')->get();
         $keteranganKehilangan = KeteranganKehilangan::findOrFail($id);
 
         return view('kaur.tantrib_umum.keterangan_kehilangan.form_ubah', compact(
@@ -168,7 +168,7 @@ class KeteranganKehilanganController extends Controller
         $createKeteranganKehilangan = KeteranganKehilangan::where('id', '=', $id)
             ->update($keteranganKehilanganData);
 
-        return redirect('/kaur-tantrib-dan-umum/keterangan-kehilangan')
+        return redirect('/dasbor/kaur-tantrib-dan-umum/keterangan-kehilangan')
             ->with([
                 'notification' => 'Data berhasil diubah'
             ]);

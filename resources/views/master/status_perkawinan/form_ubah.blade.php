@@ -17,7 +17,7 @@
     <div class="col-lg-12">
       <ul class="breadcrumb">
         <li><a href="/">Dasbor</a></li>
-        <li><a href="/master/status-perkawinan">Master - Status Perkawinan</a></li>
+        <li><a href="/dasbor/master/status-perkawinan">Master - Status Perkawinan</a></li>
         <li class="active">Form Ubah</li>
       </ul>
     </div>
@@ -31,7 +31,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/master/status-perkawinan/ubah/{{ $statusPerkawinan->id }}" method="post">
+                <form action="/dasbor/master/status-perkawinan/ubah/{{ $statusPerkawinan->id }}" method="post">
                   <input
                     type="hidden"
                     name="_method"

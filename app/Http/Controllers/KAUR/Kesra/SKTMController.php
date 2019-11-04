@@ -30,13 +30,13 @@ class SKTMController extends Controller
                 return '
                     <center>
                         <a
-                            href="/kaur-kesra/sktm/form-ubah/'.$sktm->id.'"
+                            href="/dasbor/kaur-kesra/sktm/form-ubah/'.$sktm->id.'"
                             class="btn btn-sm btn-social btn-warning"
                         >
                             <i class="fa fa-pencil"></i> Ubah
                         </a>
                         <a
-                            href="/kaur-kesra/sktm/surat/'.$sktm->id.'"
+                            href="/dasbor/kaur-kesra/sktm/surat/'.$sktm->id.'"
                             class="btn btn-sm btn-social btn-success"
                             target="_blank"
                         >
@@ -68,7 +68,8 @@ class SKTMController extends Controller
      */
     public function create()
     {
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.sktm.form_tambah', compact(
@@ -132,7 +133,7 @@ class SKTMController extends Controller
 
         $createSKTM = SKTM::create($sktmData);
 
-        return redirect('/kaur-kesra/sktm')
+        return redirect('/dasbor/kaur-kesra/sktm')
             ->with([
                 'notification' => 'Data berhasil disimpan.'
             ]);
@@ -158,7 +159,8 @@ class SKTMController extends Controller
     public function edit($id)
     {
         $sktm = SKTM::findOrFail($id);
-        $perangkat = Perangkat::all();
+        $perangkat = Perangkat::where('status', '=', '1')
+            ->get();
         $jenisKelamin = JenisKelamin::all();
 
         return view('kaur.kesra.sktm.form_ubah', compact(
@@ -225,7 +227,7 @@ class SKTMController extends Controller
         $updateSKTM = SKTM::where('id', '=', $id)
             ->update($sktmData);
 
-        return redirect('/kaur-kesra/sktm')
+        return redirect('/dasbor/kaur-kesra/sktm')
             ->with([
                 'notification' => 'Data berhasil diubah.'
             ]);

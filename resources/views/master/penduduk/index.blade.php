@@ -26,7 +26,7 @@
   <div class="row">
     <div class="col-lg-12">
       <p>
-        <a href="/master/penduduk/form-tambah" class="btn btn-sm btn-primary">
+        <a href="/dasbor/master/penduduk/form-tambah" class="btn btn-sm btn-primary">
           <i class="fa fa-plus"></i> Tambah Data Penduduk
         </a>
       </p>

@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-kesra/keterangan-belum-menikah/form-tambah"
+          href="/dasbor/kaur-kesra/keterangan-belum-menikah/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_belum_menikah = $('#keterangan-belum-menikah-table').DataTable({
       ajax: {
-        url: '/kaur-kesra/keterangan-belum-menikah/data',
+        url: '/dasbor/kaur-kesra/keterangan-belum-menikah/data',
         type: 'get'
       },
       datatype: 'json',

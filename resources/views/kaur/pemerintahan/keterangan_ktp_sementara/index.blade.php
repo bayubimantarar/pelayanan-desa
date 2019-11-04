@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/kaur-pemerintahan/keterangan-ktp-sementara/form-tambah"
+          href="/dasbor/kaur-pemerintahan/keterangan-ktp-sementara/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -87,7 +87,7 @@
   <script>
     var keterangan_ktp_sementara = $('#keterangan-ktp-sementara').DataTable({
       ajax: {
-        url: '/kaur-pemerintahan/keterangan-ktp-sementara/data',
+        url: '/dasbor/kaur-pemerintahan/keterangan-ktp-sementara/data',
         type: 'get'
       },
       datatype: 'json',

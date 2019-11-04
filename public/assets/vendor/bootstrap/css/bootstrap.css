@@ -4920,7 +4920,7 @@ a.label:focus {
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  background-color: #777;
+  background-color: #d9534f;
   border-radius: 10px;
 }
 .badge:empty {

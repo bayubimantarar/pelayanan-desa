@@ -38,7 +38,7 @@
       @endif
       <p>
         <a
-          href="/master/agama/form-tambah"
+          href="/dasbor/master/agama/form-tambah"
           class="btn btn-sm btn-social btn-vk"
         >
           <i class="fa fa-plus"></i> Tambah
@@ -85,7 +85,7 @@
   <script>
     var agama_table = $('#agama-table').DataTable({
       ajax: {
-        url: '/master/agama/data',
+        url: '/dasbor/master/agama/data',
         type: 'GET'
       },
       datatype: 'json',
@@ -105,7 +105,7 @@
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
-            url: '/master/agama/hapus/'+id,
+            url: '/dasbor/master/agama/hapus/'+id,
             type: 'delete',
             dataType: 'json',
             success: function(result){
