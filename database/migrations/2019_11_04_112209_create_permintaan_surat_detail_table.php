@@ -23,10 +23,10 @@ class CreatePermintaanSuratDetailTable extends Migration
             $table->text('keperluan_usaha')->nullable(); // semua usaha
 
             // skck
-            $table->string('rt_skck', 75)->nullable(); // semua surat
-            $table->string('rw_skck', 75)->nullable(); // semua surat
-            $table->date('tertanggal_rt_skck')->nullable(); // semua surat
-            $table->date('tertanggal_rw_skck')->nullable(); // semua surat
+            $table->string('rt_skck', 75)->nullable();
+            $table->string('rw_skck', 75)->nullable();
+            $table->date('tertanggal_rt_skck')->nullable();
+            $table->date('tertanggal_rw_skck')->nullable();
             $table->text('keperluan_skck')->nullable(); // semua usaha
 
             // keterangan ghoib
@@ -37,20 +37,20 @@ class CreatePermintaanSuratDetailTable extends Migration
             $table->text('alasan_ghoib')->nullable();
 
             // keterangan bersih diri
-            $table->text('keperluan_bersih_diri')->nullable(); // semua surat
+            $table->text('keperluan_bersih_diri')->nullable();
 
             // keterangan kehilangan
-            $table->string('rt_kehilangan', 75)->nullable(); // semua surat
-            $table->string('rw_kehilangan', 75)->nullable(); // semua surat
-            $table->date('tertanggal_rt_kehilangan')->nullable(); // semua surat
-            $table->date('tertanggal_rw_kehilangan')->nullable(); // semua surat
+            $table->string('rt_kehilangan', 75)->nullable();
+            $table->string('rw_kehilangan', 75)->nullable();
+            $table->date('tertanggal_rt_kehilangan')->nullable();
+            $table->date('tertanggal_rw_kehilangan')->nullable();
             $table->text('alasan_kehilangan')->nullable(); // semua usaha
 
             // keterangan izin rame-rame
-            $table->string('rt_izin_rame', 75)->nullable(); // semua surat
-            $table->string('rw_izin_rame', 75)->nullable(); // semua surat
-            $table->date('tertanggal_rt_izin_rame')->nullable(); // semua surat
-            $table->date('tertanggal_rw_izin_rame')->nullable(); // semua surat
+            $table->string('rt_izin_rame', 75)->nullable();
+            $table->string('rw_izin_rame', 75)->nullable();
+            $table->date('tertanggal_rt_izin_rame')->nullable();
+            $table->date('tertanggal_rw_izin_rame')->nullable();
             $table->string('acara', 150)->nullable();
             $table->date('tanggal_pelaksanaan')->nullable();
             $table->string('kegiatan', 150)->nullable();
@@ -58,7 +58,7 @@ class CreatePermintaanSuratDetailTable extends Migration
             $table->text('alamat_pelaksanaan')->nullable();
 
             // keterangan domisili
-            $table->text('keperluan_domisili')->nullable(); // semua surat
+            $table->text('keperluan_domisili')->nullable();
 
             // keterangan tidak mampu
             $table->string('jenis_sktm', 150)->nullable();
@@ -71,7 +71,7 @@ class CreatePermintaanSuratDetailTable extends Migration
             $table->string('jurusan', 150)->nullable();
             $table->text('alamat_sekolah')->nullable();
             $table->string('diwakili_oleh', 150)->nullable();
-            $table->text('keperluan_sktm')->nullable(); // semua surat
+            $table->text('keperluan_sktm')->nullable();
 
             // keterangan kelahiran
             $table->string('nama_anak', 150)->nullable();
@@ -112,25 +112,13 @@ class CreatePermintaanSuratDetailTable extends Migration
             $table->string('penghasilan', 150)->nullable();
 
             // keterangan tidak bekerja
-            $table->text('keperluan_tidak_bekerja')->nullable(); // semua surat
+            $table->text('keperluan_tidak_bekerja')->nullable();
 
             // keterangan belum menikah
-            $table->text('keperluan_belum_menikah')->nullable(); // semua surat
+            $table->text('keperluan_belum_menikah')->nullable();
 
             // keterangan belum memiliki rumah
-            $table->text('keperluan_belum_memiliki_rumah')->nullable(); // semua surat
-
-            // semua surat
-            // $table->string('rt', 75)->nullable(); // semua surat
-            // $table->string('rw', 75)->nullable(); // semua surat
-            // $table->date('tertanggal_rt')->nullable(); // semua surat
-            // $table->date('tertanggal_rw')->nullable(); // semua surat
-            // $table->date('tanggal_lahir')->nullable(); // semua surat
-            // $table->string('tempat_lahir', 150)->nullable(); // semua surat
-            // $table->string('jenis_kelamin', 150)->nullable(); // semua surat
-            // $table->text('alamat')->nullable(); // semua surat
-            // $table->text('alasan')->nullable(); // semua surat
-            // $table->text('keperluan')->nullable(); // semua surat
+            $table->text('keperluan_belum_memiliki_rumah')->nullable();
             $table->timestamps();
         });
     }

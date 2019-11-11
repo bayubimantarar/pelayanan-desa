@@ -20,7 +20,7 @@
     }
     .header img {
       position: absolute;
-      margin-top: 7px;
+      margin-top: 3px;
     }
     .title {
       text-align: center;
@@ -52,7 +52,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -74,7 +74,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 200/{{ $total }}/Ds/IX/2019
+        Nomor: 200/{{ $total }}/Ds/{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -114,7 +114,7 @@
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $keteranganBersihDiri->redaksi }}<br />
+      {{ $keteranganBersihDiri->redaksi }}<br /><br />
       Surat keterangan ini diperlukan untuk keperluan : <b><i>{{ $keteranganBersihDiri->keperluan }}</i></b>
     </p>
     <p style="text-indent: 2.5%;">
@@ -223,11 +223,13 @@
       </tr>
       <tr>
         <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $keteranganBersihDiri->profil_perangkat->jabatan }}
-            </b>
-          </center>
+          @if($keteranganBersihDiri->perangkat_id != 0)
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $keteranganBersihDiri->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          @endif
         </td>
       </tr>
       <tr>
@@ -306,12 +308,12 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              @if($keteranganBersihDiri->profil_perangkat_id != 0)
+              @if($keteranganBersihDiri->perangkat_id != 0)
                 <u>
                   {{ $keteranganBersihDiri->profil_perangkat->nama }}
                 </u>
               @else
-                <hr />
+                -
               @endif
             </b>
           </center>

@@ -42,12 +42,12 @@
 
     }
   </style>
-  <title>Surat SKCK</title>
+  <title>Surat Keterangan Kartu Tanda Penduduk Sementara - {{ $keteranganKTPSementara->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -69,7 +69,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 474/{{ $total }}/Ds./IX/2019
+        Nomor : 474/{{ $total }}/Ds./{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -237,103 +237,224 @@
         </td>
       </tr>
     </table>
-    <table align="right">
-      <tr>
-        <td><center>Cilame, {{ $date }}</center></td>
-      </tr>
-      <tr>
-        <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $keteranganKTPSementara->profil_perangkat->jabatan }}
-            </b>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;" width="200">
-          <center>
-            <b>
-              <u>
-                {{ $keteranganKTPSementara->profil_perangkat->nama }}
-              </u>
-            </b>
-          </center>
-        </td>
-      </tr>
-    </table>
+    @if($keteranganKTPSementara->perangkat_id != 0)
+      <table align="right">
+        <tr>
+          <td><center>Cilame, {{ $date }}</center></td>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $keteranganKTPSementara->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;" width="200">
+            <center>
+              <b>
+                <u>
+                  {{ $keteranganKTPSementara->profil_perangkat->nama }}
+                </u>
+              </b>
+            </center>
+          </td>
+        </tr>
+      </table>
+    @else
+      <table align="right">
+        <tr>
+          <td><center>Cilame, {{ $date }}</center></td>
+        </tr>
+        <tr>
+          <td>
+            @if($keteranganKTPSementara->perangkat_id != 0)
+              <center>
+                <b style="text-transform: uppercase;">
+                  {{ $keteranganKTPSementara->profil_perangkat->jabatan }}
+                </b>
+              </center>
+            @endif
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;" width="200">
+            <center>
+              <b>
+                @if($keteranganKTPSementara->perangkat_id != 0)
+                  <u>
+                    {{ $keteranganKTPSementara->profil_perangkat->nama }}
+                  </u>
+                @else
+                  -
+                @endif
+              </b>
+            </center>
+          </td>
+        </tr>
+      </table>
+    @endif
   </div>
 </body>
 </html>

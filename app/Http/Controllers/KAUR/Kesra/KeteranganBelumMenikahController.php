@@ -182,12 +182,16 @@ class KeteranganBelumMenikahController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganBelumMenikah->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganBelumMenikah::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_belum_menikah.surat', [
             'keteranganBelumMenikah' => $keteranganBelumMenikah,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

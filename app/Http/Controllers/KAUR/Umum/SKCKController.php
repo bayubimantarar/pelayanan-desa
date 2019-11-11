@@ -203,6 +203,9 @@ class SKCKController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$skck->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = SKCK::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
@@ -213,6 +216,7 @@ class SKCKController extends Controller
             'skck' => $skck,
             'date' => $date,
             'profil' => $profil,
+            'romawi' => $romawi,
             'total' => $total,
             'tertanggalRT' => $tertanggalRT,
             'tertanggalRW' => $tertanggalRW

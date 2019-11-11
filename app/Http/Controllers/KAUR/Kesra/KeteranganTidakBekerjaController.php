@@ -188,12 +188,16 @@ class KeteranganTidakBekerjaController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganTidakBekerja->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganTidakBekerja::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_tidak_bekerja.surat', [
             'keteranganTidakBekerja' => $keteranganTidakBekerja,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

@@ -191,12 +191,16 @@ class KeteranganPenghasilanController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganPenghasilan->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganPenghasilan::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_penghasilan.surat', [
             'keteranganPenghasilan' => $keteranganPenghasilan,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

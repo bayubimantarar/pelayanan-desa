@@ -121,6 +121,15 @@
               Permintaan Surat
             </a>
           </li>
+          <li>
+            <a
+              href="/dasbor/pelayanan/pengambilan-surat"
+              class="{{ Request::segment(3) === 'pengambilan-surat' ? 'active' : ''}}"
+            >
+              <i class="fa fa-file-o"></i>
+              Pengambilan Surat
+            </a>
+          </li>
         </ul>
       </li>
       <li class="{{ Request::segment(2) === 'kaur-ekbang' ? 'active' : ''}}">

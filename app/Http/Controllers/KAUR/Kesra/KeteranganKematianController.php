@@ -225,12 +225,16 @@ class KeteranganKematianController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganKematian->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganKematian::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_kematian.surat', [
             'keteranganKematian' => $keteranganKematian,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

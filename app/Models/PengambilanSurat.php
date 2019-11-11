@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\PermintaanSurat;
 use Illuminate\Database\Eloquent\Model;
 
 class PengambilanSurat extends Model
@@ -16,4 +17,9 @@ class PengambilanSurat extends Model
     protected $dates = [
         'tanggal_pengambilan'
     ];
+
+    public function permintaan_surat()
+    {
+        return $this->belongsTo(PermintaanSurat::class, 'permintaan_surat_id', 'id');
+    }
 }

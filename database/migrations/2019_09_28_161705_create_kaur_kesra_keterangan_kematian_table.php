@@ -23,7 +23,7 @@ class CreateKaurKesraKeteranganKematianTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin', 150);
             $table->date('tanggal_meninggal');
-            $table->string('hari_meninggal', 150);
+            $table->string('hari_meninggal', 150)->nullable();
             $table->time('jam_meninggal')->nullable();
             $table->text('alamat_meninggal')->nullable();
             $table->string('penyebab_meninggal', 150)->nullable();

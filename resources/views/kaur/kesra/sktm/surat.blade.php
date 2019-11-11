@@ -47,7 +47,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -69,7 +69,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 400/{{ $total }}/Ds./IX/2019
+        Nomor : 400/{{ $total }}/Ds./{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -241,103 +241,224 @@
         </tr>
       </table>
     @endif
-    <table align="right">
-      <tr>
-        <td><center>Cilame, {{ $date }}</center></td>
-      </tr>
-      <tr>
-        <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $sktm->profil_perangkat->jabatan }}
-            </b>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;" width="200">
-          <center>
-            <b>
-              <u>
-                {{ $sktm->profil_perangkat->nama }}
-              </u>
-            </b>
-          </center>
-        </td>
-      </tr>
-    </table>
+    @if($sktm->perangkat_id != 0)
+      <table align="right">
+        <tr>
+          <td><center>Cilame, {{ $date }}</center></td>
+        </tr>
+        <tr>
+          <td>
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $sktm->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;" width="200">
+            <center>
+              <b>
+                <u>
+                  {{ $sktm->profil_perangkat->nama }}
+                </u>
+              </b>
+            </center>
+          </td>
+        </tr>
+      </table>
+    @else
+      <table align="right">
+        <tr>
+          <td><center>Cilame, {{ $date }}</center></td>
+        </tr>
+        <tr>
+          <td>
+            @if($sktm->perangkat_id != 0)
+              <center>
+                <b style="text-transform: uppercase;">
+                  {{ $sktm->profil_perangkat->jabatan }}
+                </b>
+              </center>
+            @endif
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="text-transform: uppercase;" width="200">
+            <center>
+              <b>
+                @if($sktm->perangkat_id != 0)
+                  <u>
+                    {{ $sktm->profil_perangkat->nama }}
+                  </u>
+                @else
+                  -
+                @endif
+              </b>
+            </center>
+          </td>
+        </tr>
+      </table>
+    @endif
   </div>
 </body>
 </html>

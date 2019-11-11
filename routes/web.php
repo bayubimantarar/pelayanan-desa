@@ -281,6 +281,20 @@ Route::group(['prefix' => 'dasbor'], function(){
                     'as' => 'pelayanan.permintaan_surat.update'
                 ]);
             });
+            Route::group(['prefix' => 'pengambilan-surat'], function(){
+                Route::get('/', [
+                    'uses' => 'Pelayanan\PengambilanSuratController@index',
+                    'as' => 'pelayanan.pengambilan_surat.index'
+                ]);
+                Route::get('/data', [
+                    'uses' => 'Pelayanan\PengambilanSuratController@data',
+                    'as' => 'pelayanan.pengambilan_surat.data'
+                ]);
+                Route::get('/proses/{id}', [
+                    'uses' => 'Pelayanan\PengambilanSuratController@proses',
+                    'as' => 'pelayanan.pengambilan_surat.data'
+                ]);
+            });
         });
         Route::group(['prefix' => 'kaur-ekbang'], function(){
             Route::group(['prefix' => 'keterangan-usaha'], function(){

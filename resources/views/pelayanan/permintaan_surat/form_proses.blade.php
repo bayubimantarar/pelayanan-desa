@@ -77,6 +77,7 @@
                           Nama Lengkap <small class="text-danger">*</small>
                         </label>
                         <input
+                          name="nama_peminta"
                           type="text"
                           class="form-control"
                           value="{{ $permintaanSurat->nama }}"
@@ -94,6 +95,7 @@
                         </label>
                         <input
                           type="text"
+                          name="nomor_telepon"
                           class="form-control"
                           value="{{ $permintaanSurat->nomor_telepon }}"
                           readonly
@@ -143,6 +145,34 @@
                   <hr />
                   @if($permintaanSurat->surat == 'Keterangan Usaha')
                     @include('layouts.partials.form_surat.keterangan_usaha')
+                  @elseif($permintaanSurat->surat == 'Keterangan Catatan Kepolisian (SKCK)')
+                    @include('layouts.partials.form_surat.keterangan_catatan_kepolisian')
+                  @elseif($permintaanSurat->surat == 'Keterangan Ghoib')
+                    @include('layouts.partials.form_surat.keterangan_ghoib')
+                  @elseif($permintaanSurat->surat == 'Keterangan Belum Memiliki Rumah')
+                    @include('layouts.partials.form_surat.keterangan_belum_memiliki_rumah')
+                  @elseif($permintaanSurat->surat == 'Keterangan Bersih Diri')
+                    @include('layouts.partials.form_surat.keterangan_bersih_diri')
+                  @elseif($permintaanSurat->surat == 'Keterangan Izin Rame-Rame')
+                    @include('layouts.partials.form_surat.keterangan_izin_rame')
+                  @elseif($permintaanSurat->surat == 'Keterangan Domisili')
+                    @include('layouts.partials.form_surat.keterangan_domisili')
+                  @elseif($permintaanSurat->surat == 'Keterangan Tanda Penduduk Sementara')
+                    @include('layouts.partials.form_surat.keterangan_kartu_tanda_penduduk_sementara')
+                  @elseif($permintaanSurat->surat == 'Keterangan Tidak Mampu')
+                    @include('layouts.partials.form_surat.keterangan_tidak_mampu')
+                  @elseif($permintaanSurat->surat == 'Keterangan Kelahiran')
+                    @include('layouts.partials.form_surat.keterangan_kelahiran')
+                  @elseif($permintaanSurat->surat == 'Keterangan Kematian')
+                    @include('layouts.partials.form_surat.keterangan_kematian')
+                  @elseif($permintaanSurat->surat == 'Keterangan Janda atau Duda')
+                    @include('layouts.partials.form_surat.keterangan_janda_duda')
+                  @elseif($permintaanSurat->surat == 'Keterangan Penghasilan')
+                    @include('layouts.partials.form_surat.keterangan_penghasilan')
+                  @elseif($permintaanSurat->surat == 'Keterangan Tidak Bekerja')
+                    @include('layouts.partials.form_surat.keterangan_tidak_bekerja')
+                  @elseif($permintaanSurat->surat == 'Keterangan Belum Menikah')
+                    @include('layouts.partials.form_surat.keterangan_belum_menikah')
                   @endif
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-xs-12">
@@ -243,7 +273,40 @@
     $('#tanggal-pengambilan').datetimepicker({
       format: 'DD-MM-YYYY'
     });
+    $('#tanggal-pelaksanaan').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#tanggal-lahir-ghoib').datetimepicker({
+      format: 'DD-MM-YYYY',
+      viewMode: 'years'
+    });
+    $('#tanggal-pengambilan').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#tertanggal-rt').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
+    $('#tertanggal-rw').datetimepicker({
+      format: 'DD-MM-YYYY'
+    });
 
+    var jenis_sktm = $('#jenis-sktm').val();
+
+    if (jenis_sktm != "Pendidikan") {
+      $('#sktm-pendidikan').hide();
+    }else{
+      $('#sktm-pendidikan').show();
+    }
+
+    $('#jenis-sktm').change(function(e){
+      var jenis_sktm = $('#jenis-sktm').val();
+
+      if (jenis_sktm === "Pendidikan") {
+        $('#sktm-pendidikan').show();
+      }else{
+        $('#sktm-pendidikan').hide();
+      }
+    });
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({

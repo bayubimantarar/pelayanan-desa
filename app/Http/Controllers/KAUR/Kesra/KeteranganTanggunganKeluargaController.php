@@ -186,23 +186,24 @@ class KeteranganTanggunganKeluargaController extends Controller
         $anggotaKeluarga = KeteranganTanggunganKeluargaAnggota::where('kaur_kesra_keterangan_tanggungan_keluarga_id', '=', $id)
             ->get();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganTanggunganKeluarga->created_at->format('m')];
+
         $nomor = 1;
         $profil = Pemerintahan::get()->first();
         $total = KeteranganTanggunganKeluarga::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
+
         $surat = PDF::loadView('kaur.kesra.keterangan_tanggungan_keluarga.surat', [
             'date' => $date,
             'nomor' => $nomor,
+            'romawi' => $romawi,
             'total' => $total,
             'profil' => $profil,
             'anggotaKeluarga' => $anggotaKeluarga,
             'keteranganTanggunganKeluarga' => $keteranganTanggunganKeluarga,
         ]);
-
-        // foreach($anggotaKeluarga as $item){
-        //     echo $item->nik.'<br />';
-        // }
 
         return $surat->setPaper([0, 0, 595.276, 935.433], 'portrait')->stream();
     }

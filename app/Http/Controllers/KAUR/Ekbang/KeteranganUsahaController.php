@@ -196,6 +196,9 @@ class KeteranganUsahaController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganUsaha->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganUsaha::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
@@ -203,6 +206,7 @@ class KeteranganUsahaController extends Controller
         $surat = PDF::loadView('kaur.ekbang.keterangan_usaha.surat', [
             'keteranganUsaha' => $keteranganUsaha,
             'date' => $date,
+            'romawi' => $romawi,
             'profil' => $profil,
             'total' => $total,
         ]);

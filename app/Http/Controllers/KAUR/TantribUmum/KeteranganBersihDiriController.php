@@ -237,12 +237,16 @@ class KeteranganBersihDiriController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganBersihDiri->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganBersihDiri::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.tantrib_umum.keterangan_bersih_diri.surat', [
             'keteranganBersihDiri' => $keteranganBersihDiri,
+            'romawi' => $romawi,
             'date' => $date,
             'profil' => $profil,
             'total' => $total,

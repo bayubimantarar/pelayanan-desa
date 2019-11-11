@@ -88,7 +88,6 @@ class KeteranganJandaDudaController extends Controller
         $status = $keteranganJandaDudaRequest->status;
         $nama = $keteranganJandaDudaRequest->nama;
         $nomorPensiun = $keteranganJandaDudaRequest->nomor_pensiun;
-        $status = $keteranganJandaDudaRequest->status;
         $tanggalMeninggal = Carbon::parse($keteranganJandaDudaRequest->tanggal_meninggal);
         $pensiunan = $keteranganJandaDudaRequest->pensiunan;
 
@@ -200,12 +199,16 @@ class KeteranganJandaDudaController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganJandaDuda->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganJandaDuda::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_janda_duda.surat', [
             'keteranganJandaDuda' => $keteranganJandaDuda,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

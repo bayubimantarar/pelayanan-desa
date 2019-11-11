@@ -47,7 +47,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -69,7 +69,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 200/{{ $total }}/Ds./IX/2019
+        Nomor : 200/{{ $total }}/Ds./{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -138,7 +138,7 @@
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $skck->redaksi }}<br />
+      {{ $skck->redaksi }} <br /><br />
       Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $skck->keperluan }}</i></b>
     </p>
     <p style="text-indent: 2.5%;">
@@ -152,11 +152,13 @@
       </tr>
       <tr>
         <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $skck->profil_perangkat->jabatan }}
-            </b>
-          </center>
+          @if($skck->perangkat_id != 0)
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $skck->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          @endif
         </td>
       </tr>
       <tr>
@@ -235,9 +237,13 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              <u>
-                {{ $skck->profil_perangkat->nama }}
-              </u>
+              @if($skck->perangkat_id != 0)
+                <u>
+                  {{ $skck->profil_perangkat->nama }}
+                </u>
+              @else
+                -
+              @endif
             </b>
           </center>
         </td>

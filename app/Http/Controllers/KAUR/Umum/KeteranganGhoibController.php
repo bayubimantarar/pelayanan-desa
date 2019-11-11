@@ -202,6 +202,9 @@ class KeteranganGhoibController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganGhoib->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganGhoib::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
@@ -209,6 +212,7 @@ class KeteranganGhoibController extends Controller
         $surat = PDF::loadView('kaur.umum.keterangan_ghoib.surat', [
             'keteranganGhoib' => $keteranganGhoib,
             'date' => $date,
+            'romawi' => $romawi,
             'profil' => $profil,
             'total' => $total,
         ]);

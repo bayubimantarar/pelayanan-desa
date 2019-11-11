@@ -186,12 +186,16 @@ class KeteranganDomisiliController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganDomisili->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganDomisili::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.pemerintahan.keterangan_domisili.surat', [
             'keteranganDomisili' => $keteranganDomisili,
+            'romawi' => $romawi,
             'date' => $date,
             'profil' => $profil,
             'total' => $total

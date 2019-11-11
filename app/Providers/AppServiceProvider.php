@@ -88,6 +88,38 @@ class AppServiceProvider extends ServiceProvider
 
                 $view->with($data);
             }
+
+            if($view->getName() == 'layouts.partials.form_surat.keterangan_tidak_mampu') {
+                $jenisKelamin = JenisKelamin::all();
+
+                $data = [
+                    'jenisKelamin' => $jenisKelamin,
+                ];
+
+                $view->with($data);
+            }
+
+            if($view->getName() == 'layouts.partials.form_surat.keterangan_kelahiran') {
+                $agama = Agama::all();
+                $jenisKelamin = JenisKelamin::all();
+
+                $data = [
+                    'agama' => $agama,
+                    'jenisKelamin' => $jenisKelamin,
+                ];
+
+                $view->with($data);
+            }
+
+            if($view->getName() == 'layouts.partials.form_surat.keterangan_kematian') {
+                $jenisKelamin = JenisKelamin::all();
+
+                $data = [
+                    'jenisKelamin' => $jenisKelamin,
+                ];
+
+                $view->with($data);
+            }
         });
     }
 }

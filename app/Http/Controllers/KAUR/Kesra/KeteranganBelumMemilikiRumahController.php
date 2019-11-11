@@ -186,12 +186,16 @@ class KeteranganBelumMemilikiRumahController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganBelumMemilikiRumah->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganBelumMemilikiRumah::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.kesra.keterangan_belum_memiliki_rumah.surat', [
             'keteranganBelumMemilikiRumah' => $keteranganBelumMemilikiRumah,
+            'romawi' => $romawi,
             'date' => $date,
             'total' => $total,
             'profil' => $profil,

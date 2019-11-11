@@ -42,12 +42,12 @@
 
     }
   </style>
-  <title>Surat SKCK</title>
+  <title>Surat Keterangan Belum Memiliki Rumah - {{ $keteranganBelumMemilikiRumah->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -69,7 +69,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 474/{{ $total }}/Ds./IX/2019
+        Nomor : 474/{{ $total }}/Ds./{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -120,7 +120,7 @@
       </tr>
     </table>
     <p style="text-indent: 2.5%;">
-      Bersangkutan adalah benar sebagai penduduk / warga Desa Cilame yang berdomisili sesuai alamat tersebut di atas, yang sampai saat ini status pekerjaan : <b><i>{{ $keteranganBelumMemilikiRumah->status }}</i></b>
+      {{ $keteranganBelumMemilikiRumah->redaksi }}
     </p>
     <p style="text-indent: 2.5%; margin: 0; padding: 0;">
       Surat Keterangan ini dibuat untuk keperluan : <b><i>{{ $keteranganBelumMemilikiRumah->keperluan }}</i></b>
@@ -132,18 +132,20 @@
     </p>
   </div>
   <div class="tanda-tangan">
-    @if($keteranganBelumMemilikiRumah->jenis_sktm == "Kesehatan")
-      <table align="left">
+    <div class="tanda-tangan">
+      <table align="right">
         <tr>
-          <td><center>Mengetahui,</center></td>
+          <td><center>Cilame, {{ $date }}</center></td>
         </tr>
         <tr>
           <td>
-            <center>
-              <b style="text-transform: uppercase;">
-                camat ngamprah
-              </b>
-            </center>
+            @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
+              <center>
+                <b style="text-transform: uppercase;">
+                  {{ $keteranganBelumMemilikiRumah->profil_perangkat->jabatan }}
+                </b>
+              </center>
+            @endif
           </td>
         </tr>
         <tr>
@@ -222,110 +224,19 @@
           <td style="text-transform: uppercase;" width="200">
             <center>
               <b>
-                <hr style="margin-top: 15px" />
+                @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
+                  <u>
+                    {{ $keteranganBelumMemilikiRumah->profil_perangkat->nama }}
+                  </u>
+                @else
+                  -
+                @endif
               </b>
             </center>
           </td>
         </tr>
       </table>
-    @endif
-    <table align="right">
-      <tr>
-        <td><center>Cilame, {{ $date }}</center></td>
-      </tr>
-      <tr>
-        <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $keteranganBelumMemilikiRumah->profil_perangkat->jabatan }}
-            </b>
-          </center>
-        </td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-      </tr>
-      <tr>
-        <td style="text-transform: uppercase;" width="200">
-          <center>
-            <b>
-              <u>
-                {{ $keteranganBelumMemilikiRumah->profil_perangkat->nama }}
-              </u>
-            </b>
-          </center>
-        </td>
-      </tr>
-    </table>
+  </div>
   </div>
 </body>
 </html>

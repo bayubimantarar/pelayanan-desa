@@ -214,6 +214,9 @@ class KeteranganIzinRameController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganIzinRame->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganIzinRame::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
@@ -223,6 +226,7 @@ class KeteranganIzinRameController extends Controller
         $surat = PDF::loadView('kaur.tantrib_umum.keterangan_izin_rame.surat', [
             'keteranganIzinRame' => $keteranganIzinRame,
             'date' => $date,
+            'romawi' => $romawi,
             'profil' => $profil,
             'total' => $total,
             'tertanggalRT' => $tertanggalRT,

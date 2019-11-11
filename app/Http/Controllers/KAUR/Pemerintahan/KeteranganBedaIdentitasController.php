@@ -183,6 +183,9 @@ class KeteranganBedaIdentitasController extends Controller
         $jumlahKesalahan = KeteranganBedaIdentitasKesalahan::where('kaur_pemerintahan_keterangan_beda_identitas_id', '=', $id)
             ->get();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganBedaIdentitas->created_at->format('m')];
+
         $nomor = 1;
         $profil = Pemerintahan::get()->first();
         $total = KeteranganBedaIdentitas::count();
@@ -190,6 +193,7 @@ class KeteranganBedaIdentitasController extends Controller
 
         $surat = PDF::loadView('kaur.pemerintahan.keterangan_beda_identitas.surat', [
             'date' => $date,
+            'romawi' => $romawi,
             'nomor' => $nomor,
             'total' => $total,
             'profil' => $profil,

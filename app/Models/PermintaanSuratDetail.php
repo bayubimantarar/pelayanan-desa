@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class PermintaanSuratDetail extends Model
@@ -92,8 +93,54 @@ class PermintaanSuratDetail extends Model
         'tertanggal_rw_izin_rame',
         'tanggal_pelaksanaan',
         'tanggal_lahir_sktm',
+        'tanggal_lahir_anak',
         'tanggal_lahir_almarhum',
         'tanggal_meninggal',
         'tanggal_meninggal_pensiun'
     ];
+
+    public function getTertanggalRtSkckAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTertanggalRwSkckAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTertanggalRtIzinRameAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTertanggalRwIzinRameAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTanggalPelaksanaanAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTanggalLahirSktmAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTanggalLahirAnakAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTanggalLahirAlmarhumAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getTanggalMeninggalAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
 }

@@ -21,7 +21,7 @@
     }
     .header img {
       position: absolute;
-      margin-top: 7px;
+      margin-top: 3px;
     }
     .title {
       text-align: center;
@@ -48,7 +48,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -70,7 +70,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor: 583/{{ $total }}/Ds/IX/2019
+        Nomor: 583/{{ $total }}/Ds/{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -162,11 +162,13 @@
       </tr>
       <tr>
         <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $keteranganUsaha->profil_perangkat->jabatan }}
-            </b>
-          </center>
+          @if($keteranganUsaha->perangkat_id != 0)
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $keteranganUsaha->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          @endif
         </td>
       </tr>
       <tr>

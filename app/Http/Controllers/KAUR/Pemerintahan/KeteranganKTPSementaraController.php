@@ -182,12 +182,16 @@ class KeteranganKTPSementaraController extends Controller
             ->where('id', '=', $id)
             ->first();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganKTPSementara->created_at->format('m')];
+
         $profil = Pemerintahan::get()->first();
         $total = KeteranganKTPSementara::count();
         $date = Carbon::now()->formatLocalized('%d %B %Y');
 
         $surat = PDF::loadView('kaur.pemerintahan.keterangan_ktp_sementara.surat', [
             'keteranganKTPSementara' => $keteranganKTPSementara,
+            'romawi' => $romawi,
             'date' => $date,
             'profil' => $profil,
             'total' => $total

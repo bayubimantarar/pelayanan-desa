@@ -42,12 +42,12 @@
 
     }
   </style>
-  <title>Surat Keterangan Kartu Keluarga Sementara</title>
+  <title>Surat Keterangan Beda Identitas - {{ $keteranganBedaIdentitas->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/img/logo-bandung-barat@grayscale.jpg' ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -69,7 +69,7 @@
     </h4>
     <p style="margin: 0; padding: 0;">
       <b>
-        Nomor : 474/{{ $total }}/Ds./IX/2019
+        Nomor : 474/{{ $total }}/Ds./{{ $romawi }}/2019
       </b>
     </p>
   </div>
@@ -151,11 +151,13 @@
       </tr>
       <tr>
         <td>
-          <center>
-            <b style="text-transform: uppercase;">
-              {{ $keteranganBedaIdentitas->profil_perangkat->jabatan }}
-            </b>
-          </center>
+          @if($keteranganBedaIdentitas->perangkat_id != 0)
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $keteranganBedaIdentitas->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          @endif
         </td>
       </tr>
       <tr>
@@ -234,9 +236,13 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              <u>
-                {{ $keteranganBedaIdentitas->profil_perangkat->nama }}
-              </u>
+              @if($keteranganBedaIdentitas->perangkat_id != 0)
+                <u>
+                  {{ $keteranganBedaIdentitas->profil_perangkat->nama }}
+                </u>
+              @else
+                -
+              @endif
             </b>
           </center>
         </td>

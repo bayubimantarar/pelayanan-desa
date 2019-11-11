@@ -28,8 +28,7 @@ class AutentikasiController extends Controller
 
         # check login
         if(Auth::guard('pengguna')->attempt($dataLogin)){
-            return redirect()
-                ->intended();
+            return redirect('/dasbor');
         }
         return redirect('/dasbor/autentikasi/form-login')
             ->withErrors([

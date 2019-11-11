@@ -180,6 +180,9 @@ class KeteranganKKSementaraController extends Controller
         $anggotaKeluarga = KeteranganKKSementaraAnggota::where('kaur_pemerintahan_keterangan_kk_sementara_id', '=', $id)
             ->get();
 
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $romawi = $bulanRomawi[$keteranganKKSementara->created_at->format('m')];
+
         $nomor = 1;
         $profil = Pemerintahan::get()->first();
         $total = KeteranganKKSementara::count();
@@ -187,6 +190,7 @@ class KeteranganKKSementaraController extends Controller
 
         $surat = PDF::loadView('kaur.pemerintahan.keterangan_kk_sementara.surat', [
             'date' => $date,
+            'romawi' => $romawi,
             'nomor' => $nomor,
             'total' => $total,
             'profil' => $profil,
