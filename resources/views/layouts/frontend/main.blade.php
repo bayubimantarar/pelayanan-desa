@@ -12,7 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link
-    href="/assets/frontend/vendor/bootstrap/css/bootstrap.min.css"
+    href="/assets/frontend/vendor/bootstrap/css/bootstrap.css"
     rel="stylesheet"
   />
 
@@ -24,8 +24,13 @@
 
   <!-- Custom styles for this template -->
   <link
-    href="/assets/frontend/css/modern-business.css"
     rel="stylesheet"
+    href="/assets/frontend/css/modern-business.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
   />
 
   <style>

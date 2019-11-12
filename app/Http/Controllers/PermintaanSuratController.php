@@ -124,20 +124,20 @@ class PermintaanSuratController extends Controller
         }
 
         $permintaanSuratData = [
-            'nik' => $nik,
-            'nama' => $nama,
+            'nik'           => $nik,
+            'nama'          => $nama,
             'nomor_telepon' => $nomorTelepon,
-            'surat' => $surat,
-            'alamat' => $alamat,
+            'surat'         => $surat,
+            'alamat'        => $alamat,
             'status_proses' => 'Belum diproses'
         ];
 
         $stafDesa = Pengguna::where('jenis_pengguna', '=', 'Pelayanan')->get();
 
         try {
-            // foreach ($stafDesa as $item) {
-            //     Mail::to($item->email)->send(new PermintaanSuratMail($item->nama));
-            // }
+            foreach ($stafDesa as $item) {
+                Mail::to($item->email)->send(new PermintaanSuratMail($item->nama));
+            }
 
             $createPermintaanSurat = PermintaanSurat::create($permintaanSuratData);
 

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-Dasbor | Pelayanan Desa Cilame
+  Dasbor | Pelayanan Desa Cilame
 @endsection
 
 @section('content')

@@ -94,7 +94,7 @@ class PemerintahanController extends Controller
         $updatePemerintahan = Pemerintahan::where('id', '=', $id)
             ->update($data);
 
-        return redirect('/profil/pemerintahan')
+        return redirect('/dasbor/profil/pemerintahan')
             ->with([
                 'notification' => 'Data profil pemerintahan berhasil diubah.'
             ]);

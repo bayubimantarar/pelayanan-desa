@@ -38,7 +38,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/profil/pemerintahan/ubah/{{ $pemerintahan->id }}" method="post">
+                <form action="/dasbor/profil/pemerintahan/ubah/{{ $pemerintahan->id }}" method="post">
                   <input
                     type="hidden"
                     name="_method"
