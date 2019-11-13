@@ -170,6 +170,11 @@
                 {{ $keteranganGhoib->profil_perangkat->jabatan }}
               </b>
             </center>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
           @endif
         </td>
       </tr>
@@ -254,7 +259,7 @@
                   {{ $keteranganGhoib->profil_perangkat->nama }}
                 </u>
               @else
-                -
+                <hr style="width: 200px;" />
               @endif
             </b>
           </center>

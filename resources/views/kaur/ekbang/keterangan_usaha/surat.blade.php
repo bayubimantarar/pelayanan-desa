@@ -80,7 +80,7 @@
     </p>
     <table style="padding-left: 5%;">
       <tr>
-        <td>Nama</td>
+        <td width="127">Nama</td>
         <td>:</td>
         <td style="text-transform: uppercase;">
           <b>{{ $keteranganUsaha->penduduk->nama }}</b>
@@ -135,7 +135,7 @@
   </div>
   <table style="padding-left: 5%;">
     <tr>
-      <td>Jenis Usaha</td>
+      <td width="127">Jenis Usaha</td>
       <td>:</td>
       <td>{{ $keteranganUsaha->jenis_usaha }}</td>
     </tr>
@@ -168,6 +168,11 @@
                 {{ $keteranganUsaha->profil_perangkat->jabatan }}
               </b>
             </center>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
           @endif
         </td>
       </tr>
@@ -252,7 +257,7 @@
                   {{ $keteranganUsaha->profil_perangkat->nama }}
                 </u>
               @else
-                -
+                <hr style="width: 200px;" />
               @endif
             </b>
           </center>

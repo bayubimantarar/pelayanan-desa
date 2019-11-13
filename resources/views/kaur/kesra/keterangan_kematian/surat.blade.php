@@ -42,7 +42,7 @@
 
     }
   </style>
-  <title>Surat SKCK</title>
+  <title>Surat Keterangan Kematian - {{ $keteranganKematian->penduduk->nama }}</title>
 </head>
 <body>
   <div class="header">
@@ -79,9 +79,9 @@
     </p>
     <table style="padding-left: 5%;">
       <tr>
-        <td>Nama</td>
+        <td width="127">Nama</td>
         <td>:</td>
-        <td style="text-transform: uppercase;" width="150">
+        <td style="text-transform: uppercase;">
           <b>{{ $keteranganKematian->nama }}</b>
         </td>
       </tr>
@@ -101,7 +101,7 @@
     </p>
     <table style="padding-left: 5%;">
       <tr>
-        <td>Hari</td>
+        <td width="127">Hari</td>
         <td>:</td>
         <td>{{ $keteranganKematian->hari_meninggal }} / {{ $keteranganKematian->jam_meninggal === null ? '' : $keteranganKematian->jam_meninggal }}</td>
       </tr>
@@ -126,9 +126,11 @@
     </p>
     <table style="padding-left: 5%;">
       <tr>
-        <td>Nama</td>
+        <td width="127">Nama</td>
         <td>:</td>
-        <td>{{ $keteranganKematian->penduduk->nama }} </td>
+        <td style="text-transform: uppercase;">
+          <b>{{ $keteranganKematian->penduduk->nama }}</b>
+        </td>
       </tr>
       <tr>
         <td>Jenis Kelamin</td>
@@ -158,103 +160,6 @@
     </p>
   </div>
   <div class="tanda-tangan">
-    @if($keteranganKematian->jenis_sktm == "Kesehatan")
-      <table align="left">
-        <tr>
-          <td><center>Mengetahui,</center></td>
-        </tr>
-        <tr>
-          <td>
-            <center>
-              <b style="text-transform: uppercase;">
-                camat ngamprah
-              </b>
-            </center>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td style="text-transform: uppercase;" width="200">
-            <center>
-              <b>
-                <hr style="margin-top: 15px" />
-              </b>
-            </center>
-          </td>
-        </tr>
-      </table>
-    @endif
     <table align="right">
       <tr>
         <td><center>Cilame, {{ $date }}</center></td>
@@ -267,6 +172,11 @@
                 {{ $keteranganKematian->profil_perangkat->jabatan }}
               </b>
             </center>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
           @endif
         </td>
       </tr>
@@ -351,7 +261,7 @@
                   {{ $keteranganKematian->profil_perangkat->nama }}
                 </u>
               @else
-                -
+                <hr style="width: 200px;" />
               @endif
             </b>
           </center>

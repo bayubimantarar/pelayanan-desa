@@ -12,7 +12,7 @@
       >
         NIK
         <a
-          href="/master/penduduk/form-tambah"
+          href="/dasbor/kependudukan/penduduk/form-tambah"
         >
           <i class="fa fa-plus"></i>
           Tambah Data Penduduk
@@ -34,7 +34,7 @@
       >
         Nama Lengkap
       <a
-        href="/master/penduduk/form-tambah"
+        href="/dasbor/kependudukan/penduduk/form-tambah"
       >
         <i class="fa fa-plus"></i>
         Tambah Data Penduduk

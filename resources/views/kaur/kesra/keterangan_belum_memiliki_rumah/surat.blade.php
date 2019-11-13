@@ -134,109 +134,114 @@
   <div class="tanda-tangan">
     <div class="tanda-tangan">
       <table align="right">
-        <tr>
-          <td><center>Cilame, {{ $date }}</center></td>
-        </tr>
-        <tr>
-          <td>
-            @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
-              <center>
-                <b style="text-transform: uppercase;">
-                  {{ $keteranganBelumMemilikiRumah->profil_perangkat->jabatan }}
-                </b>
-              </center>
-            @endif
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td></td>
-        </tr>
-        <tr>
-          <td style="text-transform: uppercase;" width="200">
+      <tr>
+        <td><center>Cilame, {{ $date }}</center></td>
+      </tr>
+      <tr>
+        <td>
+          @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
             <center>
-              <b>
-                @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
-                  <u>
-                    {{ $keteranganBelumMemilikiRumah->profil_perangkat->nama }}
-                  </u>
-                @else
-                  -
-                @endif
+              <b style="text-transform: uppercase;">
+                {{ $keteranganBelumMemilikiRumah->profil_perangkat->jabatan }}
               </b>
             </center>
-          </td>
-        </tr>
-      </table>
-  </div>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
+          @endif
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;" width="200">
+          <center>
+            <b>
+              @if($keteranganBelumMemilikiRumah->perangkat_id != 0)
+                <u>
+                  {{ $keteranganBelumMemilikiRumah->profil_perangkat->nama }}
+                </u>
+              @else
+                <hr style="width: 200px;" />
+              @endif
+            </b>
+          </center>
+        </td>
+      </tr>
+    </table>
+    </div>
   </div>
 </body>
 </html>

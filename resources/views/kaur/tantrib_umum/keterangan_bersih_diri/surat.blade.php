@@ -211,12 +211,13 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              <hr style="margin-top: 15px" />
+              <hr style="margin-top: 15px; width: 200px;" />
             </b>
           </center>
         </td>
       </tr>
     </table>
+    @if($keteranganBersihDiri->perangkat_id != 0)
     <table align="right">
       <tr>
         <td><center>Cilame, {{ $date }}</center></td>
@@ -229,6 +230,11 @@
                 {{ $keteranganBersihDiri->profil_perangkat->jabatan }}
               </b>
             </center>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
           @endif
         </td>
       </tr>
@@ -313,13 +319,129 @@
                   {{ $keteranganBersihDiri->profil_perangkat->nama }}
                 </u>
               @else
-                -
+                <hr style="width: 200px;" />
               @endif
             </b>
           </center>
         </td>
       </tr>
     </table>
+    @else
+    <table align="right">
+      <tr>
+        <td><center>Cilame, {{ $date }}</center></td>
+      </tr>
+      <tr>
+        <td>
+          @if($keteranganBersihDiri->perangkat_id != 0)
+            <center>
+              <b style="text-transform: uppercase;">
+                {{ $keteranganBersihDiri->profil_perangkat->jabatan }}
+              </b>
+            </center>
+          @else
+            <center>
+              <b>
+                an. KEPALA DESA
+              </b>
+          @endif
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+      </tr>
+      <tr>
+        <td style="text-transform: uppercase;" width="200">
+          <center>
+            <b>
+              @if($keteranganBersihDiri->perangkat_id != 0)
+                <u>
+                  {{ $keteranganBersihDiri->profil_perangkat->nama }}
+                </u>
+              @else
+                <hr style="width: 200px;" />
+              @endif
+            </b>
+          </center>
+        </td>
+      </tr>
+    </table>
+    @endif
     <table align="left" style="padding-top: 200px;">
       <tr>
         <td><center>Mengetahui,</center></td>
@@ -409,7 +531,7 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              <hr style="margin-top: 15px" />
+              <hr style="margin-top: 15px; width: 200px;" />
             </b>
           </center>
         </td>
@@ -504,7 +626,7 @@
         <td style="text-transform: uppercase;" width="200">
           <center>
             <b>
-              <hr style="margin-top: 15px" />
+              <hr style="margin-top: 15px; width: 200px;" />
             </b>
           </center>
         </td>
