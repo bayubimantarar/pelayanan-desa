@@ -35,6 +35,12 @@
             >
               Permintaan Surat
             </a>
+            <a
+              class="dropdown-item"
+              href="/cek-permintaan-surat"
+            >
+              Cek Permintaan Surat
+            </a>
           </div>
         </li>
       </ul>

@@ -249,11 +249,24 @@
     $('#nik').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nik',
+            url: '/dasbor/kependudukan/penduduk/api/data-nik/'+query,
             type: 'get',
             dataType: 'json',
             success: function(json){
-              return process(json)
+              if(json.length == 0){
+                $('#master-penduduk-id').val('');
+                $('#nama').val('');
+                $('#tempat-lahir').val('');
+                $('#tanggal-lahir').val('');
+                $('#jenis-kelamin').val('');
+                $('#status-perkawinan').val('');
+                $('#agama').val('');
+                $('#pendidikan').val('');
+                $('#pekerjaan').val('');
+                $('#alamat').val('');
+              }else{
+                return process(json);
+              }
             }
         });
       },
@@ -287,11 +300,24 @@
     $('#nama').typeahead({
       source: function(query, process) {
         $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nama',
+            url: '/dasbor/kependudukan/penduduk/api/data-nama/'+query,
             type: 'get',
             dataType: 'json',
             success: function(json){
-              return process(json)
+              if(json.length == 0){
+                $('#master-penduduk-id').val('');
+                $('#nik').val('');
+                $('#tempat-lahir').val('');
+                $('#tanggal-lahir').val('');
+                $('#jenis-kelamin').val('');
+                $('#status-perkawinan').val('');
+                $('#agama').val('');
+                $('#pendidikan').val('');
+                $('#pekerjaan').val('');
+                $('#alamat').val('');
+              }else{
+                return process(json);
+              }
             }
         });
       },

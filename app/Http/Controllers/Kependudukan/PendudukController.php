@@ -20,9 +20,9 @@ class PendudukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function APIdataNIK()
+    public function APIdataNIK($nik)
     {
-        $penduduk = Penduduk::pluck('nik');
+        $penduduk = Penduduk::where('nik', '=', $nik)->pluck('nik');
 
         return response()
             ->json($penduduk, 200);
@@ -33,9 +33,9 @@ class PendudukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function APIdataNama()
+    public function APIdataNama($nama)
     {
-        $penduduk = Penduduk::pluck('nama');
+        $penduduk = Penduduk::where('nama', '=', $nama)->pluck('nama');
 
         return response()
             ->json($penduduk, 200);

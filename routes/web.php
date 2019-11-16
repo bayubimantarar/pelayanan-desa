@@ -15,6 +15,7 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
+
 Route::group(['prefix' => 'permintaan-surat'], function(){
     Route::get('/', [
         'uses' => 'PermintaanSuratController@index',
@@ -24,6 +25,42 @@ Route::group(['prefix' => 'permintaan-surat'], function(){
         'uses' => 'PermintaanSuratController@send',
         'as' => 'permintaan-surat.send'
     ]);
+});
+
+Route::group(['prefix' => 'cek-permintaan-surat'], function(){
+    Route::get('/', [
+        'uses' => 'CekPermintaanSuratController@index',
+        'as' => 'cek-permintaan-surat'
+    ]);
+    Route::get('/detail', [
+        'uses' => 'CekPermintaanSuratController@detail',
+        'as' => 'cek-permintaan-surat.detail'
+    ]);
+});
+
+Route::group(['prefix' => 'api'], function(){
+    Route::group(['prefix' => 'kependudukan'], function(){
+        Route::group(['prefix' => 'penduduk'], function(){
+            Route::get('/data-penduduk', [
+                'uses' => 'API\Kependudukan\PendudukController@dataPenduduk',
+            ]);
+            Route::get('/data-nik/{nik}', [
+                'uses' => 'API\Kependudukan\PendudukController@APIdataNIK',
+            ]);
+            Route::get('/data-nama/{nama}', [
+                'uses' => 'API\Kependudukan\PendudukController@APIdataNama',
+            ]);
+            Route::get('/data/{nik}', [
+                'uses' => 'API\Kependudukan\PendudukController@APIdata',
+            ]);
+            Route::get('/data-by-nama/{nama}', [
+                'uses' => 'API\Kependudukan\PendudukController@APIdataByNama',
+            ]);
+            Route::get('/data-by-id/{id}', [
+                'uses' => 'API\Kependudukan\PendudukController@APIdataByID',
+            ]);
+        });
+    });
 });
 
 Route::group(['prefix' => 'dasbor'], function(){
@@ -216,10 +253,10 @@ Route::group(['prefix' => 'dasbor'], function(){
         Route::group(['prefix' => 'kependudukan'], function(){
             Route::group(['prefix' => 'penduduk'], function(){
                 Route::group(['prefix' => 'api'], function(){
-                    Route::get('/data-nik', [
+                    Route::get('/data-nik/{nik}', [
                         'uses' => 'Kependudukan\PendudukController@APIdataNIK',
                     ]);
-                    Route::get('/data-nama', [
+                    Route::get('/data-nama/{nama}', [
                         'uses' => 'Kependudukan\PendudukController@APIdataNama',
                     ]);
                     Route::get('/data/{nik}', [
