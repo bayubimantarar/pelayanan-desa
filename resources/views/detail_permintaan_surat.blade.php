@@ -20,37 +20,25 @@ Pelayanan &raquo; Permintaan Surat
 
   <div class="row">
     <div class="col-lg-12 col-md-12 col-xs-12 mb-4">
-      <ul class="timeline">
-        <li>
-          <p>
-            <b>
-              Surat keterangan usaha sudah diambil
-            </b>
-          </p>
-          <p><i class="fa fa-calendar"></i> 21 Maret 2014</p>
-          <p>Surat sudah diambil oleh yang bersangkutan.</p>
-        </li>
-        <li>
-          <p>
-            <b>
-              Surat keterangan usaha sudah diproses
-            </b>
-          </p>
-          <p><i class="fa fa-calendar"></i> 4 Maret 2014</p>
-          <p>
-            Surat sudah diproses oleh <b>Staf Desa</b> - <b>Resti Wulandari</b> dan ditanda tangani oleh <b>Kepala Desa</b> -  <b>John Doe, S.kom</b>.<br /> Surat sudah bisa diambil di kantor desa.
-          </p>
-        </li>
-        <li>
-          <p>
-            <b>
-              Surat keterangan usaha belum diproses
-            </b>
-          </p>
-          <p><i class="fa fa-calendar"></i> 1 April 2014</p>
-          <p>Fusce ullamcorper ligula sit amet quam accumsan aliquet. Sed nulla odio, tincidunt vitae nunc vitae, mollis pharetra velit. Sed nec tempor nibh...</p>
-        </li>
-      </ul>
+      @if($totalPermintaanSuratStatus != 0)
+        <ul class="timeline">
+          @foreach($permintaanSuratStatus as $item)
+            <li>
+              <p>
+                <b>
+                  {{ $item->status_proses }}
+                </b>
+              </p>
+              <p><i class="fa fa-calendar"></i> {{ $item->tanggal_status }}</p>
+              <p>{{ $item->keterangan }}</p>
+            </li>
+          @endforeach
+        </ul>
+      @else
+        <p>
+          Tidak ada permintaan surat yang sesuai dengan kode {{ $kodePermintaanSurat }}
+        </p>
+      @endif
     </div>
   </div>
 </div>

@@ -36,8 +36,7 @@ class PermintaanSuratController extends Controller
      */
     public function data()
     {
-        $permintaanSurat = PermintaanSurat::orderBy('created_at', 'desc')
-            ->get();
+        $permintaanSurat = PermintaanSurat::orderBy('created_at', 'desc')->get();
 
         $dataTablesPermintaanSurat = DataTables($permintaanSurat)
             ->addColumn('action', function($permintaanSurat){
@@ -208,15 +207,15 @@ class PermintaanSuratController extends Controller
         $pensiunan = $request->pensiunan;
         $penghasilan = $request->penghasilan;
 
-        $pengambilanSuratData = [
-            'permintaan_surat_id' => $id,
-            'pengguna_id' => $penggunaID,
-            'tanggal_pengambilan' => $tanggalPengambilan,
-            'status_pengambilan' => 'Belum diambil'
-        ];
+        // $pengambilanSuratData = [
+        //     'permintaan_surat_id' => $id,
+        //     'pengguna_id' => $penggunaID,
+        //     'tanggal_pengambilan' => $tanggalPengambilan,
+        //     'status_pengambilan' => 'Belum diambil'
+        // ];
 
         $permintaanSuratData = [
-            'status_proses' => 'Sudah diproses'
+            // 'status_proses' => 'Sudah diproses'
         ];
 
         if($surat == 'Keterangan Usaha'){
@@ -424,10 +423,9 @@ class PermintaanSuratController extends Controller
 
         $pemerintahan = Pemerintahan::first();
         $createPengambilanSurat = PengambilanSurat::create($pengambilanSuratData);
-        $updatePermintaanSurat = PermintaanSurat::where('id', '=', $id)->update($permintaanSuratData);
+        // $updatePermintaanSurat = PermintaanSurat::where('id', '=', $id)->update($permintaanSuratData);
 
-        $from = 'Pelayanan Desa '.$pemerintahan->desa;
-        $message = 'Hallo, '.$namaPeminta.' Surat '.$surat.' sudah bisa diambil pada tanggal '.$tanggalPengambilan->formatLocalized('%d/%m/%Y').'.';
+        // $message = 'Hallo, '.$namaPeminta.' Surat '.$surat.' sudah bisa diambil pada tanggal '.$tanggalPengambilan->formatLocalized('%d/%m/%Y').'.';
 
         // $sendMessage = Nexmo::message()->send([
         //     'to' => $nomorTelepon,

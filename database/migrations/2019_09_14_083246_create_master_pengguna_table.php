@@ -15,7 +15,7 @@ class CreateMasterPenggunaTable extends Migration
     {
         Schema::create('master_pengguna', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama', 150);
+            $table->bigInteger('perangkat_id')->unique();
             $table->string('email', 150)->unique();
             $table->string('password', 150);
             $table->string('nomor_telepon', 150);

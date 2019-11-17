@@ -10,12 +10,10 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
+  <link
+    rel="stylesheet"
+    href="/assets/css/select2.css"
+  />
 @endsection
 
 @section('content')
@@ -134,128 +132,10 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
+    src="/assets/frontend/js/select2.js"
   ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment-with-locales.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
+  @yield('identitas_penduduk_js')
   <script>
-    $('#nik').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nik',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nik = $('#nik').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
-    $('#nama').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nama',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nama = $('#nama').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data-by-nama/'+nama,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nik').val(data.nik);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
-    $('#tanggal-lahir-anak').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-meninggal').datetimepicker({
-      format: 'DD-MM-YYYY',
-      locale: 'id',
-    }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
-      var day = e.date._d.getDay();
-
-      if (day == 1) {
-        $('#hari-meninggal').val('Senin');
-      }else if(day == 2){
-        $('#hari-meninggal').val('Selasa');
-      }else if(day == 3){
-        $('#hari-meninggal').val('Rabu');
-      }else if(day == 4){
-        $('#hari-meninggal').val('Kamis');
-      }else if(day == 5){
-        $('#hari-meninggal').val('Jumat');
-      }else if(day == 6){
-        $('#hari-meninggal').val('Sabtu');
-      }else if(day == 0){
-        $('#hari-meninggal').val('Minggu');
-      }
-    });
-    // $('#penghasilan-mask').mask('000.000.000', {
-    //   reverse: true,
-    //   onChange: function(result){
-    //     console.log(Math.trunc(result));
-    //   }
-    // });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

@@ -10,12 +10,10 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
-  <style>
-    #scrollable-dropdown-menu .tt-dropdown-menu {
-      max-height: 150px;
-      overflow-y: auto;
-    }
-  </style>
+  <link
+    rel="stylesheet"
+    href="/assets/css/select2.css"
+  />
 @endsection
 
 @section('content')
@@ -65,6 +63,37 @@
                   id="master-penduduk-id"
                   value="{{ $keteranganBelumMemilikiRumah->penduduk_id }}"
                 />
+                @section('nik')
+                  <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
+                      <label
+                        class="control-label"
+                        for="penduduk-id"
+                      >
+                        NIK
+                        <a
+                          href="/dasbor/kependudukan/penduduk/form-tambah"
+                        >
+                          <i class="fa fa-plus"></i>
+                          Tambah Data Penduduk
+                        </a>
+                      </label>
+                      <select
+                        name="nik_identitas"
+                        class="form-control"
+                        id="nik"
+                        autocomplete="off"
+                      >
+                        <option
+                          value="{{ $keteranganBelumMemilikiRumah->penduduk->nik }}"
+                          selected="selected"
+                        >
+                          {{ $keteranganBelumMemilikiRumah->penduduk->nik }}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                @endsection
                 @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
                   <b>
@@ -167,154 +196,10 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
+    src="/assets/frontend/js/select2.js"
   ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment-with-locales.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/jquery-mask.js"
-  ></script>
+  @yield('identitas_penduduk_js')
   <script>
-    var penduduk_id = $('#master-penduduk-id').val();
-
-    if (penduduk_id != 0 || penduduk_id != null) {
-      $.ajax({
-        url: '/dasbor/kependudukan/penduduk/api/data-by-id/'+penduduk_id,
-        type: 'get',
-        dataType: 'json',
-        success: function(result){
-          $('#nik').val(result.nik);
-          $('#nama').val(result.nama);
-          $('#tempat-lahir').val(result.tempat_lahir);
-          $('#tanggal-lahir').val(result.tanggal_lahir);
-          $('#jenis-kelamin').val(result.jenis_kelamin);
-          $('#status-perkawinan').val(result.status_perkawinan);
-          $('#agama').val(result.agama);
-          $('#pendidikan').val(result.pendidikan);
-          $('#pekerjaan').val(result.pekerjaan);
-          $('#alamat').val(result.alamat);
-        }
-      });
-    }
-
-    $('#nik').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nik',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nik = $('#nik').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
-    $('#nama').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nama',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nama = $('#nama').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data-by-nama/'+nama,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nik').val(data.nik);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
-    $('#tanggal-lahir-anak').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-meninggal').datetimepicker({
-      format: 'DD-MM-YYYY',
-      locale: 'id',
-    }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
-      var day = e.date._d.getDay();
-
-      if (day == 1) {
-        $('#hari-meninggal').val('Senin');
-      }else if(day == 2){
-        $('#hari-meninggal').val('Selasa');
-      }else if(day == 3){
-        $('#hari-meninggal').val('Rabu');
-      }else if(day == 4){
-        $('#hari-meninggal').val('Kamis');
-      }else if(day == 5){
-        $('#hari-meninggal').val('Jumat');
-      }else if(day == 6){
-        $('#hari-meninggal').val('Sabtu');
-      }else if(day == 0){
-        $('#hari-meninggal').val('Minggu');
-      }
-    });
-    // $('#penghasilan-mask').mask('000.000.000', {
-    //   reverse: true,
-    //   onChange: function(result){
-    //     console.log(Math.trunc(result));
-    //   }
-    // });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

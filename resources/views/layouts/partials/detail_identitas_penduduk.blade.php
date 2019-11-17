@@ -1,5 +1,22 @@
 <div class="row">
-  @yield('nik')
+  <div class="col-lg-6 col-md-6 col-xs-12">
+    <div class="form-group {{ $errors->has('penduduk_id') ? 'has-error has-feedback' : '' }}">
+      <label
+        class="control-label"
+        for="penduduk-id"
+      >
+        NIK
+      </label>
+      <input
+        type="text"
+        name=""
+        class="form-control"
+        id="nik"
+        value=""
+        readonly
+      />
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-lg-3 col-md-3 col-xs-12">
@@ -177,6 +194,7 @@
         type: 'get',
         dataType: 'json',
         success: function(data){
+          $('#nik').val(data.nik);
           $('#nama').val(data.nama);
           $('#tempat-lahir').val(data.tempat_lahir);
           $('#tanggal-lahir').val(data.tanggal_lahir);
@@ -189,71 +207,5 @@
         }
       })
     }
-
-    $('#nik').select2({
-      debug: true,
-      placeholder: 'Cari Data Dengan No. KTP',
-      allowClear: true,
-      ajax: {
-        url: '/api/kependudukan/penduduk/data-penduduk',
-        dataType: 'json',
-        allowClear: true,
-        cache: true,
-        placeholder: 'Cari data dengan No. KTP',
-        data: function (params) {
-          return {
-            q: params.term
-          };
-        },
-        processResults: function (data) {
-          return {
-            results:  $.map(data, function (item) {
-              return {
-                text: item.nik,
-                id: item.nik
-              }
-            })
-          };
-        },
-      }
-    });
-
-    $('#nik').on('change', function(e){
-      var nik = $('#nik').val();
-
-      if(nik == '' || nik == null){
-        $('#master-penduduk-id').val('');
-        $('#nama').val('');
-        $('#tempat-lahir').val('');
-        $('#tanggal-lahir').val('');
-        $('#jenis-kelamin').val('');
-        $('#status-perkawinan').val('');
-        $('#agama').val('');
-        $('#pendidikan').val('');
-        $('#pekerjaan').val('');
-        $('#alamat').val('');
-
-        $('#data-validation').hide();
-        $('#nama').removeClass('is-valid');
-      }else{
-        $.ajax({
-          url: '/api/kependudukan/penduduk/data/'+nik,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
   </script>
 @endsection

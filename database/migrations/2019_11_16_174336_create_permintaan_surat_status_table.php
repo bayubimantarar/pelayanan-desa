@@ -15,8 +15,10 @@ class CreatePermintaanSuratStatusTable extends Migration
     {
         Schema::create('permintaan_surat_status', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('permintaan_surat_id');
-            $table->date('tanggal_status');
+            $table->bigInteger('kode_permintaan_surat');
+            $table->date('tanggal_status')->nullable();
+            $table->string('status_proses')->nullable();
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

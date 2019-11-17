@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Mail;
+use Nexmo;
 use Carbon\Carbon;
 use App\Models\Master\Surat;
 use App\Models\Master\Pengguna;
 use App\Models\PermintaanSurat;
-use App\Models\PermintaanSuratDetail;
 use App\Models\Profil\Pemerintahan;
+use App\Models\PermintaanSuratDetail;
+use App\Models\PermintaanSuratStatus;
 use App\Http\Requests\PermintaanSuratRequest;
 use App\Mail\Pelayanan\PermintaanSurat as PermintaanSuratMail;
 
@@ -37,9 +39,11 @@ class PermintaanSuratController extends Controller
      */
     public function send(PermintaanSuratRequest $permintaanSuratRequest)
     {
+        $pendudukID = $permintaanSuratRequest->penduduk_id;
         $nik = $permintaanSuratRequest->nik;
         $nama = $permintaanSuratRequest->nama;
         $nomorTelepon = $permintaanSuratRequest->nomor_telepon;
+        // $email = $PermintaanSuratRequest->email;
         $alamat = $permintaanSuratRequest->alamat;
         $surat = $permintaanSuratRequest->surat;
         $jenisUsaha = $permintaanSuratRequest->jenis_usaha;
@@ -119,16 +123,27 @@ class PermintaanSuratController extends Controller
         $keperluanBelumMenikah = $permintaanSuratRequest->keperluan_belum_menikah;
         $keperluanBelumMemilikiRumah = $permintaanSuratRequest->keperluan_belum_memiliki_rumah;
 
+        $findSurat = Surat::where('keterangan', '=', $surat)->first();
+        $totalPermintaanSurat = PermintaanSurat::count()+1;
+        $tanggalHariIni = Carbon::now()->format('dmY');
+
+        $kodePermintaanSurat = $findSurat->nomor_surat.''.$tanggalHariIni.''.$totalPermintaanSurat;
+
+        $tanggalStatus = Carbon::now();
+
+
         if (substr($nomorTelepon, 0, 1) == '0'){
             $nomorTelepon = '62'.substr($nomorTelepon, 1);
         }
 
         $permintaanSuratData = [
-            'nik'           => $nik,
-            'nama'          => $nama,
+            'penduduk_id' => $pendudukID,
+            'kode_permintaan_surat' => $kodePermintaanSurat,
+            'nik' => $nik,
+            'nama' => $nama,
             'nomor_telepon' => $nomorTelepon,
-            'surat'         => $surat,
-            'alamat'        => $alamat,
+            'surat' => $surat,
+            'alamat' => $alamat,
             'status_proses' => 'Belum diproses'
         ];
 
@@ -138,6 +153,14 @@ class PermintaanSuratController extends Controller
             foreach ($stafDesa as $item) {
                 Mail::to($item->email)->send(new PermintaanSuratMail($item->nama));
             }
+
+            // $message = 'Hallo, '.$nama.' Surat '.$surat.' berhasil diterima. Gunakan kode ini '.$kodePermintaanSurat.' untuk mengecek status surat.';
+
+            // $sendMessage = Nexmo::message()->send([
+            //     'to' => $nomorTelepon,
+            //     'from' => 'Pelayanan',
+            //     'text' => $message
+            // ]);
 
             $createPermintaanSurat = PermintaanSurat::create($permintaanSuratData);
 
@@ -288,12 +311,20 @@ class PermintaanSuratController extends Controller
                 ];
             }
 
+            $permintaanSuratStatusData = [
+                'kode_permintaan_surat' => $kodePermintaanSurat,
+                'tanggal_status' => $tanggalStatus,
+                'status_proses' => 'Belum diproses',
+                'keterangan' => 'Permintaan surat sudah diterima tetapi belum diproses'
+            ];
+
             $createPermintaanSuratDetail = PermintaanSuratDetail::create($permintaanSuratDetailData);
+            $createPermintaanSuratStatus = PermintaanSuratStatus::create($permintaanSuratStatusData);
 
             return redirect('/permintaan-surat')
                 ->with([
                     'status' => true,
-                    'notification' => 'Permintaan surat berhasil dikirim dan selanjutnya jadwal pengambilan surat akan diberitahukan via sms'
+                    'notification' => 'Permintaan surat berhasil dikirim dan selanjutnya akan dikirimkan <b>kode</b> untuk pengecekan permintaan surat via sms'
                 ]);
         } catch (Exception $e) {
             return redirect('/permintaan-surat')

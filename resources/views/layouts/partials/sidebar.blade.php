@@ -67,6 +67,14 @@
             </li>
             <li>
               <a
+                href="/dasbor/master/pengguna"
+                class="{{ Request::segment(3) === 'pengguna' ? 'active' : ''}}">
+                <i class="fa fa-file-o"></i>
+                Pengguna
+              </a>
+            </li>
+            <li>
+              <a
                 href="/dasbor/master/pendidikan"
                 class="{{ Request::segment(3) === 'pendidikan' ? 'active' : ''}}"
               >
@@ -115,7 +123,7 @@
           <li>
             <a
               href="/dasbor/pelayanan/permintaan-surat"
-              class="{{ Request::segment(3) === 'permintan-surat' ? 'active' : ''}}"
+              class="{{ Request::segment(3) === 'permintaan-surat' ? 'active' : ''}}"
             >
               <i class="fa fa-file-o"></i>
               Permintaan Surat

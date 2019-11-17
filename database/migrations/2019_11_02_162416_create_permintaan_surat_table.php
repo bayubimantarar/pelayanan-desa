@@ -16,6 +16,7 @@ class CreatePermintaanSuratTable extends Migration
         Schema::create('permintaan_surat', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('penduduk_id');
+            $table->string('kode_permintaan_surat', 150);
             $table->string('nik', 75);
             $table->string('nama', 75);
             $table->string('nomor_telepon', 75)->nullable();

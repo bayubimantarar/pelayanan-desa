@@ -20,7 +20,7 @@ Pelayanan &raquo; Permintaan Surat
 
     @if(session('notification'))
       <div class="alert {{ session('status') == true ? 'alert-success' : 'alert-danger' }}" role="alert">
-        {{ session('notification') }}
+        {!! session('notification') !!}
       </div>
     @endif
 
@@ -38,9 +38,10 @@ Pelayanan &raquo; Permintaan Surat
           type="hidden"
           name="penduduk_id"
           id="penduduk-id"
+          value="{{ old('penduduk_id') }}"
         />
         <code>
-          Cari data melalui No. KTP atau Nama lengkap
+          Cari data melalui No. KTP
         </code>
         <div class="row">
           <div class="col-lg-6 col-md-6 col-xs-12">
@@ -56,16 +57,15 @@ Pelayanan &raquo; Permintaan Surat
                 class="form-control"
                 id="nik"
               >
-                <!-- Data using ajax -->
+                @if((old('nik')))
+                  <option
+                    value="{{ old('nik') }}"
+                    selected="selected"
+                  >
+                    {{ old('nik') }}
+                  </option>
+                @endif
               </select>
-             {{--  <input
-                type="number"
-                name="nik"
-                id="nik"
-                class="form-control {{ $errors->has('nik') ? 'is-invalid' : '' }}"
-                value="{{ old('nik') }}"
-                autocomplete="off"
-              /> --}}
               @if($errors->has('nik'))
                 <div class="invalid-feedback">
                   {{ $errors->first('nik') }}
@@ -88,17 +88,17 @@ Pelayanan &raquo; Permintaan Surat
                 readonly
               />
               <div class="valid-feedback" id="data-validation">
-                Data penduduk terdaftar.
+                Data penduduk terdaftar
               </div>
             </div>
           </div>
         </div>
         <hr />
         <div class="row">
-          <div class="col-lg-6 col-md-6 col-xs-12">
+          <div class="col-lg-3 col-md-3 col-xs-12">
             <div class="form-group">
               <label>
-              Nomor Telepon
+                Nomor Telepon
                 <small class="text-danger">*</small> <code>Nomor Aktif</code>
               </label>
               <input
@@ -110,6 +110,24 @@ Pelayanan &raquo; Permintaan Surat
               @if($errors->has('nomor_telepon'))
                 <div class="invalid-feedback">
                   {{ $errors->first('nomor_telepon') }}
+                </div>
+              @endif
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-xs-12">
+            <div class="form-group">
+              <label>
+                Email
+              </label>
+              <input
+                type="text"
+                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
+                name="email"
+                value="{{ old('email') }}"
+              />
+              @if($errors->has('email'))
+                <div class="invalid-feedback">
+                  {{ $errors->first('email') }}
                 </div>
               @endif
             </div>
@@ -259,16 +277,22 @@ Pelayanan &raquo; Permintaan Surat
   var penduduk_id = $('#penduduk-id').val();
   $('#data-validation').hide();
 
+  if (penduduk_id != '') {
+    $.ajax({
+      url: '/api/kependudukan/penduduk/data-by-id/'+penduduk_id,
+      type: 'get',
+      dataType: 'json',
+      success: function(data){
+        $('#nama').val(data.nama);
+      }
+    })
+  }
+
   $('#nik').select2({
     debug: true,
     theme: 'bootstrap4',
     placeholder: 'Cari Data Dengan No. KTP',
     allowClear: true,
-    // ajax: {
-    //   url: '/api/kependudukan/penduduk/data-penduduk',
-    //   dataType: 'json'
-    //   // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-    // }
     ajax: {
       url: '/api/kependudukan/penduduk/data-penduduk',
       dataType: 'json',
@@ -317,145 +341,6 @@ Pelayanan &raquo; Permintaan Surat
       });
     }
   });
-
-  //  $('#nik').typeahead({
-  //     source: function(query, process) {
-  //       $.ajax({
-  //           url: '/api/kependudukan/penduduk/data-nik/'+query,
-  //           type: 'get',
-  //           dataType: 'json',
-  //           success: function(json){
-
-  //             if (penduduk_id == '' || penduduk_id == null) {
-  //               $('#penduduk-id').val('');
-  //               $('#nama').val('');
-  //               $('#tempat-lahir').val('');
-  //               $('#tanggal-lahir').val('');
-  //               $('#jenis-kelamin').val('');
-  //               $('#status-perkawinan').val('');
-  //               $('#agama').val('');
-  //               $('#pendidikan').val('');
-  //               $('#pekerjaan').val('');
-  //               $('#alamat').val('');
-
-  //               $('#nik').removeClass('is-valid');
-  //               $('#nama').removeClass('is-valid');
-  //             }else if(penduduk_id != '' || penduduk_id != null){
-  //               $('#nik').addClass('is-valid');
-  //               $('#nama').addClass('is-valid');
-  //             }
-
-  //               return process(json);
-
-  //             if(json.length == 0){
-  //               $('#penduduk-id').val('');
-  //               $('#nama').val('');
-  //               $('#tempat-lahir').val('');
-  //               $('#tanggal-lahir').val('');
-  //               $('#jenis-kelamin').val('');
-  //               $('#status-perkawinan').val('');
-  //               $('#agama').val('');
-  //               $('#pendidikan').val('');
-  //               $('#pekerjaan').val('');
-  //               $('#alamat').val('');
-
-  //               $('#nik').removeClass('is-valid');
-  //               $('#nama').removeClass('is-valid');
-  //             }else{
-  //               $('#nik').addClass('is-valid');
-  //               $('#nama').addClass('is-valid');
-
-  //             }
-  //           }
-  //       });
-  //     },
-  //     autoSelect: true,
-  //     templates: {
-  //       suggestion: function(result){
-  //         return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-  //       }
-  //     },
-  //     afterSelect: function(result){
-  //       var nik = $('#nik').val();
-  //       $.ajax({
-  //         url: '/api/kependudukan/penduduk/data/'+nik,
-  //         type: 'get',
-  //         dataType: 'json',
-  //         success: function(data){
-  //           $('#penduduk-id').val(data.id);
-  //           $('#nama').val(data.nama);
-  //           $('#tempat-lahir').val(data.tempat_lahir);
-  //           $('#tanggal-lahir').val(data.tanggal_lahir);
-  //           $('#jenis-kelamin').val(data.jenis_kelamin);
-  //           $('#status-perkawinan').val(data.status_perkawinan);
-  //           $('#agama').val(data.agama);
-  //           $('#pendidikan').val(data.pendidikan);
-  //           $('#pekerjaan').val(data.pekerjaan);
-  //           $('#alamat').val(data.alamat);
-  //         }
-  //       });
-  //     }
-  //   });
-
-  // $('#nama').typeahead({
-  //     source: function(query, process) {
-  //       $.ajax({
-  //           url: '/api/kependudukan/penduduk/data-nama/'+query,
-  //           type: 'get',
-  //           dataType: 'json',
-  //           success: function(json){
-  //             console.log(json);
-  //             if(json.length == 0){
-  //               $('#penduduk-id').val('');
-  //               $('#nik').val('');
-  //               $('#tempat-lahir').val('');
-  //               $('#tanggal-lahir').val('');
-  //               $('#jenis-kelamin').val('');
-  //               $('#status-perkawinan').val('');
-  //               $('#agama').val('');
-  //               $('#pendidikan').val('');
-  //               $('#pekerjaan').val('');
-  //               $('#alamat').val('');
-
-  //               $('#nik').removeClass('is-valid');
-  //               $('#nama').removeClass('is-valid');
-  //             }else{
-  //               $('#nik').addClass('is-valid');
-  //               $('#nama').addClass('is-valid');
-
-  //               return process(json);
-  //             }
-  //           }
-  //       });
-  //     },
-  //     autoSelect: true,
-  //     templates: {
-  //       suggestion: function(result){
-  //         return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-  //       }
-  //     },
-  //     afterSelect: function(result){
-  //       var nama = $('#nama').val();
-  //       $.ajax({
-  //         url: '/api/kependudukan/penduduk/data-by-nama/'+nama,
-  //         type: 'get',
-  //         dataType: 'json',
-  //         success: function(data){
-  //           $('#penduduk-id').val(data.id);
-  //           $('#nik').val(data.nik);
-  //           $('#nama').val(data.nama);
-  //           $('#tempat-lahir').val(data.tempat_lahir);
-  //           $('#tanggal-lahir').val(data.tanggal_lahir);
-  //           $('#jenis-kelamin').val(data.jenis_kelamin);
-  //           $('#status-perkawinan').val(data.status_perkawinan);
-  //           $('#agama').val(data.agama);
-  //           $('#pendidikan').val(data.pendidikan);
-  //           $('#pekerjaan').val(data.pekerjaan);
-  //           $('#alamat').val(data.alamat);
-  //         }
-  //       });
-  //     }
-  //   });
 
   if (surat != '') {
     if (surat == 'Keterangan Usaha') {

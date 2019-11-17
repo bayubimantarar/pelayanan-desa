@@ -14,7 +14,7 @@ class KependudukanPendudukTableSeeder extends Seeder
     {
         $truncate = DB::table('kependudukan_penduduk')->truncate();
 
-        $created = Factory(Penduduk::class, 50)->create();
+        $created = Factory(Penduduk::class, 49)->create();
 
         $createPendudukDataForTest = DB::table('kependudukan_penduduk')->insert([
             'nik' => '32172507970001',

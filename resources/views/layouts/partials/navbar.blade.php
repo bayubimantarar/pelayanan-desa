@@ -62,7 +62,7 @@
               <li>
                 <a href="#">
                   <i class="fa fa-user fa-fw"></i>
-                  {{ Auth::guard('pengguna')->User()->nama }}
+                  {{ Auth::guard('pengguna')->User()->perangkat->nama }}
                 </a>
               </li>
               <li>

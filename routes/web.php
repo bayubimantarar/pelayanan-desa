@@ -248,6 +248,36 @@ Route::group(['prefix' => 'dasbor'], function(){
                         'as' => 'master.status_perkawinan.destroy'
                     ]);
                 });
+                Route::group(['prefix' => 'pengguna'], function(){
+                    Route::get('/', [
+                        'uses' => 'Master\PenggunaController@index',
+                        'as' => 'master.pengguna.index'
+                    ]);
+                    Route::get('/data', [
+                        'uses' => 'Master\PenggunaController@data',
+                        'as' => 'master.pengguna.data'
+                    ]);
+                    Route::get('/form-tambah', [
+                        'uses' => 'Master\PenggunaController@create',
+                        'as' => 'master.pengguna.create'
+                    ]);
+                    Route::get('/form-ubah/{id}', [
+                        'uses' => 'Master\PenggunaController@edit',
+                        'as' => 'master.pengguna.edit'
+                    ]);
+                    Route::post('/simpan', [
+                        'uses' => 'Master\PenggunaController@store',
+                        'as' => 'master.pengguna.store'
+                    ]);
+                    Route::put('/ubah/{id}', [
+                        'uses' => 'Master\PenggunaController@update',
+                        'as' => 'master.pengguna.update'
+                    ]);
+                    Route::delete('/hapus/{id}', [
+                        'uses' => 'Master\PenggunaController@destroy',
+                        'as' => 'master.pengguna.destroy'
+                    ]);
+                });
             });
         });
         Route::group(['prefix' => 'kependudukan'], function(){

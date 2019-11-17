@@ -8,6 +8,7 @@ class Surat extends Model
 {
     protected $table = 'master_surat';
     protected $fillable = [
+        'nomor_surat',
         'keterangan'
     ];
 }

@@ -15,6 +15,7 @@ class CreateMasterSuratTable extends Migration
     {
         Schema::create('master_surat', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nomor_surat');
             $table->string('keterangan', 150)->unique();
             $table->timestamps();
         });

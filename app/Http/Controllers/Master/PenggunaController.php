@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Master;
 
 use Illuminate\Http\Request;
-use App\Models\PermintaanSurat;
-use App\Models\PermintaanSuratStatus;
+use App\Http\Controllers\Controller;
 
-class CekPermintaanSuratController extends Controller
+class PenggunaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,28 +14,7 @@ class CekPermintaanSuratController extends Controller
      */
     public function index()
     {
-        return view('cek_permintaan_surat');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function detail(Request $request)
-    {
-        $kodePermintaanSurat = $request->kode_permintaan_surat;
-        $permintaanSuratStatus = PermintaanSuratStatus::where('kode_permintaan_surat', '=', $kodePermintaanSurat)
-            ->orderBy('created_at', 'desc')
-            ->get();
-
-        $totalPermintaanSuratStatus = $permintaanSuratStatus->count();
-
-        return view('detail_permintaan_surat', compact(
-            'permintaanSuratStatus',
-            'totalPermintaanSuratStatus',
-            'kodePermintaanSurat'
-        ));
+        //
     }
 
     /**

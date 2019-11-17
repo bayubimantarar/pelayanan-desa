@@ -51,94 +51,13 @@
                     name="pengguna_id"
                     value="{{ Auth::guard('pengguna')->User()->id }}"
                   />
-                  <div class="row">
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label
-                          class="control-label"
-                          for="nik"
-                        >
-                          NIK <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          value="{{ $permintaanSurat->nik }}"
-                          readonly
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label
-                          class="control-label"
-                          for="nama"
-                        >
-                          Nama Lengkap <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          name="nama_peminta"
-                          type="text"
-                          class="form-control"
-                          value="{{ $permintaanSurat->nama }}"
-                          readonly
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label
-                          class="control-label"
-                          for="nama"
-                        >
-                          Nomor Telepon <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          name="nomor_telepon"
-                          class="form-control"
-                          value="{{ $permintaanSurat->nomor_telepon }}"
-                          readonly
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-xs-12">
-                      <div class="form-group">
-                        <label
-                          class="control-label"
-                          for="nama"
-                        >
-                          Surat <small class="text-danger">*</small>
-                        </label>
-                        <input
-                          type="text"
-                          name="surat"
-                          class="form-control"
-                          value="{{ $permintaanSurat->surat }}"
-                          readonly
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-xs-12">
-                        <label
-                          class="control-label"
-                          for="alamat"
-                        >
-                          Alamat <small class="text-danger">*</small>
-                        </label>
-                        <textarea
-                          class="form-control"
-                          rows="5"
-                          readonly
-                        >{{ $permintaanSurat->alamat }}</textarea>
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                  @include('layouts.partials.identitas_penduduk')
+                  <input
+                    type="hidden"
+                    name="penduduk_id"
+                    id="master-penduduk-id"
+                    value="{{ $permintaanSurat->penduduk_id }}"
+                  />
+                  @include('layouts.partials.detail_identitas_penduduk')
                   <h4>
                     Keterangan Surat
                   </h4>
@@ -269,6 +188,7 @@
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
+  @yield('identitas_penduduk_js')
   <script>
     $('#tanggal-pengambilan').datetimepicker({
       format: 'DD-MM-YYYY'

@@ -118,6 +118,12 @@ class ProfilPerangkatTableSeeder extends Seeder
                     'jabatan' => 'Staf Desa',
                     'status' => '0',
                     'created_at' => $date
+                ],
+                [
+                    'nama' => 'Bayu Bimantara',
+                    'jabatan' => 'Staf Desa',
+                    'status' => '0',
+                    'created_at' => $date
                 ]
             ]);
     }
