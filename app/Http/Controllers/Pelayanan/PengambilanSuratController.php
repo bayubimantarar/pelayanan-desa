@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Pelayanan;
 use DataTables;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Models\PermintaanSurat;
 use App\Models\PengambilanSurat;
 use App\Http\Controllers\Controller;
+use App\Models\PermintaanSuratStatus;
 
 class PengambilanSuratController extends Controller
 {
@@ -21,7 +23,7 @@ class PengambilanSuratController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        $datatTablesPengambilanSurat = DataTables($pengambilanSurat)
+        $dataTablesPengambilanSurat = DataTables($pengambilanSurat)
             ->addColumn('action', function($pengambilanSurat){
                 if ($pengambilanSurat->status_pengambilan == 'Belum diambil') {
                     return '
@@ -56,7 +58,7 @@ class PengambilanSuratController extends Controller
             ->rawColumns(['action', 'status_pengambilan'])
             ->toJson();
 
-        return $datatTablesPengambilanSurat;
+        return $dataTablesPengambilanSurat;
     }
 
     /**
@@ -144,14 +146,26 @@ class PengambilanSuratController extends Controller
     public function proses($id)
     {
         $tanggalPengambilan = Carbon::now();
+        $tanggalStatus = Carbon::now();
+        $surat = PermintaanSurat::find($id);
+        $kodePermintaanSurat = $surat->kode_permintaan_surat;
 
         $data = [
             'tanggal_pengambilan' => $tanggalPengambilan,
             'status_pengambilan' => 'Sudah diambil'
         ];
 
+        $permintaanSuratStatusData = [
+            'kode_permintaan_surat' => $kodePermintaanSurat,
+            'tanggal_status' => $tanggalStatus,
+            'status_proses' => 'Surat sudah diambil',
+            'keterangan' => 'Surat sudah diambil di kantor desa'
+        ];
+
         $updatePengambilanSurat = PengambilanSurat::where('id', '=', $id)
             ->update($data);
+
+        $createPermintaanSuratStatus = PermintaanSuratStatus::create($permintaanSuratStatusData);
 
         return redirect('/dasbor/pelayanan/pengambilan-surat')->with([
             'notification' => 'Data berhasil diproses'

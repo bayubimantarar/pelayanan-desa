@@ -13,6 +13,7 @@ use App\Models\Profil\Perangkat;
 use App\Models\PengambilanSurat;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
+use App\Models\PermintaanSuratStatus;
 use App\Models\PermintaanSuratDetail;
 use App\Models\KAUR\Umum\KeteranganGhoib;
 use App\Models\KAUR\Ekbang\KeteranganUsaha;
@@ -151,6 +152,7 @@ class PermintaanSuratController extends Controller
         $namaPeminta = $request->nama_peminta;
         $nomorTelepon = $request->nomor_telepon;
         $surat = $request->surat;
+        $kodePermintaanSurat = $request->kode_permintaan_surat;
 
         $pendudukID = $request->penduduk_id;
         $perangkatID = $request->perangkat_id;
@@ -206,16 +208,24 @@ class PermintaanSuratController extends Controller
         $nomorPensiun = $request->nomor_pensiun;
         $pensiunan = $request->pensiunan;
         $penghasilan = $request->penghasilan;
+        $tanggalStatus = Carbon::now();
 
-        // $pengambilanSuratData = [
-        //     'permintaan_surat_id' => $id,
-        //     'pengguna_id' => $penggunaID,
-        //     'tanggal_pengambilan' => $tanggalPengambilan,
-        //     'status_pengambilan' => 'Belum diambil'
-        // ];
+        $pengambilanSuratData = [
+            'permintaan_surat_id' => $id,
+            'pengguna_id' => $penggunaID,
+            'tanggal_pengambilan' => $tanggalPengambilan,
+            'status_pengambilan' => 'Belum diambil'
+        ];
 
         $permintaanSuratData = [
-            // 'status_proses' => 'Sudah diproses'
+            'status_proses' => 'Sudah diproses'
+        ];
+
+        $permintaanSuratStatusData = [
+            'kode_permintaan_surat' => $kodePermintaanSurat,
+            'tanggal_status' => $tanggalStatus,
+            'status_proses' => 'Sudah diproses dan ditanda tangani',
+            'keterangan' => 'Surat sudah diproses dan ditanda tangani, surat sudah bisa diambil di kantor desa.'
         ];
 
         if($surat == 'Keterangan Usaha'){
@@ -423,7 +433,8 @@ class PermintaanSuratController extends Controller
 
         $pemerintahan = Pemerintahan::first();
         $createPengambilanSurat = PengambilanSurat::create($pengambilanSuratData);
-        // $updatePermintaanSurat = PermintaanSurat::where('id', '=', $id)->update($permintaanSuratData);
+        $updatePermintaanSurat = PermintaanSurat::where('id', '=', $id)->update($permintaanSuratData);
+        $createPermintaanSuratStatus = PermintaanSuratStatus::create($permintaanSuratStatusData);
 
         // $message = 'Hallo, '.$namaPeminta.' Surat '.$surat.' sudah bisa diambil pada tanggal '.$tanggalPengambilan->formatLocalized('%d/%m/%Y').'.';
 

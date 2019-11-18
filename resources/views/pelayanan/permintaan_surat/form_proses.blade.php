@@ -57,6 +57,16 @@
                     id="master-penduduk-id"
                     value="{{ $permintaanSurat->penduduk_id }}"
                   />
+                  <input
+                    type="hidden"
+                    name="kode_permintaan_surat"
+                    value="{{ $permintaanSurat->kode_permintaan_surat }}"
+                  />
+                  <input
+                    type="hidden"
+                    name="surat"
+                    value="{{ $permintaanSurat->surat }}"
+                  />
                   @include('layouts.partials.detail_identitas_penduduk')
                   <h4>
                     Keterangan Surat
