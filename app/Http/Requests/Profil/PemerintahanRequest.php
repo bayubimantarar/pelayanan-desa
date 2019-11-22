@@ -29,7 +29,8 @@ class PemerintahanRequest extends FormRequest
             'desa' => 'required',
             'nama_kepala_desa' => 'required',
             'email' => 'required',
-            'alamat' => 'required'
+            'alamat' => 'required',
+            'logo' => 'dimensions:max_width=500,max_height=500'
         ];
     }
 
@@ -46,7 +47,8 @@ class PemerintahanRequest extends FormRequest
             'desa.required' => 'Desa perlu diisi.',
             'nama_kepala_desa.required' => 'Nama Kepala Desa perlu diisi.',
             'email.required' => 'Email perlu diisi.',
-            'alamat.required' => 'Alamat perlu diisi.'
+            'alamat.required' => 'Alamat perlu diisi.',
+            'logo.dimensions' => 'Lebar dan tinggi maksimal logo 500 piksel'
         ];
     }
 }

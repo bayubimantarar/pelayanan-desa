@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profil;
 
+use Storage;
 use Illuminate\Http\Request;
 use App\Models\Profil\Pemerintahan;
 use App\Http\Controllers\Controller;
@@ -81,15 +82,45 @@ class PemerintahanController extends Controller
         $namaKepalaDesa = $pemerintahanRequest->nama_kepala_desa;
         $email = $pemerintahanRequest->email;
         $alamat = $pemerintahanRequest->alamat;
+        $fileLogo = $pemerintahanRequest->file('logo');
 
-        $data = [
-            'kabupaten' => $kabupaten,
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'nama_kepala_desa' => $namaKepalaDesa,
-            'email' => $email,
-            'alamat' => $alamat
-        ];
+        if (!empty($fileLogo)) {
+            $namaLogo = $fileLogo->getClientOriginalName();
+
+            $pemerintahan = Pemerintahan::find($id);
+            $oldFileLogo = $pemerintahan->logo;
+
+            if (!empty($oldFileLogo)) {
+                $deleteFileLogo = Storage::disk('uploads')
+                    ->delete('img/'.$oldFileLogo);
+            }
+
+            $data = [
+                'kabupaten' => $kabupaten,
+                'kecamatan' => $kecamatan,
+                'desa' => $desa,
+                'nama_kepala_desa' => $namaKepalaDesa,
+                'email' => $email,
+                'alamat' => $alamat,
+                'logo' => $namaLogo
+            ];
+
+            $uploadFile = Storage::disk('uploads')
+                ->putFileAs(
+                    'img',
+                    $fileLogo,
+                    $namaLogo
+                );
+        }else{
+            $data = [
+                'kabupaten' => $kabupaten,
+                'kecamatan' => $kecamatan,
+                'desa' => $desa,
+                'nama_kepala_desa' => $namaKepalaDesa,
+                'email' => $email,
+                'alamat' => $alamat
+            ];
+        }
 
         $updatePemerintahan = Pemerintahan::where('id', '=', $id)
             ->update($data);

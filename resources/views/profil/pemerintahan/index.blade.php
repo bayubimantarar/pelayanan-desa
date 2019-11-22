@@ -38,7 +38,7 @@
         <div class="panel-body">
           <div class="row">
               <div class="col-lg-12">
-                <form action="/dasbor/profil/pemerintahan/ubah/{{ $pemerintahan->id }}" method="post">
+                <form action="/dasbor/profil/pemerintahan/ubah/{{ $pemerintahan->id }}" method="post" enctype="multipart/form-data">
                   <input
                     type="hidden"
                     name="_method"
@@ -194,11 +194,19 @@
                   <div class="form-group {{ $errors->has('logo') ? 'has-error has-feedback' : '' }}">
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-xs-12">
-                        @if($pemerintahan->logo != null || $pemerintahan->logo != '')
+                        @if(!empty($pemerintahan->logo))
                           <img
-                            src="/assets/frontend/img/{{ $pemerintahan->logo }}"
-                            alt="Logo Desa"
+                            src="/uploads/img/{{ $pemerintahan->logo }}"
                             class="img-responsive"
+                            alt="Logo"
+                            id="logo-desa"
+                          />
+                        @else
+                          <img
+                            src="#"
+                            id="logo-desa"
+                            class="img-responsive"
+                            alt="Loog"
                           />
                         @endif
                         <label
@@ -210,6 +218,7 @@
                         <input
                           type="file"
                           name="logo"
+                          id="logo"
                         />
                         @if($errors->has('logo'))
                           <p class="text-danger">
@@ -242,22 +251,21 @@
 @endsection
 
 @section('js')
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.with-locales.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
   <script>
-    $('#tanggal-lahir').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+          $('#logo-desa').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    $('#logo').change(function(e){
+      readURL(this);
     });
   </script>
 @endsection

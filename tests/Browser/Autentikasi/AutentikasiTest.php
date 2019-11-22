@@ -42,11 +42,11 @@ class AutentikasiTest extends DuskTestCase
     //     });
     // }
 
-    // /**
+    // *
     //  * A Dusk test example.
     //  * @test
     //  * @return void
-    //  */
+
     // public function loginWithEmptyEmail()
     // {
     //     $this->browse(function (Browser $browser) {
@@ -76,20 +76,20 @@ class AutentikasiTest extends DuskTestCase
     //     });
     // }
 
-    // /**
-    //  * A Dusk test example.
-    //  * @test
-    //  * @return void
-    //  */
-    // public function loginInvalidUser()
-    // {
-    //     $this->browse(function (Browser $browser) {
-    //         $browser->visit('/autentikasi/form-login')
-    //             ->type('email', 'john@desa.id')
-    //             ->type('password', '321')
-    //             ->press('Masuk')
-    //             ->assertPathIs('/autentikasi/form-login')
-    //             ->screenshot('loginInvalidUser');
-    //     });
-    // }
+    /**
+     * A Dusk test example.
+     * @test
+     * @return void
+     */
+    public function loginInvalidUser()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/dasbor/autentikasi/form-login')
+                ->type('email', 'john@desa.id')
+                ->type('password', '321')
+                ->press('Masuk')
+                ->assertPathIs('/dasbor/autentikasi/form-login')
+                ->screenshot('loginInvalidUser');
+        });
+    }
 }

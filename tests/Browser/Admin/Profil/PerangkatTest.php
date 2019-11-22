@@ -30,19 +30,19 @@ class PerangkatTest extends DuskTestCase
     //  * @test
     //  * @return void
     //  */
-    public function createPerangkat()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->loginAs(Pengguna::find(1), 'pengguna')
-                ->visit('/profil/perangkat')
-                ->clickLink('Tambah')
-                ->type('nama', 'John Doe')
-                ->type('jabatan', 'Staf Desa')
-                ->press('Simpan')
-                ->assertPathIs('/profil/perangkat')
-                ->screenshot('createPerangkat');
-        });
-    }
+    // public function createPerangkat()
+    // {
+    //     $this->browse(function (Browser $browser) {
+    //         $browser->loginAs(Pengguna::find(1), 'pengguna')
+    //             ->visit('/profil/perangkat')
+    //             ->clickLink('Tambah')
+    //             ->type('nama', 'John Doe')
+    //             ->type('jabatan', 'Staf Desa')
+    //             ->press('Simpan')
+    //             ->assertPathIs('/profil/perangkat')
+    //             ->screenshot('createPerangkat');
+    //     });
+    // }
 
     // *
     //  * A Dusk test example.
@@ -82,24 +82,24 @@ class PerangkatTest extends DuskTestCase
     //     });
     // }
 
-    /**
-     * A Dusk test example.
-     * @test
-     * @return void
-     */
-    public function deletePerangkat()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->loginAs(Pengguna::find(1), 'pengguna')
-                ->visit('/profil/perangkat')
-                ->pause('1000')
-                ->type('#perangkat-table_filter > label > input', 'John Doe')
-                ->pause('1000')
-                // ->clickLink('Hapus')
-                // ->pause('1000')
-                // ->acceptDialog()
-                // ->type('#perangkat-table_filter > label > input', '')
-                ->screenshot('deletePerangkat');
-        });
-    }
+    // /**
+    //  * A Dusk test example.
+    //  * @test
+    //  * @return void
+    //  */
+    // public function deletePerangkat()
+    // {
+    //     $this->browse(function (Browser $browser) {
+    //         $browser->loginAs(Pengguna::find(1), 'pengguna')
+    //             ->visit('/profil/perangkat')
+    //             ->pause('1000')
+    //             ->type('#perangkat-table_filter > label > input', 'John Doe')
+    //             ->pause('1000')
+    //             // ->clickLink('Hapus')
+    //             // ->pause('1000')
+    //             // ->acceptDialog()
+    //             // ->type('#perangkat-table_filter > label > input', '')
+    //             ->screenshot('deletePerangkat');
+    //     });
+    // }
 }

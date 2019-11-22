@@ -204,6 +204,10 @@
 @endif
 
 @section('identitas_penduduk_js')
+  <script
+    type="text/javascript"
+    src="/assets/frontend/js/select2.js"
+  ></script>
   <script>
     var penduduk_id = $('#master-penduduk-id').val();
 
@@ -231,7 +235,7 @@
       placeholder: 'Cari Data Dengan No. KTP',
       allowClear: true,
       ajax: {
-        url: '/api/kependudukan/penduduk/data-penduduk',
+        url: '/dasbor/kependudukan/penduduk/api/data-penduduk',
         dataType: 'json',
         allowClear: true,
         cache: true,
@@ -273,7 +277,7 @@
         $('#nama').removeClass('is-valid');
       }else{
         $.ajax({
-          url: '/api/kependudukan/penduduk/data/'+nik,
+          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
           type: 'get',
           dataType: 'json',
           success: function(data){

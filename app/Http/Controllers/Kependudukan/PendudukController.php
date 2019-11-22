@@ -20,6 +20,19 @@ class PendudukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function dataPenduduk(Request $request)
+    {
+        $penduduk = Penduduk::where('nik', 'like', '%'.$request->q.'%')->get('nik');
+
+        return response()
+            ->json($penduduk, 200);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function APIdataNIK($nik)
     {
         $penduduk = Penduduk::where('nik', '=', $nik)->pluck('nik');

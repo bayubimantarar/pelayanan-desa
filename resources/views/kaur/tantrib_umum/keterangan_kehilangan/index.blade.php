@@ -8,7 +8,7 @@
   <link
     rel="stylesheet"
     type="text/css"
-    href="/assets/vendor/datatables-plugins/dataTables.bootstrap.css"
+    href="/assets/vendor/datatables/css/dataTables.bootstrap.css"
   />
   <link
     rel="stylesheet"

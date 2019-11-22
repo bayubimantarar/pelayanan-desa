@@ -49,14 +49,14 @@
         >
           <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Data Master<span class="fa arrow"></span></a>
           <ul class="nav nav-second-level">
-            <li>
+            {{-- <li>
               <a
                 href="/dasbor/master/surat"
                 class="{{ Request::segment(3) === 'surat' ? 'active' : ''}}">
                 <i class="fa fa-file-o"></i>
                 Surat
               </a>
-            </li>
+            </li> --}}
             <li>
               <a
                 href="/dasbor/master/agama"

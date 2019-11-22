@@ -140,7 +140,7 @@ class PermintaanSuratController extends Controller
             'penduduk_id' => $pendudukID,
             'kode_permintaan_surat' => $kodePermintaanSurat,
             'nik' => $nik,
-            'nama' => $nama,
+            // 'nama' => $nama,
             'nomor_telepon' => $nomorTelepon,
             'surat' => $surat,
             'alamat' => $alamat,

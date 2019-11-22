@@ -532,29 +532,19 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
     src="/assets/js/moment.min.js"
   ></script>
   <script
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
-  ></script>
   @yield('identitas_penduduk_js')
   <script>
     $('#tanggal-lahir-anak').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years',
-      locale: 'id',
     }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
       var day = e.date._d.getDay();
 
       if (day == 1) {
@@ -573,21 +563,12 @@
         $('#hari-lahir-anak').val('Minggu');
       }
     });
+
     $('#jam-lahir-anak').datetimepicker({
+      locale: 'id',
       format: 'HH:mm',
     });
-    $('#tanggal-lahir-ayah').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-lahir-ibu').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-lahir-ghoib').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
+
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

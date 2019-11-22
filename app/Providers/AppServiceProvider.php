@@ -39,9 +39,12 @@ class AppServiceProvider extends ServiceProvider
 
                 $totalPermintaanSurat = PermintaanSurat::where('status_proses', '=', 'Belum diproses')->count();
 
+                $pemerintahan = Pemerintahan::first();
+
                 $data = [
                     'permintaanSurat' => $permintaanSurat,
-                    'totalPermintaanSurat' => $totalPermintaanSurat
+                    'totalPermintaanSurat' => $totalPermintaanSurat,
+                    'pemerintahan' => $pemerintahan
                 ];
 
                 $view->with($data);

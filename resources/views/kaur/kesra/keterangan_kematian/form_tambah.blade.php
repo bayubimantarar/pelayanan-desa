@@ -369,16 +369,15 @@
     $('#sktm-pendidikan').hide();
 
     $('#tanggal-lahir-anak').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });
 
     $('#tanggal-meninggal').datetimepicker({
-      format: 'DD-MM-YYYY',
       locale: 'id',
+      format: 'DD-MM-YYYY',
     }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
       var day = e.date._d.getDay();
 
       if (day == 1) {
@@ -399,6 +398,7 @@
     });
 
     $('#jam-meninggal').datetimepicker({
+      locale: 'id',
       format: 'HH:mm',
     });
 
@@ -407,16 +407,6 @@
       $('#redaksi').prop('readonly', false);
       $('#redaksi').focus();
       $('#ubah-keterangan-redaksi').attr('disabled', true);
-    });
-
-    $('#jenis-sktm').change(function(e){
-      var jenis_sktm = $('#jenis-sktm').val();
-
-      if (jenis_sktm === "Pendidikan") {
-        $('#sktm-pendidikan').show();
-      }else{
-        $('#sktm-pendidikan').hide();
-      }
     });
   </script>
 @endsection

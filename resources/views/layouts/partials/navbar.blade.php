@@ -9,7 +9,7 @@
     </button>
     <a class="navbar-brand" href="index.html">
       <img
-        src="/assets/frontend/img/logo-kbb@small.png"
+        src="/uploads/img/{{ $pemerintahan->logo }}"
         alt=""
         height="30"
         style="display: inline;"
@@ -62,7 +62,7 @@
               <li>
                 <a href="#">
                   <i class="fa fa-user fa-fw"></i>
-                  {{ Auth::guard('pengguna')->User()->perangkat->nama }}
+                  {{ Auth::guard('pengguna')->User()->nama }}
                 </a>
               </li>
               <li>

@@ -3,7 +3,7 @@
   <div class="container">
     <a class="navbar-brand" href="/">
       <img
-        src="/assets/frontend/img/logo-kbb@small.png"
+        src="/uploads/img/{{ $pemerintahan->logo }}"
         height="40"
       />
       Desa {{ $pemerintahan->desa }}

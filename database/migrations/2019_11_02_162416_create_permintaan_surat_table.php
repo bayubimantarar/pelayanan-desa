@@ -18,7 +18,7 @@ class CreatePermintaanSuratTable extends Migration
             $table->bigInteger('penduduk_id');
             $table->string('kode_permintaan_surat', 150);
             $table->string('nik', 75);
-            $table->string('nama', 75);
+            // $table->string('nama', 75);
             $table->string('nomor_telepon', 75)->nullable();
             $table->string('alamat', 75)->nullable();
             $table->string('email', 75)->nullable();

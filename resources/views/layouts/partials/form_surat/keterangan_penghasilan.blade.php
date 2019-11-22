@@ -10,6 +10,7 @@
       <input
         type="text"
         name="penghasilan"
+        id="penghasilan"
         class="form-control"
         value="{{ $permintaanSuratDetail->penghasilan }}"
       />

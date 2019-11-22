@@ -223,26 +223,14 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
     src="/assets/js/moment-with-locales.js"
   ></script>
   <script
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
-  ></script>
   @yield('identitas_penduduk_js')
   <script>
-    $('#tanggal-lahir-anak').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
     $('#tanggal-meninggal').datetimepicker({
       format: 'DD-MM-YYYY',
       locale: 'id',
@@ -268,23 +256,12 @@
         $('#hari-meninggal').val('Minggu');
       }
     });
-    $('#jam-meninggal').datetimepicker({
-      format: 'HH:mm',
-    });
+
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);
       $('#redaksi').focus();
       $('#ubah-keterangan-redaksi').attr('disabled', true);
-    });
-    $('#jenis-sktm').change(function(e){
-      var jenis_sktm = $('#jenis-sktm').val();
-
-      if (jenis_sktm === "Pendidikan") {
-        $('#sktm-pendidikan').show();
-      }else{
-        $('#sktm-pendidikan').hide();
-      }
     });
   </script>
 @endsection

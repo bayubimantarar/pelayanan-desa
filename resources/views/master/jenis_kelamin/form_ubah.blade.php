@@ -5,11 +5,7 @@
 @endsection
 
 @section('css')
-  <link
-    rel="stylesheet"
-    type="text/css"
-    href="/assets/css/bootstrap-datetimepicker.min.css"
-  />
+  <!-- -->
 @endsection
 
 @section('content')
@@ -89,22 +85,5 @@
 @endsection
 
 @section('js')
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.with-locales.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
-  <script>
-    $('#tanggal-lahir').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-  </script>
+  <!-- -->
 @endsection

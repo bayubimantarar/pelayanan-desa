@@ -18,7 +18,7 @@ class MasterPenggunaTableSeeder extends Seeder
         $insert = DB::table('master_pengguna')
             ->insert([
                 [
-                    'perangkat_id' => '16',
+                    'nama' => 'Riri Rosmayanti',
                     'email' => 'riri@desa.id',
                     'password' => bcrypt('123'),
                     'nomor_telepon' => '0895332055486',
@@ -27,7 +27,7 @@ class MasterPenggunaTableSeeder extends Seeder
                     'created_at' => $date
                 ],
                 [
-                    'perangkat_id' => '17',
+                    'nama' => 'Mariam',
                     'email' => 'mariam@desa.id',
                     'password' => bcrypt('123'),
                     'nomor_telepon' => '0895332055486',
@@ -36,7 +36,7 @@ class MasterPenggunaTableSeeder extends Seeder
                     'created_at' => $date
                 ],
                 [
-                    'perangkat_id' => '18',
+                    'nama' => 'Bayu Bimantara',
                     'email' => 'bayu@desa.id',
                     'password' => bcrypt('123'),
                     'nomor_telepon' => '0895332055486',

@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; KAUR Kesra - Keterangan Belum Menikah | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
   <link
     rel="stylesheet"
     type="text/css"
-    href="/assets/vendor/datatables-plugins/dataTables.bootstrap.css"
+    href="/assets/vendor/datatables/css/dataTables.bootstrap.css"
   />
   <link
     rel="stylesheet"

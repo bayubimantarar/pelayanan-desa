@@ -13,7 +13,7 @@ class PermintaanSurat extends Model
         'penduduk_id',
         'kode_permintaan_surat',
         'nik',
-        'nama',
+        // 'nama',
         'nomor_telepon',
         'alamat',
         'email',

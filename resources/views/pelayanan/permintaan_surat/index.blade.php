@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Pelayanan &raquo; Permintaan Surat | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
   <link
     rel="stylesheet"
     type="text/css"
-    href="/assets/vendor/datatables-plugins/dataTables.bootstrap.css"
+    href="/assets/vendor/datatables/css/dataTables.bootstrap.css"
   />
   <link
     rel="stylesheet"
@@ -50,7 +50,7 @@
               <thead>
                 <tr>
                   <th>NIK</th>
-                  <th>Nama</th>
+                  <th>Kode Permintaan</th>
                   <th>Permintaan Surat</th>
                   <th width="90">Status Proses</th>
                   <th width="150">Opsi</th>
@@ -86,7 +86,7 @@
       datatype: 'json',
       columns: [
         {data: 'nik'},
-        {data: 'nama'},
+        {data: 'kode_permintaan_surat'},
         {data: 'surat'},
         {data: 'status_proses'},
         {data: 'action'}

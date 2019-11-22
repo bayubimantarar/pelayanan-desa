@@ -25,7 +25,7 @@ class PermintaanSuratRequest extends FormRequest
     {
         return [
             'nik' => 'required',
-            'nama' => 'required',
+            // 'nama' => 'required',
             'nomor_telepon' => 'required',
             'alamat' => 'required',
             'surat' => 'required',
@@ -93,7 +93,7 @@ class PermintaanSuratRequest extends FormRequest
     {
         return [
             'nik.required' => 'No. KTP perlu diisi.',
-            'nama.required' => 'Nama perlu diisi.',
+            // 'nama.required' => 'Nama perlu diisi.',
             'nomor_telepon.required' => 'Nomor telepon perlu diisi.',
             'alamat.required' => 'Alamat perlu diisi.',
             'surat.required' => 'Surat perlu dipilih.',

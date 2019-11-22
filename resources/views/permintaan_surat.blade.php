@@ -54,7 +54,7 @@ Pelayanan &raquo; Permintaan Surat
               </label>
               <select
                 name="nik"
-                class="form-control"
+                class="form-control {{ $errors->has('nik') ? 'is-invalid' : '' }}"
                 id="nik"
               >
                 @if((old('nik')))
@@ -66,6 +66,9 @@ Pelayanan &raquo; Permintaan Surat
                   </option>
                 @endif
               </select>
+              <div class="valid-feedback" id="data-validation">
+                Penduduk terdaftar
+              </div>
               @if($errors->has('nik'))
                 <div class="invalid-feedback">
                   {{ $errors->first('nik') }}
@@ -73,7 +76,7 @@ Pelayanan &raquo; Permintaan Surat
               @endif
             </div>
           </div>
-          <div class="col-lg-6 col-md-6 col-xs-12">
+          {{-- <div class="col-lg-6 col-md-6 col-xs-12">
             <div class="form-group">
               <label>
                 Nama Lengkap <small class="text-danger">*</small>
@@ -87,13 +90,9 @@ Pelayanan &raquo; Permintaan Surat
                 autocomplete="off"
                 readonly
               />
-              <div class="valid-feedback" id="data-validation">
-                Data penduduk terdaftar
-              </div>
             </div>
-          </div>
+          </div> --}}
         </div>
-        <hr />
         <div class="row">
           <div class="col-lg-3 col-md-3 col-xs-12">
             <div class="form-group">
@@ -325,7 +324,7 @@ Pelayanan &raquo; Permintaan Surat
       $('#nama').val('');
 
       $('#data-validation').hide();
-      $('#nama').removeClass('is-valid');
+      $('#nik').removeClass('is-valid');
     }else{
       $.ajax({
         url: '/api/kependudukan/penduduk/data/'+nik,
@@ -336,7 +335,7 @@ Pelayanan &raquo; Permintaan Surat
           $('#nama').val(data.nama);
 
           $('#data-validation').show();
-          $('#nama').addClass('is-valid');
+          $('#nik').addClass('is-valid');
         }
       });
     }

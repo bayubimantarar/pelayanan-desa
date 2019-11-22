@@ -394,19 +394,11 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
     src="/assets/js/moment.min.js"
   ></script>
   <script
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
   ></script>
   @yield('identitas_penduduk_js')
   <script>
@@ -419,6 +411,7 @@
     }
 
     $('#tanggal-lahir-anak').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });

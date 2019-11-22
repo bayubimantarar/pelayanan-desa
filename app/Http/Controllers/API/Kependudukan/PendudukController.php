@@ -15,9 +15,7 @@ class PendudukController extends Controller
      */
     public function dataPenduduk(Request $request)
     {
-        // $penduduk = Penduduk::all()->pluck('nik');
-
-        $penduduk = Penduduk::where('nik', 'like', '%'.$request->q.'%')->get('nik');
+        $penduduk = Penduduk::where('nik', '=', $request->q)->get('nik');
 
         return response()
             ->json($penduduk, 200);

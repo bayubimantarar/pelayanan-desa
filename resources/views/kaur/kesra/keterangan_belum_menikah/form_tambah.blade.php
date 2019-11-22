@@ -7,11 +7,6 @@
 @section('css')
   <link
     rel="stylesheet"
-    type="text/css"
-    href="/assets/css/bootstrap-datetimepicker.min.css"
-  />
-  <link
-    rel="stylesheet"
     href="/assets/css/select2.css"
   />
 @endsection
@@ -130,17 +125,5 @@
 @endsection
 
 @section('js')
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
-  ></script>
   @yield('identitas_penduduk_js')
-  <script>
-    $('#ubah-keterangan-redaksi').click(function(e){
-      e.preventDefault();
-      $('#redaksi').prop('readonly', false);
-      $('#redaksi').focus();
-      $('#ubah-keterangan-redaksi').attr('disabled', true);
-    });
-  </script>
 @endsection

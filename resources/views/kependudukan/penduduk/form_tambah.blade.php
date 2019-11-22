@@ -308,11 +308,11 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"
-    src="/assets/js/moment.with-locales.js"
+    src="/assets/js/moment-with-locales.js"
   ></script>
   <script
     type="text/javascript"
@@ -320,6 +320,7 @@
   ></script>
   <script>
     $('#tanggal-lahir').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });

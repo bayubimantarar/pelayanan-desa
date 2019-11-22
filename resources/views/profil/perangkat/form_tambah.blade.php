@@ -11,7 +11,11 @@
 @section('content')
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Form Tambah Data Perangkat</h1>
+      <ul class="breadcrumb">
+        <li><a href="#">Dasbor</a></li>
+        <li><a href="/dasbor/profil/perangkat">Profil - Perangkat</a></li>
+        <li class="active">Form Tambah</li>
+      </ul>
     </div>
   </div>
   <div class="row">

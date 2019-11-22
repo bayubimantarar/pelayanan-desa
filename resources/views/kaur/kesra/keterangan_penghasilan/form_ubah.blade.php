@@ -7,11 +7,6 @@
 @section('css')
   <link
     rel="stylesheet"
-    type="text/css"
-    href="/assets/css/bootstrap-datetimepicker.min.css"
-  />
-  <link
-    rel="stylesheet"
     href="/assets/css/select2.css"
   />
 @endsection
@@ -97,7 +92,7 @@
                 @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
                   <b>
-                    KETERANGAN SURAT
+                    Keterangan Surat
                   </b>
                 </h4>
                 <hr />
@@ -203,62 +198,8 @@
 @endsection
 
 @section('js')
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment-with-locales.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/jquery-mask.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
-  ></script>
   @yield('identitas_penduduk_js')
   <script>
-    $('#tanggal-lahir-anak').datetimepicker({
-      format: 'DD-MM-YYYY',
-      viewMode: 'years'
-    });
-    $('#tanggal-meninggal').datetimepicker({
-      format: 'DD-MM-YYYY',
-      locale: 'id',
-    }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
-      var day = e.date._d.getDay();
-
-      if (day == 1) {
-        $('#hari-meninggal').val('Senin');
-      }else if(day == 2){
-        $('#hari-meninggal').val('Selasa');
-      }else if(day == 3){
-        $('#hari-meninggal').val('Rabu');
-      }else if(day == 4){
-        $('#hari-meninggal').val('Kamis');
-      }else if(day == 5){
-        $('#hari-meninggal').val('Jumat');
-      }else if(day == 6){
-        $('#hari-meninggal').val('Sabtu');
-      }else if(day == 0){
-        $('#hari-meninggal').val('Minggu');
-      }
-    });
-    // $('#penghasilan-mask').mask('000.000.000', {
-    //   reverse: true,
-    //   onChange: function(result){
-    //     console.log(Math.trunc(result));
-    //   }
-    // });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

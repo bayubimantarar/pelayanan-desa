@@ -7,11 +7,6 @@
 @section('css')
   <link
     rel="stylesheet"
-    type="text/css"
-    href="/assets/css/bootstrap-datetimepicker.min.css"
-  />
-  <link
-    rel="stylesheet"
     href="/assets/css/select2.css"
   />
 @endsection
@@ -246,30 +241,8 @@
 @endsection
 
 @section('js')
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/bootstrap-datetimepicker.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/frontend/js/select2.js"
-  ></script>
   @yield('identitas_penduduk_js')
   <script>
-    $('#tertanggal-rt').datetimepicker({
-      format: 'DD-MM-YYYY'
-    });
-    $('#tertanggal-rw').datetimepicker({
-      format: 'DD-MM-YYYY'
-    });
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

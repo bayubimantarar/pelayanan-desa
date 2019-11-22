@@ -12,7 +12,8 @@ class Pengguna extends Authenticatable
     protected $table = 'master_pengguna';
     protected $guard = 'pengguna';
     protected $fillable = [
-        'perangkat_id',
+        // 'perangkat_id',
+        'nama',
         'email',
         'password',
         'nomor_telepon',

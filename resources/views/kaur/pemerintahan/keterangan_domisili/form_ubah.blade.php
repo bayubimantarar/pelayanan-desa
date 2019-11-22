@@ -7,11 +7,6 @@
 @section('css')
   <link
     rel="stylesheet"
-    type="text/css"
-    href="/assets/css/bootstrap-datetimepicker.min.css"
-  />
-  <link
-    rel="stylesheet"
     href="/assets/css/select2.css"
   />
 @endsection

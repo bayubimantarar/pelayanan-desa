@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; Pelayanan - Permintaan Surat &raquo; Form Proses | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -184,11 +184,7 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/bootstrap-typehead.min.js"
-  ></script>
-  <script
-    type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"
@@ -198,25 +194,40 @@
     type="text/javascript"
     src="/assets/js/bootstrap-datetimepicker.min.js"
   ></script>
+  <script
+    type="text/javascript"
+    src="/assets/js/jquery-mask.js"
+  ></script>
   @yield('identitas_penduduk_js')
   <script>
     $('#tanggal-pengambilan').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY'
     });
+
     $('#tanggal-pelaksanaan').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY'
     });
+
     $('#tanggal-lahir-ghoib').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });
+
     $('#tanggal-pengambilan').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY'
     });
+
     $('#tertanggal-rt').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY'
     });
+
     $('#tertanggal-rw').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY'
     });
 
@@ -237,93 +248,17 @@
         $('#sktm-pendidikan').hide();
       }
     });
-    $('#nik').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nik',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nik = $('#nik').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data/'+nik,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
-    $('#nama').typeahead({
-      source: function(query, process) {
-        $.ajax({
-            url: '/dasbor/kependudukan/penduduk/api/data-nama',
-            type: 'get',
-            dataType: 'json',
-            success: function(json){
-              return process(json)
-            }
-        });
-      },
-      autoSelect: true,
-      templates: {
-        suggestion: function(result){
-          return 'Klik Tambah Data Penduduk, jika tidak menemukan data.';
-        }
-      },
-      afterSelect: function(result){
-        var nama = $('#nama').val();
-        $.ajax({
-          url: '/dasbor/kependudukan/penduduk/api/data-by-nama/'+nama,
-          type: 'get',
-          dataType: 'json',
-          success: function(data){
-            $('#master-penduduk-id').val(data.id);
-            $('#nik').val(data.nik);
-            $('#nama').val(data.nama);
-            $('#tempat-lahir').val(data.tempat_lahir);
-            $('#tanggal-lahir').val(data.tanggal_lahir);
-            $('#jenis-kelamin').val(data.jenis_kelamin);
-            $('#status-perkawinan').val(data.status_perkawinan);
-            $('#agama').val(data.agama);
-            $('#pendidikan').val(data.pendidikan);
-            $('#pekerjaan').val(data.pekerjaan);
-            $('#alamat').val(data.alamat);
-          }
-        });
-      }
-    });
+
     $('#tanggal-lahir-anak').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });
+
     $('#tanggal-meninggal').datetimepicker({
-      format: 'DD-MM-YYYY',
       locale: 'id',
+      format: 'DD-MM-YYYY',
     }).on('dp.change', function(e){
-      // console.log(e.date);
-      console.log(e.date._d.getDay());
       var day = e.date._d.getDay();
 
       if (day == 1) {
@@ -342,12 +277,9 @@
         $('#hari-meninggal').val('Minggu');
       }
     });
-    // $('#penghasilan-mask').mask('000.000.000', {
-    //   reverse: true,
-    //   onChange: function(result){
-    //     console.log(Math.trunc(result));
-    //   }
-    // });
+
+    // $('#penghasilan').mask('0.000.000.000', {reverse: true});
+
     $('#ubah-keterangan-redaksi').click(function(e){
       e.preventDefault();
       $('#redaksi').prop('readonly', false);

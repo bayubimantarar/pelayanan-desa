@@ -321,6 +321,7 @@
   ></script>
   <script>
     $('#tanggal-lahir').datetimepicker({
+      locale: 'id',
       format: 'DD-MM-YYYY',
       viewMode: 'years'
     });
