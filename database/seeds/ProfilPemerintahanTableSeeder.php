@@ -15,18 +15,19 @@ class ProfilPemerintahanTableSeeder extends Seeder
         $date = Carbon::now();
 
         $truncate = DB::table('profil_pemerintahan')->truncate();
-        $insert = DB::table('profil_pemerintahan')
-            ->insert([
-                [
-                    'kabupaten' => 'Bandung Barat',
-                    'kecamatan' => 'Ngamprah',
-                    'desa' => 'Cilame',
-                    'nama_kepala_desa' => 'Aas Mohamad Asor, SH',
-                    'email' => 'info@cilame.desa.id',
-                    'alamat' => 'Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552',
-                    'logo' => 'logo-kbb@small.png',
-                    'created_at' => $date
-                ]
-            ]);
+
+        // $insert = DB::table('profil_pemerintahan')
+        //     ->insert([
+        //         [
+        //             'kabupaten' => 'Bandung Barat',
+        //             'kecamatan' => 'Ngamprah',
+        //             'desa' => 'Cilame',
+        //             'nama_kepala_desa' => 'Aas Mohamad Asor, SH',
+        //             'email' => 'info@cilame.desa.id',
+        //             'alamat' => 'Jalan Galudra No. 37 Desa Cilame Kec. Ngamprah 40552',
+        //             'logo' => 'logo-kbb@small.png',
+        //             'created_at' => $date
+        //         ]
+        //     ]);
     }
 }

@@ -16,6 +16,10 @@ Route::group(['prefix' => 'pengaturan-website'], function(){
         'uses' => 'WizardController@index',
         'as' => 'pengaturan-website'
     ]);
+    Route::post('/simpan', [
+        'uses' => 'WizardController@store',
+        'as' => 'pengaturan-website.simpan'
+    ]);
 });
 
 Route::group(['middleware' => 'wizard'], function(){
