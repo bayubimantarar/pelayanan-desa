@@ -47,7 +47,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/uploads/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -136,7 +136,7 @@
   </div>
   <div class="keterangan">
     <p style="text-indent: 2.5%;">
-      {{ $sktm->redaksi }}<br />
+      {{ $sktm->redaksi }}<br /><br />
       Surat keterangan ini dibuat untuk keperluan : <b><i>{{ $sktm->keperluan }}</i></b>
     </p>
     <p style="text-indent: 2.5%;">

@@ -48,7 +48,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/uploads/img/'.$profil->logo ?>"
       height="75"
       style=""
     />

@@ -30,7 +30,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Data Baru Keterangan Kartu Keluarga Sementara
+          Form Tambah
         </div>
         <div class="panel-body">
           <div class="row">
@@ -145,7 +145,7 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"

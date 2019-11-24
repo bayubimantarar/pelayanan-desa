@@ -126,7 +126,7 @@
           </div>
       </div>
     </div>
-    <form action="/pengaturan-website/simpan" method="post" enctype="multpart/form-data">
+    <form action="/pengaturan-website/simpan" method="post" enctype="multipart/form-data">
       <input
         type="hidden"
         name="_token"

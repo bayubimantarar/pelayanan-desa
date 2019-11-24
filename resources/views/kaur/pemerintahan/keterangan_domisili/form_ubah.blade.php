@@ -25,7 +25,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Domisili
+          Form Ubah
         </div>
         <div class="panel-body">
           <div class="row">
@@ -33,7 +33,7 @@
               <form action="/dasbor/kaur-pemerintahan/keterangan-domisili/ubah/{{ $keteranganDomisili->id }}" method="post">
                 <h4>
                   <b>
-                    Identitas Penduduk
+                    IDENTITAS PENDUDUK
                   </b>
                 </h4>
                 <hr />
@@ -92,7 +92,7 @@
                 @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
                   <b>
-                    Keterangan Surat
+                    KETERANGAN SURAT
                   </b>
                 </h4>
                 <hr />

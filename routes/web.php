@@ -91,6 +91,13 @@ Route::group(['middleware' => 'wizard'], function(){
             ]);
         });
 
+        Route::group(['prefix' => 'pengaturan'], function(){
+            Route::get('/', [
+                'uses' => 'Master/PengaturanController@index',
+                'as' => 'dasbor.pengaturan'
+            ]);
+        });
+
         Route::group(['middleware' => 'auth:pengguna'], function(){
             Route::get('/', [
                 'uses' => 'DasborController@index',

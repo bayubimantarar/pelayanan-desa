@@ -30,7 +30,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Kelahiran
+          Form Tambah
         </div>
         <div class="panel-body">
           <div class="row">
@@ -55,7 +55,7 @@
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
                   <b>
-                    Identitas Anak
+                    IDENTITAS ANAK
                   </b>
                 </h4>
                 <hr />
@@ -239,7 +239,7 @@
                 </div>
                 <h4>
                   <b>
-                    Identitas Ayah & Ibu
+                    IDENTITAS AYAH & IBU
                   </b>
                 </h4>
                 <hr />
@@ -432,7 +432,7 @@
                 </div>
                 <h4>
                   <b>
-                    Keterangan Surat
+                    KETERANGAN SURAT
                   </b>
                 </h4>
                 <hr />
@@ -490,7 +490,7 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"

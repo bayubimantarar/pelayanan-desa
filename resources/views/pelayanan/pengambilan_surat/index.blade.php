@@ -50,7 +50,6 @@
               <thead>
                 <tr>
                   <th>NIK</th>
-                  <th>Nama</th>
                   <th>Permintaan Surat</th>
                   <th width="130">Status Pengambilan</th>
                   <th width="150">Opsi</th>
@@ -86,7 +85,6 @@
       datatype: 'json',
       columns: [
         {data: 'permintaan_surat.nik'},
-        {data: 'permintaan_surat.nama'},
         {data: 'permintaan_surat.surat'},
         {data: 'status_pengambilan'},
         {data: 'action'}

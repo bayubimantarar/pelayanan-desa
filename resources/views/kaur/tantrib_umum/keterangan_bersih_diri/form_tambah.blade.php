@@ -25,7 +25,7 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Ghoib
+          Form Tambah
         </div>
         <div class="panel-body">
           <div class="row">
@@ -50,7 +50,7 @@
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
                   <b>
-                    Keterangan Surat
+                    KETERANGAN SURAT
                   </b>
                 </h4>
                 <hr />

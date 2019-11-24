@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; KAUR Umum - Keterangan Ghoib &raquo; Form Tambah | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -30,14 +30,14 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Ghoib
+          Form Ubah
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
               <form action="/dasbor/kaur-umum/keterangan-ghoib/ubah/{{ $keteranganGhoib->id }}" method="post">
                 <h4>
-                  Identitas Penduduk
+                  IDENTITAS PENDUDUK
                 </h4>
                 <hr />
                 <input
@@ -94,7 +94,7 @@
                 @endsection
                 @include('layouts.partials.form_ubah_identitas_penduduk')
                 <h4>
-                  Keterangan Surat
+                  KETERANGAN SURAT
                 </h4>
                 <hr />
                 <div class="form-group">
@@ -289,7 +289,7 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"

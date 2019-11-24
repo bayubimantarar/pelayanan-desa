@@ -30,14 +30,14 @@
     <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Form Tambah Data Keterangan Ghoib
+          Form Tambah
         </div>
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-12">
               <form action="/dasbor/kaur-umum/keterangan-ghoib/simpan" method="post">
                 <h4>
-                  Identitas Penduduk
+                  IDENTITAS PENDUDUK
                 </h4>
                 <hr />
                 <input
@@ -52,7 +52,7 @@
                 />
                 @include('layouts.partials.identitas_penduduk')
                 <h4>
-                  Keterangan Surat
+                  KETERANGAN SURAT
                 </h4>
                 <hr />
                 <div class="form-group">
@@ -247,7 +247,7 @@
 @section('js')
   <script
     type="text/javascript"
-    src="/assets/js/moment.min.js"
+    src="/assets/js/moment.js"
   ></script>
   <script
     type="text/javascript"

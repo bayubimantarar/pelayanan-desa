@@ -50,7 +50,7 @@
 <body>
   <div class="header">
     <img
-      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/assets/frontend/img/'.$profil->logo ?>"
+      src="<?php echo $_SERVER["DOCUMENT_ROOT"].'/uploads/img/'.$profil->logo ?>"
       height="75"
       style=""
     />
@@ -143,7 +143,7 @@
     <p style="text-indent: 2.5%;">
       Dengan ini menerangkan bahwa pada prinsipnya kami tidak keberatan atas permohonan yang bersangkutan dengan ketentuan sebagai berikut :<br />
       <ol>
-        <li>Pada waktu dilaksanakan rame – rame harus menjaga ketenteraman dan ketertiban di lingkungan baik dengan tetangga, menghargai waktu – waktu ibadat dalam menciptakan kerukunan umat beragama maupun lingkungan setelah selesai rame – rame.</li>
+        <li>Pada waktu dilaksanakan rame – rame harus menjaga ketentraman dan ketertiban di lingkungan baik dengan tetangga, menghargai waktu – waktu ibadat dalam menciptakan kerukunan umat beragama maupun lingkungan setelah selesai rame – rame.</li>
         <li>Pada waktu dilaksanakan rame – rame tidak dibenarkan / dilarang melakukan hal – hal yang bertentangan dengan <b>ketentuan yang berlaku dan adat istiadat baik lingkungan maupun bangsa</b>.</li>
       </ol>
     </p>
