@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; Profil - Perangkat &raquo; Form Ubah | Pelayanan Desa Cilame
 @endsection
 
 @section('css')
@@ -39,7 +39,7 @@
                     value="{{ csrf_token() }}"
                   />
                   <div class="row">
-                    <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <div class="form-group {{ $errors->has('nama') ? 'has-error has-feedback' : '' }}">
                         <label
                           class="control-label"
@@ -61,7 +61,35 @@
                         @endif
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-lg-12 col-md-12 col-xs-12">
+                            <label
+                              class="control-label"
+                              for="jenis_kelamin"
+                            >
+                              Jenis Kelamin
+                            </label>
+                            <select
+                              name="jenis_kelamin"
+                              id="jenis_kelamin"
+                              class="form-control"
+                            >
+                            @foreach($jenisKelamin as $item)
+                              <option
+                                value="{{ $item->keterangan }}"
+                                {{ $perangkat->jenis_kelamin == $item->keterangan ? 'selected' : '' }}
+                              >
+                                {{ $item->keterangan }}
+                              </option>
+                            @endforeach
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <div class="form-group {{ $errors->has('jabatan') ? 'has-error has-feedback' : '' }}">
                           <label
                             class="control-label"
@@ -83,13 +111,13 @@
                           @endif
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-xs-12">
+                    <div class="col-lg-3 col-md-3 col-xs-12">
                       <div class="form-group {{ $errors->has('status') ? 'has-error has-feedback' : '' }}">
                           <label
                             class="control-label"
                             for="status"
                           >
-                            Bertanggung Jawab Atas Tanda Tangan Surat
+                            Tanda Tangan Surat
                           </label>
                           <select
                             name="status"

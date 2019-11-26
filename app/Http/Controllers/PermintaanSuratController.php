@@ -315,7 +315,7 @@ class PermintaanSuratController extends Controller
                 'kode_permintaan_surat' => $kodePermintaanSurat,
                 'tanggal_status' => $tanggalStatus,
                 'status_proses' => 'Belum diproses',
-                'keterangan' => 'Permintaan surat sudah diterima tetapi belum diproses'
+                'keterangan' => 'Permintaan surat sudah diterima tetapi belum diproses.'
             ];
 
             $createPermintaanSuratDetail = PermintaanSuratDetail::create($permintaanSuratDetailData);

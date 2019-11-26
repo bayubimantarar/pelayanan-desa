@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Pelayanan &raquo; Permintaan Surat | Pelayanan Desa Cilame
+  Dasbor &raquo; Pelayanan - Permintaan Surat | Pelayanan Desa Cilame
 @endsection
 
 @section('css')

@@ -18,10 +18,30 @@
             Profil Desa
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-            <a class="dropdown-item" href="#">Sejarah Desa</a>
-            <a class="dropdown-item" href="#">Peta Desa</a>
-            <a class="dropdown-item" href="#">Visi Misi</a>
-            <a class="dropdown-item" href="#">Perangkat Desa</a>
+            <a
+              class="dropdown-item"
+              href="/peta"
+            >
+              Peta
+            </a>
+            <a
+              class="dropdown-item"
+              href="#"
+            >
+              Sejarah
+            </a>
+            <a
+              class="dropdown-item"
+              href="#"
+            >
+              Visi Misi
+            </a>
+            <a
+              class="dropdown-item"
+              href="/perangkat"
+            >
+              Perangkat
+            </a>
           </div>
         </li>
         <li class="nav-item dropdown">

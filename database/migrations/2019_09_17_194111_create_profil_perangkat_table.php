@@ -16,6 +16,7 @@ class CreateProfilPerangkatTable extends Migration
         Schema::create('profil_perangkat', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama', 150);
+            $table->string('jenis_kelamin', 150);
             $table->string('jabatan', 150);
             $table->string('status', 150);
             $table->timestamps();

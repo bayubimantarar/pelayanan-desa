@@ -8,14 +8,16 @@ Pelayanan &raquo; Permintaan Surat
 <div class="container">
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">
-    <small>Permintaan Surat</small>
+    <small>Cek Permintaan Surat</small>
   </h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html">Beranda</a>
+      <a href="/">Beranda</a>
     </li>
-    <li class="breadcrumb-item active">Permintaan Surat</li>
+    <li class="breadcrumb-item active">
+      Cek Permintaan Surat
+    </li>
   </ol>
 
   <div class="row">
@@ -30,8 +32,13 @@ Pelayanan &raquo; Permintaan Surat
               <input
                 type="text"
                 name="kode_permintaan_surat"
-                class="form-control"
+                class="form-control {{ $errors->has('kode_permintaan_surat') ? 'is-invalid' : '' }}"
               />
+              @if($errors->has('kode_permintaan_surat'))
+                <div class="invalid-feedback">
+                  {{ $errors->first('kode_permintaan_surat') }}
+                </div>
+              @endif
             </div>
           </div>
         </div>

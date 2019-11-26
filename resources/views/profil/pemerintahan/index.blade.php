@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Dasbor | Pelayanan Desa Cilame
+  Dasbor &raquo; Profil - Pemerintahan | Pelayanan Desa Cilame
 @endsection
 
 @section('css')

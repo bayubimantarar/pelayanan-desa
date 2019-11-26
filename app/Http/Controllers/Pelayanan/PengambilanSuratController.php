@@ -159,7 +159,7 @@ class PengambilanSuratController extends Controller
             'kode_permintaan_surat' => $kodePermintaanSurat,
             'tanggal_status' => $tanggalStatus,
             'status_proses' => 'Surat sudah diambil',
-            'keterangan' => 'Surat sudah diambil di kantor desa'
+            'keterangan' => 'Surat sudah diambil di kantor desa.'
         ];
 
         $updatePengambilanSurat = PengambilanSurat::where('id', '=', $id)

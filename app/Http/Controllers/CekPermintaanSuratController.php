@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\PermintaanSurat;
 use App\Models\PermintaanSuratStatus;
+use App\Http\Requests\CekPermintaanSuratRequest;
 
 class CekPermintaanSuratController extends Controller
 {
@@ -23,9 +23,10 @@ class CekPermintaanSuratController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail(Request $request)
+    public function detail(CekPermintaanSuratRequest $cekPermintaanSuratRequest)
     {
-        $kodePermintaanSurat = $request->kode_permintaan_surat;
+        $kodePermintaanSurat = $cekPermintaanSuratRequest->kode_permintaan_surat;
+
         $permintaanSuratStatus = PermintaanSuratStatus::where('kode_permintaan_surat', '=', $kodePermintaanSurat)
             ->orderBy('created_at', 'desc')
             ->get();

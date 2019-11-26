@@ -38,7 +38,7 @@ class MasterPenggunaTableSeeder extends Seeder
         //         ],
         //         [
         //             'nama' => 'Bayu Bimantara',
-        //             'email' => 'bayu@desa.id',
+        //             'email' => 'bayu@cilame.desa.id',
         //             'password' => bcrypt('123'),
         //             'nomor_telepon' => '0895332055486',
         //             'alamat' => 'Kota Baru',

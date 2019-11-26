@@ -39,6 +39,20 @@ Route::group(['middleware' => 'wizard'], function(){
         ]);
     });
 
+    Route::group(['prefix' => 'peta'], function(){
+        Route::get('/', [
+            'uses' => 'PetaController@index',
+            'as' => 'peta'
+        ]);
+    });
+
+    Route::group(['prefix' => 'perangkat'], function(){
+        Route::get('/', [
+            'uses' => 'PerangkatController@index',
+            'as' => 'perangkat'
+        ]);
+    });
+
     Route::group(['prefix' => 'cek-permintaan-surat'], function(){
         Route::get('/', [
             'uses' => 'CekPermintaanSuratController@index',

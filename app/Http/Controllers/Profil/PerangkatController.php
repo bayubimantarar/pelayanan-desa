@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Profil;
 
 use Illuminate\Http\Request;
 use App\Models\Profil\Perangkat;
+use App\Models\Master\JenisKelamin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profil\PerangkatRequest;
 
@@ -62,7 +63,11 @@ class PerangkatController extends Controller
      */
     public function create()
     {
-        return view('profil.perangkat.form_tambah');
+        $jenisKelamin = JenisKelamin::all();
+
+        return view('profil.perangkat.form_tambah', compact(
+            'jenisKelamin'
+        ));
     }
 
     /**
@@ -74,11 +79,13 @@ class PerangkatController extends Controller
     public function store(PerangkatRequest $perangkatRequest)
     {
         $nama = $perangkatRequest->nama;
+        $jenisKelamin = $perangkatRequest->jenis_kelamin;
         $jabatan = $perangkatRequest->jabatan;
         $status = $perangkatRequest->status;
 
         $data = [
             'nama' => $nama,
+            'jenis_kelamin' => $jenisKelamin,
             'jabatan' => $jabatan,
             'status' => $status
         ];
@@ -111,9 +118,11 @@ class PerangkatController extends Controller
     public function edit($id)
     {
         $perangkat = Perangkat::findOrFail($id);
+        $jenisKelamin = JenisKelamin::all();
 
         return view('profil.perangkat.form_ubah', compact(
-            'perangkat'
+            'perangkat',
+            'jenisKelamin'
         ));
     }
 
@@ -127,11 +136,13 @@ class PerangkatController extends Controller
     public function update(PerangkatRequest $perangkatRequest, $id)
     {
         $nama = $perangkatRequest->nama;
+        $jenisKelamin = $perangkatRequest->jenis_kelamin;
         $jabatan = $perangkatRequest->jabatan;
         $status = $perangkatRequest->status;
 
         $data = [
             'nama' => $nama,
+            'jenis_kelamin' => $jenisKelamin,
             'jabatan' => $jabatan,
             'status' => $status
         ];

@@ -140,7 +140,7 @@
             </h3>
             <hr />
             <p>
-              Selamat datang di <b>Sistem Informasi Administrasi Desa</b>, ikut beberapa langkah-langkahnya untuk menyelesaikan pengaturan website seperti pengisian <b>Profil Desa</b> dan <b>Pengguna</b>
+              Selamat datang di <b>Sistem Informasi Administrasi Desa</b>, ikut beberapa langkah-langkahnya untuk menyelesaikan pengaturan website seperti pengisian <b>Profil Desa</b> dan <b>Pengguna</b>.
             </p>
             <br />
             <button class="btn btn-primary nextBtn pull-right" type="button">

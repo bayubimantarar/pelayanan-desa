@@ -9,6 +9,7 @@ class Perangkat extends Model
     protected $table = 'profil_perangkat';
     protected $fillable = [
         'nama',
+        'jenis_kelamin',
         'jabatan',
         'status'
     ];
