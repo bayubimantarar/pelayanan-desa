@@ -20,6 +20,7 @@ services:
     user: bimantara
     volumes:
       - ./:/usr/share/nginx/html
+    working_dir: /usr/share/nginx/html
   mysql:
     container_name: pelayanan-desa-mysql
     build:

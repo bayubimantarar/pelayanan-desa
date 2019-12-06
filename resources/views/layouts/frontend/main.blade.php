@@ -29,6 +29,10 @@
   />
   <link
     rel="stylesheet"
+    href="/assets/frontend/css/reboot.css"
+  />
+  <link
+    rel="stylesheet"
     type="text/css"
     href="/assets/vendor/font-awesome/css/font-awesome.min.css"
   />
