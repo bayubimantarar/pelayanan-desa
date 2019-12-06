@@ -9,8 +9,8 @@ Pelayanan berkas administrasi desa adalah sebuah aplikasi yang bertujuan untuk :
 ## Installation
 If you are using Docker
         
-        docker-compose up
-        
+    docker-compose up
+
 1. Clone repository
 2. Install dependencies composer
 
