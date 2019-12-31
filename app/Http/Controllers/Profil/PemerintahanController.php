@@ -83,6 +83,8 @@ class PemerintahanController extends Controller
         $email = $pemerintahanRequest->email;
         $alamat = $pemerintahanRequest->alamat;
         $fileLogo = $pemerintahanRequest->file('logo');
+        $visi = $pemerintahanRequest->visi;
+        $misi = $pemerintahanRequest->misi;
 
         if (!empty($fileLogo)) {
             $namaLogo = $fileLogo->getClientOriginalName();
@@ -102,7 +104,9 @@ class PemerintahanController extends Controller
                 'nama_kepala_desa' => $namaKepalaDesa,
                 'email' => $email,
                 'alamat' => $alamat,
-                'logo' => $namaLogo
+                'logo' => $namaLogo,
+                'visi' => $visi,
+                'misi' => $misi
             ];
 
             $uploadFile = Storage::disk('uploads')
@@ -118,7 +122,9 @@ class PemerintahanController extends Controller
                 'desa' => $desa,
                 'nama_kepala_desa' => $namaKepalaDesa,
                 'email' => $email,
-                'alamat' => $alamat
+                'alamat' => $alamat,
+                'visi' => $visi,
+                'misi' => $misi
             ];
         }
 
@@ -127,7 +133,7 @@ class PemerintahanController extends Controller
 
         return redirect('/dasbor/profil/pemerintahan')
             ->with([
-                'notification' => 'Data profil pemerintahan berhasil diubah.'
+                'notification' => 'Data berhasil diubah'
             ]);
     }
 

@@ -10,6 +10,10 @@
     type="text/css"
     href="/assets/css/bootstrap-datetimepicker.min.css"
   />
+  <link
+    rel="stylesheet"
+    href="/assets/frontend/css/tagsinput.css"
+  />
 @endsection
 
 @section('content')
@@ -228,6 +232,46 @@
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <div class="form-group {{ $errors->has('visi') ? 'has-error has-feedback' : '' }}">
+                        <label for="visi" class="control-label">
+                          Visi
+                        </label>
+                        <textarea
+                          name="visi"
+                          class="form-control"
+                          rows="5"
+                        >{{ $pemerintahan->visi }}</textarea>
+                      </div>
+                      @if($errors->has('visi'))
+                        <p class="text-danger">
+                          {{ $errors->first('visi') }}
+                        </p>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-xs-12">
+                      <div class="form-group {{ $errors->has('misi') ? 'has-error has-feedback' : '' }}">
+                        <label for="misi" class="control-label">
+                          Misi
+                        </label>
+                        <input
+                          type="text"
+                          name="misi"
+                          id="misi"
+                          class="form-control"
+                          value="{{ $pemerintahan->misi }}"
+                        />
+                        @if($errors->has('misi'))
+                          <p class="text-danger">
+                            {{ $errors->first('misi') }}
+                          </p>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
                   <p>
                     <small>
                       <code>
@@ -251,7 +295,10 @@
 @endsection
 
 @section('js')
+  <script src="/assets/frontend/js/tagsinput.js"></script>
   <script>
+    $('#misi').tagsinput();
+
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();

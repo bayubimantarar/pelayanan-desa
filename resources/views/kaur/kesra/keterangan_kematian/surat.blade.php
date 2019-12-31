@@ -174,9 +174,10 @@
             </center>
           @else
             <center>
-              <b>
-                an. KEPALA DESA
+              <b style="text-transform: uppercase;">
+                {{ $profil->nama_kepala_desa }}
               </b>
+            </center>
           @endif
         </td>
       </tr>

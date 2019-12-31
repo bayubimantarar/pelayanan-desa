@@ -13,6 +13,7 @@ use App\Models\PermintaanSuratDetail;
 use App\Models\PermintaanSuratStatus;
 use App\Http\Requests\PermintaanSuratRequest;
 use App\Mail\Pelayanan\PermintaanSurat as PermintaanSuratMail;
+use App\Mail\Penduduk\PermintaanSurat as PendudukPermintaanSuratMail;
 
 class PermintaanSuratController extends Controller
 {
@@ -43,7 +44,7 @@ class PermintaanSuratController extends Controller
         $nik = $permintaanSuratRequest->nik;
         $nama = $permintaanSuratRequest->nama;
         $nomorTelepon = $permintaanSuratRequest->nomor_telepon;
-        // $email = $PermintaanSuratRequest->email;
+        $email = $permintaanSuratRequest->email;
         $alamat = $permintaanSuratRequest->alamat;
         $surat = $permintaanSuratRequest->surat;
         $jenisUsaha = $permintaanSuratRequest->jenis_usaha;
@@ -154,7 +155,9 @@ class PermintaanSuratController extends Controller
                 Mail::to($item->email)->send(new PermintaanSuratMail($item->nama));
             }
 
-            // $message = 'Hallo, '.$nama.' Surat '.$surat.' berhasil diterima. Gunakan kode ini '.$kodePermintaanSurat.' untuk mengecek status surat.';
+            Mail::to($email)->send(new PendudukPermintaanSuratMail($nama, $surat, $kodePermintaanSurat));
+
+            $message = 'Pengajuan surat '.$surat.' berhasil diterima. Gunakan kode ini '.$kodePermintaanSurat.' untuk mengecek status surat.';
 
             // $sendMessage = Nexmo::message()->send([
             //     'to' => $nomorTelepon,

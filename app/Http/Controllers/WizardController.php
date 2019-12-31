@@ -29,6 +29,8 @@ class WizardController extends Controller
         $emailDesa = $request->email_desa;
         $alamatDesa = $request->alamat_desa;
         $fileLogo = $request->file('logo');
+        $visi = $request->visi;
+        $misi = $request->misi;
         $nama = $request->nama;
         $nomorTelepon = $request->nomor_telepon;
         $alamat = $request->alamat;
@@ -52,7 +54,9 @@ class WizardController extends Controller
                 'nama_kepala_desa' => $namaKepalaDesa,
                 'email' => $emailDesa,
                 'alamat' => $alamatDesa,
-                'logo' => $namaLogo
+                'logo' => $namaLogo,
+                'visi' => $visi,
+                'misi' => $misi
             ];
         }else{
             $profilData = [
@@ -62,7 +66,9 @@ class WizardController extends Controller
                 'nama_kepala_desa' => $namaKepalaDesa,
                 'email' => $emailDesa,
                 'alamat' => $alamatDesa,
-                'logo' => '500x500.png'
+                'logo' => '500x500.png',
+                'visi' => $visi,
+                'misi' => $misi
             ];
         }
 

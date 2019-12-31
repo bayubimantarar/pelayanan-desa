@@ -21,6 +21,9 @@ class CreateProfilPemerintahanTable extends Migration
             $table->string('nama_kepala_desa', 150);
             $table->string('email', 150)->unique();
             $table->text('alamat');
+            $table->text('deskripsi')->nullable();
+            $table->text('visi')->nullable();
+            $table->text('misi')->nullable();
             $table->string('logo', 150)->nullable();
             $table->timestamps();
         });

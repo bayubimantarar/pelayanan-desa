@@ -11,7 +11,10 @@ class HomeController extends Controller
     {
         $pemerintahan = Pemerintahan::first();
 
+        $misi = explode(',', $pemerintahan->misi);
+
         return view('index', compact(
+            'misi',
             'pemerintahan'
         ));
     }

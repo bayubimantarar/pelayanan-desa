@@ -13,24 +13,26 @@
       </b>
     </h3>
     <div class="row">
-      <div class="col-lg-5 col-md-5 col-xs-12">
-        <p>Desa {{ $pemerintahan->desa }} merupakan desa terluas, yaitu sebesar 25 Rukun Warga dengan jumlah penduduk sekitar 27000 jiwa.</p>
+      <div class="col-lg-6 col-md-6 col-xs-12">
+        <p>
+          Misi
+        </p>
         <small>
           <b>
             <i>
-              "Terjuwudnya masyarakat yang cerdas, kreatif, dan mandiri."
+              "{{ $pemerintahan->visi }}"
             </i>
           </b>
         </small>
       </div>
-      <div class="col-lg-7 col-md-7 col-xs-12">
+      <div class="col-lg-6 col-md-6 col-xs-12">
         <p>
-          Misi
+          Visi
         </p>
         <ul>
-          <li>Mendukung kreativitas dan peningkatan kualitas pada masyarakat</li>
-          <li>Mendorong peningkatan kegiatan pemberdayaan perkonomian masyarakat</li>
-          <li>Meningkatkan kapasitas aparat pemerintahan desa dan kemasyarakatan desa</li>
+          @foreach($misi as $item)
+            <li>{{ $item }}</li>
+          @endforeach
         </ul>
       </div>
     </div>

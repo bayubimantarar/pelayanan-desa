@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title></title>
+  <title>Pengaturan website</title>
 
   <!-- Bootstrap core CSS -->
   <link
@@ -36,6 +36,11 @@
   <link
     rel="stylesheet"
     href="/assets/frontend/css/select2-bootstrap4.css"
+  />
+
+  <link
+    rel="stylesheet"
+    href="/assets/frontend/css/tagsinput.css"
   />
 
   <link
@@ -265,6 +270,25 @@
               >
             </div>
           </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <label for="">
+                Visi
+              </label>
+              <textarea
+                name="visi"
+                class="form-control"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+              <label for="">
+                Misi
+              </label>
+              <input type="text" name="misi" id="misi" class="form-control" />
+            </div>
+          </div>
           <br />
           <button class="btn btn-primary nextBtn pull-right" type="button">
             Selanjutnya &raquo;
@@ -382,6 +406,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="/assets/frontend/vendor/jquery/jquery.min.js"></script>
   <script src="/assets/frontend/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/frontend/js/tagsinput.js"></script>
   <script>
     $(document).ready(function () {
       var navListItems = $('div.setup-panel div a'),
@@ -427,6 +452,8 @@
     });
 
     $('div.setup-panel div a.btn-primary').trigger('click');
+
+    $('#misi').tagsinput();
   });
   </script>
 </body>

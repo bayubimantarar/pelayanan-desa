@@ -1,7 +1,7 @@
 @extends('layouts.frontend.main')
 
 @section('title')
-Pelayanan &raquo; Permintaan Surat
+  Pelayanan &raquo; Permintaan Surat
 @endsection
 
 @section('content')
